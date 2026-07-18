@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-
+  
 def subject_average_chart(df):
 
     subjects = ["Python", "DBMS", "Statistics"]

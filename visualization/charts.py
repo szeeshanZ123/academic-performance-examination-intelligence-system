@@ -42,3 +42,12 @@ def attendance_distribution_chart(df):
     plt.ylabel("Number of Students")
     plt.savefig("reports/attendance_distribution.png")
     plt.show()
+
+def sgpi_distribution_chart(df):
+    plt.figure(figsize=(8,5))
+    plt.hist(df['SGPI'],bins=10)
+    plt.title("SGPI Distribution")
+    plt.xlabel("SGPI")
+    plt.ylabel("Number of Students")
+    plt.savefig("reports/sgpi_distribution.png")
+    plt.show()

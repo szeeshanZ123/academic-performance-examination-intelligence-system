@@ -14,5 +14,7 @@ top_students(students)
 at_risk_students(students)
 
 charts.subject_average_chart(students)
-  
+
 charts.attendance_distribution_chart(students)
+
+charts.sgpi_distribution_chart(students)

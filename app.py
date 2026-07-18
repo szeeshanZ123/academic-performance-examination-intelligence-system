@@ -20,4 +20,7 @@ charts.attendance_distribution_chart(students)
 
 charts.sgpi_distribution_chart(students)
 
+charts.top_students_chart(students)
+
 dashboard_kpis(students)
+

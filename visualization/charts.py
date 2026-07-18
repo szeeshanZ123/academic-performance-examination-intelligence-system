@@ -52,3 +52,17 @@ def sgpi_distribution_chart(df):
     plt.ylabel("Number of Students")
     plt.savefig("reports/sgpi_distribution.png")
     plt.show()
+
+def top_students_chart(df):
+    top_students=df.nlargest(10,'SGPI')
+    names=top_students['Name']
+    sgpi=top_students['SGPI']
+    plt.figure(figsize=(10,6))
+    plt.bar(names, sgpi)
+    plt.title("Top 10 Students by SGPI")
+    plt.xlabel("Student Names")
+    plt.ylabel("SGPI")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.savefig("reports/top_students.png")
+    plt.show()

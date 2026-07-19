@@ -1,7 +1,8 @@
 from flask import Flask, render_template
 from utils.data_loader import load_students
 from analysis.analytics import dashboard_kpis
-
+from flask import request
+from flask import redirect
 app = Flask(__name__)
 
 students = load_students()
@@ -37,6 +38,30 @@ def student_profile(roll):
         student=student
     )
 
+@app.route("/search")
+def search():
+
+    query = request.args.get("query")
+
+    if query.isdigit():
+
+        student = students[
+            students["Roll"] == int(query)
+        ]
+
+    else:
+
+        student = students[
+            students["Name"].str.lower() == query.lower()
+        ]
+
+    if student.empty:
+
+        return "Student Not Found"
+
+    return redirect(
+        f"/student/{student.iloc[0]['Roll']}"
+    )
 
 if __name__ == "__main__":
     app.run(debug=True)

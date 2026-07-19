@@ -135,6 +135,19 @@
       <div class="card shadow">
         <div class="card-body">
           <table class="table table-striped table-hover">
+            <form action="/search" method="GET" class="mb-4">
+              <div class="input-group">
+                <input
+                  type="text"
+                  name="query"
+                  class="form-control"
+                  placeholder="Search by Roll Number or Name"
+                  required
+                />
+
+                <button class="btn btn-primary">Search</button>
+              </div>
+            </form>
             <thead class="table-dark">
               <tr>
                 <th>Roll</th>

@@ -28,7 +28,6 @@
           <div class="card shadow border-0">
             <div class="card-body text-center">
               <h6 class="text-muted">Total Students</h6>
-
               <h2>{{ total_students }}</h2>
             </div>
           </div>
@@ -38,7 +37,6 @@
           <div class="card shadow border-0">
             <div class="card-body text-center">
               <h6 class="text-muted">Average SGPI</h6>
-
               <h2>{{ average_sgpi }}</h2>
             </div>
           </div>
@@ -48,7 +46,6 @@
           <div class="card shadow border-0">
             <div class="card-body text-center">
               <h6 class="text-muted">Average Attendance</h6>
-
               <h2>{{ average_attendance }}%</h2>
             </div>
           </div>
@@ -58,7 +55,6 @@
           <div class="card shadow border-0">
             <div class="card-body text-center">
               <h6 class="text-muted">At Risk Students</h6>
-
               <h2>{{ at_risk }}</h2>
             </div>
           </div>
@@ -128,26 +124,44 @@
           </div>
         </div>
       </div>
+
       <hr class="my-5" />
 
       <h2 class="text-center mb-4">Student Records</h2>
 
+      <div class="row justify-content-center mb-4">
+        <div class="col-lg-10">
+          <div class="card shadow">
+            <div class="card-body">
+              <h5 class="mb-3">Quick Student Search</h5>
+
+              <form action="/search" method="GET">
+                <div class="row g-3 align-items-center">
+                  <div class="col-md-8">
+                    <input
+                      type="text"
+                      name="query"
+                      class="form-control"
+                      placeholder="Search by Roll No. or Student Name"
+                      required
+                    />
+                  </div>
+
+                  <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary w-100">
+                      Search Student
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="card shadow">
         <div class="card-body">
-          <table class="table table-striped table-hover">
-            <form action="/search" method="GET" class="mb-4">
-              <div class="input-group">
-                <input
-                  type="text"
-                  name="query"
-                  class="form-control"
-                  placeholder="Search by Roll Number or Name"
-                  required
-                />
-
-                <button class="btn btn-primary">Search</button>
-              </div>
-            </form>
+          <table class="table table-striped table-hover align-middle">
             <thead class="table-dark">
               <tr>
                 <th>Roll</th>
@@ -164,7 +178,6 @@
 
             <tbody>
               {% for student in students %}
-
               <tr>
                 <td>{{ student.Roll }}</td>
                 <td>{{ student.Name }}</td>
@@ -183,7 +196,6 @@
                   </a>
                 </td>
               </tr>
-
               {% endfor %}
             </tbody>
           </table>

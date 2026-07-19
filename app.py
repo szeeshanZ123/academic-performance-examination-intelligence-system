@@ -1,16 +1,13 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 from utils.data_loader import load_students
 from analysis.analytics import dashboard_kpis
-from flask import request
-from flask import redirect
-app = Flask(__name__)
 
+app = Flask(__name__)
 students = load_students()
 
 
 @app.route("/")
 def home():
-
     kpis = dashboard_kpis(students)
 
     return render_template(
@@ -25,43 +22,31 @@ def home():
 
 @app.route("/student/<int:roll>")
 def student_profile(roll):
-
     student = students[students["Roll"] == roll]
 
     if student.empty:
         return "Student Not Found"
 
-    student = student.iloc[0]
+    return render_template("student.html", student=student.iloc[0])
 
-    return render_template(
-        "student.html",
-        student=student
-    )
 
 @app.route("/search")
 def search():
+    query = request.args.get("query", "").strip()
 
-    query = request.args.get("query")
+    if not query:
+        return redirect("/")
 
     if query.isdigit():
-
-        student = students[
-            students["Roll"] == int(query)
-        ]
-
+        student = students[students["Roll"] == int(query)]
     else:
-
-        student = students[
-            students["Name"].str.lower() == query.lower()
-        ]
+        student = students[students["Name"].str.lower() == query.lower()]
 
     if student.empty:
-
         return "Student Not Found"
 
-    return redirect(
-        f"/student/{student.iloc[0]['Roll']}"
-    )
+    return redirect(f"/student/{student.iloc[0]['Roll']}")
+
 
 if __name__ == "__main__":
     app.run(debug=True)

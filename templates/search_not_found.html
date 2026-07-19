@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Student Not Found</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-light">
+    <div class="container py-5">
+      <div class="alert alert-danger text-center">
+        <h2>❌ Student Not Found</h2>
+
+        <p>
+          No student found for:
+
+          <strong>{{ query }}</strong>
+        </p>
+
+        <a href="/" class="btn btn-primary"> Back to Dashboard </a>
+      </div>
+    </div>
+  </body>
+</html>

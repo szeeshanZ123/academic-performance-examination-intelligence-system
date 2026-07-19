@@ -1,7 +1,10 @@
 <!doctype html>
-
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Student Profile</title>
 
     <link
@@ -11,26 +14,96 @@
   </head>
 
   <body class="bg-light">
-    <div class="container mt-5">
+    <div class="container py-5">
+      <!-- Back Button -->
+
+      <a href="/" class="btn btn-secondary mb-4"> ← Back to Dashboard </a>
+
       <div class="card shadow">
         <div class="card-body">
-          <h2>{{ student.Name }}</h2>
+          <h2 class="text-center mb-4">👨‍🎓 Student Profile</h2>
 
           <hr />
 
-          <p><b>Roll :</b> {{ student.Roll }}</p>
+          <div class="row">
+            <div class="col-md-6">
+              <p><strong>Name :</strong> {{ student.Name }}</p>
 
-          <p><b>Semester :</b> {{ student.Semester }}</p>
+              <p><strong>Roll :</strong> {{ student.Roll }}</p>
 
-          <p><b>Python :</b> {{ student.Python }}</p>
+              <p><strong>Semester :</strong> {{ student.Semester }}</p>
 
-          <p><b>DBMS :</b> {{ student.DBMS }}</p>
+              <p><strong>SGPI :</strong> {{ student.SGPI }}</p>
+            </div>
 
-          <p><b>Statistics :</b> {{ student.Statistics }}</p>
+            <div class="col-md-6">
+              <h6>Performance Status</h6>
 
-          <p><b>Attendance :</b> {{ student.Attendance }}%</p>
+              {% if student.SGPI >= 9 %}
 
-          <p><b>SGPI :</b> {{ student.SGPI }}</p>
+              <span class="badge bg-success fs-6"> Excellent </span>
+
+              {% elif student.SGPI >= 7 %}
+
+              <span class="badge bg-primary fs-6"> Good </span>
+
+              {% elif student.SGPI >= 6 %}
+
+              <span class="badge bg-warning text-dark fs-6"> Average </span>
+
+              {% else %}
+
+              <span class="badge bg-danger fs-6"> At Risk </span>
+
+              {% endif %}
+            </div>
+          </div>
+
+          <hr />
+
+          <h5>Attendance</h5>
+
+          <div class="progress mb-4" style="height: 30px">
+            <div
+              class="progress-bar bg-success"
+              role="progressbar"
+              style="width: {{ student.Attendance }}%;"
+            >
+              {{ student.Attendance }}%
+            </div>
+          </div>
+
+          <h4 class="mb-3">Subject Marks</h4>
+
+          <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+              <tr>
+                <th>Subject</th>
+
+                <th>Marks</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>Python</td>
+
+                <td>{{ student.Python }}</td>
+              </tr>
+
+              <tr>
+                <td>DBMS</td>
+
+                <td>{{ student.DBMS }}</td>
+              </tr>
+
+              <tr>
+                <td>Statistics</td>
+
+                <td>{{ student.Statistics }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

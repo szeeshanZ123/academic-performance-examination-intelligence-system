@@ -12,12 +12,13 @@ def home():
     kpis = dashboard_kpis(students)
 
     return render_template(
-        "index.html",
-        total_students=kpis["total_students"],
-        average_sgpi=kpis["average_sgpi"],
-        average_attendance=kpis["average_attendance"],
-        at_risk=kpis["at_risk"]
-    )
+    "index.html",
+    total_students=kpis["total_students"],
+    average_sgpi=kpis["average_sgpi"],
+    average_attendance=kpis["average_attendance"],
+    at_risk=kpis["at_risk"],
+    students=students.head(10).to_dict(orient="records")
+)
 
 if __name__ == "__main__":
     app.run(debug=True)

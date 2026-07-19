@@ -138,6 +138,84 @@
             </div>
           </div>
         </div>
+        <hr class="my-5" />
+
+        <h2 class="text-center mb-4">Student Records</h2>
+
+        <div class="card shadow">
+          <div class="card-body">
+            <table class="table table-striped table-hover">
+              <thead class="table-dark">
+                <tr>
+                  <th>Roll</th>
+                  <th>Name</th>
+                  <th>Semester</th>
+                  <th>Python</th>
+                  <th>DBMS</th>
+                  <th>Statistics</th>
+                  <th>Attendance</th>
+                  <th>SGPI</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {% for student in students %}
+
+                <tr>
+                  <td>{{ student.Roll }}</td>
+                  <td>{{ student.Name }}</td>
+                  <td>{{ student.Semester }}</td>
+                  <td>{{ student.Python }}</td>
+                  <td>{{ student.DBMS }}</td>
+                  <td>{{ student.Statistics }}</td>
+                  <td>{{ student.Attendance }}</td>
+                  <td>{{ student.SGPI }}</td>
+                </tr>
+
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <hr class="my-5" />
+
+      <h2 class="text-center mb-4">Student Records</h2>
+
+      <div class="card shadow">
+        <div class="card-body">
+          <table class="table table-striped table-hover">
+            <thead class="table-dark">
+              <tr>
+                <th>Roll</th>
+                <th>Name</th>
+                <th>Semester</th>
+                <th>Python</th>
+                <th>DBMS</th>
+                <th>Statistics</th>
+                <th>Attendance</th>
+                <th>SGPI</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for student in students %}
+
+              <tr>
+                <td>{{ student.Roll }}</td>
+                <td>{{ student.Name }}</td>
+                <td>{{ student.Semester }}</td>
+                <td>{{ student.Python }}</td>
+                <td>{{ student.DBMS }}</td>
+                <td>{{ student.Statistics }}</td>
+                <td>{{ student.Attendance }}</td>
+                <td>{{ student.SGPI }}</td>
+              </tr>
+
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </body>

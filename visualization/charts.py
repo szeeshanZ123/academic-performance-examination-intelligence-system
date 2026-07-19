@@ -22,7 +22,7 @@ def subject_average_chart(df):
 
     plt.ylim(0,100)
 
-    plt.savefig("reports/subject_average.png")
+    plt.savefig("static/images/subject_average.png")
 
     plt.show()
 
@@ -40,7 +40,7 @@ def attendance_distribution_chart(df):
     plt.title("Attendance Distribution")
     plt.xlabel("Attendance Category")
     plt.ylabel("Number of Students")
-    plt.savefig("reports/attendance_distribution.png")
+    plt.savefig("static/images/attendance_distribution.png")
     plt.show()
 
 def sgpi_distribution_chart(df):
@@ -50,7 +50,7 @@ def sgpi_distribution_chart(df):
     plt.title("SGPI Distribution")
     plt.xlabel("SGPI")
     plt.ylabel("Number of Students")
-    plt.savefig("reports/sgpi_distribution.png")
+    plt.savefig("static/images/sgpi_distribution.png")
     plt.show()
 
 def top_students_chart(df):
@@ -64,5 +64,5 @@ def top_students_chart(df):
     plt.ylabel("SGPI")
     plt.xticks(rotation=45)
     plt.tight_layout()
-    plt.savefig("reports/top_students.png")
+    plt.savefig("static/images/top_students.png")
     plt.show()

@@ -16,7 +16,8 @@
 
   <body class="bg-light">
     <div class="container py-5">
-      <!-- Heading -->
+      <!-- ================= Heading ================= -->
+
       <div class="text-center mb-5">
         <h1 class="fw-bold">
           Academic Performance and Examination Intelligence System
@@ -25,7 +26,7 @@
         <p class="text-secondary fs-5">Teacher Dashboard</p>
       </div>
 
-      <!-- KPI Cards -->
+      <!-- ================= KPI Cards ================= -->
 
       <div class="row g-4">
         <div class="col-md-3">
@@ -33,7 +34,7 @@
             <div class="card-body text-center">
               <h6 class="text-muted">Total Students</h6>
 
-              <h2>100</h2>
+              <h2>{{ total_students }}</h2>
             </div>
           </div>
         </div>
@@ -43,7 +44,7 @@
             <div class="card-body text-center">
               <h6 class="text-muted">Average SGPI</h6>
 
-              <h2>7.86</h2>
+              <h2>{{ average_sgpi }}</h2>
             </div>
           </div>
         </div>
@@ -53,7 +54,7 @@
             <div class="card-body text-center">
               <h6 class="text-muted">Average Attendance</h6>
 
-              <h2>84.6%</h2>
+              <h2>{{ average_attendance }}%</h2>
             </div>
           </div>
         </div>
@@ -63,7 +64,77 @@
             <div class="card-body text-center">
               <h6 class="text-muted">At Risk Students</h6>
 
-              <h2>18</h2>
+              <h2>{{ at_risk }}</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= Charts Section ================= -->
+
+      <hr class="my-5" />
+
+      <h2 class="text-center mb-4">Analytics Dashboard</h2>
+
+      <!-- Row 1 -->
+
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="card shadow">
+            <div class="card-body">
+              <h5 class="text-center">Subject Average</h5>
+
+              <img
+                src="{{ url_for('static', filename='images/subject_average.png') }}"
+                class="img-fluid"
+                alt="Subject Average"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+          <div class="card shadow">
+            <div class="card-body">
+              <h5 class="text-center">Attendance Distribution</h5>
+
+              <img
+                src="{{ url_for('static', filename='images/attendance_distribution.png') }}"
+                class="img-fluid"
+                alt="Attendance Distribution"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="card shadow">
+            <div class="card-body">
+              <h5 class="text-center">SGPI Distribution</h5>
+
+              <img
+                src="{{ url_for('static', filename='images/sgpi_distribution.png') }}"
+                class="img-fluid"
+                alt="SGPI Distribution"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+          <div class="card shadow">
+            <div class="card-body">
+              <h5 class="text-center">Top Students</h5>
+
+              <img
+                src="{{ url_for('static', filename='images/top_students.png') }}"
+                class="img-fluid"
+                alt="Top Students"
+              />
             </div>
           </div>
         </div>

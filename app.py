@@ -1,5 +1,4 @@
 from flask import Flask, render_template
-
 from utils.data_loader import load_students
 from analysis.analytics import dashboard_kpis
 

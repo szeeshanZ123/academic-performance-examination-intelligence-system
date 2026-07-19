@@ -225,7 +225,7 @@ This project is developed for educational and portfolio purposes.
 
 ### Zeeshan Hanif Shaikh
 
-🎓 B.Sc. Information Technology Graduate
+🎓 B.Sc. Information Technology 
 
 📊 Aspiring Data Analyst | Data Scientist
 

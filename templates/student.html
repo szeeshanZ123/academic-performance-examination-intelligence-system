@@ -1,0 +1,38 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>Student Profile</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-light">
+    <div class="container mt-5">
+      <div class="card shadow">
+        <div class="card-body">
+          <h2>{{ student.Name }}</h2>
+
+          <hr />
+
+          <p><b>Roll :</b> {{ student.Roll }}</p>
+
+          <p><b>Semester :</b> {{ student.Semester }}</p>
+
+          <p><b>Python :</b> {{ student.Python }}</p>
+
+          <p><b>DBMS :</b> {{ student.DBMS }}</p>
+
+          <p><b>Statistics :</b> {{ student.Statistics }}</p>
+
+          <p><b>Attendance :</b> {{ student.Attendance }}%</p>
+
+          <p><b>SGPI :</b> {{ student.SGPI }}</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

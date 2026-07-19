@@ -156,6 +156,7 @@
                 <th>Statistics</th>
                 <th>Attendance</th>
                 <th>SGPI</th>
+                <th>Action</th>
               </tr>
             </thead>
 
@@ -171,6 +172,14 @@
                 <td>{{ student.Statistics }}</td>
                 <td>{{ student.Attendance }}</td>
                 <td>{{ student.SGPI }}</td>
+                <td>
+                  <a
+                    href="/student/{{ student.Roll }}"
+                    class="btn btn-primary btn-sm"
+                  >
+                    View
+                  </a>
+                </td>
               </tr>
 
               {% endfor %}

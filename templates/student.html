@@ -2,106 +2,189 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Student Profile</title>
-
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #f8fafc;
+        color: #1e293b;
+      }
+
+      .profile-card {
+        border-radius: 16px;
+        border: none;
+        background-color: #ffffff;
+      }
+
+      .metric-box {
+        background-color: #f8fafc;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+      }
+
+      .avatar-circle {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #4f46e5, #4338ca);
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+
+      .badge-subtle-success {
+        background-color: #dcfce7;
+        color: #15803d;
+      }
+
+      .badge-subtle-primary {
+        background-color: #e2e8f0;
+        color: #1e293b;
+      }
+
+      .badge-subtle-warning {
+        background-color: #fef9c3;
+        color: #a16207;
+      }
+
+      .badge-subtle-danger {
+        background-color: #fee2e2;
+        color: #b91c1c;
+      }
+
+      .progress-custom {
+        height: 12px;
+        border-radius: 6px;
+        background-color: #f1f5f9;
+        overflow: hidden;
+      }
+
+      .btn-back {
+        border: 1px solid #e2e8f0;
+        background-color: #ffffff;
+        color: #64748b;
+        border-radius: 8px;
+        transition: all 0.2s;
+      }
+
+      .btn-back:hover {
+        background-color: #f1f5f9;
+        color: #1e293b;
+        border-color: #cbd5e1;
+      }
+    </style>
   </head>
 
   <body class="bg-light">
     <div class="container py-5">
-      <a href="/" class="btn btn-secondary mb-4"> ← Back to Dashboard </a>
+      <a href="/" class="btn btn-back px-4 py-2 mb-4 d-inline-flex align-items-center gap-2 text-decoration-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+        </svg>
+        Back to Dashboard
+      </a>
 
-      <div class="card shadow">
-        <div class="card-body">
-          <h2 class="text-center mb-4">👨‍🎓 Student Profile</h2>
-
-          <hr />
-
-          <div class="row">
-            <div class="col-md-8">
-              <p><strong>Name :</strong> {{ student.Name }}</p>
-
-              <p><strong>Roll :</strong> {{ student.Roll }}</p>
-
-              <p><strong>Semester :</strong> {{ student.Semester }}</p>
-
-              <p><strong>SGPI :</strong> {{ student.SGPI }}</p>
+      <div class="card profile-card shadow-sm">
+        <div class="card-body p-5">
+          <div class="row align-items-center mb-5">
+            <div class="col-md-auto mb-3 mb-md-0">
+              <div class="avatar-circle shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                </svg>
+              </div>
             </div>
-
-            <div class="col-md-4">
-              <h6>Performance Status</h6>
-
+            <div class="col-md">
+              <h2 class="fw-bold mb-1">{{ student.Name }}</h2>
+              <p class="text-secondary mb-0">Roll Number: <span class="fw-semibold text-dark">{{ student.Roll }}</span> | Semester: <span class="fw-semibold text-dark">{{ student.Semester }}</span></p>
+            </div>
+            <div class="col-md-auto text-md-end mt-3 mt-md-0">
               {% if student.SGPI >= 9 %}
-
-              <span class="badge bg-success fs-6"> Excellent </span>
-
+              <span class="badge badge-subtle-success fs-6 px-3 py-2 rounded-pill">Excellent Performance</span>
               {% elif student.SGPI >= 7 %}
-
-              <span class="badge bg-primary fs-6"> Good </span>
-
+              <span class="badge badge-subtle-primary fs-6 px-3 py-2 rounded-pill">Good Performance</span>
               {% elif student.SGPI >= 6 %}
-
-              <span class="badge bg-warning text-dark fs-6"> Average </span>
-
+              <span class="badge badge-subtle-warning fs-6 px-3 py-2 rounded-pill text-dark">Average Performance</span>
               {% else %}
-
-              <span class="badge bg-danger fs-6"> At Risk </span>
-
+              <span class="badge badge-subtle-danger fs-6 px-3 py-2 rounded-pill">At Risk Status</span>
               {% endif %}
             </div>
           </div>
 
-          <hr />
+          <div class="row g-4 mb-5">
+            <div class="col-md-6">
+              <div class="metric-box p-4 h-100">
+                <h6 class="text-secondary text-uppercase fw-semibold fs-7 mb-3">Academic Performance</h6>
+                <div class="d-flex align-items-baseline gap-2">
+                  <h1 class="fw-bold text-dark mb-0">{{ student.SGPI }}</h1>
+                  <span class="text-secondary fs-5">/ 10 SGPI</span>
+                </div>
+              </div>
+            </div>
 
-          <h5>Attendance</h5>
-
-          <div class="progress mb-4" style="height: 30px">
-            <div
-              class="progress-bar bg-success"
-              role="progressbar"
-              style="width: {{ student.Attendance }}%;"
-            >
-              {{ student.Attendance }}%
+            <div class="col-md-6">
+              <div class="metric-box p-4 h-100">
+                <h6 class="text-secondary text-uppercase fw-semibold fs-7 mb-2">Class Attendance</h6>
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <h3 class="fw-bold text-dark mb-0">{{ student.Attendance }}%</h3>
+                  <span class="text-secondary fs-7">Required: 75%</span>
+                </div>
+                <div class="progress progress-custom">
+                  <div class="progress-bar {% if student.Attendance >= 90 %}bg-success{% elif student.Attendance >= 75 %}bg-info{% else %}bg-danger{% endif %}" role="progressbar" style="width: {{ student.Attendance }}%;"></div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <h4 class="mb-3">Subject Marks</h4>
-
-          <table class="table table-bordered table-striped">
-            <thead class="table-dark">
-              <tr>
-                <th>Subject</th>
-
-                <th>Marks</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr>
-                <td>Python</td>
-
-                <td>{{ student.Python }}</td>
-              </tr>
-
-              <tr>
-                <td>DBMS</td>
-
-                <td>{{ student.DBMS }}</td>
-              </tr>
-
-              <tr>
-                <td>Statistics</td>
-
-                <td>{{ student.Statistics }}</td>
-              </tr>
-            </tbody>
-          </table>
+          <h4 class="fw-bold mb-4">Subject Wise Marks</h4>
+          <div class="table-responsive border rounded-3 overflow-hidden">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="table-dark">
+                <tr>
+                  <th class="py-3 px-4">Subject</th>
+                  <th class="py-3 px-4">Obtained Marks</th>
+                  <th class="py-3 px-4">Performance Indicator</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="px-4 fw-semibold">Python</td>
+                  <td class="px-4">{{ student.Python }} / 100</td>
+                  <td class="px-4">
+                    <div class="progress progress-custom" style="width: 150px;">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: {{ student.Python }}%;"></div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-4 fw-semibold">DBMS</td>
+                  <td class="px-4">{{ student.DBMS }} / 100</td>
+                  <td class="px-4">
+                    <div class="progress progress-custom" style="width: 150px;">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: {{ student.DBMS }}%;"></div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-4 fw-semibold">Statistics</td>
+                  <td class="px-4">{{ student.Statistics }} / 100</td>
+                  <td class="px-4">
+                    <div class="progress progress-custom" style="width: 150px;">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: {{ student.Statistics }}%;"></div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

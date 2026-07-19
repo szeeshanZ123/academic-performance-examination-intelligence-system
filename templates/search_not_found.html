@@ -1,26 +1,79 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Student Not Found</title>
-
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #f8fafc;
+        color: #1e293b;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .error-card {
+        max-width: 480px;
+        width: 100%;
+        border-radius: 16px;
+        border: none;
+        background-color: #ffffff;
+      }
+
+      .btn-home {
+        background-color: #4f46e5;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        transition: background-color 0.2s;
+      }
+
+      .btn-home:hover {
+        background-color: #4338ca;
+        color: #ffffff;
+      }
+
+      .icon-bg {
+        width: 72px;
+        height: 72px;
+        background-color: #fee2e2;
+        color: #ef4444;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        margin: 0 auto 24px auto;
+      }
+    </style>
   </head>
 
   <body class="bg-light">
-    <div class="container py-5">
-      <div class="alert alert-danger text-center">
-        <h2>❌ Student Not Found</h2>
-
-        <p>
-          No student found for:
-
-          <strong>{{ query }}</strong>
-        </p>
-
-        <a href="/" class="btn btn-primary"> Back to Dashboard </a>
+    <div class="container d-flex justify-content-center">
+      <div class="card error-card shadow-sm p-4 text-center">
+        <div class="card-body">
+          <div class="icon-bg">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+              <path d="M5.5 5.5a.5.5 0 0 1 .708 0L7.5 6.793l1.293-1.293a.5.5 0 1 1 .708.708L8.207 7.5l1.293 1.293a.5.5 0 0 1-.708.708L7.5 8.207l-1.293 1.293a.5.5 0 0 1-.708-.708L6.793 7.5 5.5 6.207a.5.5 0 0 1 0-.708"/>
+            </svg>
+          </div>
+          <h3 class="fw-bold mb-2">Student Not Found</h3>
+          <p class="text-secondary mb-4">
+            We couldn't find any student matching: <span class="fw-semibold text-dark">"{{ query }}"</span>
+          </p>
+          <a href="/" class="btn btn-home px-4 py-2 text-decoration-none">
+            Back to Dashboard
+          </a>
+        </div>
       </div>
     </div>
   </body>

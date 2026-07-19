@@ -15,8 +15,6 @@
 
   <body class="bg-light">
     <div class="container py-5">
-      <!-- Back Button -->
-
       <a href="/" class="btn btn-secondary mb-4"> ← Back to Dashboard </a>
 
       <div class="card shadow">
@@ -26,7 +24,7 @@
           <hr />
 
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-8">
               <p><strong>Name :</strong> {{ student.Name }}</p>
 
               <p><strong>Roll :</strong> {{ student.Roll }}</p>
@@ -36,7 +34,7 @@
               <p><strong>SGPI :</strong> {{ student.SGPI }}</p>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-4">
               <h6>Performance Status</h6>
 
               {% if student.SGPI >= 9 %}

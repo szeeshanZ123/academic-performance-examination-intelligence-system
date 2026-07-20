@@ -3,8 +3,10 @@ from utils.data_loader import load_students
 from analysis.analytics import dashboard_kpis
 
 app = Flask(__name__)
-students = load_students()
-
+teacher = pd.read_csv("data/teacher.csv")
+students = pd.read_csv("data/students.csv")
+marks = pd.read_csv("data/marks.csv")
+attendance = pd.read_csv("data/attendance.csv")
 
 @app.route("/")
 def home():
@@ -61,12 +63,49 @@ def student_profile(roll):
     weakest_subject = min(subjects, key=subjects.get)
     average_marks = round(sum(subjects.values()) / len(subjects), 2)
 
+    sgpi = student.iloc[0]["SGPI"]
+    attendance = student.iloc[0]["Attendance"]
+
+    if sgpi >= 8.5:
+        overall_performance = "Excellent"
+    elif sgpi >= 7.0:
+        overall_performance = "Good"
+    elif sgpi >= 6.0:
+        overall_performance = "Average"
+    else:
+        overall_performance = "Needs Improvement"
+
+    if attendance >= 90:
+        attendance_status = "Excellent"
+    elif attendance >= 75:
+        attendance_status = "Good"
+    else:
+        attendance_status = "Low (At Risk)"
+
+    if attendance < 75 or sgpi < 6.0:
+        academic_risk = "High"
+    elif sgpi < 7.0:
+        academic_risk = "Medium"
+    else:
+        academic_risk = "Low"
+
+    if sgpi >= 8.5:
+        recommendation_text = "Maintain your SGPI above 8.5 to achieve academic distinction."
+    elif sgpi >= 7.0:
+        recommendation_text = "Focus on weak subjects to boost your SGPI above 8.5."
+    else:
+        recommendation_text = "Seek additional guidance and improve attendance & subject performance."
+
     return render_template(
         "student.html",
         student=student.iloc[0],
         strongest_subject=strongest_subject,
         weakest_subject=weakest_subject,
         average_marks=average_marks,
+        overall_performance=overall_performance,
+        attendance_status=attendance_status,
+        academic_risk=academic_risk,
+        recommendation_text=recommendation_text,
         selected_semester="",
         selected_division=""
     )

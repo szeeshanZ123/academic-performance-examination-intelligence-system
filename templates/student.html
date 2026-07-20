@@ -84,7 +84,30 @@
   </head>
 
   <body class="bg-light">
-    <div class="container py-5">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm py-3 mb-4">
+      <div class="container">
+        <a class="navbar-brand fw-bold text-white d-flex align-items-center gap-2" href="/#dashboard">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="text-primary" viewBox="0 0 16 16">
+            <path d="M8.211 2.247a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0 1 1v-7a.5.5 0 0 0-.29-.457l-6.5-3z"/>
+          </svg>
+          Academic Performance System
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto gap-2">
+            <li class="nav-item"><a class="nav-link text-white-50 fw-medium px-3" href="/#dashboard">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link text-white-50 fw-medium px-3" href="/#analytics">Analytics</a></li>
+            <li class="nav-item"><a class="nav-link text-white-50 fw-medium px-3" href="/#records">Student Records</a></li>
+            <li class="nav-item"><a class="nav-link text-white-50 fw-medium px-3" href="/#about">About</a></li>
+            <li class="nav-item"><a class="nav-link text-danger fw-semibold px-3" href="/">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container py-4">
       <a href="/" class="btn btn-back px-4 py-2 mb-4 d-inline-flex align-items-center gap-2 text-decoration-none">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
@@ -92,7 +115,7 @@
         Back to Dashboard
       </a>
 
-      <div class="card profile-card shadow-sm">
+      <div class="card profile-card shadow-sm mb-5">
         <div class="card-body p-5">
           <div class="row align-items-center mb-5">
             <div class="col-md-auto mb-3 mb-md-0">
@@ -145,7 +168,7 @@
           </div>
 
           <h4 class="fw-bold mb-4">Subject Wise Marks</h4>
-          <div class="table-responsive border rounded-3 overflow-hidden">
+          <div class="table-responsive border rounded-3 overflow-hidden mb-5">
             <table class="table table-hover align-middle mb-0">
               <thead class="table-dark">
                 <tr>
@@ -186,33 +209,44 @@
             </table>
           </div>
 
-          <div class="row mt-4">
+          <h4 class="fw-bold mb-4">Student Performance Chart</h4>
+          <div class="card border-0 shadow-sm p-4 mb-5 bg-light">
+            <div style="position: relative; height: 260px; width: 100%;">
+              <canvas id="studentMarksChart"></canvas>
+            </div>
+          </div>
+
+          <div class="row g-4 mt-2">
             <div class="col-md-6">
-              <div class="card shadow-sm h-100">
-                <div class="card-body">
-                  <h5 class="mb-3">Academic Insights</h5>
-                  <p><strong>Strongest Subject:</strong> {{ strongest_subject }}</p>
-                  <p><strong>Needs Improvement:</strong> {{ weakest_subject }}</p>
-                  <p><strong>Average Marks:</strong> {{ average_marks }}</p>
+              <div class="card shadow-sm h-100 border-0 bg-light">
+                <div class="card-body p-4">
+                  <h5 class="fw-bold mb-3 text-dark">Academic Insights</h5>
+                  <p class="mb-2"><strong>Strongest Subject:</strong> <span class="badge bg-success-subtle text-success fs-7 px-2 py-1 rounded">{{ strongest_subject }}</span></p>
+                  <p class="mb-2"><strong>Needs Improvement:</strong> <span class="badge bg-danger-subtle text-danger fs-7 px-2 py-1 rounded">{{ weakest_subject }}</span></p>
+                  <p class="mb-2"><strong>Average Marks:</strong> <span class="fw-semibold">{{ average_marks }}</span></p>
+                  <p class="mb-2"><strong>Overall Performance:</strong> <span class="fw-semibold text-primary">{{ overall_performance }}</span></p>
+                  <p class="mb-2"><strong>Attendance Status:</strong> <span class="fw-semibold">{{ attendance_status }}</span></p>
+                  <p class="mb-0"><strong>Academic Risk:</strong> <span class="badge {% if academic_risk == 'High' %}bg-danger{% elif academic_risk == 'Medium' %}bg-warning text-dark{% else %}bg-success{% endif %} fs-7 px-2 py-1 rounded">{{ academic_risk }}</span></p>
                 </div>
               </div>
             </div>
             <div class="col-md-6">
-              <div class="card shadow-sm h-100">
-                <div class="card-body">
-                  <h5 class="mb-3">Recommendations</h5>
-                  <ul class="mb-0">
+              <div class="card shadow-sm h-100 border-0 bg-light">
+                <div class="card-body p-4">
+                  <h5 class="fw-bold mb-3 text-dark">Recommendations</h5>
+                  <ul class="mb-0 ps-3 text-secondary">
                     {% if student.Attendance < 75 %}
-                    <li>Improve attendance to maintain eligibility.</li>
+                    <li class="mb-2 text-danger fw-medium">Improve attendance to maintain eligibility.</li>
                     {% endif %}
 
                     {% if student.SGPI < 7 %}
-                    <li>Focus on weak subjects to improve SGPI.</li>
+                    <li class="mb-2">Focus on weak subjects to improve SGPI.</li>
                     {% else %}
-                    <li>Keep maintaining your academic performance.</li>
+                    <li class="mb-2 text-success fw-medium">✓ Keep maintaining your academic performance.</li>
                     {% endif %}
 
-                    <li>Practice previous year question papers.</li>
+                    <li class="mb-2">✓ {{ recommendation_text }}</li>
+                    <li class="mb-0">✓ Practice previous year question papers.</li>
                   </ul>
                 </div>
               </div>
@@ -221,5 +255,46 @@
         </div>
       </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      new Chart(document.getElementById('studentMarksChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: ['Python', 'DBMS', 'Statistics'],
+          datasets: [{
+            label: 'Marks Obtained',
+            data: [{{ student.Python }}, {{ student.DBMS }}, {{ student.Statistics }}],
+            backgroundColor: [
+              'rgba(79, 70, 229, 0.85)',
+              'rgba(111, 66, 193, 0.85)',
+              'rgba(6, 182, 212, 0.85)'
+            ],
+            borderRadius: 8,
+            barThickness: 45
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 100,
+              grid: { color: '#e2e8f0' },
+              ticks: { color: '#64748b' }
+            },
+            x: {
+              grid: { display: false },
+              ticks: { color: '#64748b', font: { weight: 'bold' } }
+            }
+          }
+        }
+      });
+    </script>
   </body>
 </html>

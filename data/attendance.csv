@@ -1,0 +1,1441 @@
+Roll_No,Semester,Subject,Attendance
+IT2026001,1,Python Programming,77
+IT2026001,1,Mathematics I,76
+IT2026001,1,Communication Skills,74
+IT2026001,1,Digital Electronics,71
+IT2026002,1,Python Programming,84
+IT2026002,1,Mathematics I,81
+IT2026002,1,Communication Skills,79
+IT2026002,1,Digital Electronics,83
+IT2026003,1,Python Programming,74
+IT2026003,1,Mathematics I,86
+IT2026003,1,Communication Skills,75
+IT2026003,1,Digital Electronics,85
+IT2026004,1,Python Programming,95
+IT2026004,1,Mathematics I,97
+IT2026004,1,Communication Skills,93
+IT2026004,1,Digital Electronics,98
+IT2026005,1,Python Programming,82
+IT2026005,1,Mathematics I,87
+IT2026005,1,Communication Skills,81
+IT2026005,1,Digital Electronics,82
+IT2026006,1,Python Programming,77
+IT2026006,1,Mathematics I,89
+IT2026006,1,Communication Skills,77
+IT2026006,1,Digital Electronics,84
+IT2026007,1,Python Programming,83
+IT2026007,1,Mathematics I,71
+IT2026007,1,Communication Skills,85
+IT2026007,1,Digital Electronics,77
+IT2026008,1,Python Programming,96
+IT2026008,1,Mathematics I,100
+IT2026008,1,Communication Skills,99
+IT2026008,1,Digital Electronics,96
+IT2026009,1,Python Programming,85
+IT2026009,1,Mathematics I,71
+IT2026009,1,Communication Skills,84
+IT2026009,1,Digital Electronics,81
+IT2026010,1,Python Programming,71
+IT2026010,1,Mathematics I,71
+IT2026010,1,Communication Skills,68
+IT2026010,1,Digital Electronics,74
+IT2026011,1,Python Programming,85
+IT2026011,1,Mathematics I,91
+IT2026011,1,Communication Skills,94
+IT2026011,1,Digital Electronics,84
+IT2026012,1,Python Programming,87
+IT2026012,1,Mathematics I,76
+IT2026012,1,Communication Skills,74
+IT2026012,1,Digital Electronics,74
+IT2026013,1,Python Programming,78
+IT2026013,1,Mathematics I,70
+IT2026013,1,Communication Skills,81
+IT2026013,1,Digital Electronics,80
+IT2026014,1,Python Programming,86
+IT2026014,1,Mathematics I,93
+IT2026014,1,Communication Skills,83
+IT2026014,1,Digital Electronics,89
+IT2026015,1,Python Programming,81
+IT2026015,1,Mathematics I,86
+IT2026015,1,Communication Skills,71
+IT2026015,1,Digital Electronics,70
+IT2026016,1,Python Programming,82
+IT2026016,1,Mathematics I,73
+IT2026016,1,Communication Skills,84
+IT2026016,1,Digital Electronics,80
+IT2026017,1,Python Programming,74
+IT2026017,1,Mathematics I,88
+IT2026017,1,Communication Skills,89
+IT2026017,1,Digital Electronics,86
+IT2026018,1,Python Programming,63
+IT2026018,1,Mathematics I,66
+IT2026018,1,Communication Skills,67
+IT2026018,1,Digital Electronics,74
+IT2026019,1,Python Programming,93
+IT2026019,1,Mathematics I,88
+IT2026019,1,Communication Skills,86
+IT2026019,1,Digital Electronics,92
+IT2026020,1,Python Programming,83
+IT2026020,1,Mathematics I,83
+IT2026020,1,Communication Skills,93
+IT2026020,1,Digital Electronics,94
+IT2026021,1,Python Programming,82
+IT2026021,1,Mathematics I,90
+IT2026021,1,Communication Skills,83
+IT2026021,1,Digital Electronics,95
+IT2026022,1,Python Programming,90
+IT2026022,1,Mathematics I,95
+IT2026022,1,Communication Skills,92
+IT2026022,1,Digital Electronics,93
+IT2026023,1,Python Programming,87
+IT2026023,1,Mathematics I,78
+IT2026023,1,Communication Skills,83
+IT2026023,1,Digital Electronics,78
+IT2026024,1,Python Programming,86
+IT2026024,1,Mathematics I,87
+IT2026024,1,Communication Skills,84
+IT2026024,1,Digital Electronics,91
+IT2026025,1,Python Programming,74
+IT2026025,1,Mathematics I,86
+IT2026025,1,Communication Skills,83
+IT2026025,1,Digital Electronics,75
+IT2026026,1,Python Programming,80
+IT2026026,1,Mathematics I,74
+IT2026026,1,Communication Skills,89
+IT2026026,1,Digital Electronics,72
+IT2026027,1,Python Programming,100
+IT2026027,1,Mathematics I,99
+IT2026027,1,Communication Skills,94
+IT2026027,1,Digital Electronics,95
+IT2026028,1,Python Programming,94
+IT2026028,1,Mathematics I,98
+IT2026028,1,Communication Skills,90
+IT2026028,1,Digital Electronics,99
+IT2026029,1,Python Programming,66
+IT2026029,1,Mathematics I,64
+IT2026029,1,Communication Skills,70
+IT2026029,1,Digital Electronics,75
+IT2026030,1,Python Programming,74
+IT2026030,1,Mathematics I,77
+IT2026030,1,Communication Skills,82
+IT2026030,1,Digital Electronics,70
+IT2026031,1,Python Programming,80
+IT2026031,1,Mathematics I,82
+IT2026031,1,Communication Skills,73
+IT2026031,1,Digital Electronics,80
+IT2026032,1,Python Programming,89
+IT2026032,1,Mathematics I,81
+IT2026032,1,Communication Skills,73
+IT2026032,1,Digital Electronics,88
+IT2026033,1,Python Programming,72
+IT2026033,1,Mathematics I,79
+IT2026033,1,Communication Skills,80
+IT2026033,1,Digital Electronics,86
+IT2026034,1,Python Programming,90
+IT2026034,1,Mathematics I,94
+IT2026034,1,Communication Skills,93
+IT2026034,1,Digital Electronics,95
+IT2026035,1,Python Programming,73
+IT2026035,1,Mathematics I,76
+IT2026035,1,Communication Skills,74
+IT2026035,1,Digital Electronics,85
+IT2026036,1,Python Programming,78
+IT2026036,1,Mathematics I,78
+IT2026036,1,Communication Skills,80
+IT2026036,1,Digital Electronics,74
+IT2026037,1,Python Programming,84
+IT2026037,1,Mathematics I,78
+IT2026037,1,Communication Skills,86
+IT2026037,1,Digital Electronics,84
+IT2026038,1,Python Programming,82
+IT2026038,1,Mathematics I,83
+IT2026038,1,Communication Skills,91
+IT2026038,1,Digital Electronics,88
+IT2026039,1,Python Programming,87
+IT2026039,1,Mathematics I,88
+IT2026039,1,Communication Skills,89
+IT2026039,1,Digital Electronics,74
+IT2026040,1,Python Programming,63
+IT2026040,1,Mathematics I,62
+IT2026040,1,Communication Skills,65
+IT2026040,1,Digital Electronics,74
+IT2026041,1,Python Programming,86
+IT2026041,1,Mathematics I,81
+IT2026041,1,Communication Skills,83
+IT2026041,1,Digital Electronics,89
+IT2026042,1,Python Programming,80
+IT2026042,1,Mathematics I,73
+IT2026042,1,Communication Skills,78
+IT2026042,1,Digital Electronics,72
+IT2026043,1,Python Programming,79
+IT2026043,1,Mathematics I,89
+IT2026043,1,Communication Skills,87
+IT2026043,1,Digital Electronics,80
+IT2026044,1,Python Programming,76
+IT2026044,1,Mathematics I,73
+IT2026044,1,Communication Skills,60
+IT2026044,1,Digital Electronics,65
+IT2026045,1,Python Programming,85
+IT2026045,1,Mathematics I,74
+IT2026045,1,Communication Skills,79
+IT2026045,1,Digital Electronics,87
+IT2026046,1,Python Programming,70
+IT2026046,1,Mathematics I,72
+IT2026046,1,Communication Skills,65
+IT2026046,1,Digital Electronics,74
+IT2026047,1,Python Programming,81
+IT2026047,1,Mathematics I,89
+IT2026047,1,Communication Skills,84
+IT2026047,1,Digital Electronics,77
+IT2026048,1,Python Programming,85
+IT2026048,1,Mathematics I,88
+IT2026048,1,Communication Skills,79
+IT2026048,1,Digital Electronics,86
+IT2026049,1,Python Programming,66
+IT2026049,1,Mathematics I,68
+IT2026049,1,Communication Skills,75
+IT2026049,1,Digital Electronics,63
+IT2026050,1,Python Programming,95
+IT2026050,1,Mathematics I,83
+IT2026050,1,Communication Skills,86
+IT2026050,1,Digital Electronics,84
+IT2026051,1,Python Programming,83
+IT2026051,1,Mathematics I,87
+IT2026051,1,Communication Skills,82
+IT2026051,1,Digital Electronics,87
+IT2026052,1,Python Programming,83
+IT2026052,1,Mathematics I,82
+IT2026052,1,Communication Skills,95
+IT2026052,1,Digital Electronics,87
+IT2026053,1,Python Programming,71
+IT2026053,1,Mathematics I,85
+IT2026053,1,Communication Skills,85
+IT2026053,1,Digital Electronics,70
+IT2026054,1,Python Programming,78
+IT2026054,1,Mathematics I,74
+IT2026054,1,Communication Skills,79
+IT2026054,1,Digital Electronics,73
+IT2026055,1,Python Programming,83
+IT2026055,1,Mathematics I,73
+IT2026055,1,Communication Skills,87
+IT2026055,1,Digital Electronics,86
+IT2026056,1,Python Programming,74
+IT2026056,1,Mathematics I,70
+IT2026056,1,Communication Skills,88
+IT2026056,1,Digital Electronics,72
+IT2026057,1,Python Programming,86
+IT2026057,1,Mathematics I,85
+IT2026057,1,Communication Skills,82
+IT2026057,1,Digital Electronics,70
+IT2026058,1,Python Programming,62
+IT2026058,1,Mathematics I,80
+IT2026058,1,Communication Skills,78
+IT2026058,1,Digital Electronics,61
+IT2026059,1,Python Programming,87
+IT2026059,1,Mathematics I,84
+IT2026059,1,Communication Skills,89
+IT2026059,1,Digital Electronics,92
+IT2026060,1,Python Programming,74
+IT2026060,1,Mathematics I,84
+IT2026060,1,Communication Skills,76
+IT2026060,1,Digital Electronics,76
+IT2025001,2,Data Structures,79
+IT2025001,2,Database Management Systems,87
+IT2025001,2,Statistics,71
+IT2025001,2,Web Development,81
+IT2025002,2,Data Structures,95
+IT2025002,2,Database Management Systems,86
+IT2025002,2,Statistics,88
+IT2025002,2,Web Development,88
+IT2025003,2,Data Structures,85
+IT2025003,2,Database Management Systems,86
+IT2025003,2,Statistics,72
+IT2025003,2,Web Development,83
+IT2025004,2,Data Structures,79
+IT2025004,2,Database Management Systems,72
+IT2025004,2,Statistics,79
+IT2025004,2,Web Development,89
+IT2025005,2,Data Structures,92
+IT2025005,2,Database Management Systems,95
+IT2025005,2,Statistics,95
+IT2025005,2,Web Development,94
+IT2025006,2,Data Structures,83
+IT2025006,2,Database Management Systems,88
+IT2025006,2,Statistics,94
+IT2025006,2,Web Development,84
+IT2025007,2,Data Structures,89
+IT2025007,2,Database Management Systems,74
+IT2025007,2,Statistics,81
+IT2025007,2,Web Development,88
+IT2025008,2,Data Structures,74
+IT2025008,2,Database Management Systems,81
+IT2025008,2,Statistics,72
+IT2025008,2,Web Development,81
+IT2025009,2,Data Structures,78
+IT2025009,2,Database Management Systems,70
+IT2025009,2,Statistics,86
+IT2025009,2,Web Development,73
+IT2025010,2,Data Structures,97
+IT2025010,2,Database Management Systems,97
+IT2025010,2,Statistics,92
+IT2025010,2,Web Development,97
+IT2025011,2,Data Structures,84
+IT2025011,2,Database Management Systems,80
+IT2025011,2,Statistics,72
+IT2025011,2,Web Development,75
+IT2025012,2,Data Structures,81
+IT2025012,2,Database Management Systems,76
+IT2025012,2,Statistics,85
+IT2025012,2,Web Development,87
+IT2025013,2,Data Structures,97
+IT2025013,2,Database Management Systems,99
+IT2025013,2,Statistics,94
+IT2025013,2,Web Development,98
+IT2025014,2,Data Structures,73
+IT2025014,2,Database Management Systems,70
+IT2025014,2,Statistics,74
+IT2025014,2,Web Development,64
+IT2025015,2,Data Structures,74
+IT2025015,2,Database Management Systems,71
+IT2025015,2,Statistics,74
+IT2025015,2,Web Development,75
+IT2025016,2,Data Structures,87
+IT2025016,2,Database Management Systems,95
+IT2025016,2,Statistics,85
+IT2025016,2,Web Development,86
+IT2025017,2,Data Structures,99
+IT2025017,2,Database Management Systems,98
+IT2025017,2,Statistics,99
+IT2025017,2,Web Development,92
+IT2025018,2,Data Structures,88
+IT2025018,2,Database Management Systems,70
+IT2025018,2,Statistics,88
+IT2025018,2,Web Development,76
+IT2025019,2,Data Structures,80
+IT2025019,2,Database Management Systems,80
+IT2025019,2,Statistics,80
+IT2025019,2,Web Development,67
+IT2025020,2,Data Structures,84
+IT2025020,2,Database Management Systems,71
+IT2025020,2,Statistics,83
+IT2025020,2,Web Development,76
+IT2025021,2,Data Structures,74
+IT2025021,2,Database Management Systems,80
+IT2025021,2,Statistics,74
+IT2025021,2,Web Development,87
+IT2025022,2,Data Structures,67
+IT2025022,2,Database Management Systems,68
+IT2025022,2,Statistics,64
+IT2025022,2,Web Development,69
+IT2025023,2,Data Structures,79
+IT2025023,2,Database Management Systems,65
+IT2025023,2,Statistics,70
+IT2025023,2,Web Development,65
+IT2025024,2,Data Structures,84
+IT2025024,2,Database Management Systems,85
+IT2025024,2,Statistics,82
+IT2025024,2,Web Development,76
+IT2025025,2,Data Structures,61
+IT2025025,2,Database Management Systems,79
+IT2025025,2,Statistics,77
+IT2025025,2,Web Development,63
+IT2025026,2,Data Structures,78
+IT2025026,2,Database Management Systems,82
+IT2025026,2,Statistics,82
+IT2025026,2,Web Development,87
+IT2025027,2,Data Structures,90
+IT2025027,2,Database Management Systems,88
+IT2025027,2,Statistics,94
+IT2025027,2,Web Development,95
+IT2025028,2,Data Structures,73
+IT2025028,2,Database Management Systems,80
+IT2025028,2,Statistics,74
+IT2025028,2,Web Development,86
+IT2025029,2,Data Structures,90
+IT2025029,2,Database Management Systems,95
+IT2025029,2,Statistics,98
+IT2025029,2,Web Development,99
+IT2025030,2,Data Structures,70
+IT2025030,2,Database Management Systems,72
+IT2025030,2,Statistics,70
+IT2025030,2,Web Development,76
+IT2025031,2,Data Structures,78
+IT2025031,2,Database Management Systems,60
+IT2025031,2,Statistics,63
+IT2025031,2,Web Development,69
+IT2025032,2,Data Structures,99
+IT2025032,2,Database Management Systems,100
+IT2025032,2,Statistics,90
+IT2025032,2,Web Development,92
+IT2025033,2,Data Structures,93
+IT2025033,2,Database Management Systems,84
+IT2025033,2,Statistics,85
+IT2025033,2,Web Development,93
+IT2025034,2,Data Structures,70
+IT2025034,2,Database Management Systems,83
+IT2025034,2,Statistics,76
+IT2025034,2,Web Development,89
+IT2025035,2,Data Structures,71
+IT2025035,2,Database Management Systems,76
+IT2025035,2,Statistics,85
+IT2025035,2,Web Development,75
+IT2025036,2,Data Structures,80
+IT2025036,2,Database Management Systems,78
+IT2025036,2,Statistics,77
+IT2025036,2,Web Development,79
+IT2025037,2,Data Structures,94
+IT2025037,2,Database Management Systems,93
+IT2025037,2,Statistics,87
+IT2025037,2,Web Development,90
+IT2025038,2,Data Structures,86
+IT2025038,2,Database Management Systems,92
+IT2025038,2,Statistics,88
+IT2025038,2,Web Development,94
+IT2025039,2,Data Structures,86
+IT2025039,2,Database Management Systems,93
+IT2025039,2,Statistics,89
+IT2025039,2,Web Development,93
+IT2025040,2,Data Structures,66
+IT2025040,2,Database Management Systems,77
+IT2025040,2,Statistics,63
+IT2025040,2,Web Development,61
+IT2025041,2,Data Structures,80
+IT2025041,2,Database Management Systems,63
+IT2025041,2,Statistics,75
+IT2025041,2,Web Development,64
+IT2025042,2,Data Structures,75
+IT2025042,2,Database Management Systems,85
+IT2025042,2,Statistics,76
+IT2025042,2,Web Development,79
+IT2025043,2,Data Structures,62
+IT2025043,2,Database Management Systems,61
+IT2025043,2,Statistics,65
+IT2025043,2,Web Development,72
+IT2025044,2,Data Structures,84
+IT2025044,2,Database Management Systems,82
+IT2025044,2,Statistics,91
+IT2025044,2,Web Development,87
+IT2025045,2,Data Structures,80
+IT2025045,2,Database Management Systems,75
+IT2025045,2,Statistics,76
+IT2025045,2,Web Development,66
+IT2025046,2,Data Structures,65
+IT2025046,2,Database Management Systems,68
+IT2025046,2,Statistics,70
+IT2025046,2,Web Development,66
+IT2025047,2,Data Structures,96
+IT2025047,2,Database Management Systems,91
+IT2025047,2,Statistics,92
+IT2025047,2,Web Development,95
+IT2025048,2,Data Structures,68
+IT2025048,2,Database Management Systems,74
+IT2025048,2,Statistics,69
+IT2025048,2,Web Development,80
+IT2025049,2,Data Structures,82
+IT2025049,2,Database Management Systems,89
+IT2025049,2,Statistics,88
+IT2025049,2,Web Development,93
+IT2025050,2,Data Structures,73
+IT2025050,2,Database Management Systems,89
+IT2025050,2,Statistics,74
+IT2025050,2,Web Development,84
+IT2025051,2,Data Structures,87
+IT2025051,2,Database Management Systems,87
+IT2025051,2,Statistics,77
+IT2025051,2,Web Development,84
+IT2025052,2,Data Structures,88
+IT2025052,2,Database Management Systems,87
+IT2025052,2,Statistics,87
+IT2025052,2,Web Development,80
+IT2025053,2,Data Structures,76
+IT2025053,2,Database Management Systems,86
+IT2025053,2,Statistics,71
+IT2025053,2,Web Development,86
+IT2025054,2,Data Structures,99
+IT2025054,2,Database Management Systems,100
+IT2025054,2,Statistics,90
+IT2025054,2,Web Development,90
+IT2025055,2,Data Structures,91
+IT2025055,2,Database Management Systems,88
+IT2025055,2,Statistics,90
+IT2025055,2,Web Development,89
+IT2025056,2,Data Structures,88
+IT2025056,2,Database Management Systems,94
+IT2025056,2,Statistics,88
+IT2025056,2,Web Development,89
+IT2025057,2,Data Structures,72
+IT2025057,2,Database Management Systems,81
+IT2025057,2,Statistics,87
+IT2025057,2,Web Development,74
+IT2025058,2,Data Structures,70
+IT2025058,2,Database Management Systems,84
+IT2025058,2,Statistics,82
+IT2025058,2,Web Development,84
+IT2025059,2,Data Structures,78
+IT2025059,2,Database Management Systems,73
+IT2025059,2,Statistics,83
+IT2025059,2,Web Development,76
+IT2025060,2,Data Structures,79
+IT2025060,2,Database Management Systems,79
+IT2025060,2,Statistics,61
+IT2025060,2,Web Development,67
+IT2024001,3,Python for Data Analytics,71
+IT2024001,3,Operating Systems,79
+IT2024001,3,Computer Networks,88
+IT2024001,3,Software Engineering,89
+IT2024002,3,Python for Data Analytics,69
+IT2024002,3,Operating Systems,76
+IT2024002,3,Computer Networks,69
+IT2024002,3,Software Engineering,77
+IT2024003,3,Python for Data Analytics,100
+IT2024003,3,Operating Systems,98
+IT2024003,3,Computer Networks,95
+IT2024003,3,Software Engineering,98
+IT2024004,3,Python for Data Analytics,88
+IT2024004,3,Operating Systems,88
+IT2024004,3,Computer Networks,89
+IT2024004,3,Software Engineering,86
+IT2024005,3,Python for Data Analytics,84
+IT2024005,3,Operating Systems,83
+IT2024005,3,Computer Networks,86
+IT2024005,3,Software Engineering,77
+IT2024006,3,Python for Data Analytics,80
+IT2024006,3,Operating Systems,81
+IT2024006,3,Computer Networks,76
+IT2024006,3,Software Engineering,82
+IT2024007,3,Python for Data Analytics,62
+IT2024007,3,Operating Systems,78
+IT2024007,3,Computer Networks,75
+IT2024007,3,Software Engineering,70
+IT2024008,3,Python for Data Analytics,85
+IT2024008,3,Operating Systems,93
+IT2024008,3,Computer Networks,85
+IT2024008,3,Software Engineering,93
+IT2024009,3,Python for Data Analytics,77
+IT2024009,3,Operating Systems,79
+IT2024009,3,Computer Networks,87
+IT2024009,3,Software Engineering,78
+IT2024010,3,Python for Data Analytics,85
+IT2024010,3,Operating Systems,85
+IT2024010,3,Computer Networks,81
+IT2024010,3,Software Engineering,71
+IT2024011,3,Python for Data Analytics,64
+IT2024011,3,Operating Systems,77
+IT2024011,3,Computer Networks,64
+IT2024011,3,Software Engineering,67
+IT2024012,3,Python for Data Analytics,77
+IT2024012,3,Operating Systems,80
+IT2024012,3,Computer Networks,85
+IT2024012,3,Software Engineering,75
+IT2024013,3,Python for Data Analytics,64
+IT2024013,3,Operating Systems,65
+IT2024013,3,Computer Networks,61
+IT2024013,3,Software Engineering,62
+IT2024014,3,Python for Data Analytics,60
+IT2024014,3,Operating Systems,80
+IT2024014,3,Computer Networks,64
+IT2024014,3,Software Engineering,76
+IT2024015,3,Python for Data Analytics,71
+IT2024015,3,Operating Systems,85
+IT2024015,3,Computer Networks,87
+IT2024015,3,Software Engineering,70
+IT2024016,3,Python for Data Analytics,79
+IT2024016,3,Operating Systems,83
+IT2024016,3,Computer Networks,73
+IT2024016,3,Software Engineering,76
+IT2024017,3,Python for Data Analytics,71
+IT2024017,3,Operating Systems,72
+IT2024017,3,Computer Networks,72
+IT2024017,3,Software Engineering,67
+IT2024018,3,Python for Data Analytics,86
+IT2024018,3,Operating Systems,92
+IT2024018,3,Computer Networks,94
+IT2024018,3,Software Engineering,88
+IT2024019,3,Python for Data Analytics,77
+IT2024019,3,Operating Systems,80
+IT2024019,3,Computer Networks,65
+IT2024019,3,Software Engineering,73
+IT2024020,3,Python for Data Analytics,91
+IT2024020,3,Operating Systems,90
+IT2024020,3,Computer Networks,85
+IT2024020,3,Software Engineering,89
+IT2024021,3,Python for Data Analytics,72
+IT2024021,3,Operating Systems,88
+IT2024021,3,Computer Networks,80
+IT2024021,3,Software Engineering,88
+IT2024022,3,Python for Data Analytics,83
+IT2024022,3,Operating Systems,91
+IT2024022,3,Computer Networks,95
+IT2024022,3,Software Engineering,92
+IT2024023,3,Python for Data Analytics,74
+IT2024023,3,Operating Systems,81
+IT2024023,3,Computer Networks,83
+IT2024023,3,Software Engineering,72
+IT2024024,3,Python for Data Analytics,94
+IT2024024,3,Operating Systems,88
+IT2024024,3,Computer Networks,82
+IT2024024,3,Software Engineering,94
+IT2024025,3,Python for Data Analytics,85
+IT2024025,3,Operating Systems,88
+IT2024025,3,Computer Networks,92
+IT2024025,3,Software Engineering,88
+IT2024026,3,Python for Data Analytics,89
+IT2024026,3,Operating Systems,77
+IT2024026,3,Computer Networks,78
+IT2024026,3,Software Engineering,74
+IT2024027,3,Python for Data Analytics,81
+IT2024027,3,Operating Systems,70
+IT2024027,3,Computer Networks,81
+IT2024027,3,Software Engineering,74
+IT2024028,3,Python for Data Analytics,88
+IT2024028,3,Operating Systems,90
+IT2024028,3,Computer Networks,83
+IT2024028,3,Software Engineering,87
+IT2024029,3,Python for Data Analytics,79
+IT2024029,3,Operating Systems,72
+IT2024029,3,Computer Networks,73
+IT2024029,3,Software Engineering,62
+IT2024030,3,Python for Data Analytics,99
+IT2024030,3,Operating Systems,100
+IT2024030,3,Computer Networks,92
+IT2024030,3,Software Engineering,94
+IT2024031,3,Python for Data Analytics,72
+IT2024031,3,Operating Systems,78
+IT2024031,3,Computer Networks,85
+IT2024031,3,Software Engineering,78
+IT2024032,3,Python for Data Analytics,85
+IT2024032,3,Operating Systems,73
+IT2024032,3,Computer Networks,70
+IT2024032,3,Software Engineering,89
+IT2024033,3,Python for Data Analytics,89
+IT2024033,3,Operating Systems,95
+IT2024033,3,Computer Networks,91
+IT2024033,3,Software Engineering,87
+IT2024034,3,Python for Data Analytics,80
+IT2024034,3,Operating Systems,80
+IT2024034,3,Computer Networks,85
+IT2024034,3,Software Engineering,82
+IT2024035,3,Python for Data Analytics,72
+IT2024035,3,Operating Systems,78
+IT2024035,3,Computer Networks,77
+IT2024035,3,Software Engineering,77
+IT2024036,3,Python for Data Analytics,84
+IT2024036,3,Operating Systems,79
+IT2024036,3,Computer Networks,83
+IT2024036,3,Software Engineering,79
+IT2024037,3,Python for Data Analytics,92
+IT2024037,3,Operating Systems,94
+IT2024037,3,Computer Networks,89
+IT2024037,3,Software Engineering,91
+IT2024038,3,Python for Data Analytics,86
+IT2024038,3,Operating Systems,71
+IT2024038,3,Computer Networks,87
+IT2024038,3,Software Engineering,77
+IT2024039,3,Python for Data Analytics,89
+IT2024039,3,Operating Systems,82
+IT2024039,3,Computer Networks,83
+IT2024039,3,Software Engineering,73
+IT2024040,3,Python for Data Analytics,86
+IT2024040,3,Operating Systems,81
+IT2024040,3,Computer Networks,88
+IT2024040,3,Software Engineering,70
+IT2024041,3,Python for Data Analytics,86
+IT2024041,3,Operating Systems,83
+IT2024041,3,Computer Networks,87
+IT2024041,3,Software Engineering,89
+IT2024042,3,Python for Data Analytics,85
+IT2024042,3,Operating Systems,73
+IT2024042,3,Computer Networks,84
+IT2024042,3,Software Engineering,79
+IT2024043,3,Python for Data Analytics,63
+IT2024043,3,Operating Systems,70
+IT2024043,3,Computer Networks,65
+IT2024043,3,Software Engineering,65
+IT2024044,3,Python for Data Analytics,87
+IT2024044,3,Operating Systems,89
+IT2024044,3,Computer Networks,92
+IT2024044,3,Software Engineering,92
+IT2024045,3,Python for Data Analytics,96
+IT2024045,3,Operating Systems,97
+IT2024045,3,Computer Networks,96
+IT2024045,3,Software Engineering,93
+IT2024046,3,Python for Data Analytics,72
+IT2024046,3,Operating Systems,87
+IT2024046,3,Computer Networks,80
+IT2024046,3,Software Engineering,73
+IT2024047,3,Python for Data Analytics,85
+IT2024047,3,Operating Systems,82
+IT2024047,3,Computer Networks,73
+IT2024047,3,Software Engineering,84
+IT2024048,3,Python for Data Analytics,79
+IT2024048,3,Operating Systems,74
+IT2024048,3,Computer Networks,77
+IT2024048,3,Software Engineering,75
+IT2024049,3,Python for Data Analytics,90
+IT2024049,3,Operating Systems,91
+IT2024049,3,Computer Networks,88
+IT2024049,3,Software Engineering,89
+IT2024050,3,Python for Data Analytics,80
+IT2024050,3,Operating Systems,65
+IT2024050,3,Computer Networks,64
+IT2024050,3,Software Engineering,74
+IT2024051,3,Python for Data Analytics,95
+IT2024051,3,Operating Systems,89
+IT2024051,3,Computer Networks,95
+IT2024051,3,Software Engineering,90
+IT2024052,3,Python for Data Analytics,75
+IT2024052,3,Operating Systems,74
+IT2024052,3,Computer Networks,62
+IT2024052,3,Software Engineering,67
+IT2024053,3,Python for Data Analytics,94
+IT2024053,3,Operating Systems,92
+IT2024053,3,Computer Networks,99
+IT2024053,3,Software Engineering,98
+IT2024054,3,Python for Data Analytics,91
+IT2024054,3,Operating Systems,94
+IT2024054,3,Computer Networks,90
+IT2024054,3,Software Engineering,94
+IT2024055,3,Python for Data Analytics,76
+IT2024055,3,Operating Systems,77
+IT2024055,3,Computer Networks,71
+IT2024055,3,Software Engineering,81
+IT2024056,3,Python for Data Analytics,89
+IT2024056,3,Operating Systems,94
+IT2024056,3,Computer Networks,85
+IT2024056,3,Software Engineering,93
+IT2024057,3,Python for Data Analytics,89
+IT2024057,3,Operating Systems,89
+IT2024057,3,Computer Networks,76
+IT2024057,3,Software Engineering,71
+IT2024058,3,Python for Data Analytics,78
+IT2024058,3,Operating Systems,79
+IT2024058,3,Computer Networks,78
+IT2024058,3,Software Engineering,83
+IT2024059,3,Python for Data Analytics,80
+IT2024059,3,Operating Systems,64
+IT2024059,3,Computer Networks,70
+IT2024059,3,Software Engineering,72
+IT2024060,3,Python for Data Analytics,88
+IT2024060,3,Operating Systems,83
+IT2024060,3,Computer Networks,72
+IT2024060,3,Software Engineering,86
+IT2023001,4,Java Programming,81
+IT2023001,4,Data Visualization,80
+IT2023001,4,Cloud Computing,72
+IT2023001,4,Artificial Intelligence,81
+IT2023002,4,Java Programming,87
+IT2023002,4,Data Visualization,83
+IT2023002,4,Cloud Computing,78
+IT2023002,4,Artificial Intelligence,79
+IT2023003,4,Java Programming,99
+IT2023003,4,Data Visualization,95
+IT2023003,4,Cloud Computing,90
+IT2023003,4,Artificial Intelligence,90
+IT2023004,4,Java Programming,89
+IT2023004,4,Data Visualization,88
+IT2023004,4,Cloud Computing,92
+IT2023004,4,Artificial Intelligence,95
+IT2023005,4,Java Programming,92
+IT2023005,4,Data Visualization,83
+IT2023005,4,Cloud Computing,92
+IT2023005,4,Artificial Intelligence,88
+IT2023006,4,Java Programming,93
+IT2023006,4,Data Visualization,88
+IT2023006,4,Cloud Computing,93
+IT2023006,4,Artificial Intelligence,85
+IT2023007,4,Java Programming,74
+IT2023007,4,Data Visualization,84
+IT2023007,4,Cloud Computing,80
+IT2023007,4,Artificial Intelligence,83
+IT2023008,4,Java Programming,97
+IT2023008,4,Data Visualization,96
+IT2023008,4,Cloud Computing,91
+IT2023008,4,Artificial Intelligence,94
+IT2023009,4,Java Programming,64
+IT2023009,4,Data Visualization,76
+IT2023009,4,Cloud Computing,80
+IT2023009,4,Artificial Intelligence,71
+IT2023010,4,Java Programming,100
+IT2023010,4,Data Visualization,96
+IT2023010,4,Cloud Computing,93
+IT2023010,4,Artificial Intelligence,92
+IT2023011,4,Java Programming,91
+IT2023011,4,Data Visualization,87
+IT2023011,4,Cloud Computing,94
+IT2023011,4,Artificial Intelligence,86
+IT2023012,4,Java Programming,85
+IT2023012,4,Data Visualization,91
+IT2023012,4,Cloud Computing,86
+IT2023012,4,Artificial Intelligence,95
+IT2023013,4,Java Programming,76
+IT2023013,4,Data Visualization,72
+IT2023013,4,Cloud Computing,61
+IT2023013,4,Artificial Intelligence,72
+IT2023014,4,Java Programming,85
+IT2023014,4,Data Visualization,70
+IT2023014,4,Cloud Computing,74
+IT2023014,4,Artificial Intelligence,88
+IT2023015,4,Java Programming,90
+IT2023015,4,Data Visualization,94
+IT2023015,4,Cloud Computing,82
+IT2023015,4,Artificial Intelligence,82
+IT2023016,4,Java Programming,71
+IT2023016,4,Data Visualization,82
+IT2023016,4,Cloud Computing,86
+IT2023016,4,Artificial Intelligence,82
+IT2023017,4,Java Programming,87
+IT2023017,4,Data Visualization,72
+IT2023017,4,Cloud Computing,86
+IT2023017,4,Artificial Intelligence,74
+IT2023018,4,Java Programming,72
+IT2023018,4,Data Visualization,73
+IT2023018,4,Cloud Computing,67
+IT2023018,4,Artificial Intelligence,63
+IT2023019,4,Java Programming,89
+IT2023019,4,Data Visualization,75
+IT2023019,4,Cloud Computing,74
+IT2023019,4,Artificial Intelligence,85
+IT2023020,4,Java Programming,86
+IT2023020,4,Data Visualization,81
+IT2023020,4,Cloud Computing,78
+IT2023020,4,Artificial Intelligence,70
+IT2023021,4,Java Programming,83
+IT2023021,4,Data Visualization,72
+IT2023021,4,Cloud Computing,88
+IT2023021,4,Artificial Intelligence,84
+IT2023022,4,Java Programming,90
+IT2023022,4,Data Visualization,95
+IT2023022,4,Cloud Computing,91
+IT2023022,4,Artificial Intelligence,93
+IT2023023,4,Java Programming,70
+IT2023023,4,Data Visualization,85
+IT2023023,4,Cloud Computing,74
+IT2023023,4,Artificial Intelligence,71
+IT2023024,4,Java Programming,88
+IT2023024,4,Data Visualization,85
+IT2023024,4,Cloud Computing,86
+IT2023024,4,Artificial Intelligence,91
+IT2023025,4,Java Programming,86
+IT2023025,4,Data Visualization,77
+IT2023025,4,Cloud Computing,72
+IT2023025,4,Artificial Intelligence,79
+IT2023026,4,Java Programming,95
+IT2023026,4,Data Visualization,90
+IT2023026,4,Cloud Computing,94
+IT2023026,4,Artificial Intelligence,99
+IT2023027,4,Java Programming,87
+IT2023027,4,Data Visualization,94
+IT2023027,4,Cloud Computing,93
+IT2023027,4,Artificial Intelligence,84
+IT2023028,4,Java Programming,90
+IT2023028,4,Data Visualization,100
+IT2023028,4,Cloud Computing,95
+IT2023028,4,Artificial Intelligence,94
+IT2023029,4,Java Programming,90
+IT2023029,4,Data Visualization,89
+IT2023029,4,Cloud Computing,93
+IT2023029,4,Artificial Intelligence,82
+IT2023030,4,Java Programming,88
+IT2023030,4,Data Visualization,89
+IT2023030,4,Cloud Computing,91
+IT2023030,4,Artificial Intelligence,84
+IT2023031,4,Java Programming,88
+IT2023031,4,Data Visualization,74
+IT2023031,4,Cloud Computing,78
+IT2023031,4,Artificial Intelligence,82
+IT2023032,4,Java Programming,87
+IT2023032,4,Data Visualization,85
+IT2023032,4,Cloud Computing,84
+IT2023032,4,Artificial Intelligence,83
+IT2023033,4,Java Programming,75
+IT2023033,4,Data Visualization,80
+IT2023033,4,Cloud Computing,87
+IT2023033,4,Artificial Intelligence,76
+IT2023034,4,Java Programming,84
+IT2023034,4,Data Visualization,73
+IT2023034,4,Cloud Computing,79
+IT2023034,4,Artificial Intelligence,80
+IT2023035,4,Java Programming,93
+IT2023035,4,Data Visualization,88
+IT2023035,4,Cloud Computing,92
+IT2023035,4,Artificial Intelligence,95
+IT2023036,4,Java Programming,82
+IT2023036,4,Data Visualization,87
+IT2023036,4,Cloud Computing,84
+IT2023036,4,Artificial Intelligence,74
+IT2023037,4,Java Programming,82
+IT2023037,4,Data Visualization,84
+IT2023037,4,Cloud Computing,87
+IT2023037,4,Artificial Intelligence,92
+IT2023038,4,Java Programming,88
+IT2023038,4,Data Visualization,72
+IT2023038,4,Cloud Computing,76
+IT2023038,4,Artificial Intelligence,74
+IT2023039,4,Java Programming,83
+IT2023039,4,Data Visualization,82
+IT2023039,4,Cloud Computing,88
+IT2023039,4,Artificial Intelligence,89
+IT2023040,4,Java Programming,83
+IT2023040,4,Data Visualization,76
+IT2023040,4,Cloud Computing,78
+IT2023040,4,Artificial Intelligence,71
+IT2023041,4,Java Programming,69
+IT2023041,4,Data Visualization,77
+IT2023041,4,Cloud Computing,62
+IT2023041,4,Artificial Intelligence,64
+IT2023042,4,Java Programming,86
+IT2023042,4,Data Visualization,87
+IT2023042,4,Cloud Computing,81
+IT2023042,4,Artificial Intelligence,85
+IT2023043,4,Java Programming,86
+IT2023043,4,Data Visualization,78
+IT2023043,4,Cloud Computing,80
+IT2023043,4,Artificial Intelligence,78
+IT2023044,4,Java Programming,85
+IT2023044,4,Data Visualization,88
+IT2023044,4,Cloud Computing,73
+IT2023044,4,Artificial Intelligence,77
+IT2023045,4,Java Programming,61
+IT2023045,4,Data Visualization,72
+IT2023045,4,Cloud Computing,65
+IT2023045,4,Artificial Intelligence,78
+IT2023046,4,Java Programming,81
+IT2023046,4,Data Visualization,81
+IT2023046,4,Cloud Computing,76
+IT2023046,4,Artificial Intelligence,79
+IT2023047,4,Java Programming,71
+IT2023047,4,Data Visualization,77
+IT2023047,4,Cloud Computing,86
+IT2023047,4,Artificial Intelligence,80
+IT2023048,4,Java Programming,74
+IT2023048,4,Data Visualization,75
+IT2023048,4,Cloud Computing,70
+IT2023048,4,Artificial Intelligence,74
+IT2023049,4,Java Programming,86
+IT2023049,4,Data Visualization,81
+IT2023049,4,Cloud Computing,73
+IT2023049,4,Artificial Intelligence,80
+IT2023050,4,Java Programming,83
+IT2023050,4,Data Visualization,80
+IT2023050,4,Cloud Computing,87
+IT2023050,4,Artificial Intelligence,88
+IT2023051,4,Java Programming,69
+IT2023051,4,Data Visualization,65
+IT2023051,4,Cloud Computing,78
+IT2023051,4,Artificial Intelligence,78
+IT2023052,4,Java Programming,89
+IT2023052,4,Data Visualization,89
+IT2023052,4,Cloud Computing,88
+IT2023052,4,Artificial Intelligence,74
+IT2023053,4,Java Programming,72
+IT2023053,4,Data Visualization,80
+IT2023053,4,Cloud Computing,72
+IT2023053,4,Artificial Intelligence,70
+IT2023054,4,Java Programming,77
+IT2023054,4,Data Visualization,78
+IT2023054,4,Cloud Computing,70
+IT2023054,4,Artificial Intelligence,84
+IT2023055,4,Java Programming,84
+IT2023055,4,Data Visualization,88
+IT2023055,4,Cloud Computing,88
+IT2023055,4,Artificial Intelligence,94
+IT2023056,4,Java Programming,92
+IT2023056,4,Data Visualization,85
+IT2023056,4,Cloud Computing,83
+IT2023056,4,Artificial Intelligence,86
+IT2023057,4,Java Programming,86
+IT2023057,4,Data Visualization,87
+IT2023057,4,Cloud Computing,84
+IT2023057,4,Artificial Intelligence,90
+IT2023058,4,Java Programming,99
+IT2023058,4,Data Visualization,90
+IT2023058,4,Cloud Computing,99
+IT2023058,4,Artificial Intelligence,90
+IT2023059,4,Java Programming,76
+IT2023059,4,Data Visualization,87
+IT2023059,4,Cloud Computing,79
+IT2023059,4,Artificial Intelligence,73
+IT2023060,4,Java Programming,88
+IT2023060,4,Data Visualization,71
+IT2023060,4,Cloud Computing,83
+IT2023060,4,Artificial Intelligence,89
+IT2022001,5,Machine Learning,91
+IT2022001,5,Big Data Analytics,92
+IT2022001,5,Cyber Security,91
+IT2022001,5,Business Intelligence,94
+IT2022002,5,Machine Learning,85
+IT2022002,5,Big Data Analytics,87
+IT2022002,5,Cyber Security,81
+IT2022002,5,Business Intelligence,75
+IT2022003,5,Machine Learning,86
+IT2022003,5,Big Data Analytics,86
+IT2022003,5,Cyber Security,91
+IT2022003,5,Business Intelligence,94
+IT2022004,5,Machine Learning,81
+IT2022004,5,Big Data Analytics,88
+IT2022004,5,Cyber Security,71
+IT2022004,5,Business Intelligence,86
+IT2022005,5,Machine Learning,92
+IT2022005,5,Big Data Analytics,91
+IT2022005,5,Cyber Security,86
+IT2022005,5,Business Intelligence,95
+IT2022006,5,Machine Learning,90
+IT2022006,5,Big Data Analytics,94
+IT2022006,5,Cyber Security,91
+IT2022006,5,Business Intelligence,94
+IT2022007,5,Machine Learning,84
+IT2022007,5,Big Data Analytics,84
+IT2022007,5,Cyber Security,83
+IT2022007,5,Business Intelligence,85
+IT2022008,5,Machine Learning,89
+IT2022008,5,Big Data Analytics,72
+IT2022008,5,Cyber Security,87
+IT2022008,5,Business Intelligence,80
+IT2022009,5,Machine Learning,84
+IT2022009,5,Big Data Analytics,89
+IT2022009,5,Cyber Security,83
+IT2022009,5,Business Intelligence,88
+IT2022010,5,Machine Learning,88
+IT2022010,5,Big Data Analytics,79
+IT2022010,5,Cyber Security,78
+IT2022010,5,Business Intelligence,85
+IT2022011,5,Machine Learning,65
+IT2022011,5,Big Data Analytics,64
+IT2022011,5,Cyber Security,72
+IT2022011,5,Business Intelligence,67
+IT2022012,5,Machine Learning,86
+IT2022012,5,Big Data Analytics,87
+IT2022012,5,Cyber Security,86
+IT2022012,5,Business Intelligence,95
+IT2022013,5,Machine Learning,83
+IT2022013,5,Big Data Analytics,84
+IT2022013,5,Cyber Security,94
+IT2022013,5,Business Intelligence,86
+IT2022014,5,Machine Learning,72
+IT2022014,5,Big Data Analytics,76
+IT2022014,5,Cyber Security,85
+IT2022014,5,Business Intelligence,71
+IT2022015,5,Machine Learning,79
+IT2022015,5,Big Data Analytics,86
+IT2022015,5,Cyber Security,76
+IT2022015,5,Business Intelligence,71
+IT2022016,5,Machine Learning,74
+IT2022016,5,Big Data Analytics,66
+IT2022016,5,Cyber Security,74
+IT2022016,5,Business Intelligence,80
+IT2022017,5,Machine Learning,70
+IT2022017,5,Big Data Analytics,85
+IT2022017,5,Cyber Security,85
+IT2022017,5,Business Intelligence,75
+IT2022018,5,Machine Learning,93
+IT2022018,5,Big Data Analytics,86
+IT2022018,5,Cyber Security,82
+IT2022018,5,Business Intelligence,94
+IT2022019,5,Machine Learning,67
+IT2022019,5,Big Data Analytics,66
+IT2022019,5,Cyber Security,73
+IT2022019,5,Business Intelligence,60
+IT2022020,5,Machine Learning,75
+IT2022020,5,Big Data Analytics,78
+IT2022020,5,Cyber Security,78
+IT2022020,5,Business Intelligence,81
+IT2022021,5,Machine Learning,85
+IT2022021,5,Big Data Analytics,92
+IT2022021,5,Cyber Security,88
+IT2022021,5,Business Intelligence,82
+IT2022022,5,Machine Learning,98
+IT2022022,5,Big Data Analytics,94
+IT2022022,5,Cyber Security,97
+IT2022022,5,Business Intelligence,94
+IT2022023,5,Machine Learning,78
+IT2022023,5,Big Data Analytics,79
+IT2022023,5,Cyber Security,86
+IT2022023,5,Business Intelligence,89
+IT2022024,5,Machine Learning,80
+IT2022024,5,Big Data Analytics,70
+IT2022024,5,Cyber Security,78
+IT2022024,5,Business Intelligence,82
+IT2022025,5,Machine Learning,88
+IT2022025,5,Big Data Analytics,77
+IT2022025,5,Cyber Security,81
+IT2022025,5,Business Intelligence,75
+IT2022026,5,Machine Learning,73
+IT2022026,5,Big Data Analytics,78
+IT2022026,5,Cyber Security,80
+IT2022026,5,Business Intelligence,81
+IT2022027,5,Machine Learning,79
+IT2022027,5,Big Data Analytics,80
+IT2022027,5,Cyber Security,88
+IT2022027,5,Business Intelligence,73
+IT2022028,5,Machine Learning,100
+IT2022028,5,Big Data Analytics,97
+IT2022028,5,Cyber Security,100
+IT2022028,5,Business Intelligence,96
+IT2022029,5,Machine Learning,84
+IT2022029,5,Big Data Analytics,88
+IT2022029,5,Cyber Security,84
+IT2022029,5,Business Intelligence,94
+IT2022030,5,Machine Learning,87
+IT2022030,5,Big Data Analytics,87
+IT2022030,5,Cyber Security,82
+IT2022030,5,Business Intelligence,85
+IT2022031,5,Machine Learning,99
+IT2022031,5,Big Data Analytics,97
+IT2022031,5,Cyber Security,92
+IT2022031,5,Business Intelligence,100
+IT2022032,5,Machine Learning,83
+IT2022032,5,Big Data Analytics,70
+IT2022032,5,Cyber Security,76
+IT2022032,5,Business Intelligence,80
+IT2022033,5,Machine Learning,70
+IT2022033,5,Big Data Analytics,81
+IT2022033,5,Cyber Security,73
+IT2022033,5,Business Intelligence,88
+IT2022034,5,Machine Learning,91
+IT2022034,5,Big Data Analytics,94
+IT2022034,5,Cyber Security,98
+IT2022034,5,Business Intelligence,96
+IT2022035,5,Machine Learning,85
+IT2022035,5,Big Data Analytics,76
+IT2022035,5,Cyber Security,82
+IT2022035,5,Business Intelligence,77
+IT2022036,5,Machine Learning,60
+IT2022036,5,Big Data Analytics,63
+IT2022036,5,Cyber Security,80
+IT2022036,5,Business Intelligence,80
+IT2022037,5,Machine Learning,87
+IT2022037,5,Big Data Analytics,71
+IT2022037,5,Cyber Security,70
+IT2022037,5,Business Intelligence,73
+IT2022038,5,Machine Learning,88
+IT2022038,5,Big Data Analytics,86
+IT2022038,5,Cyber Security,85
+IT2022038,5,Business Intelligence,92
+IT2022039,5,Machine Learning,88
+IT2022039,5,Big Data Analytics,92
+IT2022039,5,Cyber Security,91
+IT2022039,5,Business Intelligence,88
+IT2022040,5,Machine Learning,79
+IT2022040,5,Big Data Analytics,63
+IT2022040,5,Cyber Security,66
+IT2022040,5,Business Intelligence,68
+IT2022041,5,Machine Learning,85
+IT2022041,5,Big Data Analytics,86
+IT2022041,5,Cyber Security,90
+IT2022041,5,Business Intelligence,93
+IT2022042,5,Machine Learning,77
+IT2022042,5,Big Data Analytics,72
+IT2022042,5,Cyber Security,88
+IT2022042,5,Business Intelligence,72
+IT2022043,5,Machine Learning,73
+IT2022043,5,Big Data Analytics,77
+IT2022043,5,Cyber Security,78
+IT2022043,5,Business Intelligence,73
+IT2022044,5,Machine Learning,61
+IT2022044,5,Big Data Analytics,70
+IT2022044,5,Cyber Security,63
+IT2022044,5,Business Intelligence,61
+IT2022045,5,Machine Learning,92
+IT2022045,5,Big Data Analytics,87
+IT2022045,5,Cyber Security,91
+IT2022045,5,Business Intelligence,87
+IT2022046,5,Machine Learning,63
+IT2022046,5,Big Data Analytics,74
+IT2022046,5,Cyber Security,72
+IT2022046,5,Business Intelligence,73
+IT2022047,5,Machine Learning,64
+IT2022047,5,Big Data Analytics,65
+IT2022047,5,Cyber Security,78
+IT2022047,5,Business Intelligence,78
+IT2022048,5,Machine Learning,89
+IT2022048,5,Big Data Analytics,81
+IT2022048,5,Cyber Security,74
+IT2022048,5,Business Intelligence,73
+IT2022049,5,Machine Learning,71
+IT2022049,5,Big Data Analytics,80
+IT2022049,5,Cyber Security,86
+IT2022049,5,Business Intelligence,80
+IT2022050,5,Machine Learning,93
+IT2022050,5,Big Data Analytics,83
+IT2022050,5,Cyber Security,93
+IT2022050,5,Business Intelligence,87
+IT2022051,5,Machine Learning,87
+IT2022051,5,Big Data Analytics,75
+IT2022051,5,Cyber Security,85
+IT2022051,5,Business Intelligence,85
+IT2022052,5,Machine Learning,80
+IT2022052,5,Big Data Analytics,86
+IT2022052,5,Cyber Security,82
+IT2022052,5,Business Intelligence,77
+IT2022053,5,Machine Learning,84
+IT2022053,5,Big Data Analytics,85
+IT2022053,5,Cyber Security,73
+IT2022053,5,Business Intelligence,70
+IT2022054,5,Machine Learning,83
+IT2022054,5,Big Data Analytics,87
+IT2022054,5,Cyber Security,72
+IT2022054,5,Business Intelligence,87
+IT2022055,5,Machine Learning,74
+IT2022055,5,Big Data Analytics,61
+IT2022055,5,Cyber Security,74
+IT2022055,5,Business Intelligence,79
+IT2022056,5,Machine Learning,100
+IT2022056,5,Big Data Analytics,91
+IT2022056,5,Cyber Security,90
+IT2022056,5,Business Intelligence,100
+IT2022057,5,Machine Learning,90
+IT2022057,5,Big Data Analytics,93
+IT2022057,5,Cyber Security,84
+IT2022057,5,Business Intelligence,95
+IT2022058,5,Machine Learning,68
+IT2022058,5,Big Data Analytics,63
+IT2022058,5,Cyber Security,74
+IT2022058,5,Business Intelligence,70
+IT2022059,5,Machine Learning,83
+IT2022059,5,Big Data Analytics,88
+IT2022059,5,Cyber Security,84
+IT2022059,5,Business Intelligence,88
+IT2022060,5,Machine Learning,97
+IT2022060,5,Big Data Analytics,98
+IT2022060,5,Cyber Security,98
+IT2022060,5,Business Intelligence,99
+IT2021001,6,Deep Learning,74
+IT2021001,6,Data Science,89
+IT2021001,6,Major Project,82
+IT2021001,6,Professional Ethics,77
+IT2021002,6,Deep Learning,95
+IT2021002,6,Data Science,92
+IT2021002,6,Major Project,99
+IT2021002,6,Professional Ethics,98
+IT2021003,6,Deep Learning,77
+IT2021003,6,Data Science,66
+IT2021003,6,Major Project,71
+IT2021003,6,Professional Ethics,80
+IT2021004,6,Deep Learning,87
+IT2021004,6,Data Science,73
+IT2021004,6,Major Project,85
+IT2021004,6,Professional Ethics,87
+IT2021005,6,Deep Learning,83
+IT2021005,6,Data Science,73
+IT2021005,6,Major Project,74
+IT2021005,6,Professional Ethics,71
+IT2021006,6,Deep Learning,94
+IT2021006,6,Data Science,86
+IT2021006,6,Major Project,84
+IT2021006,6,Professional Ethics,93
+IT2021007,6,Deep Learning,93
+IT2021007,6,Data Science,95
+IT2021007,6,Major Project,91
+IT2021007,6,Professional Ethics,100
+IT2021008,6,Deep Learning,85
+IT2021008,6,Data Science,93
+IT2021008,6,Major Project,88
+IT2021008,6,Professional Ethics,94
+IT2021009,6,Deep Learning,61
+IT2021009,6,Data Science,68
+IT2021009,6,Major Project,74
+IT2021009,6,Professional Ethics,80
+IT2021010,6,Deep Learning,90
+IT2021010,6,Data Science,85
+IT2021010,6,Major Project,86
+IT2021010,6,Professional Ethics,92
+IT2021011,6,Deep Learning,65
+IT2021011,6,Data Science,72
+IT2021011,6,Major Project,68
+IT2021011,6,Professional Ethics,64
+IT2021012,6,Deep Learning,78
+IT2021012,6,Data Science,84
+IT2021012,6,Major Project,74
+IT2021012,6,Professional Ethics,71
+IT2021013,6,Deep Learning,78
+IT2021013,6,Data Science,62
+IT2021013,6,Major Project,67
+IT2021013,6,Professional Ethics,62
+IT2021014,6,Deep Learning,84
+IT2021014,6,Data Science,90
+IT2021014,6,Major Project,87
+IT2021014,6,Professional Ethics,92
+IT2021015,6,Deep Learning,81
+IT2021015,6,Data Science,89
+IT2021015,6,Major Project,70
+IT2021015,6,Professional Ethics,81
+IT2021016,6,Deep Learning,89
+IT2021016,6,Data Science,80
+IT2021016,6,Major Project,73
+IT2021016,6,Professional Ethics,87
+IT2021017,6,Deep Learning,86
+IT2021017,6,Data Science,86
+IT2021017,6,Major Project,71
+IT2021017,6,Professional Ethics,76
+IT2021018,6,Deep Learning,62
+IT2021018,6,Data Science,77
+IT2021018,6,Major Project,80
+IT2021018,6,Professional Ethics,80
+IT2021019,6,Deep Learning,83
+IT2021019,6,Data Science,87
+IT2021019,6,Major Project,72
+IT2021019,6,Professional Ethics,84
+IT2021020,6,Deep Learning,72
+IT2021020,6,Data Science,75
+IT2021020,6,Major Project,72
+IT2021020,6,Professional Ethics,83
+IT2021021,6,Deep Learning,80
+IT2021021,6,Data Science,70
+IT2021021,6,Major Project,63
+IT2021021,6,Professional Ethics,80
+IT2021022,6,Deep Learning,83
+IT2021022,6,Data Science,82
+IT2021022,6,Major Project,87
+IT2021022,6,Professional Ethics,86
+IT2021023,6,Deep Learning,72
+IT2021023,6,Data Science,84
+IT2021023,6,Major Project,70
+IT2021023,6,Professional Ethics,87
+IT2021024,6,Deep Learning,82
+IT2021024,6,Data Science,74
+IT2021024,6,Major Project,81
+IT2021024,6,Professional Ethics,87
+IT2021025,6,Deep Learning,82
+IT2021025,6,Data Science,91
+IT2021025,6,Major Project,90
+IT2021025,6,Professional Ethics,85
+IT2021026,6,Deep Learning,83
+IT2021026,6,Data Science,75
+IT2021026,6,Major Project,78
+IT2021026,6,Professional Ethics,75
+IT2021027,6,Deep Learning,95
+IT2021027,6,Data Science,89
+IT2021027,6,Major Project,83
+IT2021027,6,Professional Ethics,83
+IT2021028,6,Deep Learning,66
+IT2021028,6,Data Science,71
+IT2021028,6,Major Project,80
+IT2021028,6,Professional Ethics,69
+IT2021029,6,Deep Learning,93
+IT2021029,6,Data Science,97
+IT2021029,6,Major Project,99
+IT2021029,6,Professional Ethics,95
+IT2021030,6,Deep Learning,70
+IT2021030,6,Data Science,77
+IT2021030,6,Major Project,81
+IT2021030,6,Professional Ethics,80
+IT2021031,6,Deep Learning,74
+IT2021031,6,Data Science,69
+IT2021031,6,Major Project,63
+IT2021031,6,Professional Ethics,79
+IT2021032,6,Deep Learning,68
+IT2021032,6,Data Science,66
+IT2021032,6,Major Project,80
+IT2021032,6,Professional Ethics,62
+IT2021033,6,Deep Learning,92
+IT2021033,6,Data Science,91
+IT2021033,6,Major Project,85
+IT2021033,6,Professional Ethics,86
+IT2021034,6,Deep Learning,75
+IT2021034,6,Data Science,72
+IT2021034,6,Major Project,78
+IT2021034,6,Professional Ethics,74
+IT2021035,6,Deep Learning,62
+IT2021035,6,Data Science,76
+IT2021035,6,Major Project,67
+IT2021035,6,Professional Ethics,76
+IT2021036,6,Deep Learning,75
+IT2021036,6,Data Science,88
+IT2021036,6,Major Project,85
+IT2021036,6,Professional Ethics,77
+IT2021037,6,Deep Learning,72
+IT2021037,6,Data Science,77
+IT2021037,6,Major Project,76
+IT2021037,6,Professional Ethics,85
+IT2021038,6,Deep Learning,61
+IT2021038,6,Data Science,76
+IT2021038,6,Major Project,68
+IT2021038,6,Professional Ethics,65
+IT2021039,6,Deep Learning,95
+IT2021039,6,Data Science,98
+IT2021039,6,Major Project,93
+IT2021039,6,Professional Ethics,95
+IT2021040,6,Deep Learning,85
+IT2021040,6,Data Science,74
+IT2021040,6,Major Project,77
+IT2021040,6,Professional Ethics,78
+IT2021041,6,Deep Learning,84
+IT2021041,6,Data Science,91
+IT2021041,6,Major Project,92
+IT2021041,6,Professional Ethics,94
+IT2021042,6,Deep Learning,97
+IT2021042,6,Data Science,97
+IT2021042,6,Major Project,100
+IT2021042,6,Professional Ethics,90
+IT2021043,6,Deep Learning,84
+IT2021043,6,Data Science,84
+IT2021043,6,Major Project,90
+IT2021043,6,Professional Ethics,84
+IT2021044,6,Deep Learning,78
+IT2021044,6,Data Science,82
+IT2021044,6,Major Project,79
+IT2021044,6,Professional Ethics,84
+IT2021045,6,Deep Learning,95
+IT2021045,6,Data Science,85
+IT2021045,6,Major Project,91
+IT2021045,6,Professional Ethics,95
+IT2021046,6,Deep Learning,76
+IT2021046,6,Data Science,70
+IT2021046,6,Major Project,78
+IT2021046,6,Professional Ethics,72
+IT2021047,6,Deep Learning,73
+IT2021047,6,Data Science,86
+IT2021047,6,Major Project,74
+IT2021047,6,Professional Ethics,85
+IT2021048,6,Deep Learning,87
+IT2021048,6,Data Science,85
+IT2021048,6,Major Project,87
+IT2021048,6,Professional Ethics,83
+IT2021049,6,Deep Learning,71
+IT2021049,6,Data Science,85
+IT2021049,6,Major Project,88
+IT2021049,6,Professional Ethics,74
+IT2021050,6,Deep Learning,67
+IT2021050,6,Data Science,79
+IT2021050,6,Major Project,68
+IT2021050,6,Professional Ethics,60
+IT2021051,6,Deep Learning,98
+IT2021051,6,Data Science,100
+IT2021051,6,Major Project,96
+IT2021051,6,Professional Ethics,92
+IT2021052,6,Deep Learning,91
+IT2021052,6,Data Science,95
+IT2021052,6,Major Project,91
+IT2021052,6,Professional Ethics,86
+IT2021053,6,Deep Learning,94
+IT2021053,6,Data Science,90
+IT2021053,6,Major Project,89
+IT2021053,6,Professional Ethics,90
+IT2021054,6,Deep Learning,68
+IT2021054,6,Data Science,71
+IT2021054,6,Major Project,64
+IT2021054,6,Professional Ethics,67
+IT2021055,6,Deep Learning,83
+IT2021055,6,Data Science,88
+IT2021055,6,Major Project,94
+IT2021055,6,Professional Ethics,93
+IT2021056,6,Deep Learning,84
+IT2021056,6,Data Science,82
+IT2021056,6,Major Project,95
+IT2021056,6,Professional Ethics,91
+IT2021057,6,Deep Learning,62
+IT2021057,6,Data Science,71
+IT2021057,6,Major Project,61
+IT2021057,6,Professional Ethics,79
+IT2021058,6,Deep Learning,99
+IT2021058,6,Data Science,100
+IT2021058,6,Major Project,90
+IT2021058,6,Professional Ethics,93
+IT2021059,6,Deep Learning,89
+IT2021059,6,Data Science,75
+IT2021059,6,Major Project,77
+IT2021059,6,Professional Ethics,72
+IT2021060,6,Deep Learning,82
+IT2021060,6,Data Science,82
+IT2021060,6,Major Project,76
+IT2021060,6,Professional Ethics,72

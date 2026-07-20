@@ -9,6 +9,9 @@
       rel="stylesheet"
     />
     <style>
+      html {
+        scroll-behavior: smooth;
+      }
       @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
 
       body {
@@ -164,7 +167,29 @@
   </head>
 
   <body class="bg-light">
-    <div class="container py-5">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm py-3 mb-4">
+      <div class="container">
+        <a class="navbar-brand fw-bold text-white d-flex align-items-center gap-2" href="#dashboard">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="text-primary" viewBox="0 0 16 16">
+            <path d="M8.211 2.247a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0 1 1v-7a.5.5 0 0 0-.29-.457l-6.5-3z"/>
+          </svg>
+          Academic Performance System
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto gap-2">
+            <li class="nav-item"><a class="nav-link text-white fw-medium px-3" href="#dashboard">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link text-white-50 fw-medium px-3" href="#analytics">Analytics</a></li>
+            <li class="nav-item"><a class="nav-link text-white-50 fw-medium px-3" href="#records">Student Records</a></li>
+            <li class="nav-item"><a class="nav-link text-white-50 fw-medium px-3" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link text-danger fw-semibold px-3" href="/">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container py-4" id="dashboard">
       <div class="card border-0 shadow-sm mb-4 dashboard-header">
         <div
           class="card-body text-center py-5 px-4 position-relative overflow-hidden"
@@ -340,7 +365,7 @@
         </div>
       </div>
 
-      <div class="mb-5">
+      <div class="mb-5" id="analytics">
         <h2 class="fw-bold mb-4">Analytics Overview</h2>
         <div class="row g-4">
           <div class="col-md-6">
@@ -496,7 +521,7 @@
         </a>
       </div>
 
-      <div class="d-flex justify-content-between align-items-center mb-4">
+      <div class="d-flex justify-content-between align-items-center mb-4" id="records">
         <h2 class="fw-bold mb-0">Student Records</h2>
       </div>
 
@@ -605,8 +630,24 @@
           </div>
         </div>
       </div>
+
+      <div id="about" class="card card-custom shadow-sm p-4 mt-5 mb-5 border-0">
+        <div class="card-body text-center py-4">
+          <h4 class="fw-bold mb-3 text-dark">
+            Academic Performance and Examination Intelligence System
+          </h4>
+          <p class="text-secondary fs-6 mx-auto mb-4" style="max-width: 750px;">
+            This system helps teachers analyze student performance, attendance, academic trends, and examination insights using Python, Flask, Pandas, and Data Analytics.
+          </p>
+          <hr class="my-4 mx-auto" style="border-top: 1px solid #e2e8f0; width: 60%;" />
+          <p class="mb-1 text-uppercase text-secondary fw-semibold fs-7" style="letter-spacing: 0.5px;">Developed By</p>
+          <h5 class="fw-bold text-primary mb-1">Zeeshan Shaikh</h5>
+          <p class="text-secondary small mb-0 fw-medium">B.Sc. Information Technology</p>
+        </div>
+      </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
       const students = {{ students|tojson }};

@@ -185,6 +185,39 @@
               </tbody>
             </table>
           </div>
+
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <div class="card shadow-sm h-100">
+                <div class="card-body">
+                  <h5 class="mb-3">Academic Insights</h5>
+                  <p><strong>Strongest Subject:</strong> {{ strongest_subject }}</p>
+                  <p><strong>Needs Improvement:</strong> {{ weakest_subject }}</p>
+                  <p><strong>Average Marks:</strong> {{ average_marks }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card shadow-sm h-100">
+                <div class="card-body">
+                  <h5 class="mb-3">Recommendations</h5>
+                  <ul class="mb-0">
+                    {% if student.Attendance < 75 %}
+                    <li>Improve attendance to maintain eligibility.</li>
+                    {% endif %}
+
+                    {% if student.SGPI < 7 %}
+                    <li>Focus on weak subjects to improve SGPI.</li>
+                    {% else %}
+                    <li>Keep maintaining your academic performance.</li>
+                    {% endif %}
+
+                    <li>Practice previous year question papers.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

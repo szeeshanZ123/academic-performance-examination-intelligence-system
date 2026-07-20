@@ -44,9 +44,32 @@ def student_profile(roll):
     student = students[students["Roll"] == roll]
 
     if student.empty:
-        return render_template("search_not_found.html", query=str(roll))
+        return render_template(
+            "search_not_found.html",
+            query=str(roll),
+            selected_semester="",
+            selected_division=""
+        )
 
-    return render_template("student.html", student=student.iloc[0])
+    subjects = {
+        "Python": student.iloc[0]["Python"],
+        "DBMS": student.iloc[0]["DBMS"],
+        "Statistics": student.iloc[0]["Statistics"]
+    }
+
+    strongest_subject = max(subjects, key=subjects.get)
+    weakest_subject = min(subjects, key=subjects.get)
+    average_marks = round(sum(subjects.values()) / len(subjects), 2)
+
+    return render_template(
+        "student.html",
+        student=student.iloc[0],
+        strongest_subject=strongest_subject,
+        weakest_subject=weakest_subject,
+        average_marks=average_marks,
+        selected_semester="",
+        selected_division=""
+    )
 
 
 @app.route("/search")

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My Website - Contact</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: bisque;
+      }
+      #but {
+        background-color: beige;
+      }
+      nav {
+        background-color: #333;
+        padding: 10px;
+      }
+      #box {
+        background-color: beige;
+      }
+
+      nav a {
+        color: bisque;
+        text-decoration: none;
+        margin-right: 15px;
+        font-weight: bold;
+      }
+
+      nav a:hover {
+        text-decoration: underline;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      label {
+        display: block;
+        margin-top: 10px;
+      }
+
+      input,
+      textarea {
+        width: 300px;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="2a1.html">Home</a>
+      <a href="2a2.html">About</a>
+      <a href="2a3.html">Contact</a>
+    </nav>
+
+    <div class="container">
+      <h1>Contact Us</h1>
+      <form>
+        <label>Name:</label>
+        <input id="box" type="text" />
+
+        <label>Email:</label>
+        <input id="box" type="email" />
+
+        <label>Message:</label>
+        <textarea id="box" rows="4"></textarea>
+
+        <br /><br />
+        <button id="but" onclick="showAlert()" type="submit">Send</button>
+      </form>
+    </div>
+  </body>
+  <script>
+    function showAlert() {
+      alert("Your Response Has Been Submitted");
+    }
+  </script>
+</html>

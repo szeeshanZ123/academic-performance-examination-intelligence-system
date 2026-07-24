@@ -3,37 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Student Not Found</title>
+    <title>Student Record Not Found</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
-
       body {
         font-family: 'Plus Jakarta Sans', sans-serif;
         background-color: #f8fafc;
         color: #1e293b;
-        height: 100vh;
+        min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
       }
 
       .error-card {
-        max-width: 480px;
+        max-width: 520px;
         width: 100%;
-        border-radius: 16px;
-        border: none;
+        border-radius: 20px;
+        border: 1px solid #e2e8f0;
         background-color: #ffffff;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+      }
+
+      .icon-bg {
+        width: 80px;
+        height: 80px;
+        background-color: #fee2e2;
+        color: #ef4444;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        margin: 0 auto 20px auto;
+        font-size: 2.25rem;
       }
 
       .btn-home {
         background-color: #4f46e5;
         color: #ffffff;
         border: none;
-        border-radius: 8px;
+        border-radius: 10px;
+        font-weight: 600;
+        padding: 0.75rem 1.75rem;
         transition: background-color 0.2s;
       }
 
@@ -41,37 +63,32 @@
         background-color: #4338ca;
         color: #ffffff;
       }
-
-      .icon-bg {
-        width: 72px;
-        height: 72px;
-        background-color: #fee2e2;
-        color: #ef4444;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        margin: 0 auto 24px auto;
-      }
     </style>
   </head>
 
-  <body class="bg-light">
-    <div class="container d-flex justify-content-center">
-      <div class="card error-card shadow-sm p-4 text-center">
+  <body>
+    <div class="container d-flex justify-content-center p-3">
+      <div class="card error-card p-4 text-center">
         <div class="card-body">
           <div class="icon-bg">
-            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-              <path d="M5.5 5.5a.5.5 0 0 1 .708 0L7.5 6.793l1.293-1.293a.5.5 0 1 1 .708.708L8.207 7.5l1.293 1.293a.5.5 0 0 1-.708.708L7.5 8.207l-1.293 1.293a.5.5 0 0 1-.708-.708L6.793 7.5 5.5 6.207a.5.5 0 0 1 0-.708"/>
-            </svg>
+            <i class="bi bi-search-heart"></i>
           </div>
-          <h3 class="fw-bold mb-2">Student Not Found</h3>
+          <h3 class="fw-bold mb-2 text-dark">No Student Match Found</h3>
           <p class="text-secondary mb-4">
-            We couldn't find any student matching: <span class="fw-semibold text-dark">"{{ query }}"</span>
+            We couldn't locate any active student record matching <span class="fw-bold text-danger">"{{ query }}"</span>.
           </p>
-          <a href="/" class="btn btn-home px-4 py-2 text-decoration-none">
-            Back to Dashboard
+
+          <div class="bg-light p-3 rounded-3 text-start small mb-4 border">
+            <strong class="text-dark d-block mb-1"><i class="bi bi-lightbulb text-warning me-1"></i> Search Tips:</strong>
+            <ul class="mb-0 ps-3 text-muted">
+              <li>Enter exact or partial Roll Number (e.g. <code>IT2024001</code>)</li>
+              <li>Search by full or partial student name (e.g. <code>Zeeshan</code>)</li>
+              <li>Check for typos or extra trailing spaces</li>
+            </ul>
+          </div>
+
+          <a href="/" class="btn btn-home text-decoration-none d-inline-flex align-items-center gap-2">
+            <i class="bi bi-house-door-fill"></i> Return to Main Dashboard
           </a>
         </div>
       </div>

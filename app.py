@@ -1,51 +1,87 @@
-from flask import Flask, render_template, request, redirect, make_response
-from utils.data_loader import load_students
-from analysis.analytics import dashboard_kpis
+from flask import Flask, render_template, request, redirect, jsonify, make_response
+from utils.data_loader import load_data, get_teacher_info, get_semester_subjects, get_student_detail
+from analysis.analytics import dashboard_kpis, get_analytics_summary
 
 app = Flask(__name__)
-teacher = pd.read_csv("data/teacher.csv")
-students = pd.read_csv("data/students.csv")
-marks = pd.read_csv("data/marks.csv")
-attendance = pd.read_csv("data/attendance.csv")
 
 @app.route("/")
 def home():
-    semester = request.args.get("semester", "")
-    division = request.args.get("division", "")
-    sort_by = request.args.get("sort_by", "")
-    sort_order = request.args.get("sort_order", "asc")
+    semester = request.args.get("semester", "").strip()
+    division = request.args.get("division", "").strip()
+    risk_filter = request.args.get("risk", "").strip()
+    sort_by = request.args.get("sort_by", "").strip()
+    sort_order = request.args.get("sort_order", "asc").strip()
 
-    filtered_students = students
+    teacher, students, marks_df, attendance_df, subject_combined = load_data()
+
+    filtered_students = students.copy()
 
     if semester:
-        filtered_students = filtered_students[filtered_students["Semester"] == int(semester)]
+        try:
+            filtered_students = filtered_students[filtered_students["Semester"] == int(semester)]
+        except ValueError:
+            pass
+
     if division:
         filtered_students = filtered_students[filtered_students["Division"] == division]
 
-    if sort_by in ["Roll", "Name", "SGPI", "Attendance"]:
+    if risk_filter == "at_risk":
+        filtered_students = filtered_students[
+            (filtered_students["Attendance"] < 75) | (filtered_students["SGPI"] < 6.0)
+        ]
+    elif risk_filter == "honors":
+        filtered_students = filtered_students[filtered_students["SGPI"] >= 8.5]
+
+    if sort_by in ["Roll", "Name", "Semester", "Division", "SGPI", "Attendance"]:
         filtered_students = filtered_students.sort_values(by=sort_by, ascending=(sort_order == "asc"))
 
     kpis = dashboard_kpis(filtered_students)
+    analytics = get_analytics_summary(filtered_students, marks_df, semester)
+    teacher_info = get_teacher_info()
+    semester_subjects = get_semester_subjects(semester) if semester else []
+
+    # Map subject marks into student dicts for tabular display when a semester is selected
+    student_records = filtered_students.to_dict(orient="records")
+    
+    if semester and semester_subjects:
+        sem_num = int(semester)
+        sem_marks = marks_df[marks_df["Semester"] == sem_num]
+        
+        # Build pivot table of totals per subject
+        pivot = sem_marks.pivot(index="Roll_No", columns="Subject", values="Total").to_dict(orient="index")
+        
+        for student in student_records:
+            roll = student["Roll"]
+            student_subj_marks = pivot.get(roll, {})
+            student["subjects"] = {subj: student_subj_marks.get(subj, "N/A") for subj in semester_subjects}
 
     return render_template(
         "index.html",
+        kpis=kpis,
         total_students=kpis["total_students"],
         average_sgpi=kpis["average_sgpi"],
         average_attendance=kpis["average_attendance"],
         at_risk=kpis["at_risk"],
-        students=filtered_students.to_dict(orient="records"),
+        honors=kpis["honors"],
+        pass_rate=kpis["pass_rate"],
+        students=student_records,
+        teacher=teacher_info,
         selected_semester=semester,
         selected_division=division,
+        selected_risk=risk_filter,
         sort_by=sort_by,
-        sort_order=sort_order
+        sort_order=sort_order,
+        semester_subjects=semester_subjects,
+        subject_averages=analytics["subject_averages"],
+        grade_distribution=analytics["grade_distribution"]
     )
 
 
-@app.route("/student/<int:roll>")
+@app.route("/student/<roll>")
 def student_profile(roll):
-    student = students[students["Roll"] == roll]
+    detail = get_student_detail(roll)
 
-    if student.empty:
+    if not detail:
         return render_template(
             "search_not_found.html",
             query=str(roll),
@@ -53,62 +89,29 @@ def student_profile(roll):
             selected_division=""
         )
 
-    subjects = {
-        "Python": student.iloc[0]["Python"],
-        "DBMS": student.iloc[0]["DBMS"],
-        "Statistics": student.iloc[0]["Statistics"]
-    }
-
-    strongest_subject = max(subjects, key=subjects.get)
-    weakest_subject = min(subjects, key=subjects.get)
-    average_marks = round(sum(subjects.values()) / len(subjects), 2)
-
-    sgpi = student.iloc[0]["SGPI"]
-    attendance = student.iloc[0]["Attendance"]
-
-    if sgpi >= 8.5:
-        overall_performance = "Excellent"
-    elif sgpi >= 7.0:
-        overall_performance = "Good"
-    elif sgpi >= 6.0:
-        overall_performance = "Average"
-    else:
-        overall_performance = "Needs Improvement"
-
-    if attendance >= 90:
-        attendance_status = "Excellent"
-    elif attendance >= 75:
-        attendance_status = "Good"
-    else:
-        attendance_status = "Low (At Risk)"
-
-    if attendance < 75 or sgpi < 6.0:
-        academic_risk = "High"
-    elif sgpi < 7.0:
-        academic_risk = "Medium"
-    else:
-        academic_risk = "Low"
-
-    if sgpi >= 8.5:
-        recommendation_text = "Maintain your SGPI above 8.5 to achieve academic distinction."
-    elif sgpi >= 7.0:
-        recommendation_text = "Focus on weak subjects to boost your SGPI above 8.5."
-    else:
-        recommendation_text = "Seek additional guidance and improve attendance & subject performance."
+    teacher_info = get_teacher_info()
 
     return render_template(
         "student.html",
-        student=student.iloc[0],
-        strongest_subject=strongest_subject,
-        weakest_subject=weakest_subject,
-        average_marks=average_marks,
-        overall_performance=overall_performance,
-        attendance_status=attendance_status,
-        academic_risk=academic_risk,
-        recommendation_text=recommendation_text,
-        selected_semester="",
-        selected_division=""
+        student=detail["student"],
+        subjects_list=detail["subjects_list"],
+        strongest_subject=detail["strongest_subject"],
+        weakest_subject=detail["weakest_subject"],
+        average_marks=detail["average_marks"],
+        overall_performance=detail["overall_performance"],
+        attendance_status=detail["attendance_status"],
+        academic_risk=detail["academic_risk"],
+        recommendations=detail["recommendations"],
+        teacher=teacher_info
     )
+
+
+@app.route("/api/student/<roll>")
+def student_api(roll):
+    detail = get_student_detail(roll)
+    if not detail:
+        return jsonify({"error": "Student not found"}), 404
+    return jsonify(detail)
 
 
 @app.route("/search")
@@ -118,10 +121,16 @@ def search():
     if not query:
         return redirect("/")
 
-    if query.isdigit():
-        student = students[students["Roll"] == int(query)]
-    else:
+    _, students, _, _, _ = load_data()
+
+    # Match exact roll first, then partial roll or name
+    student = students[students["Roll"].str.lower() == query.lower()]
+    if student.empty:
         student = students[students["Name"].str.lower() == query.lower()]
+    if student.empty:
+        student = students[students["Name"].str.lower().str.contains(query.lower(), regex=False)]
+    if student.empty:
+        student = students[students["Roll"].str.lower().str.contains(query.lower(), regex=False)]
 
     if student.empty:
         return render_template("search_not_found.html", query=query)
@@ -129,34 +138,49 @@ def search():
     return redirect(f"/student/{student.iloc[0]['Roll']}")
 
 
-@app.route("/filter")
-def filter_students():
-    return redirect(f"/?{request.query_string.decode('utf-8')}")
-
-
 @app.route("/export")
 def export_csv():
-    semester = request.args.get("semester", "")
-    division = request.args.get("division", "")
-    sort_by = request.args.get("sort_by", "")
-    sort_order = request.args.get("sort_order", "asc")
+    semester = request.args.get("semester", "").strip()
+    division = request.args.get("division", "").strip()
+    risk_filter = request.args.get("risk", "").strip()
+    sort_by = request.args.get("sort_by", "").strip()
+    sort_order = request.args.get("sort_order", "asc").strip()
 
-    filtered_students = students
+    _, students, marks_df, _, _ = load_data()
+
+    filtered_students = students.copy()
 
     if semester:
-        filtered_students = filtered_students[filtered_students["Semester"] == int(semester)]
+        try:
+            filtered_students = filtered_students[filtered_students["Semester"] == int(semester)]
+        except ValueError:
+            pass
+
     if division:
         filtered_students = filtered_students[filtered_students["Division"] == division]
 
-    if sort_by in ["Roll", "Name", "SGPI", "Attendance"]:
+    if risk_filter == "at_risk":
+        filtered_students = filtered_students[
+            (filtered_students["Attendance"] < 75) | (filtered_students["SGPI"] < 6.0)
+        ]
+    elif risk_filter == "honors":
+        filtered_students = filtered_students[filtered_students["SGPI"] >= 8.5]
+
+    if sort_by in ["Roll", "Name", "Semester", "Division", "SGPI", "Attendance"]:
         filtered_students = filtered_students.sort_values(by=sort_by, ascending=(sort_order == "asc"))
 
-    csv_data = filtered_students.to_csv(index=False)
+    # Export clean columns
+    export_cols = ["Roll", "Name", "Gender", "DOB", "Email", "Phone", "Semester", "Division", "Attendance", "SGPI"]
+    available_cols = [c for c in export_cols if c in filtered_students.columns]
+    
+    csv_data = filtered_students[available_cols].to_csv(index=False)
     response = make_response(csv_data)
-    response.headers["Content-Disposition"] = "attachment; filename=students.csv"
+    filename = f"student_performance_sem_{semester if semester else 'all'}.csv"
+    response.headers["Content-Disposition"] = f"attachment; filename={filename}"
     response.headers["Content-Type"] = "text/csv"
     return response
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
+

@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Login | APEX</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #4f46e5;
+        --primary-hover: #4338ca;
+        --secondary: #0ea5e9;
+        --dark-bg: #0f172a;
+        --body-bg: #f8fafc;
+        --card-bg: #ffffff;
+        --border-color: #e2e8f0;
+      }
+
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+      }
+
+      .login-container {
+        max-width: 440px;
+        width: 100%;
+        position: relative;
+      }
+
+      .login-container::before {
+        content: "";
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.45) 0%, rgba(0, 0, 0, 0) 70%);
+        top: -40px;
+        left: -40px;
+        z-index: -1;
+      }
+
+      .login-container::after {
+        content: "";
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        background: radial-gradient(circle, rgba(14, 165, 233, 0.45) 0%, rgba(0, 0, 0, 0) 70%);
+        bottom: -40px;
+        right: -40px;
+        z-index: -1;
+      }
+
+      .login-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 24px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      }
+
+      .logo-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--primary), #818cf8);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin: 0 auto 1.25rem;
+        box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
+      }
+
+      .form-control-custom {
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+        padding: 0.7rem 1rem;
+        font-size: 0.95rem;
+        transition: all 0.2s;
+      }
+
+      .form-control-custom:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+      }
+
+      .btn-primary-custom {
+        background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 0.75rem;
+        font-weight: 600;
+        transition: all 0.2s;
+      }
+
+      .btn-primary-custom:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 15px rgba(79, 70, 229, 0.25);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="card login-card p-4 p-md-5">
+        <div class="card-body p-0">
+          <!-- Logo & Header -->
+          <div class="text-center">
+            <div class="logo-icon">
+              <i class="bi bi-mortarboard-fill"></i>
+            </div>
+            <h3 class="fw-extrabold text-dark mb-1">Student Portal</h3>
+            <p class="text-secondary small mb-4">Enter credentials to view academic records</p>
+          </div>
+
+          <!-- Flash Messages -->
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category if category != 'error' else 'danger' }} alert-dismissible fade show rounded-3 p-2.5 small" role="alert">
+                  <i class="bi bi-info-circle-fill me-1"></i> {{ message }}
+                  <button type="button" class="btn-close p-2.5" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+
+          <!-- Form -->
+          <form method="POST">
+            <div class="mb-3">
+              <label for="username" class="form-label fw-semibold text-secondary small">Username</label>
+              <div class="input-group">
+                <span class="input-group-text bg-white border-end-0 rounded-start-2 text-muted"><i class="bi bi-person"></i></span>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  class="form-control form-control-custom border-start-0 ps-0"
+                  placeholder="Enter username"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label for="password" class="form-label fw-semibold text-secondary small">Password</label>
+              <div class="input-group">
+                <span class="input-group-text bg-white border-end-0 rounded-start-2 text-muted"><i class="bi bi-shield-lock"></i></span>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  class="form-control form-control-custom border-start-0 ps-0"
+                  placeholder="Enter password"
+                  required
+                />
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary-custom w-100 mb-3">
+              <i class="bi bi-box-arrow-in-right me-1"></i> Sign In to Dashboard
+            </button>
+          </form>
+          
+          <div class="text-center mt-3 border-top pt-3">
+            <a href="/" class="text-primary fw-medium small text-decoration-none"><i class="bi bi-house-door"></i> Back to Faculty View</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

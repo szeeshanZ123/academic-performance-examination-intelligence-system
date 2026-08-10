@@ -38,6 +38,8 @@ def home():
     """
     Existing Teacher Dashboard.
     """
+    if not session.get("teacher_logged_in"):
+        return redirect(url_for("login"))
 
     semester = request.args.get("semester", "").strip()
     risk_filter = request.args.get("risk", "").strip()
@@ -196,102 +198,61 @@ def home():
     )
 @app.route("/student-login", methods=["GET", "POST"])
 def student_login():
-
-    if request.method == "POST":
-
-        username = request.form.get("username", "").strip()
-        password = request.form.get("password", "").strip()
-
-        # Load student dataset
-        _, students, _, _, _ = load_data()
-
-        # Check username and password
-        student = students[
-            (students["Username"].astype(str) == username) &
-            (students["Password"].astype(str) == password)
-        ]
-
-        if student.empty:
-            flash("Invalid username or password.", "danger")
-            return redirect(url_for("student_login"))
-
-        # Get student information
-        student_info = student.iloc[0]
-
-        # Store student identity in session
-        session["student_logged_in"] = True
-        session["student_roll"] = str(student_info["Roll"])
-        session["student_name"] = str(student_info["Name"])
-
-        return redirect(url_for("student_dashboard"))
-
-    return render_template("student_login.html")
+    return redirect(url_for("login"))
 
 # =========================================================
-# STUDENT LOGIN
+# AUTHENTICATION (TEACHER & STUDENT)
 # =========================================================
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    if session.get("teacher_logged_in"):
+        return redirect(url_for("home"))
+    if session.get("student_logged_in"):
+        return redirect(url_for("student_dashboard"))
 
     if request.method == "POST":
+        role = request.form.get("role", "student").strip()
+        username = request.form.get("username", "").strip()
+        password = request.form.get("password", "").strip()
 
-        username = request.form.get(
-            "username",
-            ""
-        ).strip()
+        teacher_df, students_df, _, _, _ = load_data()
 
-        password = request.form.get(
-            "password",
-            ""
-        ).strip()
+        if role == "teacher":
+            match = teacher_df[
+                (teacher_df["Username"].astype(str) == username) &
+                (teacher_df["Password"].astype(str) == password)
+            ]
+            if match.empty:
+                flash("Invalid teacher credentials.", "danger")
+                return redirect(url_for("login"))
 
-        # Load student data
-        _, students, _, _, _ = load_data()
+            teacher_info = match.iloc[0]
+            session["teacher_logged_in"] = True
+            session["teacher_id"] = str(teacher_info["Teacher_ID"])
+            session["teacher_name"] = str(teacher_info["Teacher_Name"])
 
-        # Find matching student
-        student = students[
-            (students["Username"].astype(str) == username)
-            &
-            (students["Password"].astype(str) == password)
-        ]
+            flash(f"Welcome, {teacher_info['Teacher_Name']}!", "success")
+            return redirect(url_for("home"))
 
-        if student.empty:
+        else:  # role == "student"
+            match = students_df[
+                (students_df["Username"].astype(str) == username) &
+                (students_df["Password"].astype(str) == password)
+            ]
+            if match.empty:
+                flash("Invalid student credentials.", "danger")
+                return redirect(url_for("login"))
 
-            flash(
-                "Invalid username or password.",
-                "danger"
-            )
+            student_info = match.iloc[0]
+            session["student_logged_in"] = True
+            session["student_roll"] = str(student_info["Roll"])
+            session["student_name"] = str(student_info["Name"])
 
-            return redirect(
-                url_for("login")
-            )
-
-        # Student found
-        student_info = student.iloc[0]
-
-        # Store identity in session
-        session["student_logged_in"] = True
-
-        session["student_roll"] = str(
-            student_info["Roll"]
-        )
-
-        session["student_name"] = str(
-            student_info["Name"]
-        )
-
-        flash(
-            f"Welcome, {student_info['Name']}!",
-            "success"
-        )
-
-        return redirect(
-            url_for("student_dashboard")
-        )
+            flash(f"Welcome, {student_info['Name']}!", "success")
+            return redirect(url_for("student_dashboard"))
 
     return render_template("login.html")
-
 
 # =========================================================
 # STUDENT DASHBOARD
@@ -299,78 +260,45 @@ def login():
 
 @app.route("/student-dashboard")
 def student_dashboard():
-
-    # Check login
     if not session.get("student_logged_in"):
+        flash("Please login first.", "warning")
+        return redirect(url_for("login"))
 
-        flash(
-            "Please login first.",
-            "warning"
-        )
-
-        return redirect(
-            url_for("login")
-        )
-
-    # Get logged-in student's Roll_No
     roll = session.get("student_roll")
-
-    # Get complete student information
     detail = get_student_detail(roll)
 
     if not detail:
-
         session.clear()
-
-        flash(
-            "Student record not found.",
-            "danger"
-        )
-
-        return redirect(
-            url_for("login")
-        )
+        flash("Student record not found.", "danger")
+        return redirect(url_for("login"))
 
     return render_template(
         "student_dashboard.html",
-
         student=detail["student"],
-
         subjects_list=detail["subjects_list"],
-
         strongest_subject=detail["strongest_subject"],
-
         weakest_subject=detail["weakest_subject"],
-
         average_marks=detail["average_marks"],
-
         overall_performance=detail["overall_performance"],
-
         attendance_status=detail["attendance_status"],
-
         academic_risk=detail["academic_risk"],
-
         recommendations=detail["recommendations"]
     )
 
+# =========================================================
+# LOGOUT
+# =========================================================
 
-# =========================================================
-# STUDENT LOGOUT
-# =========================================================
+@app.route("/logout")
+def logout():
+    session.clear()
+    flash("You have been logged out successfully.", "info")
+    return redirect(url_for("login"))
 
 @app.route("/student-logout")
 def student_logout():
+    return redirect(url_for("logout"))
 
-    session.clear()
-
-    flash(
-        "You have been logged out successfully.",
-        "info"
-    )
-
-    return redirect(
-        url_for("login")
-    )
 
 
 # =========================================================
@@ -379,6 +307,9 @@ def student_logout():
 
 @app.route("/student/<roll>")
 def student_profile(roll):
+    if not session.get("teacher_logged_in"):
+        flash("Please log in as a teacher first.", "warning")
+        return redirect(url_for("login"))
 
     detail = get_student_detail(roll)
 
@@ -440,6 +371,9 @@ def student_api(roll):
 
 @app.route("/search")
 def search():
+    if not session.get("teacher_logged_in"):
+        flash("Please log in as a teacher first.", "warning")
+        return redirect(url_for("login"))
 
     query = request.args.get(
         "query",
@@ -518,6 +452,9 @@ def search():
 
 @app.route("/export")
 def export_csv():
+    if not session.get("teacher_logged_in"):
+        flash("Please log in as a teacher first.", "warning")
+        return redirect(url_for("login"))
 
     semester = request.args.get(
         "semester",

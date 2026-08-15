@@ -12,7 +12,7 @@ from flask import (
 
 from utils.data_loader import (
     load_data,
-    get_teacher_info,
+    get_admin_info,
     get_semester_subjects,
     get_student_detail
 )
@@ -36,9 +36,9 @@ app.secret_key = "academic-performance-project-secret-key"
 @app.route("/")
 def home():
     """
-    Existing Teacher Dashboard.
+    Existing Admin Dashboard.
     """
-    if not session.get("teacher_logged_in"):
+    if not session.get("admin_logged_in"):
         return redirect(url_for("login"))
 
     semester = request.args.get("semester", "").strip()
@@ -46,7 +46,7 @@ def home():
     sort_by = request.args.get("sort_by", "").strip()
     sort_order = request.args.get("sort_order", "asc").strip()
 
-    teacher, students, marks_df, attendance_df, subject_combined = load_data()
+    admin_df, students, marks_df, attendance_df, subject_combined = load_data()
 
     filtered_students = students.copy()
 
@@ -114,7 +114,7 @@ def home():
         semester
     )
 
-    teacher_info = get_teacher_info()
+    admin_info = get_admin_info()
 
     semester_subjects = (
         get_semester_subjects(semester)
@@ -183,7 +183,7 @@ def home():
 
         students=student_records,
 
-        teacher=teacher_info,
+        admin=admin_info,
 
         selected_semester=semester,
         selected_risk=risk_filter,
@@ -206,7 +206,7 @@ def student_login():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    if session.get("teacher_logged_in"):
+    if session.get("admin_logged_in"):
         return redirect(url_for("home"))
     if session.get("student_logged_in"):
         return redirect(url_for("student_dashboard"))
@@ -216,23 +216,23 @@ def login():
         username = request.form.get("username", "").strip()
         password = request.form.get("password", "").strip()
 
-        teacher_df, students_df, _, _, _ = load_data()
+        admin_df, students_df, _, _, _ = load_data()
 
-        if role == "teacher":
-            match = teacher_df[
-                (teacher_df["Username"].astype(str) == username) &
-                (teacher_df["Password"].astype(str) == password)
+        if role in ["admin", "teacher"]:
+            match = admin_df[
+                (admin_df["Username"].astype(str) == username) &
+                (admin_df["Password"].astype(str) == password)
             ]
             if match.empty:
-                flash("Invalid teacher credentials.", "danger")
+                flash("Invalid admin credentials.", "danger")
                 return redirect(url_for("login"))
 
-            teacher_info = match.iloc[0]
-            session["teacher_logged_in"] = True
-            session["teacher_id"] = str(teacher_info["Teacher_ID"])
-            session["teacher_name"] = str(teacher_info["Teacher_Name"])
+            admin_info = match.iloc[0]
+            session["admin_logged_in"] = True
+            session["admin_id"] = str(admin_info["Teacher_ID"])
+            session["admin_name"] = str(admin_info["Teacher_Name"])
 
-            flash(f"Welcome, {teacher_info['Teacher_Name']}!", "success")
+            flash(f"Welcome, {admin_info['Teacher_Name']}!", "success")
             return redirect(url_for("home"))
 
         else:  # role == "student"
@@ -307,8 +307,8 @@ def student_logout():
 
 @app.route("/student/<roll>")
 def student_profile(roll):
-    if not session.get("teacher_logged_in"):
-        flash("Please log in as a teacher first.", "warning")
+    if not session.get("admin_logged_in"):
+        flash("Please log in as an admin first.", "warning")
         return redirect(url_for("login"))
 
     detail = get_student_detail(roll)
@@ -320,7 +320,7 @@ def student_profile(roll):
             query=str(roll)
         )
 
-    teacher_info = get_teacher_info()
+    admin_info = get_admin_info()
 
     return render_template(
         "student.html",
@@ -343,7 +343,7 @@ def student_profile(roll):
 
         recommendations=detail["recommendations"],
 
-        teacher=teacher_info
+        admin=admin_info
     )
 
 
@@ -371,8 +371,8 @@ def student_api(roll):
 
 @app.route("/search")
 def search():
-    if not session.get("teacher_logged_in"):
-        flash("Please log in as a teacher first.", "warning")
+    if not session.get("admin_logged_in"):
+        flash("Please log in as an admin first.", "warning")
         return redirect(url_for("login"))
 
     query = request.args.get(
@@ -452,8 +452,8 @@ def search():
 
 @app.route("/export")
 def export_csv():
-    if not session.get("teacher_logged_in"):
-        flash("Please log in as a teacher first.", "warning")
+    if not session.get("admin_logged_in"):
+        flash("Please log in as an admin first.", "warning")
         return redirect(url_for("login"))
 
     semester = request.args.get(

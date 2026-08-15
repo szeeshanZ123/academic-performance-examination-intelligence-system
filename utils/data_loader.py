@@ -19,8 +19,8 @@ SEMESTER_SUBJECTS = {
 }
 
 def load_data():
-    """Load teacher, student, marks, and attendance datasets."""
-    teacher_df = pd.read_csv(DATA_DIR / "teacher.csv")
+    """Load admin, student, marks, and attendance datasets."""
+    admin_df = pd.read_csv(DATA_DIR / "admin.csv")
     student_df = pd.read_csv(DATA_DIR / "students.csv")
     marks_df = pd.read_csv(DATA_DIR / "marks.csv")
     attendance_df = pd.read_csv(DATA_DIR / "attendance.csv")
@@ -62,16 +62,16 @@ def load_data():
     students["Attendance"] = students["Attendance"].round(2)
     students["_average_mark"] = students["_average_mark"].round(2)
 
-    return teacher_df, students, marks_df, attendance_df, subject_combined
+    return admin_df, students, marks_df, attendance_df, subject_combined
 
-def get_teacher_info():
-    """Return primary teacher info dictionary."""
-    teacher_df = pd.read_csv(DATA_DIR / "teacher.csv")
-    if not teacher_df.empty:
-        return teacher_df.iloc[0].to_dict()
+def get_admin_info():
+    """Return primary admin info dictionary."""
+    admin_df = pd.read_csv(DATA_DIR / "admin.csv")
+    if not admin_df.empty:
+        return admin_df.iloc[0].to_dict()
     return {
         "Teacher_ID": "T001",
-        "Teacher_Name": "Dr. Amit Patil",
+        "Teacher_Name": "Mrs. Archana Patil",
         "Email": "admin@college.edu",
         "Phone": "9876543210"
     }

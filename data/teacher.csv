@@ -1,0 +1,25 @@
+Teacher_ID,Username,Password,Teacher_Name,Email,Subject,Semester,Status
+T001,teacher001,Teacher@123,Amit Patil,amit@college.edu,Data Structures,2,Active
+T001,teacher001,Teacher@123,Amit Patil,amit@college.edu,Operating Systems,4,Active
+T001,teacher001,Teacher@123,Amit Patil,amit@college.edu,Machine Learning,5,Active
+T002,teacher002,Teacher@123,Neha Sharma,neha@college.edu,Python Programming,1,Active
+T002,teacher002,Teacher@123,Neha Sharma,neha@college.edu,Computer Networks,3,Active
+T002,teacher002,Teacher@123,Neha Sharma,neha@college.edu,Cloud Computing,4,Active
+T003,teacher003,Teacher@123,Rahul Mehta,rahul@college.edu,Mathematics I,1,Active
+T003,teacher003,Teacher@123,Rahul Mehta,rahul@college.edu,Statistics,2,Active
+T003,teacher003,Teacher@123,Rahul Mehta,rahul@college.edu,Big Data Analytics,6,Active
+T004,teacher004,Teacher@123,Priya Shah,priya@college.edu,Communication Skills,1,Active
+T004,teacher004,Teacher@123,Priya Shah,priya@college.edu,Software Engineering,3,Active
+T004,teacher004,Teacher@123,Priya Shah,priya@college.edu,Artificial Intelligence,4,Active
+T005,teacher005,Teacher@123,Arjun Desai,arjun@college.edu,Web Development,2,Active
+T005,teacher005,Teacher@123,Arjun Desai,arjun@college.edu,Java Programming,4,Active
+T005,teacher005,Teacher@123,Arjun Desai,arjun@college.edu,DevOps,5,Active
+T006,teacher006,Teacher@123,Sneha Kulkarni,sneha@college.edu,Digital Electronics,1,Active
+T006,teacher006,Teacher@123,Sneha Kulkarni,sneha@college.edu,Database Management Systems,2,Active
+T006,teacher006,Teacher@123,Sneha Kulkarni,sneha@college.edu,Cyber Security,5,Active
+T007,teacher007,Teacher@123,Vikram Joshi,vikram@college.edu,Python for Data Analytics,3,Active
+T007,teacher007,Teacher@123,Vikram Joshi,vikram@college.edu,Data Visualization,4,Active
+T007,teacher007,Teacher@123,Vikram Joshi,vikram@college.edu,Deep Learning,6,Active
+T008,teacher008,Teacher@123,Anjali Rao,anjali@college.edu,English,1,Active
+T008,teacher008,Teacher@123,Anjali Rao,anjali@college.edu,Statistics,2,Active
+T008,teacher008,Teacher@123,Anjali Rao,anjali@college.edu,Natural Language Processing,6,Active

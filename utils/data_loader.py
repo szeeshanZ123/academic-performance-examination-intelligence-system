@@ -71,10 +71,81 @@ def get_admin_info():
         return admin_df.iloc[0].to_dict()
     return {
         "Teacher_ID": "T001",
-        "Teacher_Name": "Mrs. Archana Patil",
+        "Teacher_Name": "Mr. Zeeshan Shaikh",
         "Email": "admin@college.edu",
         "Phone": "9876543210"
     }
+
+def load_teachers():
+    """Load teacher dataset."""
+    teacher_path = DATA_DIR / "teacher.csv"
+    if teacher_path.exists():
+        return pd.read_csv(teacher_path)
+    return pd.DataFrame(columns=["Teacher_ID", "Username", "Password", "Teacher_Name", "Email", "Subject", "Semester", "Status"])
+
+def get_teacher_info(username):
+    """Return teacher metadata dictionary by username or Teacher_ID."""
+    teacher_df = load_teachers()
+    if teacher_df.empty:
+        return None
+    
+    match = teacher_df[
+        (teacher_df["Username"].astype(str).str.lower() == str(username).lower()) &
+        (teacher_df["Status"].astype(str).str.strip().str.capitalize() == "Active")
+    ]
+    if match.empty:
+        match = teacher_df[
+            (teacher_df["Teacher_ID"].astype(str).str.lower() == str(username).lower()) &
+            (teacher_df["Status"].astype(str).str.strip().str.capitalize() == "Active")
+        ]
+    if not match.empty:
+        first_row = match.iloc[0]
+        return {
+            "Teacher_ID": str(first_row["Teacher_ID"]),
+            "Username": str(first_row["Username"]),
+            "Teacher_Name": str(first_row["Teacher_Name"]),
+            "Email": str(first_row.get("Email", "")),
+            "Status": str(first_row.get("Status", "Active"))
+        }
+    return None
+
+def get_teacher_assignments(username):
+    """
+    Return all subject-semester assignments
+    for a specific teacher as a list of dicts.
+    """
+    teacher_df = load_teachers()
+    if teacher_df.empty:
+        return []
+
+    teacher_df["Username_str"] = teacher_df["Username"].astype(str).str.strip().str.lower()
+    teacher_df["Teacher_ID_str"] = teacher_df["Teacher_ID"].astype(str).str.strip().str.lower()
+    teacher_df["Status_str"] = teacher_df["Status"].astype(str).str.strip().str.capitalize()
+
+    target = str(username).strip().lower()
+    assignments_df = teacher_df[
+        ((teacher_df["Username_str"] == target) | (teacher_df["Teacher_ID_str"] == target)) &
+        (teacher_df["Status_str"] == "Active")
+    ].copy()
+
+    if assignments_df.empty:
+        return []
+
+    assignments = []
+    for _, row in assignments_df.iterrows():
+        try:
+            sem = int(row["Semester"])
+        except (ValueError, TypeError):
+            sem = row["Semester"]
+        assignments.append({
+            "Teacher_ID": str(row["Teacher_ID"]),
+            "Username": str(row["Username"]),
+            "Teacher_Name": str(row["Teacher_Name"]),
+            "Email": str(row.get("Email", "")),
+            "Subject": str(row["Subject"]).strip(),
+            "Semester": sem
+        })
+    return assignments
 
 def get_semester_subjects(semester=None):
     """Return subject list for a specific semester or all semesters dictionary."""

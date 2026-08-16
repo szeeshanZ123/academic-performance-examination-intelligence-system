@@ -14,12 +14,16 @@ from utils.data_loader import (
     load_data,
     get_admin_info,
     get_semester_subjects,
-    get_student_detail
+    get_student_detail,
+    load_teachers,
+    get_teacher_info,
+    get_teacher_assignments
 )
 
 from analysis.analytics import (
     dashboard_kpis,
-    get_analytics_summary
+    get_analytics_summary,
+    get_teacher_subject_analytics
 )
 
 
@@ -201,13 +205,15 @@ def student_login():
     return redirect(url_for("login"))
 
 # =========================================================
-# AUTHENTICATION (TEACHER & STUDENT)
+# AUTHENTICATION (ADMIN, TEACHER, STUDENT)
 # =========================================================
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if session.get("admin_logged_in"):
         return redirect(url_for("home"))
+    if session.get("teacher_logged_in"):
+        return redirect(url_for("teacher_dashboard"))
     if session.get("student_logged_in"):
         return redirect(url_for("student_dashboard"))
 
@@ -218,7 +224,7 @@ def login():
 
         admin_df, students_df, _, _, _ = load_data()
 
-        if role in ["admin", "teacher"]:
+        if role == "admin":
             match = admin_df[
                 (admin_df["Username"].astype(str) == username) &
                 (admin_df["Password"].astype(str) == password)
@@ -234,6 +240,36 @@ def login():
 
             flash(f"Welcome, {admin_info['Teacher_Name']}!", "success")
             return redirect(url_for("home"))
+
+        elif role == "teacher":
+            teacher_df = load_teachers()
+            if teacher_df.empty:
+                flash("Teacher database unavailable.", "danger")
+                return redirect(url_for("login"))
+
+            teacher_df["Username_str"] = teacher_df["Username"].astype(str).str.strip()
+            teacher_df["Teacher_ID_str"] = teacher_df["Teacher_ID"].astype(str).str.strip()
+            teacher_df["Password_str"] = teacher_df["Password"].astype(str).str.strip()
+            teacher_df["Status_str"] = teacher_df["Status"].astype(str).str.strip().str.capitalize()
+
+            match = teacher_df[
+                ((teacher_df["Username_str"].str.lower() == username.lower()) |
+                 (teacher_df["Teacher_ID_str"].str.lower() == username.lower())) &
+                (teacher_df["Password_str"] == password) &
+                (teacher_df["Status_str"] == "Active")
+            ]
+            if match.empty:
+                flash("Invalid teacher credentials or account inactive.", "danger")
+                return redirect(url_for("login"))
+
+            teacher_info = match.iloc[0]
+            session["teacher_logged_in"] = True
+            session["teacher_id"] = str(teacher_info["Teacher_ID"])
+            session["teacher_username"] = str(teacher_info["Username"])
+            session["teacher_name"] = str(teacher_info["Teacher_Name"])
+
+            flash(f"Welcome, {teacher_info['Teacher_Name']}!", "success")
+            return redirect(url_for("teacher_dashboard"))
 
         else:  # role == "student"
             match = students_df[
@@ -253,6 +289,154 @@ def login():
             return redirect(url_for("student_dashboard"))
 
     return render_template("login.html")
+
+
+# =========================================================
+# TEACHER AUTHENTICATION & DASHBOARD
+# =========================================================
+
+@app.route("/teacher-login", methods=["GET", "POST"])
+def teacher_login():
+    if session.get("teacher_logged_in"):
+        return redirect(url_for("teacher_dashboard"))
+
+    if request.method == "POST":
+        username = request.form.get("username", "").strip()
+        password = request.form.get("password", "").strip()
+
+        teacher_df = load_teachers()
+        if teacher_df.empty:
+            flash("Teacher database is unavailable.", "danger")
+            return redirect(url_for("teacher_login"))
+
+        teacher_df["Username_str"] = teacher_df["Username"].astype(str).str.strip()
+        teacher_df["Teacher_ID_str"] = teacher_df["Teacher_ID"].astype(str).str.strip()
+        teacher_df["Password_str"] = teacher_df["Password"].astype(str).str.strip()
+        teacher_df["Status_str"] = teacher_df["Status"].astype(str).str.strip().str.capitalize()
+
+        match = teacher_df[
+            ((teacher_df["Username_str"].str.lower() == username.lower()) |
+             (teacher_df["Teacher_ID_str"].str.lower() == username.lower())) &
+            (teacher_df["Password_str"] == password) &
+            (teacher_df["Status_str"] == "Active")
+        ]
+
+        if match.empty:
+            flash("Invalid teacher credentials or account is inactive.", "danger")
+            return redirect(url_for("teacher_login"))
+
+        teacher_info = match.iloc[0]
+        session["teacher_logged_in"] = True
+        session["teacher_id"] = str(teacher_info["Teacher_ID"])
+        session["teacher_username"] = str(teacher_info["Username"])
+        session["teacher_name"] = str(teacher_info["Teacher_Name"])
+
+        flash(f"Welcome, {teacher_info['Teacher_Name']}!", "success")
+        return redirect(url_for("teacher_dashboard"))
+
+    return render_template("teacher_login.html")
+
+
+@app.route("/teacher-dashboard")
+def teacher_dashboard():
+    if not session.get("teacher_logged_in"):
+        flash("Please log in as a teacher first.", "warning")
+        return redirect(url_for("teacher_login"))
+
+    teacher_username = session.get("teacher_username")
+    assignments = get_teacher_assignments(teacher_username)
+
+    if not assignments:
+        flash("No active teaching assignments found for your account.", "warning")
+        return render_template(
+            "teacher_dashboard.html",
+            teacher_name=session.get("teacher_name"),
+            teacher_id=session.get("teacher_id"),
+            teacher_email="",
+            assignments=[],
+            selected_subject="",
+            selected_semester="",
+            kpis={
+                "total_students": 0,
+                "average_marks": 0,
+                "highest_marks": 0,
+                "lowest_marks": 0,
+                "average_attendance": 0,
+                "pass_percentage": 0,
+                "at_risk_count": 0,
+                "honors_count": 0
+            },
+            grade_distribution={},
+            marks_distribution={},
+            attendance_distribution={},
+            at_risk_students=[],
+            students=[]
+        )
+
+    # Requested Subject & Semester
+    req_subject = request.args.get("subject", "").strip()
+    req_semester = request.args.get("semester", "").strip()
+
+    # Security / Access Control Check:
+    # Verify requested (subject, semester) against teacher's assigned subjects
+    selected_assignment = None
+    if req_subject and req_semester:
+        try:
+            req_sem_int = int(req_semester)
+        except ValueError:
+            req_sem_int = req_semester
+
+        for item in assignments:
+            if (item["Subject"].strip().lower() == req_subject.strip().lower()) and (item["Semester"] == req_sem_int):
+                selected_assignment = item
+                break
+
+    # If requested assignment is invalid or unauthorized, default to first assigned subject
+    if not selected_assignment:
+        if req_subject or req_semester:
+            flash(f"Access Denied: You are not assigned to {req_subject} (Semester {req_semester}). Defaulting to your assigned class.", "warning")
+        selected_assignment = assignments[0]
+
+    sel_subject = selected_assignment["Subject"]
+    sel_semester = selected_assignment["Semester"]
+    teacher_email = selected_assignment.get("Email", "")
+
+    _, students_df, marks_df, attendance_df, _ = load_data()
+
+    analytics_data = get_teacher_subject_analytics(
+        sel_subject,
+        sel_semester,
+        marks_df,
+        attendance_df,
+        students_df
+    )
+
+    return render_template(
+        "teacher_dashboard.html",
+        teacher_name=session.get("teacher_name"),
+        teacher_id=session.get("teacher_id"),
+        teacher_email=teacher_email,
+        assignments=assignments,
+        selected_subject=sel_subject,
+        selected_semester=sel_semester,
+        kpis=analytics_data["kpis"],
+        grade_distribution=analytics_data["grade_distribution"],
+        marks_distribution=analytics_data["marks_distribution"],
+        attendance_distribution=analytics_data["attendance_distribution"],
+        at_risk_students=analytics_data["at_risk_students"],
+        students=analytics_data["students"]
+    )
+
+
+@app.route("/teacher-logout")
+def teacher_logout():
+    session.pop("teacher_logged_in", None)
+    session.pop("teacher_id", None)
+    session.pop("teacher_username", None)
+    session.pop("teacher_name", None)
+    flash("You have been logged out of the Teacher Portal.", "info")
+    return redirect(url_for("teacher_login"))
+
 
 # =========================================================
 # STUDENT DASHBOARD
@@ -307,8 +491,8 @@ def student_logout():
 
 @app.route("/student/<roll>")
 def student_profile(roll):
-    if not session.get("admin_logged_in"):
-        flash("Please log in as an admin first.", "warning")
+    if not session.get("admin_logged_in") and not session.get("teacher_logged_in"):
+        flash("Please log in first to view student profiles.", "warning")
         return redirect(url_for("login"))
 
     detail = get_student_detail(roll)

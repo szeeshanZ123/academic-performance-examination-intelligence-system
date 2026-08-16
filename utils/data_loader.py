@@ -14,8 +14,8 @@ SEMESTER_SUBJECTS = {
     2: ["Data Structures", "Database Management Systems", "Statistics", "Web Development"],
     3: ["Python for Data Analytics", "Operating Systems", "Computer Networks", "Software Engineering"],
     4: ["Java Programming", "Data Visualization", "Cloud Computing", "Artificial Intelligence"],
-    5: ["Machine Learning", "Cyber Security", "Cloud Architecture", "DevOps"],
-    6: ["Big Data Analytics", "Deep Learning", "Natural Language Processing", "Capstone Project"]
+    5: ["Machine Learning", "Cyber Security", "Big Data Analytics", "Business Intelligence"],
+    6: ["Deep Learning", "Data Science", "Major Project", "Professional Ethics"]
 }
 
 def load_data():

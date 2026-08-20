@@ -67,7 +67,9 @@
         position: relative;
         overflow: hidden;
         border: 1px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        box-shadow:
+          0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 8px 10px -6px rgba(0, 0, 0, 0.1);
       }
 
       .hero-card::after {
@@ -77,7 +79,11 @@
         right: -10%;
         width: 350px;
         height: 350px;
-        background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, rgba(0, 0, 0, 0) 70%);
+        background: radial-gradient(
+          circle,
+          rgba(99, 102, 241, 0.25) 0%,
+          rgba(0, 0, 0, 0) 70%
+        );
         border-radius: 50%;
       }
 
@@ -105,11 +111,21 @@
         height: 100%;
       }
 
-      .kpi-primary::before { background-color: var(--primary); }
-      .kpi-secondary::before { background-color: #8b5cf6; }
-      .kpi-info::before { background-color: var(--secondary); }
-      .kpi-danger::before { background-color: var(--danger); }
-      .kpi-success::before { background-color: var(--success); }
+      .kpi-primary::before {
+        background-color: var(--primary);
+      }
+      .kpi-secondary::before {
+        background-color: #8b5cf6;
+      }
+      .kpi-info::before {
+        background-color: var(--secondary);
+      }
+      .kpi-danger::before {
+        background-color: var(--danger);
+      }
+      .kpi-success::before {
+        background-color: var(--success);
+      }
 
       .icon-circle {
         width: 48px;
@@ -128,7 +144,8 @@
         border: 1px solid var(--border-color);
       }
 
-      .form-control-custom, .form-select-custom {
+      .form-control-custom,
+      .form-select-custom {
         border-radius: 10px;
         border: 1px solid var(--border-color);
         padding: 0.6rem 0.9rem;
@@ -136,7 +153,8 @@
         transition: all 0.2s;
       }
 
-      .form-control-custom:focus, .form-select-custom:focus {
+      .form-control-custom:focus,
+      .form-select-custom:focus {
         border-color: var(--primary);
         box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
       }
@@ -201,11 +219,31 @@
       }
 
       /* Custom Badges */
-      .badge-soft-success { background-color: #d1fae5; color: #065f46; font-weight: 600; }
-      .badge-soft-info { background-color: #e0f2fe; color: #0369a1; font-weight: 600; }
-      .badge-soft-warning { background-color: #fef3c7; color: #92400e; font-weight: 600; }
-      .badge-soft-danger { background-color: #fee2e2; color: #991b1b; font-weight: 600; }
-      .badge-soft-purple { background-color: #f3e8ff; color: #6b21a8; font-weight: 600; }
+      .badge-soft-success {
+        background-color: #d1fae5;
+        color: #065f46;
+        font-weight: 600;
+      }
+      .badge-soft-info {
+        background-color: #e0f2fe;
+        color: #0369a1;
+        font-weight: 600;
+      }
+      .badge-soft-warning {
+        background-color: #fef3c7;
+        color: #92400e;
+        font-weight: 600;
+      }
+      .badge-soft-danger {
+        background-color: #fee2e2;
+        color: #991b1b;
+        font-weight: 600;
+      }
+      .badge-soft-purple {
+        background-color: #f3e8ff;
+        color: #6b21a8;
+        font-weight: 600;
+      }
 
       /* Buttons */
       .btn-primary-custom {
@@ -255,11 +293,20 @@
   </head>
   <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top py-3">
+    <nav
+      class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top py-3"
+    >
       <div class="container">
-        <a class="navbar-brand d-flex align-items-center gap-2 font-weight-bold" href="#">
-          <span class="brand-badge"><i class="bi bi-mortarboard-fill me-1"></i> APEX</span>
-          <span class="fw-bold text-white fs-5 d-none d-sm-inline">Academic Performance System</span>
+        <a
+          class="navbar-brand d-flex align-items-center gap-2 font-weight-bold"
+          href="#"
+        >
+          <span class="brand-badge"
+            ><i class="bi bi-mortarboard-fill me-1"></i> APEX</span
+          >
+          <span class="fw-bold text-white fs-5 d-none d-sm-inline"
+            >Academic Performance System</span
+          >
         </a>
 
         <button
@@ -274,25 +321,38 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto align-items-center gap-3 mt-3 mt-lg-0">
             <li class="nav-item">
-              <a class="nav-link active fw-medium" href="#dashboard"><i class="bi bi-grid-fill me-1"></i> Dashboard</a>
+              <a class="nav-link active fw-medium" href="#dashboard"
+                ><i class="bi bi-grid-fill me-1"></i> Dashboard</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white-50 fw-medium" href="#analytics"><i class="bi bi-bar-chart-line-fill me-1"></i> Analytics</a>
+              <a class="nav-link text-white-50 fw-medium" href="#analytics"
+                ><i class="bi bi-bar-chart-line-fill me-1"></i> Analytics</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white-50 fw-medium" href="#records"><i class="bi bi-people-fill me-1"></i> Records</a>
+              <a class="nav-link text-white-50 fw-medium" href="#records"
+                ><i class="bi bi-people-fill me-1"></i> Records</a
+              >
             </li>
             <li class="nav-item">
-              <div class="d-flex align-items-center gap-2 bg-dark bg-opacity-50 px-3 py-1.5 rounded-pill border border-secondary border-opacity-25">
+              <div
+                class="d-flex align-items-center gap-2 bg-dark bg-opacity-50 px-3 py-1.5 rounded-pill border border-secondary border-opacity-25"
+              >
                 <i class="bi bi-person-circle text-primary fs-6"></i>
                 <div class="text-start">
-                  <div class="text-white fw-bold fs-7 lh-1">{{ admin.Teacher_Name if admin else "Mrs. Archana Patil" }}</div>
+                  <div class="text-white fw-bold fs-7 lh-1">
+                    {{ admin.Teacher_Name if admin else "Mr.Zeeshan Shaikh" }}
+                  </div>
                   <small class="text-white-50 fs-8">System Administrator</small>
                 </div>
               </div>
             </li>
             <li class="nav-item">
-              <a href="{{ url_for('logout') }}" class="btn btn-outline-danger btn-sm rounded-pill px-3">
+              <a
+                href="{{ url_for('logout') }}"
+                class="btn btn-outline-danger btn-sm rounded-pill px-3"
+              >
                 <i class="bi bi-box-arrow-right me-1"></i> Logout
               </a>
             </li>
@@ -305,16 +365,22 @@
     <div class="container py-4" id="dashboard">
       <!-- Hero Banner -->
       <div class="hero-card p-4 p-md-5 mb-4 position-relative">
-        <div class="row align-items-center position-relative" style="z-index: 2;">
+        <div
+          class="row align-items-center position-relative"
+          style="z-index: 2"
+        >
           <div class="col-lg-8">
-            <span class="badge bg-indigo-500 text-white px-3 py-1.5 rounded-pill fs-7 mb-3 fw-semibold border border-white border-opacity-25">
+            <span
+              class="badge bg-indigo-500 text-white px-3 py-1.5 rounded-pill fs-7 mb-3 fw-semibold border border-white border-opacity-25"
+            >
               <i class="bi bi-cpu me-1"></i> EXAMINATION INTELLIGENCE SYSTEM
             </span>
             <h1 class="fw-extrabold display-6 text-white mb-2">
               Academic Analytics & Performance Intelligence
             </h1>
-            <p class="text-white-50 fs-5 mb-0" style="max-width: 650px;">
-              Real-time monitoring of student examination scores, attendance benchmarks, risk factors, and institutional metrics.
+            <p class="text-white-50 fs-5 mb-0" style="max-width: 650px">
+              Real-time monitoring of student examination scores, attendance
+              benchmarks, risk factors, and institutional metrics.
             </p>
           </div>
           <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
@@ -333,7 +399,9 @@
         <div class="col-6 col-md-4 col-xl-2">
           <div class="kpi-card kpi-primary p-3 p-md-4">
             <div class="d-flex align-items-center justify-content-between mb-2">
-              <span class="text-muted fw-semibold fs-7 text-uppercase">Total Students</span>
+              <span class="text-muted fw-semibold fs-7 text-uppercase"
+                >Total Students</span
+              >
               <div class="icon-circle bg-indigo-50 text-indigo-600">
                 <i class="bi bi-people text-primary"></i>
               </div>
@@ -346,9 +414,14 @@
         <div class="col-6 col-md-4 col-xl-2">
           <div class="kpi-card kpi-secondary p-3 p-md-4">
             <div class="d-flex align-items-center justify-content-between mb-2">
-              <span class="text-muted fw-semibold fs-7 text-uppercase">Average SGPI</span>
-              <div class="icon-circle bg-purple-50 text-purple-600" style="background-color: #f3e8ff;">
-                <i class="bi bi-trophy text-purple" style="color: #8b5cf6;"></i>
+              <span class="text-muted fw-semibold fs-7 text-uppercase"
+                >Average SGPI</span
+              >
+              <div
+                class="icon-circle bg-purple-50 text-purple-600"
+                style="background-color: #f3e8ff"
+              >
+                <i class="bi bi-trophy text-purple" style="color: #8b5cf6"></i>
               </div>
             </div>
             <h2 class="fw-bold text-dark mb-0">{{ average_sgpi }}</h2>
@@ -359,7 +432,9 @@
         <div class="col-6 col-md-4 col-xl-2">
           <div class="kpi-card kpi-info p-3 p-md-4">
             <div class="d-flex align-items-center justify-content-between mb-2">
-              <span class="text-muted fw-semibold fs-7 text-uppercase">Average Att.</span>
+              <span class="text-muted fw-semibold fs-7 text-uppercase"
+                >Average Att.</span
+              >
               <div class="icon-circle bg-info bg-opacity-10 text-info">
                 <i class="bi bi-calendar-check text-info"></i>
               </div>
@@ -372,7 +447,9 @@
         <div class="col-6 col-md-4 col-xl-2">
           <div class="kpi-card kpi-danger p-3 p-md-4">
             <div class="d-flex align-items-center justify-content-between mb-2">
-              <span class="text-muted fw-semibold fs-7 text-uppercase">At Risk</span>
+              <span class="text-muted fw-semibold fs-7 text-uppercase"
+                >At Risk</span
+              >
               <div class="icon-circle bg-danger bg-opacity-10 text-danger">
                 <i class="bi bi-exclamation-triangle-fill text-danger"></i>
               </div>
@@ -385,7 +462,9 @@
         <div class="col-6 col-md-4 col-xl-2">
           <div class="kpi-card kpi-success p-3 p-md-4">
             <div class="d-flex align-items-center justify-content-between mb-2">
-              <span class="text-muted fw-semibold fs-7 text-uppercase">Honors Roll</span>
+              <span class="text-muted fw-semibold fs-7 text-uppercase"
+                >Honors Roll</span
+              >
               <div class="icon-circle bg-success bg-opacity-10 text-success">
                 <i class="bi bi-star-fill text-success"></i>
               </div>
@@ -398,7 +477,9 @@
         <div class="col-6 col-md-4 col-xl-2">
           <div class="kpi-card kpi-primary p-3 p-md-4">
             <div class="d-flex align-items-center justify-content-between mb-2">
-              <span class="text-muted fw-semibold fs-7 text-uppercase">Pass Rate</span>
+              <span class="text-muted fw-semibold fs-7 text-uppercase"
+                >Pass Rate</span
+              >
               <div class="icon-circle bg-primary bg-opacity-10 text-primary">
                 <i class="bi bi-check-circle-fill text-primary"></i>
               </div>
@@ -411,42 +492,189 @@
 
       <!-- Filter Controls & Live Search Bar -->
       <div class="filter-card p-4 mb-4">
-        <form action="/" method="get" class="row g-3 align-items-end" id="filterForm">
+        <form
+          action="/"
+          method="get"
+          class="row g-3 align-items-end"
+          id="filterForm"
+        >
           <div class="col-md-3 col-lg-3">
-            <label for="semester" class="form-label fw-semibold text-secondary fs-7">Filter Semester</label>
-            <select id="semester" name="semester" class="form-select form-select-custom" onchange="this.form.submit()">
+            <label
+              for="semester"
+              class="form-label fw-semibold text-secondary fs-7"
+              >Filter Semester</label
+            >
+            <select
+              id="semester"
+              name="semester"
+              class="form-select form-select-custom"
+              onchange="this.form.submit()"
+            >
               <option value="">All Semesters (Sem 1 - 6)</option>
-              <option value="1" {% if selected_semester == "1" %}selected{% endif %}>Semester 1 (Python, Math I, Comm, Dig Elec)</option>
-              <option value="2" {% if selected_semester == "2" %}selected{% endif %}>Semester 2 (DS, DBMS, Stats, Web Dev)</option>
-              <option value="3" {% if selected_semester == "3" %}selected{% endif %}>Semester 3 (Data Analytics, OS, CN, SE)</option>
-              <option value="4" {% if selected_semester == "4" %}selected{% endif %}>Semester 4 (Java, Data Vis, Cloud, AI)</option>
-              <option value="5" {% if selected_semester == "5" %}selected{% endif %}>Semester 5 (ML, Cyber Sec, Cloud Arch, DevOps)</option>
-              <option value="6" {% if selected_semester == "6" %}selected{% endif %}>Semester 6 (Big Data, DL, NLP, Capstone)</option>
+              <option
+                value="1"
+                {%
+                if
+                selected_semester=""
+                ="1"
+                %}selected{%
+                endif
+                %}
+              >
+                Semester 1 (Python, Math I, Comm, Dig Elec)
+              </option>
+              <option
+                value="2"
+                {%
+                if
+                selected_semester=""
+                ="2"
+                %}selected{%
+                endif
+                %}
+              >
+                Semester 2 (DS, DBMS, Stats, Web Dev)
+              </option>
+              <option
+                value="3"
+                {%
+                if
+                selected_semester=""
+                ="3"
+                %}selected{%
+                endif
+                %}
+              >
+                Semester 3 (Data Analytics, OS, CN, SE)
+              </option>
+              <option
+                value="4"
+                {%
+                if
+                selected_semester=""
+                ="4"
+                %}selected{%
+                endif
+                %}
+              >
+                Semester 4 (Java, Data Vis, Cloud, AI)
+              </option>
+              <option
+                value="5"
+                {%
+                if
+                selected_semester=""
+                ="5"
+                %}selected{%
+                endif
+                %}
+              >
+                Semester 5 (ML, Cyber Sec, Cloud Arch, DevOps)
+              </option>
+              <option
+                value="6"
+                {%
+                if
+                selected_semester=""
+                ="6"
+                %}selected{%
+                endif
+                %}
+              >
+                Semester 6 (Big Data, DL, NLP, Capstone)
+              </option>
             </select>
           </div>
 
           <div class="col-md-2 col-lg-2">
-            <label for="division" class="form-label fw-semibold text-secondary fs-7">Division</label>
-            <select id="division" name="division" class="form-select form-select-custom" onchange="this.form.submit()">
+            <label
+              for="division"
+              class="form-label fw-semibold text-secondary fs-7"
+              >Division</label
+            >
+            <select
+              id="division"
+              name="division"
+              class="form-select form-select-custom"
+              onchange="this.form.submit()"
+            >
               <option value="">All Divisions</option>
-              <option value="A" {% if selected_division == "A" %}selected{% endif %}>Division A</option>
-              <option value="B" {% if selected_division == "B" %}selected{% endif %}>Division B</option>
+              <option
+                value="A"
+                {%
+                if
+                selected_division=""
+                ="A"
+                %}selected{%
+                endif
+                %}
+              >
+                Division A
+              </option>
+              <option
+                value="B"
+                {%
+                if
+                selected_division=""
+                ="B"
+                %}selected{%
+                endif
+                %}
+              >
+                Division B
+              </option>
             </select>
           </div>
 
           <div class="col-md-2 col-lg-2">
-            <label for="risk" class="form-label fw-semibold text-secondary fs-7">Academic Risk Level</label>
-            <select id="risk" name="risk" class="form-select form-select-custom" onchange="this.form.submit()">
+            <label for="risk" class="form-label fw-semibold text-secondary fs-7"
+              >Academic Risk Level</label
+            >
+            <select
+              id="risk"
+              name="risk"
+              class="form-select form-select-custom"
+              onchange="this.form.submit()"
+            >
               <option value="">All Performance Levels</option>
-              <option value="at_risk" {% if selected_risk == "at_risk" %}selected{% endif %}>At Risk Only (&lt;75% / &lt;6 SGPI)</option>
-              <option value="honors" {% if selected_risk == "honors" %}selected{% endif %}>Honors Only (&ge;8.5 SGPI)</option>
+              <option
+                value="at_risk"
+                {%
+                if
+                selected_risk=""
+                ="at_risk"
+                %}selected{%
+                endif
+                %}
+              >
+                At Risk Only (&lt;75% / &lt;6 SGPI)
+              </option>
+              <option
+                value="honors"
+                {%
+                if
+                selected_risk=""
+                ="honors"
+                %}selected{%
+                endif
+                %}
+              >
+                Honors Only (&ge;8.5 SGPI)
+              </option>
             </select>
           </div>
 
           <div class="col-md-3 col-lg-3">
-            <label for="liveSearch" class="form-label fw-semibold text-secondary fs-7">Instant Student Search</label>
+            <label
+              for="liveSearch"
+              class="form-label fw-semibold text-secondary fs-7"
+              >Instant Student Search</label
+            >
             <div class="input-group">
-              <span class="input-group-text bg-white border-end-0 rounded-start-3"><i class="bi bi-search text-muted"></i></span>
+              <span
+                class="input-group-text bg-white border-end-0 rounded-start-3"
+                ><i class="bi bi-search text-muted"></i
+              ></span>
               <input
                 type="text"
                 id="liveSearch"
@@ -458,21 +686,34 @@
           </div>
 
           <div class="col-md-2 col-lg-2 d-flex gap-2">
-            <a href="/" class="btn btn-outline-custom w-100 py-2 text-center text-decoration-none">
+            <a
+              href="/"
+              class="btn btn-outline-custom w-100 py-2 text-center text-decoration-none"
+            >
               <i class="bi bi-arrow-counterclockwise"></i> Reset
             </a>
           </div>
           <input type="hidden" name="sort_by" value="{{ sort_by or '' }}" />
-          <input type="hidden" name="sort_order" value="{{ sort_order or 'asc' }}" />
+          <input
+            type="hidden"
+            name="sort_order"
+            value="{{ sort_order or 'asc' }}"
+          />
         </form>
       </div>
 
       <!-- Analytics Charts Section -->
       <div class="mb-5" id="analytics">
         <div class="d-flex align-items-center justify-content-between mb-4">
-          <h3 class="fw-bold mb-0"><i class="bi bi-pie-chart-fill text-primary me-2"></i> Performance Analytics</h3>
-          <span class="badge bg-light text-dark border px-3 py-2 rounded-pill fs-7">
-            Showing {{ "Semester " + selected_semester if selected_semester else "All Semesters Aggregate" }}
+          <h3 class="fw-bold mb-0">
+            <i class="bi bi-pie-chart-fill text-primary me-2"></i> Performance
+            Analytics
+          </h3>
+          <span
+            class="badge bg-light text-dark border px-3 py-2 rounded-pill fs-7"
+          >
+            Showing {{ "Semester " + selected_semester if selected_semester else
+            "All Semesters Aggregate" }}
           </span>
         </div>
 
@@ -480,9 +721,13 @@
           <!-- Chart 1: Subject Performance Averages -->
           <div class="col-lg-6">
             <div class="chart-card p-4 shadow-sm">
-              <h5 class="fw-bold text-dark mb-1">Subject Performance Averages</h5>
-              <p class="text-muted small mb-4">Mean score (/100) per subject across selected students</p>
-              <div style="position: relative; height: 260px; width: 100%;">
+              <h5 class="fw-bold text-dark mb-1">
+                Subject Performance Averages
+              </h5>
+              <p class="text-muted small mb-4">
+                Mean score (/100) per subject across selected students
+              </p>
+              <div style="position: relative; height: 260px; width: 100%">
                 <canvas id="subjectAverageChart"></canvas>
               </div>
             </div>
@@ -492,8 +737,10 @@
           <div class="col-lg-6">
             <div class="chart-card p-4 shadow-sm">
               <h5 class="fw-bold text-dark mb-1">Grade Distribution</h5>
-              <p class="text-muted small mb-4">Frequency of letter grades awarded (O, A+, A, B+, B, C, F)</p>
-              <div style="position: relative; height: 260px; width: 100%;">
+              <p class="text-muted small mb-4">
+                Frequency of letter grades awarded (O, A+, A, B+, B, C, F)
+              </p>
+              <div style="position: relative; height: 260px; width: 100%">
                 <canvas id="gradeDistributionChart"></canvas>
               </div>
             </div>
@@ -505,8 +752,10 @@
           <div class="col-lg-4">
             <div class="chart-card p-4 shadow-sm">
               <h5 class="fw-bold text-dark mb-1">Attendance Distribution</h5>
-              <p class="text-muted small mb-4">Categorized by attendance thresholds</p>
-              <div style="position: relative; height: 240px; width: 100%;">
+              <p class="text-muted small mb-4">
+                Categorized by attendance thresholds
+              </p>
+              <div style="position: relative; height: 240px; width: 100%">
                 <canvas id="attendanceDistributionChart"></canvas>
               </div>
             </div>
@@ -516,8 +765,10 @@
           <div class="col-lg-4">
             <div class="chart-card p-4 shadow-sm">
               <h5 class="fw-bold text-dark mb-1">SGPI Spread</h5>
-              <p class="text-muted small mb-4">Student count per SGPI grade band</p>
-              <div style="position: relative; height: 240px; width: 100%;">
+              <p class="text-muted small mb-4">
+                Student count per SGPI grade band
+              </p>
+              <div style="position: relative; height: 240px; width: 100%">
                 <canvas id="sgpiDistributionChart"></canvas>
               </div>
             </div>
@@ -528,7 +779,7 @@
             <div class="chart-card p-4 shadow-sm">
               <h5 class="fw-bold text-dark mb-1">Top Performers</h5>
               <p class="text-muted small mb-4">Highest SGPI rankers</p>
-              <div style="position: relative; height: 240px; width: 100%;">
+              <div style="position: relative; height: 240px; width: 100%">
                 <canvas id="topStudentsChart"></canvas>
               </div>
             </div>
@@ -540,24 +791,44 @@
       <div class="mb-5" id="records">
         <div class="d-flex justify-content-between align-items-center mb-3">
           <div>
-            <h3 class="fw-bold mb-1"><i class="bi bi-journal-text text-primary me-2"></i> Student Examination Records</h3>
-            <p class="text-muted small mb-0">Total <span id="recordCount" class="fw-bold text-dark">{{ students|length }}</span> matching records found</p>
+            <h3 class="fw-bold mb-1">
+              <i class="bi bi-journal-text text-primary me-2"></i> Student
+              Examination Records
+            </h3>
+            <p class="text-muted small mb-0">
+              Total
+              <span id="recordCount" class="fw-bold text-dark"
+                >{{ students|length }}</span
+              >
+              matching records found
+            </p>
           </div>
         </div>
 
         <div class="table-card shadow-sm">
-          <div class="table-responsive" style="max-height: 520px; overflow-y: auto;">
+          <div
+            class="table-responsive"
+            style="max-height: 520px; overflow-y: auto"
+          >
             <table class="table table-custom align-middle" id="studentsTable">
               <thead>
                 <tr>
                   <th>
-                    <a href="?semester={{ selected_semester }}&division={{ selected_division }}&risk={{ selected_risk }}&sort_by=Roll&sort_order={{ 'desc' if sort_by == 'Roll' and sort_order == 'asc' else 'asc' }}" class="text-white text-decoration-none">
-                      Roll No {% if sort_by == 'Roll' %}{{ '▲' if sort_order == 'asc' else '▼' }}{% endif %}
+                    <a
+                      href="?semester={{ selected_semester }}&division={{ selected_division }}&risk={{ selected_risk }}&sort_by=Roll&sort_order={{ 'desc' if sort_by == 'Roll' and sort_order == 'asc' else 'asc' }}"
+                      class="text-white text-decoration-none"
+                    >
+                      Roll No {% if sort_by == 'Roll' %}{{ '▲' if sort_order ==
+                      'asc' else '▼' }}{% endif %}
                     </a>
                   </th>
                   <th>
-                    <a href="?semester={{ selected_semester }}&division={{ selected_division }}&risk={{ selected_risk }}&sort_by=Name&sort_order={{ 'desc' if sort_by == 'Name' and sort_order == 'asc' else 'asc' }}" class="text-white text-decoration-none">
-                      Student Name {% if sort_by == 'Name' %}{{ '▲' if sort_order == 'asc' else '▼' }}{% endif %}
+                    <a
+                      href="?semester={{ selected_semester }}&division={{ selected_division }}&risk={{ selected_risk }}&sort_by=Name&sort_order={{ 'desc' if sort_by == 'Name' and sort_order == 'asc' else 'asc' }}"
+                      class="text-white text-decoration-none"
+                    >
+                      Student Name {% if sort_by == 'Name' %}{{ '▲' if
+                      sort_order == 'asc' else '▼' }}{% endif %}
                     </a>
                   </th>
                   {% if not selected_semester %}
@@ -565,22 +836,29 @@
                   {% endif %}
                   <th>Division</th>
 
-                  {% if selected_semester and semester_subjects %}
-                    {% for subj in semester_subjects %}
-                    <th class="text-center">{{ subj }}</th>
-                    {% endfor %}
-                  {% else %}
+                  {% if selected_semester and semester_subjects %} {% for subj
+                  in semester_subjects %}
+                  <th class="text-center">{{ subj }}</th>
+                  {% endfor %} {% else %}
                   <th class="text-center">Avg Mark</th>
                   {% endif %}
 
                   <th class="text-center">
-                    <a href="?semester={{ selected_semester }}&division={{ selected_division }}&risk={{ selected_risk }}&sort_by=Attendance&sort_order={{ 'desc' if sort_by == 'Attendance' and sort_order == 'asc' else 'asc' }}" class="text-white text-decoration-none">
-                      Attendance {% if sort_by == 'Attendance' %}{{ '▲' if sort_order == 'asc' else '▼' }}{% endif %}
+                    <a
+                      href="?semester={{ selected_semester }}&division={{ selected_division }}&risk={{ selected_risk }}&sort_by=Attendance&sort_order={{ 'desc' if sort_by == 'Attendance' and sort_order == 'asc' else 'asc' }}"
+                      class="text-white text-decoration-none"
+                    >
+                      Attendance {% if sort_by == 'Attendance' %}{{ '▲' if
+                      sort_order == 'asc' else '▼' }}{% endif %}
                     </a>
                   </th>
                   <th class="text-center">
-                    <a href="?semester={{ selected_semester }}&division={{ selected_division }}&risk={{ selected_risk }}&sort_by=SGPI&sort_order={{ 'desc' if sort_by == 'SGPI' and sort_order == 'asc' else 'asc' }}" class="text-white text-decoration-none">
-                      SGPI {% if sort_by == 'SGPI' %}{{ '▲' if sort_order == 'asc' else '▼' }}{% endif %}
+                    <a
+                      href="?semester={{ selected_semester }}&division={{ selected_division }}&risk={{ selected_risk }}&sort_by=SGPI&sort_order={{ 'desc' if sort_by == 'SGPI' and sort_order == 'asc' else 'asc' }}"
+                      class="text-white text-decoration-none"
+                    >
+                      SGPI {% if sort_by == 'SGPI' %}{{ '▲' if sort_order ==
+                      'asc' else '▼' }}{% endif %}
                     </a>
                   </th>
                   <th class="text-end px-4">Action</th>
@@ -594,33 +872,51 @@
                     <div class="d-flex align-items-center">
                       <div class="avatar-initials">{{ student.Name[0] }}</div>
                       <div>
-                        <div class="fw-semibold text-dark">{{ student.Name }}</div>
-                        <small class="text-muted fs-8">{{ student.Email if student.Email else "" }}</small>
+                        <div class="fw-semibold text-dark">
+                          {{ student.Name }}
+                        </div>
+                        <small class="text-muted fs-8"
+                          >{{ student.Email if student.Email else "" }}</small
+                        >
                       </div>
                     </div>
                   </td>
                   {% if not selected_semester %}
-                  <td><span class="badge bg-light text-dark border">Sem {{ student.Semester }}</span></td>
+                  <td>
+                    <span class="badge bg-light text-dark border"
+                      >Sem {{ student.Semester }}</span
+                    >
+                  </td>
                   {% endif %}
-                  <td><span class="badge bg-light text-dark border">Div {{ student.Division }}</span></td>
+                  <td>
+                    <span class="badge bg-light text-dark border"
+                      >Div {{ student.Division }}</span
+                    >
+                  </td>
 
-                  {% if selected_semester and semester_subjects %}
-                    {% for subj in semester_subjects %}
-                    <td class="text-center fw-semibold">
-                      {{ student.subjects[subj] if student.subjects and subj in student.subjects else "N/A" }}
-                    </td>
-                    {% endfor %}
-                  {% else %}
-                  <td class="text-center fw-semibold text-secondary">{{ student._average_mark }}%</td>
+                  {% if selected_semester and semester_subjects %} {% for subj
+                  in semester_subjects %}
+                  <td class="text-center fw-semibold">
+                    {{ student.subjects[subj] if student.subjects and subj in
+                    student.subjects else "N/A" }}
+                  </td>
+                  {% endfor %} {% else %}
+                  <td class="text-center fw-semibold text-secondary">
+                    {{ student._average_mark }}%
+                  </td>
                   {% endif %}
 
                   <td class="text-center">
-                    <span class="badge {% if student.Attendance >= 90 %}badge-soft-success{% elif student.Attendance >= 75 %}badge-soft-info{% else %}badge-soft-danger{% endif %} px-2.5 py-1.5 rounded-pill">
+                    <span
+                      class="badge {% if student.Attendance >= 90 %}badge-soft-success{% elif student.Attendance >= 75 %}badge-soft-info{% else %}badge-soft-danger{% endif %} px-2.5 py-1.5 rounded-pill"
+                    >
                       {{ student.Attendance }}%
                     </span>
                   </td>
                   <td class="text-center">
-                    <span class="badge {% if student.SGPI >= 8.5 %}badge-soft-success{% elif student.SGPI >= 6.5 %}badge-soft-purple{% elif student.SGPI >= 6.0 %}badge-soft-warning{% else %}badge-soft-danger{% endif %} px-2.5 py-1.5 rounded-pill fs-7">
+                    <span
+                      class="badge {% if student.SGPI >= 8.5 %}badge-soft-success{% elif student.SGPI >= 6.5 %}badge-soft-purple{% elif student.SGPI >= 6.0 %}badge-soft-warning{% else %}badge-soft-danger{% endif %} px-2.5 py-1.5 rounded-pill fs-7"
+                    >
                       {{ student.SGPI }}
                     </span>
                   </td>
@@ -648,33 +944,66 @@
       </div>
 
       <!-- About & Footer -->
-      <footer id="about" class="hero-card p-4 p-md-5 mt-5 text-center position-relative">
-        <div class="position-relative" style="z-index: 2;">
-          <h4 class="fw-bold text-white mb-2">Academic Performance & Examination Intelligence System</h4>
-          <p class="text-white-50 mx-auto mb-4" style="max-width: 650px;">
-            An advanced analytical decision-support platform engineered for academic faculty to evaluate examination results, track subject outcomes, and support student success.
+      <footer
+        id="about"
+        class="hero-card p-4 p-md-5 mt-5 text-center position-relative"
+      >
+        <div class="position-relative" style="z-index: 2">
+          <h4 class="fw-bold text-white mb-2">
+            Academic Performance & Examination Intelligence System
+          </h4>
+          <p class="text-white-50 mx-auto mb-4" style="max-width: 650px">
+            An advanced analytical decision-support platform engineered for
+            academic faculty to evaluate examination results, track subject
+            outcomes, and support student success.
           </p>
-          <hr class="my-4 border-secondary opacity-25 mx-auto" style="width: 50%;" />
-          <p class="text-uppercase text-white-50 fw-semibold fs-8 tracking-widest mb-1">Architect & Developer</p>
+          <hr
+            class="my-4 border-secondary opacity-25 mx-auto"
+            style="width: 50%"
+          />
+          <p
+            class="text-uppercase text-white-50 fw-semibold fs-8 tracking-widest mb-1"
+          >
+            Architect & Developer
+          </p>
           <h5 class="fw-extrabold text-white mb-1">Zeeshan Shaikh</h5>
-          <p class="text-info small mb-0 fw-medium">Department of Information Technology</p>
+          <p class="text-info small mb-0 fw-medium">
+            Department of Information Technology
+          </p>
         </div>
       </footer>
     </div>
 
     <!-- Quick View Student Modal -->
-    <div class="modal fade" id="quickViewModal" tabindex="-1" aria-hidden="true">
+    <div
+      class="modal fade"
+      id="quickViewModal"
+      tabindex="-1"
+      aria-hidden="true"
+    >
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content modal-content-custom overflow-hidden">
           <div class="modal-header modal-header-custom p-4 border-0">
             <div class="d-flex align-items-center gap-3">
               <div class="avatar-initials fs-4 p-3" id="modalAvatar">S</div>
               <div>
-                <h4 class="modal-title fw-bold text-white mb-0" id="modalStudentName">Student Name</h4>
-                <small class="text-white-50" id="modalRollSem">Roll: IT2024001 | Semester 3</small>
+                <h4
+                  class="modal-title fw-bold text-white mb-0"
+                  id="modalStudentName"
+                >
+                  Student Name
+                </h4>
+                <small class="text-white-50" id="modalRollSem"
+                  >Roll: IT2024001 | Semester 3</small
+                >
               </div>
             </div>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
           </div>
           <div class="modal-body p-4" id="modalBodyContent">
             <div class="text-center py-5">
@@ -682,9 +1011,22 @@
               <p class="mt-2 text-muted">Fetching student details...</p>
             </div>
           </div>
-          <div class="modal-footer border-0 p-3 bg-light d-flex justify-content-between">
-            <button type="button" class="btn btn-outline-custom rounded-pill" data-bs-dismiss="modal">Close</button>
-            <a href="#" id="modalFullProfileBtn" class="btn btn-primary-custom rounded-pill px-4">Open Full Profile Page</a>
+          <div
+            class="modal-footer border-0 p-3 bg-light d-flex justify-content-between"
+          >
+            <button
+              type="button"
+              class="btn btn-outline-custom rounded-pill"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <a
+              href="#"
+              id="modalFullProfileBtn"
+              class="btn btn-primary-custom rounded-pill px-4"
+              >Open Full Profile Page</a
+            >
           </div>
         </div>
       </div>

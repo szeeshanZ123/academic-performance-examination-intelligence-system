@@ -81,23 +81,36 @@ def get_analytics_summary(students_df, marks_df, selected_semester=None):
 def get_teacher_subject_analytics(subject, semester, marks_df, attendance_df, students_df):
     """
     Compute specific analytics, KPIs, distributions, and student lists
-    strictly for a single Subject + Semester assignment.
+    strictly for a single Subject + Semester assignment for the CURRENT student cohort.
     """
     try:
         sem_num = int(semester)
     except (ValueError, TypeError):
         sem_num = semester
 
-    # Filter marks for this specific Subject & Semester
+    # 1. Authoritative current cohort from students_df
+    roll_col = "Roll" if "Roll" in students_df.columns else "Roll_No"
+    name_col = "Name" if "Name" in students_df.columns else "Student_Name"
+
+    # Filter active students whose CURRENT semester equals sem_num
+    curr_cohort = students_df[students_df["Semester"] == sem_num].copy()
+    if "Status" in curr_cohort.columns:
+        curr_cohort = curr_cohort[curr_cohort["Status"].astype(str).str.strip().str.capitalize() == "Active"]
+    
+    current_rolls = set(curr_cohort[roll_col].astype(str).str.strip().str.lower())
+
+    # 2. Filter marks for current cohort + specific Subject & Semester
     subj_marks = marks_df[
         (marks_df["Semester"] == sem_num) &
-        (marks_df["Subject"].astype(str).str.strip().str.lower() == str(subject).strip().lower())
+        (marks_df["Subject"].astype(str).str.strip().str.lower() == str(subject).strip().lower()) &
+        (marks_df["Roll_No"].astype(str).str.strip().str.lower().isin(current_rolls))
     ].copy()
 
-    # Filter attendance for this specific Subject & Semester
+    # 3. Filter attendance for current cohort + specific Subject & Semester
     subj_att = attendance_df[
         (attendance_df["Semester"] == sem_num) &
-        (attendance_df["Subject"].astype(str).str.strip().str.lower() == str(subject).strip().lower())
+        (attendance_df["Subject"].astype(str).str.strip().str.lower() == str(subject).strip().lower()) &
+        (attendance_df["Roll_No"].astype(str).str.strip().str.lower().isin(current_rolls))
     ].copy()
 
     # If no marks found
@@ -229,6 +242,10 @@ def get_teacher_subject_analytics(subject, semester, marks_df, attendance_df, st
         student_records.append(rec)
         if is_risk:
             at_risk_students.append(rec)
+
+    # Sort student records deterministically: Highest Total first, Roll ascending tiebreaker
+    student_records.sort(key=lambda s: (-s["Total"], str(s["Roll"]).lower()))
+    at_risk_students.sort(key=lambda s: (-s["Total"], str(s["Roll"]).lower()))
 
     at_risk_count = len(at_risk_students)
 

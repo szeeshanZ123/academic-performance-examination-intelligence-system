@@ -504,14 +504,27 @@
       <div class="card border-0 rounded-4 shadow-sm">
         <div class="card-header bg-white py-3 px-4 rounded-top-4 border-bottom d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
           <div>
-            <h5 class="fw-bold mb-1 text-dark">
-              <i class="bi bi-table text-primary me-2"></i>Class Performance Roster
-            </h5>
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <h5 class="fw-bold mb-0 text-dark">
+                <i class="bi bi-table text-primary me-2"></i>Class Performance Roster
+              </h5>
+              <span id="rosterCountBadge" class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 rounded-pill px-2.5 py-1 small">
+                Showing 10 of {{ students|length }} students
+              </span>
+            </div>
             <p class="text-muted small mb-0">Enrolled students in <strong>{{ selected_subject }}</strong> (Semester {{ selected_semester }})</p>
           </div>
 
-          <div class="d-flex align-items-center gap-2">
-            <div class="input-group input-group-sm" style="max-width: 260px;">
+          <div class="d-flex flex-wrap align-items-center gap-3">
+            <div class="d-flex align-items-center gap-2">
+              <label for="displayLimitSelect" class="small text-muted fw-semibold text-nowrap mb-0">Students to Display:</label>
+              <select id="displayLimitSelect" class="form-select form-select-sm bg-light border" style="width: auto;">
+                <option value="10" selected>Top 10</option>
+                <option value="all">All Students</option>
+              </select>
+            </div>
+
+            <div class="input-group input-group-sm" style="max-width: 240px;">
               <span class="input-group-text bg-light border-end-0"><i class="bi bi-search text-muted"></i></span>
               <input type="text" id="rosterSearch" class="form-control bg-light border-start-0" placeholder="Search Roll or Name..." />
             </div>
@@ -707,18 +720,59 @@
         }
       });
 
-      // Roster Table Client-side Search Filter
+      // Roster Table Client-side Search and Display Limit (Top 10 vs All) Filter
       const searchInput = document.getElementById('rosterSearch');
-      if (searchInput) {
-        searchInput.addEventListener('input', function() {
-          const query = this.value.toLowerCase().trim();
-          const rows = document.querySelectorAll('#rosterTable tbody tr');
-          rows.forEach(row => {
+      const displaySelect = document.getElementById('displayLimitSelect');
+      const countBadge = document.getElementById('rosterCountBadge');
+      const tableRows = Array.from(document.querySelectorAll('#rosterTable tbody tr'));
+      const totalCohortCount = tableRows.length;
+
+      function updateRosterView() {
+        const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+        const limitMode = displaySelect ? displaySelect.value : '10';
+
+        if (query !== '') {
+          // In search mode: Search across all students in the current cohort
+          let matchCount = 0;
+          tableRows.forEach(row => {
             const text = row.innerText.toLowerCase();
-            row.style.display = text.includes(query) ? '' : 'none';
+            const matches = text.includes(query);
+            row.style.display = matches ? '' : 'none';
+            if (matches) matchCount++;
           });
-        });
+          if (countBadge) {
+            countBadge.textContent = `Showing ${matchCount} of ${totalCohortCount} matching students`;
+          }
+        } else {
+          // No search query: Apply display limit (Top 10 vs All)
+          if (limitMode === '10') {
+            const visibleLimit = Math.min(10, totalCohortCount);
+            tableRows.forEach((row, index) => {
+              row.style.display = index < 10 ? '' : 'none';
+            });
+            if (countBadge) {
+              countBadge.textContent = `Showing ${visibleLimit} of ${totalCohortCount} students`;
+            }
+          } else {
+            tableRows.forEach(row => {
+              row.style.display = '';
+            });
+            if (countBadge) {
+              countBadge.textContent = `Showing all ${totalCohortCount} students`;
+            }
+          }
+        }
       }
+
+      if (searchInput) {
+        searchInput.addEventListener('input', updateRosterView);
+      }
+      if (displaySelect) {
+        displaySelect.addEventListener('change', updateRosterView);
+      }
+
+      // Initialize view on page load (defaults to Top 10)
+      updateRosterView();
     </script>
   </body>
 </html>

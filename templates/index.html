@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -513,73 +514,37 @@
               <option value="">All Semesters (Sem 1 - 6)</option>
               <option
                 value="1"
-                {%
-                if
-                selected_semester=""
-                ="1"
-                %}selected{%
-                endif
-                %}
+                {% if selected_semester == "1" %}selected{% endif %}
               >
                 Semester 1 (Python, Math I, Comm, Dig Elec)
               </option>
               <option
                 value="2"
-                {%
-                if
-                selected_semester=""
-                ="2"
-                %}selected{%
-                endif
-                %}
+                {% if selected_semester == "2" %}selected{% endif %}
               >
                 Semester 2 (DS, DBMS, Stats, Web Dev)
               </option>
               <option
                 value="3"
-                {%
-                if
-                selected_semester=""
-                ="3"
-                %}selected{%
-                endif
-                %}
+                {% if selected_semester == "3" %}selected{% endif %}
               >
                 Semester 3 (Data Analytics, OS, CN, SE)
               </option>
               <option
                 value="4"
-                {%
-                if
-                selected_semester=""
-                ="4"
-                %}selected{%
-                endif
-                %}
+                {% if selected_semester == "4" %}selected{% endif %}
               >
                 Semester 4 (Java, Data Vis, Cloud, AI)
               </option>
               <option
                 value="5"
-                {%
-                if
-                selected_semester=""
-                ="5"
-                %}selected{%
-                endif
-                %}
+                {% if selected_semester == "5" %}selected{% endif %}
               >
                 Semester 5 (ML, Cyber Sec, Cloud Arch, DevOps)
               </option>
               <option
                 value="6"
-                {%
-                if
-                selected_semester=""
-                ="6"
-                %}selected{%
-                endif
-                %}
+                {% if selected_semester == "6" %}selected{% endif %}
               >
                 Semester 6 (Big Data, DL, NLP, Capstone)
               </option>
@@ -601,25 +566,13 @@
               <option value="">All Divisions</option>
               <option
                 value="A"
-                {%
-                if
-                selected_division=""
-                ="A"
-                %}selected{%
-                endif
-                %}
+                {% if selected_division == "A" %}selected{% endif %}
               >
                 Division A
               </option>
               <option
                 value="B"
-                {%
-                if
-                selected_division=""
-                ="B"
-                %}selected{%
-                endif
-                %}
+                {% if selected_division == "B" %}selected{% endif %}
               >
                 Division B
               </option>
@@ -639,25 +592,13 @@
               <option value="">All Performance Levels</option>
               <option
                 value="at_risk"
-                {%
-                if
-                selected_risk=""
-                ="at_risk"
-                %}selected{%
-                endif
-                %}
+                {% if selected_risk == "at_risk" %}selected{% endif %}
               >
                 At Risk Only (&lt;75% / &lt;6 SGPI)
               </option>
               <option
                 value="honors"
-                {%
-                if
-                selected_risk=""
-                ="honors"
-                %}selected{%
-                endif
-                %}
+                {% if selected_risk == "honors" %}selected{% endif %}
               >
                 Honors Only (&ge;8.5 SGPI)
               </option>

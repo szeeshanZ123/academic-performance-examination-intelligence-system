@@ -26,6 +26,11 @@ from analysis.analytics import (
     get_teacher_subject_analytics
 )
 
+from ml.predictor import (
+    predict_external_marks,
+    classify_predicted_performance
+)
+
 
 app = Flask(__name__)
 
@@ -456,6 +461,39 @@ def student_dashboard():
         flash("Student record not found.", "danger")
         return redirect(url_for("login"))
 
+    # Generate AI-Based External Marks Predictions for current semester subjects
+    predictions = []
+    prediction_available = True
+    try:
+        current_semester = int(detail["student"]["Semester"])
+        for subj in detail["subjects_list"]:
+            subj_name = str(subj["subject"]).strip()
+            int_marks = float(subj["internal"])
+            att = float(subj["attendance"])
+
+            # Pass ONLY: Internal, Attendance, Semester, Subject
+            pred_ext = predict_external_marks(
+                internal_marks=int_marks,
+                attendance=att,
+                semester=current_semester,
+                subject=subj_name,
+            )
+            pred_total = round(int_marks + pred_ext, 2)
+            perf = classify_predicted_performance(pred_total)
+
+            predictions.append({
+                "subject": subj_name,
+                "internal": int_marks,
+                "attendance": att,
+                "predicted_external": pred_ext,
+                "predicted_total": pred_total,
+                "performance": perf,
+            })
+    except Exception as e:
+        app.logger.warning(f"ML prediction error for student {roll}: {e}")
+        predictions = []
+        prediction_available = False
+
     return render_template(
         "student_dashboard.html",
         student=detail["student"],
@@ -466,7 +504,9 @@ def student_dashboard():
         overall_performance=detail["overall_performance"],
         attendance_status=detail["attendance_status"],
         academic_risk=detail["academic_risk"],
-        recommendations=detail["recommendations"]
+        recommendations=detail["recommendations"],
+        predictions=predictions,
+        prediction_available=prediction_available,
     )
 
 # =========================================================

@@ -23,7 +23,8 @@ from utils.data_loader import (
 from analysis.analytics import (
     dashboard_kpis,
     get_analytics_summary,
-    get_teacher_subject_analytics
+    get_teacher_subject_analytics,
+    get_student_semester_trend
 )
 
 from ml.predictor import (
@@ -494,6 +495,9 @@ def student_dashboard():
         predictions = []
         prediction_available = False
 
+    # Generate Semester Performance & Attendance Trend Analytics
+    trend_info = get_student_semester_trend(roll)
+
     return render_template(
         "student_dashboard.html",
         student=detail["student"],
@@ -507,6 +511,11 @@ def student_dashboard():
         recommendations=detail["recommendations"],
         predictions=predictions,
         prediction_available=prediction_available,
+        trend_summary=trend_info["summary"],
+        trend_labels=trend_info["labels"],
+        sgpi_trend=trend_info["sgpi_trend"],
+        attendance_trend=trend_info["attendance_trend"],
+        has_multiple_semesters=trend_info["has_multiple_semesters"],
     )
 
 # =========================================================

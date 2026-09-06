@@ -334,6 +334,88 @@
         {% endif %}
       </div>
 
+      <!-- Semester Performance Trend Section -->
+      <div class="card-custom p-4 mb-4">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <h5 class="fw-bold mb-0 text-dark">
+            <i class="bi bi-graph-up-arrow text-primary me-2"></i> Semester Performance Trend
+          </h5>
+          <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-1 rounded-pill fw-semibold fs-8">
+            Historical Progression
+          </span>
+        </div>
+
+        <!-- Performance Summary Metric Boxes -->
+        <div class="row g-3 mb-4">
+          <div class="col-6 col-md">
+            <div class="metric-box text-center p-3">
+              <span class="text-muted text-uppercase fw-semibold fs-8 d-block mb-1">Current Sem SGPI</span>
+              <h3 class="fw-extrabold text-primary mb-0">{{ trend_summary.current_sgpi }}</h3>
+            </div>
+          </div>
+          <div class="col-6 col-md">
+            <div class="metric-box text-center p-3">
+              <span class="text-muted text-uppercase fw-semibold fs-8 d-block mb-1">Highest SGPI</span>
+              <h3 class="fw-extrabold text-success mb-0">{{ trend_summary.highest_sgpi }}</h3>
+            </div>
+          </div>
+          <div class="col-6 col-md">
+            <div class="metric-box text-center p-3">
+              <span class="text-muted text-uppercase fw-semibold fs-8 d-block mb-1">Average SGPI</span>
+              <h3 class="fw-extrabold text-dark mb-0">{{ trend_summary.average_sgpi }}</h3>
+            </div>
+          </div>
+          <div class="col-6 col-md">
+            <div class="metric-box text-center p-3">
+              <span class="text-muted text-uppercase fw-semibold fs-8 d-block mb-1">Current Attendance</span>
+              <h3 class="fw-extrabold {% if trend_summary.current_attendance >= 75 %}text-success{% else %}text-danger{% endif %} mb-0">{{ trend_summary.current_attendance }}%</h3>
+            </div>
+          </div>
+          <div class="col-6 col-md">
+            <div class="metric-box text-center p-3">
+              <span class="text-muted text-uppercase fw-semibold fs-8 d-block mb-1">Overall Avg Attendance</span>
+              <h3 class="fw-extrabold text-info mb-0">{{ trend_summary.overall_average_attendance }}%</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trend Line Charts -->
+        <div class="row g-4">
+          <!-- SGPI Progression Line Chart -->
+          <div class="col-lg-6">
+            <div class="p-3 border rounded-3 bg-light h-100">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <span class="fw-bold text-dark fs-7"><i class="bi bi-award text-primary me-1"></i> SGPI Progression</span>
+                <span class="text-muted fs-8">Scale 0 - 10.0</span>
+              </div>
+              <div style="position: relative; height: 240px; width: 100%;">
+                <canvas id="sgpiTrendChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Attendance Progression Line Chart -->
+          <div class="col-lg-6">
+            <div class="p-3 border rounded-3 bg-light h-100">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <span class="fw-bold text-dark fs-7"><i class="bi bi-calendar-check text-success me-1"></i> Attendance Trend</span>
+                <span class="text-muted fs-8">Benchmark 75%</span>
+              </div>
+              <div style="position: relative; height: 240px; width: 100%;">
+                <canvas id="attendanceTrendChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% if not has_multiple_semesters %}
+        <div class="alert alert-info border-0 bg-info-subtle text-info-emphasis mt-3 mb-0 rounded-3 d-flex align-items-center gap-2 small">
+          <i class="bi bi-info-circle-fill flex-shrink-0"></i>
+          <span>Semester trend will become available as more semester results are recorded.</span>
+        </div>
+        {% endif %}
+      </div>
+
       <!-- Marks Breakdown Chart & Insights Engine -->
       <div class="row g-4 mb-4">
         <!-- Internal vs External Chart -->
@@ -384,51 +466,148 @@
       </div>
     </div>
 
-    <!-- Student Subject Marks Data -->
+    <!-- Student Data for Charts -->
     <script id="studentSubjectsData" type="application/json">{{ subjects_list|tojson }}</script>
+    <script id="trendLabelsData" type="application/json">{{ trend_labels|tojson }}</script>
+    <script id="sgpiTrendData" type="application/json">{{ sgpi_trend|tojson }}</script>
+    <script id="attendanceTrendData" type="application/json">{{ attendance_trend|tojson }}</script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+      // 1. Internal vs External Subject Marks Bar Chart
       const subjectsDataEl = document.getElementById('studentSubjectsData');
       const subjectsData = subjectsDataEl ? JSON.parse(subjectsDataEl.textContent) : [];
       const labels = subjectsData.map(s => s.subject);
       const internalMarks = subjectsData.map(s => s.internal);
       const externalMarks = subjectsData.map(s => s.external);
 
-      new Chart(document.getElementById('studentMarksChart').getContext('2d'), {
-        type: 'bar',
-        data: {
-          labels: labels,
-          datasets: [
-            {
-              label: 'Internal Marks (/30)',
-              data: internalMarks,
-              backgroundColor: '#818cf8',
-              borderRadius: 6,
-              barThickness: 20
-            },
-            {
-              label: 'External Marks (/70)',
-              data: externalMarks,
-              backgroundColor: '#4f46e5',
-              borderRadius: 6,
-              barThickness: 20
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { position: 'top' }
+      const barCanvas = document.getElementById('studentMarksChart');
+      if (barCanvas && labels.length > 0) {
+        new Chart(barCanvas.getContext('2d'), {
+          type: 'bar',
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                label: 'Internal Marks (/30)',
+                data: internalMarks,
+                backgroundColor: '#818cf8',
+                borderRadius: 6,
+                barThickness: 20
+              },
+              {
+                label: 'External Marks (/70)',
+                data: externalMarks,
+                backgroundColor: '#4f46e5',
+                borderRadius: 6,
+                barThickness: 20
+              }
+            ]
           },
-          scales: {
-            y: { beginAtZero: true, max: 70, grid: { color: '#f1f5f9' } },
-            x: { grid: { display: false } }
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { position: 'top' }
+            },
+            scales: {
+              y: { beginAtZero: true, max: 70, grid: { color: '#f1f5f9' } },
+              x: { grid: { display: false } }
+            }
           }
-        }
-      });
+        });
+      }
+
+      // 2. Semester SGPI Line Chart
+      const trendLabelsEl = document.getElementById('trendLabelsData');
+      const sgpiTrendEl = document.getElementById('sgpiTrendData');
+      const attendanceTrendEl = document.getElementById('attendanceTrendData');
+
+      const trendLabels = trendLabelsEl ? JSON.parse(trendLabelsEl.textContent) : [];
+      const sgpiData = sgpiTrendEl ? JSON.parse(sgpiTrendEl.textContent) : [];
+      const attendanceData = attendanceTrendEl ? JSON.parse(attendanceTrendEl.textContent) : [];
+
+      const sgpiCanvas = document.getElementById('sgpiTrendChart');
+      if (sgpiCanvas && trendLabels.length > 0) {
+        new Chart(sgpiCanvas.getContext('2d'), {
+          type: 'line',
+          data: {
+            labels: trendLabels,
+            datasets: [{
+              label: 'SGPI',
+              data: sgpiData,
+              borderColor: '#4f46e5',
+              backgroundColor: 'rgba(79, 70, 229, 0.1)',
+              borderWidth: 2.5,
+              fill: true,
+              tension: 0.3,
+              pointBackgroundColor: '#4f46e5',
+              pointBorderColor: '#ffffff',
+              pointBorderWidth: 2,
+              pointRadius: 5,
+              pointHoverRadius: 7
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: function(ctx) { return 'SGPI: ' + ctx.parsed.y + ' / 10.0'; }
+                }
+              }
+            },
+            scales: {
+              y: { beginAtZero: true, max: 10.0, grid: { color: '#e2e8f0' } },
+              x: { grid: { display: false } }
+            }
+          }
+        });
+      }
+
+      // 3. Semester Attendance Line Chart
+      const attendanceCanvas = document.getElementById('attendanceTrendChart');
+      if (attendanceCanvas && trendLabels.length > 0) {
+        new Chart(attendanceCanvas.getContext('2d'), {
+          type: 'line',
+          data: {
+            labels: trendLabels,
+            datasets: [{
+              label: 'Attendance (%)',
+              data: attendanceData,
+              borderColor: '#0ea5e9',
+              backgroundColor: 'rgba(14, 165, 233, 0.1)',
+              borderWidth: 2.5,
+              fill: true,
+              tension: 0.3,
+              pointBackgroundColor: '#0ea5e9',
+              pointBorderColor: '#ffffff',
+              pointBorderWidth: 2,
+              pointRadius: 5,
+              pointHoverRadius: 7
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: function(ctx) { return 'Attendance: ' + ctx.parsed.y + '%'; }
+                }
+              }
+            },
+            scales: {
+              y: { beginAtZero: true, max: 100, grid: { color: '#e2e8f0' } },
+              x: { grid: { display: false } }
+            }
+          }
+        });
+      }
     </script>
   </body>
 </html>

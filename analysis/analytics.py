@@ -251,3 +251,122 @@ def get_teacher_subject_analytics(subject, semester, marks_df, attendance_df, st
         "at_risk_students": at_risk_students,
         "students": student_records
     }
+
+
+def get_student_semester_trend(roll_no, marks_df=None, attendance_df=None):
+    """
+    Computes semester-wise performance and attendance trends for a specified student.
+    
+    Parameters:
+        roll_no (str): Student roll number.
+        marks_df (pd.DataFrame, optional): Raw marks DataFrame.
+        attendance_df (pd.DataFrame, optional): Raw attendance DataFrame.
+        
+    Returns:
+        dict containing:
+            - trend_data: list of dicts with semester-wise metrics
+            - summary: dict of summary metrics (current/highest/average SGPI & Attendance)
+            - labels: list of semester label strings
+            - sgpi_trend: list of float SGPI scores
+            - attendance_trend: list of float attendance percentages
+            - has_multiple_semesters: boolean flag
+    """
+    if marks_df is None or attendance_df is None:
+        from pathlib import Path
+        data_dir = Path(__file__).resolve().parents[1] / "data"
+        if marks_df is None:
+            marks_df = pd.read_csv(data_dir / "marks.csv")
+        if attendance_df is None:
+            attendance_df = pd.read_csv(data_dir / "attendance.csv")
+
+    roll_str = str(roll_no).strip().lower()
+
+    # Filter student records
+    student_marks = marks_df[marks_df["Roll_No"].astype(str).str.strip().str.lower() == roll_str].copy()
+    student_att = attendance_df[attendance_df["Roll_No"].astype(str).str.strip().str.lower() == roll_str].copy()
+
+    if student_marks.empty:
+        return {
+            "trend_data": [],
+            "summary": {
+                "current_sgpi": 0.0,
+                "highest_sgpi": 0.0,
+                "average_sgpi": 0.0,
+                "current_attendance": 0.0,
+                "overall_average_attendance": 0.0,
+                "total_semesters": 0,
+            },
+            "labels": [],
+            "sgpi_trend": [],
+            "attendance_trend": [],
+            "has_multiple_semesters": False,
+        }
+
+    # Merge on Roll_No, Semester, Subject
+    merged = pd.merge(
+        student_marks,
+        student_att[["Roll_No", "Semester", "Subject", "Attendance"]],
+        on=["Roll_No", "Semester", "Subject"],
+        how="left"
+    )
+
+    merged["Total"] = pd.to_numeric(merged["Total"], errors="coerce").fillna(0)
+    merged["Internal"] = pd.to_numeric(merged["Internal"], errors="coerce").fillna(0)
+    merged["External"] = pd.to_numeric(merged["External"], errors="coerce").fillna(0)
+    merged["Attendance"] = pd.to_numeric(merged["Attendance"], errors="coerce").fillna(0)
+
+    # Sort available semesters
+    unique_semesters = sorted(merged["Semester"].unique())
+
+    trend_data = []
+    labels = []
+    sgpi_trend = []
+    attendance_trend = []
+
+    for sem in unique_semesters:
+        sem_df = merged[merged["Semester"] == sem]
+        avg_total = round(float(sem_df["Total"].mean()), 2)
+        avg_internal = round(float(sem_df["Internal"].mean()), 2)
+        avg_external = round(float(sem_df["External"].mean()), 2)
+        avg_attendance = round(float(sem_df["Attendance"].mean()), 2)
+        # SGPI calculated using project standard: Total / 10
+        sgpi = round(avg_total / 10.0, 2)
+
+        trend_data.append({
+            "semester": int(sem),
+            "average_total": avg_total,
+            "average_internal": avg_internal,
+            "average_external": avg_external,
+            "average_attendance": avg_attendance,
+            "sgpi": sgpi,
+        })
+
+        labels.append(f"Semester {sem}")
+        sgpi_trend.append(sgpi)
+        attendance_trend.append(avg_attendance)
+
+    # Compute summary metrics
+    current_sgpi = sgpi_trend[-1] if sgpi_trend else 0.0
+    highest_sgpi = max(sgpi_trend) if sgpi_trend else 0.0
+    average_sgpi = round(sum(sgpi_trend) / len(sgpi_trend), 2) if sgpi_trend else 0.0
+    current_attendance = attendance_trend[-1] if attendance_trend else 0.0
+    overall_avg_attendance = round(sum(attendance_trend) / len(attendance_trend), 2) if attendance_trend else 0.0
+
+    summary = {
+        "current_sgpi": current_sgpi,
+        "highest_sgpi": highest_sgpi,
+        "average_sgpi": average_sgpi,
+        "current_attendance": current_attendance,
+        "overall_average_attendance": overall_avg_attendance,
+        "total_semesters": len(trend_data),
+    }
+
+    return {
+        "trend_data": trend_data,
+        "summary": summary,
+        "labels": labels,
+        "sgpi_trend": sgpi_trend,
+        "attendance_trend": attendance_trend,
+        "has_multiple_semesters": len(trend_data) > 1,
+    }
+

@@ -149,6 +149,11 @@ def train_and_evaluate():
     )
     print("-" * 50)
 
+    # Leakage Check Assertion
+    for forbidden in ["Total", "Grade", "SGPI", "Attendance_Status", "Academic_Risk"]:
+        assert forbidden not in X.columns, f"Data leakage detected! '{forbidden}' found in feature matrix."
+    assert y.name == TARGET_FEATURE, f"Target must be {TARGET_FEATURE}, got {y.name}"
+
     # 4. Build and train model pipeline
     print("\nTraining RandomForestRegressor model (n_estimators=200, random_state=42)...")
     pipeline = build_regression_pipeline(n_estimators=200, random_state=42)
@@ -171,22 +176,38 @@ def train_and_evaluate():
     mae_improvement_pct = ((baseline_mae - mae) / baseline_mae) * 100
 
     print("\n" + "=" * 50)
-    print("===== BASELINE vs ML MODEL COMPARISON =====")
+    print("ML MODEL PERFORMANCE — UPDATED DATASET")
+    print("=" * 50)
+    print(f"Total Records   : {len(X)}")
+    print(f"Training Records: {len(X_train)} (80%)")
+    print(f"Testing Records : {len(X_test)} (20%)")
+    print(f"\nFeatures        : {ALL_FEATURES}")
+    print(f"Target          : {TARGET_FEATURE}")
+    print(f"Model           : RandomForestRegressor (n_estimators=200, random_state=42)")
+    print("-" * 50)
     print(f"Mean External Mark (Train Set): {train_mean_external:.2f}")
     print(f"Baseline MAE (Mean Predictor) : {baseline_mae:.4f}")
     print(f"ML Model MAE (Random Forest)  : {mae:.4f}")
-    print(f"MAE Error Reduction           : {mae_improvement_pct:.2f}%")
-    print(f"Better than Baseline?         : {'YES (ML model is substantially more accurate)' if mae < baseline_mae else 'NO'}")
+    print(f"RMSE                          : {rmse:.4f}")
+    print(f"R² Score                      : {r2:.4f}")
+    print(f"MAE Error Reduction vs Baseline: {mae_improvement_pct:.2f}%")
     print("=" * 50)
 
-    print("\n" + "=" * 50)
-    print("===== ML MODEL PERFORMANCE =====")
-    print(f"MAE : {mae:.4f}")
-    print(f"RMSE: {rmse:.4f}")
-    print(f"R²  : {r2:.4f}")
-    print("=" * 50)
+    # 6. Model Comparison (Old vs New Dataset)
+    print("\n" + "=" * 60)
+    print("MODEL COMPARISON (OLD DATASET vs NEW LONGITUDINAL DATASET)")
+    print("=" * 60)
+    print(f"{'Metric':<18} | {'Old Model (1,440 records)':<26} | {'New Model (5,040 records)':<26}")
+    print("-" * 60)
+    print(f"{'Total Records':<18} | {'1,440':<26} | {len(X):<26}")
+    print(f"{'Train / Test':<18} | {'1,152 / 288':<26} | {f'{len(X_train)} / {len(X_test)}':<26}")
+    print(f"{'Baseline MAE':<18} | {'8.8438':<26} | {baseline_mae:<26.4f}")
+    print(f"{'ML MAE':<18} | {'4.7247':<26} | {mae:<26.4f}")
+    print(f"{'RMSE':<18} | {'5.7713':<26} | {rmse:<26.4f}")
+    print(f"{'R² Score':<18} | {'0.7129':<26} | {r2:<26.4f}")
+    print("=" * 60)
 
-    # 6. Sample Predictions vs Actuals
+    # 7. Sample Predictions vs Actuals
     sample_comparison = pd.DataFrame(
         {
             "Subject": X_test["Subject"].values[:10],
@@ -203,7 +224,7 @@ def train_and_evaluate():
     print(sample_comparison.to_string(index=False))
     print("=" * 50 + "\n")
 
-    # 7. Save model pipeline
+    # 8. Save model pipeline
     MODELS_DIR.mkdir(parents=True, exist_ok=True)
     joblib.dump(pipeline, MODEL_SAVE_PATH)
     print(f"Trained ML Pipeline successfully saved to: {MODEL_SAVE_PATH}\n")

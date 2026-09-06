@@ -226,7 +226,7 @@ def train_and_evaluate():
 
     # 8. Save model pipeline
     MODELS_DIR.mkdir(parents=True, exist_ok=True)
-    joblib.dump(pipeline, MODEL_SAVE_PATH)
+    joblib.dump(pipeline, MODEL_SAVE_PATH, compress=3)
     print(f"Trained ML Pipeline successfully saved to: {MODEL_SAVE_PATH}\n")
 
     return {

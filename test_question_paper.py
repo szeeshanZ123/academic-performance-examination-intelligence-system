@@ -33,7 +33,7 @@ class TestQuestionPaperIntelligence(unittest.TestCase):
         cls.txt_path = Path(cls.temp_dir) / "test_paper.txt"
         with open(cls.txt_path, "w", encoding="utf-8") as f:
             f.write(
-                "APEX UNIVERSITY EXAM\n"
+                "UNIVERSITY EXAMINATION\n"
                 "Max Marks: 50\n\n"
                 "Q1. (a) Define Machine Learning and state its types. [5]\n"
                 "Q1. (b) Explain Linear Regression with cost function. [5]\n"
@@ -46,7 +46,7 @@ class TestQuestionPaperIntelligence(unittest.TestCase):
         # 2. Create a Test DOCX paper
         cls.docx_path = Path(cls.temp_dir) / "test_paper.docx"
         doc = docx.Document()
-        doc.add_heading("APEX UNIVERSITY SEMESTER EXAM", level=1)
+        doc.add_heading("UNIVERSITY SEMESTER EXAM", level=1)
         doc.add_paragraph("Total Marks: 30")
         doc.add_paragraph("1. Define Normalization and explain 1NF. (5 Marks)")
         doc.add_paragraph("2. Write SQL query to join Employee and Department tables. (10 Marks)")
@@ -60,7 +60,7 @@ class TestQuestionPaperIntelligence(unittest.TestCase):
         page = pdf_doc.new_page()
         page.insert_text(
             (50, 72),
-            "APEX INSTITUTE OF TECHNOLOGY\n"
+            "INSTITUTE OF TECHNOLOGY\n"
             "Maximum Marks: 40\n\n"
             "Q1. What is an Operating System? List its primary functions. [5]\n"
             "Q2. Explain CPU Scheduling algorithms: FCFS and Round Robin. [10]\n"
@@ -135,7 +135,7 @@ class TestQuestionPaperIntelligence(unittest.TestCase):
         self.assertEqual(t3, "What is a Database?")
 
     def test_declared_total_marks(self):
-        text = "APEX UNIVERSITY\nSubject: DBMS\nMax Marks: 70\nTime: 3 Hours"
+        text = "UNIVERSITY EXAM\nSubject: DBMS\nMax Marks: 70\nTime: 3 Hours"
         self.assertEqual(extract_declared_total_marks(text), 70)
 
         text2 = "College Exam\nTotal Marks: 100\nDate: 2026"

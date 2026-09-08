@@ -319,6 +319,19 @@ def get_student_semester_trend(roll_no, marks_df=None, attendance_df=None):
             "has_multiple_semesters": False,
         }
 
+    # Normalize types for robust merging
+    student_marks["Roll_No"] = student_marks["Roll_No"].astype(str).str.strip()
+    student_marks["Semester"] = pd.to_numeric(student_marks["Semester"], errors="coerce").fillna(1).astype(int)
+    student_marks["Subject"] = student_marks["Subject"].astype(str).str.strip()
+    student_marks["Total"] = pd.to_numeric(student_marks["Total"], errors="coerce").fillna(0)
+    student_marks["Internal"] = pd.to_numeric(student_marks["Internal"], errors="coerce").fillna(0)
+    student_marks["External"] = pd.to_numeric(student_marks["External"], errors="coerce").fillna(0)
+
+    student_att["Roll_No"] = student_att["Roll_No"].astype(str).str.strip()
+    student_att["Semester"] = pd.to_numeric(student_att["Semester"], errors="coerce").fillna(1).astype(int)
+    student_att["Subject"] = student_att["Subject"].astype(str).str.strip()
+    student_att["Attendance"] = pd.to_numeric(student_att["Attendance"], errors="coerce").fillna(0)
+
     # Merge on Roll_No, Semester, Subject
     merged = pd.merge(
         student_marks,
@@ -327,13 +340,10 @@ def get_student_semester_trend(roll_no, marks_df=None, attendance_df=None):
         how="left"
     )
 
-    merged["Total"] = pd.to_numeric(merged["Total"], errors="coerce").fillna(0)
-    merged["Internal"] = pd.to_numeric(merged["Internal"], errors="coerce").fillna(0)
-    merged["External"] = pd.to_numeric(merged["External"], errors="coerce").fillna(0)
-    merged["Attendance"] = pd.to_numeric(merged["Attendance"], errors="coerce").fillna(0)
+    merged["Attendance"] = merged["Attendance"].fillna(0)
 
-    # Sort available semesters
-    unique_semesters = sorted(merged["Semester"].unique())
+    # Sort available semesters numerically
+    unique_semesters = sorted([int(s) for s in merged["Semester"].unique()])
 
     trend_data = []
     labels = []

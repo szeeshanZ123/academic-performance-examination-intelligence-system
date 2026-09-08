@@ -1,4 +1,4 @@
-APEX COLLEGE OF ENGINEERING
+COLLEGE OF ENGINEERING
 Department of Information Technology
 Semester I - Python Programming
 Total Marks: 70

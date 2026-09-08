@@ -549,36 +549,67 @@ def student_profile(roll):
     detail = get_student_detail(roll)
 
     if not detail:
-
         return render_template(
             "search_not_found.html",
             query=str(roll)
         )
 
+    # Generate AI-Based External Marks Predictions for current semester subjects
+    predictions = []
+    prediction_available = True
+    try:
+        current_semester = int(detail["student"]["Semester"])
+        for subj in detail["subjects_list"]:
+            subj_name = str(subj["subject"]).strip()
+            int_marks = float(subj["internal"])
+            att = float(subj["attendance"])
+
+            # Pass ONLY: Internal, Attendance, Semester, Subject
+            pred_ext = predict_external_marks(
+                internal_marks=int_marks,
+                attendance=att,
+                semester=current_semester,
+                subject=subj_name,
+            )
+            pred_total = round(int_marks + pred_ext, 2)
+            perf = classify_predicted_performance(pred_total)
+
+            predictions.append({
+                "subject": subj_name,
+                "internal": int_marks,
+                "attendance": att,
+                "predicted_external": pred_ext,
+                "predicted_total": pred_total,
+                "performance": perf,
+            })
+    except Exception as e:
+        app.logger.warning(f"ML prediction error for student profile {roll}: {e}")
+        predictions = []
+        prediction_available = False
+
+    # Generate Semester Performance & Attendance Trend Analytics
+    trend_info = get_student_semester_trend(roll)
     admin_info = get_admin_info()
 
     return render_template(
         "student.html",
-
         student=detail["student"],
-
         subjects_list=detail["subjects_list"],
-
         strongest_subject=detail["strongest_subject"],
-
         weakest_subject=detail["weakest_subject"],
-
         average_marks=detail["average_marks"],
-
         overall_performance=detail["overall_performance"],
-
         attendance_status=detail["attendance_status"],
-
         academic_risk=detail["academic_risk"],
-
         recommendations=detail["recommendations"],
-
-        admin=admin_info
+        admin=admin_info,
+        predictions=predictions,
+        prediction_available=prediction_available,
+        trend_summary=trend_info["summary"],
+        trend_labels=trend_info["labels"],
+        sgpi_trend=trend_info["sgpi_trend"],
+        attendance_trend=trend_info["attendance_trend"],
+        has_multiple_semesters=trend_info["has_multiple_semesters"],
     )
 
 

@@ -19,11 +19,27 @@ SEMESTER_SUBJECTS = {
 }
 
 def load_data():
-    """Load admin, student, marks, and attendance datasets."""
+    """Load admin, student, marks, and attendance datasets with normalized types."""
     admin_df = pd.read_csv(DATA_DIR / "admin.csv")
     student_df = pd.read_csv(DATA_DIR / "students.csv")
     marks_df = pd.read_csv(DATA_DIR / "marks.csv")
     attendance_df = pd.read_csv(DATA_DIR / "attendance.csv")
+
+    # Safe type normalization
+    student_df["Roll_No"] = student_df["Roll_No"].astype(str).str.strip()
+    student_df["Semester"] = pd.to_numeric(student_df["Semester"], errors="coerce").fillna(1).astype(int)
+
+    marks_df["Roll_No"] = marks_df["Roll_No"].astype(str).str.strip()
+    marks_df["Semester"] = pd.to_numeric(marks_df["Semester"], errors="coerce").fillna(1).astype(int)
+    marks_df["Subject"] = marks_df["Subject"].astype(str).str.strip()
+    marks_df["Total"] = pd.to_numeric(marks_df["Total"], errors="coerce").fillna(0)
+    marks_df["Internal"] = pd.to_numeric(marks_df["Internal"], errors="coerce").fillna(0)
+    marks_df["External"] = pd.to_numeric(marks_df["External"], errors="coerce").fillna(0)
+
+    attendance_df["Roll_No"] = attendance_df["Roll_No"].astype(str).str.strip()
+    attendance_df["Semester"] = pd.to_numeric(attendance_df["Semester"], errors="coerce").fillna(1).astype(int)
+    attendance_df["Subject"] = attendance_df["Subject"].astype(str).str.strip()
+    attendance_df["Attendance"] = pd.to_numeric(attendance_df["Attendance"], errors="coerce").fillna(0)
 
     # Combine subject marks and subject attendance
     subject_combined = pd.merge(
@@ -47,7 +63,7 @@ def load_data():
     )
 
     # Filter active students and merge overall performance
-    students = student_df[student_df["Status"].eq("Active")].copy()
+    students = student_df[student_df["Status"].astype(str).str.strip().str.capitalize().eq("Active")].copy()
     students = students.merge(mark_summary, on=["Roll_No", "Semester"], how="left")
     students = students.merge(attendance_summary, on=["Roll_No", "Semester"], how="left")
 
@@ -160,29 +176,30 @@ def get_student_detail(roll):
     """Retrieve full student profile details, subject marks breakdown, and recommendations."""
     _, students, marks_df, attendance_df, subject_combined = load_data()
     
-    student_rows = students[students["Roll"].astype(str).str.lower() == str(roll).lower()]
+    roll_str = str(roll).strip().lower()
+    student_rows = students[students["Roll"].astype(str).str.strip().str.lower() == roll_str]
     if student_rows.empty:
         return None
 
     student = student_rows.iloc[0].to_dict()
-    roll_no = student["Roll"]
-    semester = student["Semester"]
+    roll_no = str(student["Roll"]).strip()
+    semester = int(student["Semester"])
 
-    # Retrieve subject breakdown
+    # Retrieve subject breakdown for current semester
     student_subjects = subject_combined[
-        (subject_combined["Roll_No"] == roll_no) & 
-        (subject_combined["Semester"] == semester)
+        (subject_combined["Roll_No"].astype(str).str.strip().str.lower() == roll_str) & 
+        (subject_combined["Semester"].astype(int) == semester)
     ].copy()
 
     subjects_list = []
     subject_marks_dict = {}
 
     for _, row in student_subjects.iterrows():
-        subj_name = row["Subject"]
+        subj_name = str(row["Subject"]).strip()
         tot_marks = int(row["Total"])
         int_marks = int(row["Internal"])
         ext_marks = int(row["External"])
-        grade = str(row["Grade"])
+        grade = str(row["Grade"]).strip()
         att = float(row["Attendance"])
 
         subject_marks_dict[subj_name] = tot_marks

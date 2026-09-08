@@ -1,4 +1,4 @@
-APEX UNIVERSITY EXAMINATION
+ACADEMIC EXAMINATION
 Department of Computer Science & Engineering
 Semester II - Database Management Systems (DBMS)
 Time: 3 Hours                    Max Marks: 70

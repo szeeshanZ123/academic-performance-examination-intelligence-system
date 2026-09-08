@@ -1,0 +1,28 @@
+APEX UNIVERSITY EXAMINATION
+Department of Computer Science & Engineering
+Semester II - Database Management Systems (DBMS)
+Time: 3 Hours                    Max Marks: 70
+
+Instructions:
+1. Answer all questions from Section A and any four from Section B.
+2. Figures to the right indicate full marks.
+
+--- SECTION A ---
+
+Q1. (a) Define DBMS and state three major advantages over traditional File Processing Systems. [5]
+Q1. (b) Explain the Three-Schema Architecture of DBMS with a neat diagram. [5]
+Q1. (c) What is Data Independence? Differentiate between Logical and Physical Data Independence. [5]
+
+Q2. (a) Define Primary Key, Foreign Key, Candidate Key, and Super Key with suitable examples. [5]
+Q2. (b) What is an Entity-Relationship (ER) model? Draw an ER diagram for a Hospital Management System. [5]
+
+--- SECTION B ---
+
+Q3. (a) Explain Relational Algebra operations: Selection, Projection, Cartesian Product, and Natural Join. [10]
+Q3. (b) Write SQL queries to create tables, insert records, and perform INNER JOIN and LEFT OUTER JOIN. [10]
+
+Q4. (a) Define Normalization. Explain First Normal Form (1NF), Second Normal Form (2NF), and Third Normal Form (3NF) with functional dependencies. [10]
+Q4. (b) Explain Boyce-Codd Normal Form (BCNF) and compare BCNF with 3NF. [5]
+
+Q5. (a) Explain the ACID properties of a database transaction in detail with suitable real-world banking examples. [10]
+Q5. (b) Describe Concurrency Control and explain the Two-Phase Locking (2PL) protocol. [10]

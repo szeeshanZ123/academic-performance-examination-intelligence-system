@@ -1,0 +1,900 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Question Paper Intelligence | APEX Academic System</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+      :root {
+        --primary: #4f46e5;
+        --primary-hover: #4338ca;
+        --secondary: #0ea5e9;
+        --success: #10b981;
+        --warning: #f59e0b;
+        --danger: #ef4444;
+        --dark-bg: #0f172a;
+        --body-bg: #f8fafc;
+        --card-bg: #ffffff;
+        --text-main: #1e293b;
+        --text-muted: #64748b;
+        --border-color: #e2e8f0;
+      }
+
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background-color: var(--body-bg);
+        color: var(--text-main);
+        min-height: 100vh;
+      }
+
+      /* Navbar */
+      .navbar-custom {
+        background-color: var(--dark-bg);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .brand-badge {
+        background: linear-gradient(135deg, #6366f1, #a855f7);
+        color: white;
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+
+      /* Hero Header */
+      .hero-card {
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        border-radius: 20px;
+        color: white;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+
+      .hero-card::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 350px;
+        height: 350px;
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, rgba(0, 0, 0, 0) 70%);
+        border-radius: 50%;
+      }
+
+      /* KPI Cards */
+      .kpi-card {
+        background: var(--card-bg);
+        border-radius: 16px;
+        border: 1px solid var(--border-color);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .kpi-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+      }
+
+      .icon-circle {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+      }
+
+      /* Badges */
+      .badge-soft-success { background-color: #d1fae5; color: #065f46; font-weight: 600; }
+      .badge-soft-info { background-color: #e0f2fe; color: #0369a1; font-weight: 600; }
+      .badge-soft-warning { background-color: #fef3c7; color: #92400e; font-weight: 600; }
+      .badge-soft-danger { background-color: #fee2e2; color: #991b1b; font-weight: 600; }
+      .badge-soft-purple { background-color: #f3e8ff; color: #6b21a8; font-weight: 600; }
+      .badge-soft-secondary { background-color: #f1f5f9; color: #475569; font-weight: 600; }
+
+      /* Chart Cards */
+      .chart-card {
+        background: var(--card-bg);
+        border-radius: 16px;
+        border: 1px solid var(--border-color);
+        padding: 1.5rem;
+      }
+
+      /* Table */
+      .table-custom {
+        border-collapse: separate;
+        border-spacing: 0;
+      }
+
+      .table-custom thead th {
+        background-color: #f8fafc;
+        border-bottom: 1px solid var(--border-color);
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding: 0.9rem 1rem;
+      }
+
+      .table-custom tbody td {
+        padding: 0.9rem 1rem;
+        vertical-align: middle;
+        border-bottom: 1px solid var(--border-color);
+        font-size: 0.92rem;
+      }
+
+      .table-custom tbody tr:hover td {
+        background-color: #f8fafc;
+      }
+
+      .upload-dropzone {
+        border: 2px dashed #cbd5e1;
+        border-radius: 16px;
+        background: #f8fafc;
+        transition: all 0.2s ease;
+      }
+
+      .upload-dropzone:hover {
+        border-color: var(--primary);
+        background: #f1f5f9;
+      }
+
+      .tag-badge {
+        display: inline-block;
+        font-size: 0.75rem;
+        padding: 2px 8px;
+        border-radius: 6px;
+        background: #f1f5f9;
+        color: #334155;
+        margin: 2px;
+        border: 1px solid #e2e8f0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+      <div class="container-fluid px-4 py-2">
+        <a class="navbar-brand d-flex align-items-center text-white text-decoration-none" href="{% if user_role == 'admin' %}{{ url_for('home') }}{% else %}{{ url_for('teacher_dashboard') }}{% endif %}">
+          <span class="brand-badge me-2">APEX</span>
+          <span class="fw-bold tracking-tight">Academic Intelligence</span>
+        </a>
+
+        <div class="d-flex align-items-center gap-3">
+          <a href="{% if user_role == 'admin' %}{{ url_for('home') }}{% else %}{{ url_for('teacher_dashboard') }}{% endif %}" class="btn btn-outline-light btn-sm rounded-pill px-3">
+            <i class="bi bi-arrow-left me-1"></i> Back to Dashboard
+          </a>
+          <div class="d-none d-md-flex align-items-center bg-dark bg-opacity-50 px-3 py-1.5 rounded-pill border border-secondary border-opacity-25 text-white-50 small">
+            <i class="bi bi-person-badge text-primary me-2"></i>
+            <span class="text-white fw-medium me-2">{{ user_name }}</span>
+            <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-25 text-uppercase">{{ user_role }}</span>
+          </div>
+          <a href="{{ url_for('logout') }}" class="btn btn-outline-danger btn-sm rounded-pill px-3">
+            <i class="bi bi-box-arrow-right me-1"></i> Logout
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container-fluid px-4 py-4 max-w-7xl mx-auto" style="max-width: 1400px;">
+      
+      <!-- Flash Messages -->
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show rounded-4 shadow-sm mb-4" role="alert">
+              <div class="d-flex align-items-center gap-2">
+                {% if category == 'success' %}
+                  <i class="bi bi-check-circle-fill fs-5 text-success"></i>
+                {% elif category == 'danger' %}
+                  <i class="bi bi-x-circle-fill fs-5 text-danger"></i>
+                {% elif category == 'warning' %}
+                  <i class="bi bi-exclamation-triangle-fill fs-5 text-warning"></i>
+                {% else %}
+                  <i class="bi bi-info-circle-fill fs-5 text-info"></i>
+                {% endif %}
+                <div>{{ message }}</div>
+              </div>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <!-- Scanned Document Special Warning Alert -->
+      {% if is_scanned %}
+        <div class="alert alert-warning rounded-4 shadow-sm mb-4 border-warning p-3">
+          <div class="d-flex align-items-start gap-3">
+            <i class="bi bi-file-earmark-image fs-3 text-warning"></i>
+            <div>
+              <h6 class="fw-bold mb-1">Scanned / Image-Based PDF Detected</h6>
+              <p class="mb-0 text-dark">This document appears to be scanned/image-based. OCR support is required for full analysis. Please upload a standard digital PDF, DOCX, or TXT file.</p>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      <!-- Hero Header -->
+      <div class="hero-card p-4 p-md-5 mb-4">
+        <div class="row align-items-center position-relative" style="z-index: 1;">
+          <div class="col-lg-8">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <span class="badge bg-indigo bg-opacity-25 text-indigo-200 border border-indigo-400 border-opacity-25 px-3 py-1 rounded-pill small">
+                <i class="bi bi-cpu-fill me-1"></i> Phase 10 — Intelligence Engine
+              </span>
+              {% if has_analysis %}
+                <span class="badge bg-success bg-opacity-25 text-success-200 border border-success border-opacity-25 px-3 py-1 rounded-pill small">
+                  <i class="bi bi-check2-circle me-1"></i> Analysis Ready
+                </span>
+              {% endif %}
+            </div>
+            <h1 class="display-6 fw-bold mb-2">Question Paper Intelligence</h1>
+            <p class="text-white-50 lead fs-6 mb-0">
+              Extract, parse, classify, and analyze academic question papers with transparent NLP topic clustering, rule-based Bloom's classification, and marks distribution analytics.
+            </p>
+          </div>
+          <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+            {% if has_analysis %}
+              <a href="#upload-section" class="btn btn-primary rounded-pill px-4 py-2 shadow-sm" onclick="document.getElementById('upload-card').scrollIntoView({behavior: 'smooth'})">
+                <i class="bi bi-cloud-arrow-up me-1"></i> Analyze Another Paper
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Upload / Paper Selection Section -->
+      <div class="row mb-4" id="upload-section">
+        <div class="col-12">
+          <div class="card border-0 shadow-sm rounded-4 p-4" id="upload-card">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="fw-bold mb-0">
+                <i class="bi bi-file-earmark-arrow-up text-primary me-2"></i>Upload & Analyze Question Paper
+              </h5>
+              <span class="text-muted small">Supported Formats: <strong>PDF, DOCX, TXT</strong> (Max 10MB)</span>
+            </div>
+
+            <form action="{{ url_for('question_paper.analyze') }}" method="POST" enctype="multipart/form-data">
+              <div class="row g-3">
+                <!-- Semester & Subject Selectors -->
+                {% if user_role == 'teacher' %}
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold small text-muted">Assigned Subject & Semester</label>
+                    <select class="form-select rounded-3" name="course_assignment" id="teacherCourseSelect" required onchange="handleTeacherAssignmentChange(this)">
+                      <option value="">-- Select Your Assigned Course --</option>
+                      {% for item in assignments %}
+                        <option value="{{ item.Semester }}||{{ item.Subject }}" {% if selected_subject == item.Subject and selected_semester|string == item.Semester|string %}selected{% endif %}>
+                          Semester {{ item.Semester }} — {{ item.Subject }}
+                        </option>
+                      {% endfor %}
+                    </select>
+                    <input type="hidden" name="semester" id="teacherSemesterInput" value="{{ selected_semester }}">
+                    <input type="hidden" name="subject" id="teacherSubjectInput" value="{{ selected_subject }}">
+                    <small class="text-muted fs-8">Teachers can only analyze papers for assigned courses.</small>
+                  </div>
+                {% else %}
+                  <!-- Admin Selectors -->
+                  <div class="col-md-3">
+                    <label class="form-label fw-semibold small text-muted">Semester</label>
+                    <select class="form-select rounded-3" name="semester" id="adminSemesterSelect" required onchange="updateAdminSubjects(this.value)">
+                      <option value="">-- Select Semester --</option>
+                      {% for sem in range(1, 7) %}
+                        <option value="{{ sem }}" {% if selected_semester|string == sem|string %}selected{% endif %}>Semester {{ sem }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label fw-semibold small text-muted">Subject</label>
+                    <select class="form-select rounded-3" name="subject" id="adminSubjectSelect" required>
+                      <option value="">-- Select Subject --</option>
+                      {% if selected_semester and semester_subjects.get(selected_semester|int) %}
+                        {% for subj in semester_subjects.get(selected_semester|int) %}
+                          <option value="{{ subj }}" {% if selected_subject == subj %}selected{% endif %}>{{ subj }}</option>
+                        {% endfor %}
+                      {% endif %}
+                    </select>
+                  </div>
+                {% endif %}
+
+                <!-- File Input / Dropzone -->
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold small text-muted">Choose Question Paper File</label>
+                  <input class="form-control rounded-3" type="file" name="paper_file" id="paperFile" accept=".pdf,.docx,.txt">
+                </div>
+
+                <!-- Submit Button & Quick Demo Loaders -->
+                <div class="col-12 d-flex flex-wrap align-items-center justify-content-between gap-3 pt-2">
+                  <div class="d-flex align-items-center gap-2">
+                    <button type="submit" class="btn btn-primary rounded-pill px-4 fw-semibold">
+                      <i class="bi bi-lightning-charge-fill me-1"></i> Analyze Question Paper
+                    </button>
+                    <button type="reset" class="btn btn-light rounded-pill px-3 text-muted">Clear</button>
+                  </div>
+
+                  <!-- Quick Demo Sample Papers for Testing / Viva -->
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="text-muted small fw-semibold"><i class="bi bi-stars text-warning me-1"></i>Quick Demo Samples:</span>
+                    <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill" onclick="loadDemoSample('dbms_sem2_sample', 2, 'Database Management Systems')">
+                      <i class="bi bi-database me-1"></i> Sem 2 DBMS
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill" onclick="loadDemoSample('python_sem1_sample', 1, 'Python Programming')">
+                      <i class="bi bi-filetype-py me-1"></i> Sem 1 Python
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hidden Demo Form for Instant One-Click Submission -->
+      <form id="quickDemoForm" action="{{ url_for('question_paper.analyze') }}" method="POST" style="display: none;">
+        <input type="hidden" name="demo_sample" id="quickDemoSample">
+        <input type="hidden" name="semester" id="quickDemoSemester">
+        <input type="hidden" name="subject" id="quickDemoSubject">
+      </form>
+
+      {% if has_analysis and result %}
+        <!-- Analysis Results Dashboard -->
+        
+        <!-- Metadata Pill Row -->
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 bg-white rounded-4 p-3 border shadow-sm mb-4">
+          <div class="d-flex flex-wrap align-items-center gap-3">
+            <span class="badge bg-primary px-3 py-2 rounded-pill fs-7">
+              <i class="bi bi-book me-1"></i> {{ result.document_meta.subject }}
+            </span>
+            <span class="badge bg-secondary px-3 py-2 rounded-pill fs-7">
+              <i class="bi bi-calendar-range me-1"></i> Semester {{ result.document_meta.semester }}
+            </span>
+            <span class="badge bg-light text-dark border px-3 py-2 rounded-pill fs-7">
+              <i class="bi bi-file-earmark-text me-1"></i> {{ result.document_meta.filename }} ({{ result.document_meta.file_type }})
+            </span>
+            {% if result.kpis.declared_total_marks %}
+              <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-3 py-2 rounded-pill fs-7">
+                <i class="bi bi-award me-1"></i> Printed Paper Total: {{ result.kpis.declared_total_marks }} Marks
+              </span>
+            {% endif %}
+          </div>
+          <div class="text-muted small">
+            <i class="bi bi-clock-history me-1"></i> Real-time NLP Pipeline
+          </div>
+        </div>
+
+        <!-- 5 Top KPI Cards -->
+        <div class="row g-3 mb-4">
+          <!-- KPI 1: Questions Detected -->
+          <div class="col-md-6 col-xl">
+            <div class="kpi-card p-3 h-100">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <span class="text-muted small fw-bold text-uppercase">Questions Detected</span>
+                <div class="icon-circle bg-primary bg-opacity-10 text-primary">
+                  <i class="bi bi-list-ol"></i>
+                </div>
+              </div>
+              <h3 class="fw-bold mb-1">{{ result.kpis.total_questions }}</h3>
+              <small class="text-muted">Extracted items / subquestions</small>
+            </div>
+          </div>
+
+          <!-- KPI 2: Total Detected Marks -->
+          <div class="col-md-6 col-xl">
+            <div class="kpi-card p-3 h-100">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <span class="text-muted small fw-bold text-uppercase">Total Marks Detected</span>
+                <div class="icon-circle bg-success bg-opacity-10 text-success">
+                  <i class="bi bi-calculator"></i>
+                </div>
+              </div>
+              <h3 class="fw-bold mb-1">{{ result.kpis.total_detected_marks }}</h3>
+              <small class="text-muted">
+                {% if result.kpis.declared_total_marks %}
+                  vs Declared {{ result.kpis.declared_total_marks }}M
+                {% else %}
+                  {{ result.kpis.questions_with_marks }} questions with marks
+                {% endif %}
+              </small>
+            </div>
+          </div>
+
+          <!-- KPI 3: Average Marks / Question -->
+          <div class="col-md-6 col-xl">
+            <div class="kpi-card p-3 h-100">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <span class="text-muted small fw-bold text-uppercase">Avg Marks / Q</span>
+                <div class="icon-circle bg-info bg-opacity-10 text-info">
+                  <i class="bi bi-bar-chart-steps"></i>
+                </div>
+              </div>
+              <h3 class="fw-bold mb-1">{{ result.kpis.average_marks }} <span class="fs-6 text-muted fw-normal">Marks</span></h3>
+              <small class="text-muted">Min: {{ result.kpis.min_marks }}M | Max: {{ result.kpis.max_marks }}M</small>
+            </div>
+          </div>
+
+          <!-- KPI 4: Topic Groups -->
+          <div class="col-md-6 col-xl">
+            <div class="kpi-card p-3 h-100">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <span class="text-muted small fw-bold text-uppercase">Topic Groups</span>
+                <div class="icon-circle bg-warning bg-opacity-10 text-warning">
+                  <i class="bi bi-diagram-3"></i>
+                </div>
+              </div>
+              <h3 class="fw-bold mb-1">{{ result.kpis.topic_groups_count }}</h3>
+              <small class="text-muted">TF-IDF & KMeans clusters</small>
+            </div>
+          </div>
+
+          <!-- KPI 5: Hard Questions -->
+          <div class="col-md-6 col-xl">
+            <div class="kpi-card p-3 h-100">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <span class="text-muted small fw-bold text-uppercase">High Complexity</span>
+                <div class="icon-circle bg-danger bg-opacity-10 text-danger">
+                  <i class="bi bi-fire"></i>
+                </div>
+              </div>
+              <h3 class="fw-bold mb-1">{{ result.kpis.hard_questions_count }}</h3>
+              <small class="text-muted">Hard / design-level questions</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Visual Analytics Charts -->
+        <div class="row g-4 mb-4">
+          <!-- Chart 1: Difficulty Distribution -->
+          <div class="col-lg-6 col-xl-3">
+            <div class="chart-card h-100">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="fw-bold mb-0">
+                  <i class="bi bi-speedometer2 text-success me-2"></i>Difficulty Distribution
+                </h6>
+                <span class="badge bg-light text-muted border">Estimated</span>
+              </div>
+              <div style="position: relative; height: 220px;">
+                <canvas id="difficultyChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chart 2: Question Type Distribution -->
+          <div class="col-lg-6 col-xl-3">
+            <div class="chart-card h-100">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="fw-bold mb-0">
+                  <i class="bi bi-pie-chart text-primary me-2"></i>Question Types
+                </h6>
+                <span class="badge bg-light text-muted border">Bloom / Action</span>
+              </div>
+              <div style="position: relative; height: 220px;">
+                <canvas id="typeChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chart 3: Marks Distribution -->
+          <div class="col-lg-6 col-xl-3">
+            <div class="chart-card h-100">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="fw-bold mb-0">
+                  <i class="bi bi-bar-chart-line text-info me-2"></i>Marks Allocation
+                </h6>
+                <span class="badge bg-light text-muted border">Buckets</span>
+              </div>
+              <div style="position: relative; height: 220px;">
+                <canvas id="marksChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chart 4: Topic Cluster Distribution -->
+          <div class="col-lg-6 col-xl-3">
+            <div class="chart-card h-100">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="fw-bold mb-0">
+                  <i class="bi bi-diagram-3 text-warning me-2"></i>Topic Groups
+                </h6>
+                <span class="badge bg-light text-muted border">TF-IDF</span>
+              </div>
+              <div style="position: relative; height: 220px;">
+                <canvas id="topicClusterChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topic Clusters and Paper Insights Row -->
+        <div class="row g-4 mb-4">
+          <!-- Topic Clusters Card -->
+          <div class="col-lg-6">
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="fw-bold mb-0">
+                  <i class="bi bi-tags-fill text-primary me-2"></i>Detected Topic Clusters (TF-IDF + KMeans)
+                </h6>
+                <span class="badge bg-light text-muted border">Unsupervised</span>
+              </div>
+              <p class="text-muted small mb-3">
+                Automatically clustered question topics based on TF-IDF term weights across all extracted questions.
+              </p>
+
+              <div class="d-flex flex-column gap-3">
+                {% for cluster in result.topic_clusters %}
+                  <div class="p-3 rounded-3 border bg-light">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                      <span class="fw-bold text-dark fs-7">{{ cluster.name }}</span>
+                      <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 rounded-pill">
+                        {{ cluster.count }} Questions ({{ cluster.percentage }}%)
+                      </span>
+                    </div>
+                    <div class="d-flex flex-wrap gap-1">
+                      {% for term in cluster.top_terms %}
+                        <span class="tag-badge"><i class="bi bi-hash text-muted me-1"></i>{{ term }}</span>
+                      {% endfor %}
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          <!-- Paper-Level Insights Card -->
+          <div class="col-lg-6">
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="fw-bold mb-0">
+                  <i class="bi bi-lightbulb-fill text-warning me-2"></i>Automated Paper Insights
+                </h6>
+                <span class="badge bg-light text-muted border">Data-Grounded</span>
+              </div>
+              <p class="text-muted small mb-3">
+                Insights generated dynamically from question properties, mark weights, and cognitive taxonomy.
+              </p>
+
+              <div class="d-flex flex-column gap-3">
+                {% for insight in result.insights %}
+                  <div class="p-3 rounded-3 border bg-white shadow-sm d-flex align-items-start gap-3">
+                    <div class="icon-circle bg-{{ insight.type }} bg-opacity-10 text-{{ insight.type }} flex-shrink-0" style="width: 40px; height: 40px; font-size: 1.1rem;">
+                      <i class="bi {{ insight.icon }}"></i>
+                    </div>
+                    <div>
+                      <h6 class="fw-bold text-dark mb-1 fs-7">{{ insight.title }}</h6>
+                      <p class="text-muted small mb-0">{{ insight.text }}</p>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Extracted Questions Table -->
+        <div class="card border-0 shadow-sm rounded-4 p-4 mb-4">
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
+            <div>
+              <h5 class="fw-bold mb-1">
+                <i class="bi bi-table text-primary me-2"></i>Extracted Questions Roster
+              </h5>
+              <p class="text-muted small mb-0">Full structured breakdown of extracted questions, marks, classifications, and TF-IDF keywords.</p>
+            </div>
+
+            <!-- Client-side Search and Filter -->
+            <div class="d-flex flex-wrap align-items-center gap-2">
+              <div class="input-group input-group-sm" style="width: 250px;">
+                <span class="input-group-text bg-light border-end-0"><i class="bi bi-search text-muted"></i></span>
+                <input type="text" id="tableSearch" class="form-control bg-light border-start-0" placeholder="Search questions / keywords..." onkeyup="filterQuestionsTable()">
+              </div>
+              <select id="typeFilter" class="form-select form-select-sm" style="width: 150px;" onchange="filterQuestionsTable()">
+                <option value="">All Types</option>
+                <option value="Definition">Definition</option>
+                <option value="Theory/Descriptive">Theory</option>
+                <option value="Programming">Programming</option>
+                <option value="Numerical">Numerical</option>
+                <option value="Application">Application</option>
+              </select>
+              <select id="diffFilter" class="form-select form-select-sm" style="width: 140px;" onchange="filterQuestionsTable()">
+                <option value="">All Difficulties</option>
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-custom align-middle" id="questionsTable">
+              <thead>
+                <tr>
+                  <th style="width: 8%;">Q. No</th>
+                  <th style="width: 44%;">Question Text</th>
+                  <th style="width: 8%;" class="text-center">Marks</th>
+                  <th style="width: 12%;">Type</th>
+                  <th style="width: 10%;">Difficulty</th>
+                  <th style="width: 18%;">Detected Keywords</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for q in result.questions %}
+                  <tr class="question-row" data-type="{{ q.question_type }}" data-diff="{{ q.difficulty }}">
+                    <td class="fw-bold text-primary">
+                      {{ q.question_number }}
+                      {% if q.section and q.section != 'General' %}
+                        <div class="text-muted fs-9 fw-normal">{{ q.section }}</div>
+                      {% endif %}
+                    </td>
+                    <td>
+                      <div class="fw-medium text-dark">{{ q.text }}</div>
+                    </td>
+                    <td class="text-center">
+                      {% if q.marks is not none %}
+                        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-2.5 py-1.5 rounded-pill fw-bold">
+                          {{ q.marks }} M
+                        </span>
+                      {% else %}
+                        <span class="badge bg-light text-muted border px-2 py-1 rounded-pill">
+                          N/A
+                        </span>
+                      {% endif %}
+                    </td>
+                    <td>
+                      {% if q.question_type == 'Programming' %}
+                        <span class="badge badge-soft-purple px-2.5 py-1.5 rounded-pill">
+                          <i class="bi bi-code-slash me-1"></i> Programming
+                        </span>
+                      {% elif q.question_type == 'Numerical' %}
+                        <span class="badge badge-soft-info px-2.5 py-1.5 rounded-pill">
+                          <i class="bi bi-calculator me-1"></i> Numerical
+                        </span>
+                      {% elif q.question_type == 'Definition' %}
+                        <span class="badge badge-soft-success px-2.5 py-1.5 rounded-pill">
+                          <i class="bi bi-bookmark-check me-1"></i> Definition
+                        </span>
+                      {% elif q.question_type == 'Application' %}
+                        <span class="badge badge-soft-warning px-2.5 py-1.5 rounded-pill">
+                          <i class="bi bi-gear-wide-connected me-1"></i> Application
+                        </span>
+                      {% else %}
+                        <span class="badge badge-soft-secondary px-2.5 py-1.5 rounded-pill">
+                          <i class="bi bi-journal-text me-1"></i> Theory
+                        </span>
+                      {% endif %}
+                    </td>
+                    <td>
+                      {% if q.difficulty == 'Easy' %}
+                        <span class="badge badge-soft-success px-2.5 py-1.5 rounded-pill">
+                          <i class="bi bi-circle-fill fs-9 me-1"></i> Easy
+                        </span>
+                      {% elif q.difficulty == 'Medium' %}
+                        <span class="badge badge-soft-warning px-2.5 py-1.5 rounded-pill">
+                          <i class="bi bi-circle-fill fs-9 me-1"></i> Medium
+                        </span>
+                      {% else %}
+                        <span class="badge badge-soft-danger px-2.5 py-1.5 rounded-pill">
+                          <i class="bi bi-circle-fill fs-9 me-1"></i> Hard
+                        </span>
+                      {% endif %}
+                    </td>
+                    <td>
+                      <div class="d-flex flex-wrap gap-1">
+                        {% for kw in q.keywords %}
+                          <span class="tag-badge">{{ kw }}</span>
+                        {% endfor %}
+                      </div>
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Transparency Notice -->
+          <div class="p-3 bg-light rounded-3 border mt-3 text-muted small">
+            <div class="d-flex align-items-center gap-2">
+              <i class="bi bi-shield-check text-success"></i>
+              <span><strong>Methodology Transparency:</strong> Question types are classified via rule-based NLP action verbs; topics are clustered using TF-IDF vectorization & KMeans; difficulty is an estimated metric derived from cognitive verbs, mark weightages, and phrasing complexity.</span>
+            </div>
+          </div>
+        </div>
+
+      {% endif %}
+
+    </main>
+
+    <!-- JavaScript for Dynamic Selectors and Chart.js Initialization -->
+    <script>
+      // Semester Subjects Mapping for Admin
+      const semesterSubjectsMap = {{ semester_subjects|tojson|safe }};
+
+      function updateAdminSubjects(selectedSem) {
+        const subjectSelect = document.getElementById("adminSubjectSelect");
+        if (!subjectSelect) return;
+        
+        subjectSelect.innerHTML = '<option value="">-- Select Subject --</option>';
+        if (selectedSem && semesterSubjectsMap[selectedSem]) {
+          semesterSubjectsMap[selectedSem].forEach(function(subj) {
+            const opt = document.createElement("option");
+            opt.value = subj;
+            opt.textContent = subj;
+            subjectSelect.appendChild(opt);
+          });
+        }
+      }
+
+      function handleTeacherAssignmentChange(selectElem) {
+        if (!selectElem.value) {
+          document.getElementById("teacherSemesterInput").value = "";
+          document.getElementById("teacherSubjectInput").value = "";
+          return;
+        }
+        const parts = selectElem.value.split("||");
+        if (parts.length === 2) {
+          document.getElementById("teacherSemesterInput").value = parts[0];
+          document.getElementById("teacherSubjectInput").value = parts[1];
+        }
+      }
+
+      function loadDemoSample(sampleId, semester, subject) {
+        document.getElementById("quickDemoSample").value = sampleId;
+        document.getElementById("quickDemoSemester").value = semester;
+        document.getElementById("quickDemoSubject").value = subject;
+        document.getElementById("quickDemoForm").submit();
+      }
+
+      function filterQuestionsTable() {
+        const query = document.getElementById("tableSearch").value.toLowerCase();
+        const typeFilter = document.getElementById("typeFilter").value;
+        const diffFilter = document.getElementById("diffFilter").value;
+
+        const rows = document.querySelectorAll("#questionsTable tbody tr.question-row");
+        rows.forEach(row => {
+          const text = row.innerText.toLowerCase();
+          const qType = row.getAttribute("data-type") || "";
+          const qDiff = row.getAttribute("data-diff") || "";
+
+          const matchesQuery = text.includes(query);
+          const matchesType = !typeFilter || qType.includes(typeFilter);
+          const matchesDiff = !diffFilter || qDiff === diffFilter;
+
+          if (matchesQuery && matchesType && matchesDiff) {
+            row.style.display = "";
+          } else {
+            row.style.display = "none";
+          }
+        });
+      }
+
+      {% if has_analysis and result %}
+      // Initialize Chart.js Visualizations
+      document.addEventListener("DOMContentLoaded", function() {
+        const chartsData = {{ result.charts|tojson|safe }};
+
+        // 1. Difficulty Chart (Doughnut)
+        if (document.getElementById("difficultyChart")) {
+          new Chart(document.getElementById("difficultyChart"), {
+            type: "doughnut",
+            data: {
+              labels: chartsData.difficulty.labels,
+              datasets: [{
+                data: chartsData.difficulty.data,
+                backgroundColor: chartsData.difficulty.colors,
+                borderWidth: 2,
+                borderColor: "#ffffff"
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: { position: "bottom", labels: { boxWidth: 12, font: { family: "Plus Jakarta Sans", size: 11 } } }
+              }
+            }
+          });
+        }
+
+        // 2. Question Type Chart (Bar)
+        if (document.getElementById("typeChart")) {
+          new Chart(document.getElementById("typeChart"), {
+            type: "bar",
+            data: {
+              labels: chartsData.question_type.labels,
+              datasets: [{
+                data: chartsData.question_type.data,
+                backgroundColor: chartsData.question_type.colors,
+                borderRadius: 6
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: { display: false }
+              },
+              scales: {
+                y: { beginAtZero: true, ticks: { precision: 0 } },
+                x: { ticks: { font: { size: 10 } } }
+              }
+            }
+          });
+        }
+
+        // 3. Marks Allocation Chart (Bar)
+        if (document.getElementById("marksChart")) {
+          new Chart(document.getElementById("marksChart"), {
+            type: "bar",
+            data: {
+              labels: chartsData.marks_distribution.labels,
+              datasets: [{
+                data: chartsData.marks_distribution.data,
+                backgroundColor: chartsData.marks_distribution.colors,
+                borderRadius: 6
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: { display: false }
+              },
+              scales: {
+                y: { beginAtZero: true, ticks: { precision: 0 } },
+                x: { ticks: { font: { size: 10 } } }
+              }
+            }
+          });
+        }
+
+        // 4. Topic Cluster Chart (Horizontal Bar / Polar)
+        if (document.getElementById("topicClusterChart")) {
+          new Chart(document.getElementById("topicClusterChart"), {
+            type: "bar",
+            data: {
+              labels: chartsData.topic_clusters.labels,
+              datasets: [{
+                data: chartsData.topic_clusters.data,
+                backgroundColor: chartsData.topic_clusters.colors,
+                borderRadius: 6
+              }]
+            },
+            options: {
+              indexAxis: 'y',
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: { display: false }
+              },
+              scales: {
+                x: { beginAtZero: true, ticks: { precision: 0 } },
+                y: { ticks: { font: { size: 10 } } }
+              }
+            }
+          });
+        }
+      });
+      {% endif %}
+    </script>
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

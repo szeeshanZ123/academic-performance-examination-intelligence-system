@@ -4,3 +4,5 @@ numpy
 matplotlib
 scikit-learn
 joblib
+pymupdf
+python-docx

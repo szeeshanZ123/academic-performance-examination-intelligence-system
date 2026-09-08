@@ -1,0 +1,22 @@
+APEX COLLEGE OF ENGINEERING
+Department of Information Technology
+Semester I - Python Programming
+Total Marks: 70
+
+Instructions: All questions are compulsory.
+
+1. (a) What is Python? List the key features and advantages of Python over C++. (5 Marks)
+1. (b) Explain mutable and immutable data types in Python with suitable code examples. (5 Marks)
+1. (c) Write a Python program to find the factorial of a number using recursion. (5 Marks)
+
+2. (a) Explain conditional statements (if-elif-else) and loop structures (for, while) in Python. (5 Marks)
+2. (b) Write a program to check whether a given string is a palindrome or not. (5 Marks)
+
+3. (a) Discuss Python Lists, Tuples, and Dictionaries with operations and methods. [10]
+3. (b) Write a Python program to count the frequency of each word in a given text file. [10]
+
+4. (a) Explain Object-Oriented Programming (OOP) concepts in Python: Class, Object, Inheritance, and Polymorphism. [10]
+4. (b) Design a BankAccount class with methods for deposit, withdraw, and balance inquiry with exception handling. [10]
+
+5. (a) Explain Exception Handling in Python using try, except, else, and finally blocks. [5]
+5. (b) Write a Python script to demonstrate reading and writing CSV files using the csv module. [5]

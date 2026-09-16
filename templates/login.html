@@ -3,308 +3,1021 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Academic Intelligence | Login</title>
+    <title>{{ page_title or "Academic Intelligence | Login" }}</title>
+    <!-- Bootstrap 5 CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <!-- Bootstrap Icons -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
     />
+    <!-- Google Fonts: Plus Jakarta Sans -->
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}" />
+    <!-- Theme CSS & Theme Engine -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}?v=2.6" />
     <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
     <style>
-      :root {
-        --primary: #4f46e5;
-        --primary-hover: #4338ca;
-        --secondary: #0ea5e9;
-        --dark-bg: #0f172a;
-        --body-bg: #f8fafc;
-        --card-bg: #ffffff;
-        --border-color: #e2e8f0;
-      }
-
       body {
-        font-family: "Plus Jakarta Sans", sans-serif;
+        font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         background-color: var(--bg-primary);
+        color: var(--text-primary);
         min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 1.5rem;
-        position: relative;
+        margin: 0;
+        overflow-x: hidden;
       }
 
-      .login-container {
-        max-width: 440px;
+      /* Subtle animated ambient background circles */
+      .ambient-glow {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(90px);
+        pointer-events: none;
+        z-index: 0;
+      }
+      .ambient-glow-1 {
+        width: 420px;
+        height: 420px;
+        background: radial-gradient(circle, rgba(79, 70, 229, 0.16) 0%, rgba(79, 70, 229, 0) 70%);
+        top: -120px;
+        left: -100px;
+      }
+      .ambient-glow-2 {
+        width: 440px;
+        height: 440px;
+        background: radial-gradient(circle, rgba(14, 165, 233, 0.14) 0%, rgba(14, 165, 233, 0) 70%);
+        bottom: -120px;
+        right: -100px;
+      }
+
+      [data-theme="dark"] .ambient-glow-1 {
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.16) 0%, rgba(99, 102, 241, 0) 70%);
+      }
+      [data-theme="dark"] .ambient-glow-2 {
+        background: radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, rgba(14, 165, 233, 0) 70%);
+      }
+
+      /* Floating Theme Switcher: fixed in top corner to NEVER collide with card */
+      .auth-theme-switch-container {
+        position: fixed;
+        top: 1.25rem;
+        right: 1.5rem;
+        z-index: 1050;
+      }
+
+      /* Main Auth Wrapper Stage */
+      .auth-wrapper {
+        min-height: 100vh;
         width: 100%;
-        position: relative;
-      }
-
-      .login-container::before {
-        content: "";
-        position: absolute;
-        width: 120px;
-        height: 120px;
-        background: radial-gradient(circle, rgba(99, 102, 241, 0.45) 0%, rgba(0, 0, 0, 0) 70%);
-        top: -40px;
-        left: -40px;
-        z-index: -1;
-      }
-
-      .login-container::after {
-        content: "";
-        position: absolute;
-        width: 120px;
-        height: 120px;
-        background: radial-gradient(circle, rgba(14, 165, 233, 0.45) 0%, rgba(0, 0, 0, 0) 70%);
-        bottom: -40px;
-        right: -40px;
-        z-index: -1;
-      }
-
-      .login-card {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(16px);
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        border-radius: 24px;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      }
-
-      [data-theme="dark"] .login-card {
-        background: rgba(21, 30, 45, 0.96);
-        border-color: rgba(255, 255, 255, 0.1);
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
-      }
-
-      [data-theme="dark"] .role-selector {
-        background: var(--card-bg-elevated) !important;
-        border-color: var(--border-color) !important;
-      }
-
-      [data-theme="dark"] .role-label {
-        color: var(--text-muted);
-      }
-
-      [data-theme="dark"] .role-option input[type="radio"]:checked + .role-label {
-        background: var(--primary) !important;
-        color: #ffffff !important;
-      }
-
-      .logo-icon {
-        width: 52px;
-        height: 52px;
-        border-radius: 14px;
-        background: linear-gradient(135deg, var(--primary), #818cf8);
-        color: white;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.5rem;
-        margin: 0 auto 1.25rem;
-        box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
+        padding: 3rem 1.25rem 2rem 1.25rem;
+        position: relative;
+        box-sizing: border-box;
       }
 
-      /* Segmented Control / Tab Switch */
-      .role-selector {
-        background: #f1f5f9;
-        padding: 4px;
-        border-radius: 12px;
+      /* Split Screen Card */
+      .auth-split-card {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 28px;
+        box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.08), 0 0 0 1px var(--border-subtle);
+        overflow: hidden;
+        max-width: 1040px;
+        width: 100%;
         display: flex;
-        margin-bottom: 1.5rem;
-        border: 1px solid var(--border-color);
+        flex-direction: row;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        z-index: 2;
       }
 
-      .role-option {
-        flex: 1;
+      [data-theme="dark"] .auth-split-card {
+        background-color: #151f33;
+        border-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      }
+
+      /* Left Column: Visual Illustration Stage */
+      .auth-visual-side {
+        width: 44%;
+        min-width: 320px;
+        background: linear-gradient(145deg, #f0f4ff 0%, #e8eeff 50%, #f5f7fb 100%);
+        border-right: 1px solid var(--border-color);
+        padding: 2.75rem 2.25rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
         text-align: center;
+        transition: background 0.3s ease;
+        box-sizing: border-box;
       }
 
-      .role-option input[type="radio"] {
-        display: none;
+      [data-theme="dark"] .auth-visual-side {
+        background: linear-gradient(145deg, #111a2e 0%, #15223c 50%, #0d1525 100%);
+        border-right-color: rgba(255, 255, 255, 0.08);
       }
 
-      .role-label {
-        display: block;
-        padding: 8px 12px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 0.9rem;
-        font-weight: 600;
-        color: var(--text-muted);
-        transition: all 0.2s;
+      .brand-badge-pill {
+        background: linear-gradient(135deg, #6366f1, #a855f7);
+        color: #ffffff;
+        padding: 6px 14px;
+        border-radius: 9999px;
+        font-weight: 700;
+        font-size: 0.8rem;
+        letter-spacing: 0.5px;
+        display: inline-flex;
+        align-items: center;
+        box-shadow: 0 4px 10px rgba(99, 102, 241, 0.25);
       }
 
-      .role-option input[type="radio"]:checked + .role-label {
-        background: white;
-        color: var(--primary);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+      .auth-illustration-box {
+        width: 100%;
+        max-width: 320px;
+        min-height: 230px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        margin: 1.25rem 0;
       }
 
-      .form-control-custom {
-        border-radius: 10px;
-        padding: 0.75rem 1rem;
+      .auth-illustration-svg {
+        width: 100%;
+        height: auto;
+        max-height: 230px;
+        filter: drop-shadow(0 12px 20px rgba(79, 70, 229, 0.12));
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+      }
+
+      [data-theme="dark"] .auth-illustration-svg {
+        filter: drop-shadow(0 14px 25px rgba(0, 0, 0, 0.5));
+      }
+
+      .visual-quote-box {
+        background: var(--bg-card);
         border: 1px solid var(--border-color);
-        background: #ffffff;
+        border-radius: 16px;
+        padding: 0.9rem 1.15rem;
+        width: 100%;
+        max-width: 320px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        transition: all 0.3s ease;
       }
 
-      [data-theme="dark"] .form-control-custom {
-        background: var(--input-bg);
-        border-color: var(--input-border);
-        color: var(--input-text);
+      .badge-soft-primary {
+        background: rgba(99, 102, 241, 0.12) !important;
+        color: var(--primary) !important;
+        border: 1px solid rgba(99, 102, 241, 0.25) !important;
+        font-size: 0.78rem;
+        font-weight: 700;
+        border-radius: 9999px;
       }
 
-      .form-control-custom:focus {
-        border-color: var(--primary);
-        box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+      [data-theme="dark"] .badge-soft-primary {
+        background: rgba(99, 102, 241, 0.22) !important;
+        color: #a5b4fc !important;
+        border: 1px solid rgba(99, 102, 241, 0.35) !important;
       }
 
-      .input-group-text {
-        border-color: var(--border-color);
+      /* Right Column: Authentication Form Stage */
+      .auth-form-side {
+        width: 56%;
+        padding: 2.75rem 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: var(--bg-card);
+        transition: background-color 0.2s ease;
+        box-sizing: border-box;
       }
 
-      [data-theme="dark"] .input-group-text {
-        background-color: var(--card-bg-elevated) !important;
-        border-color: var(--input-border) !important;
-        color: var(--text-secondary) !important;
+      [data-theme="dark"] .auth-form-side {
+        background-color: #151f33;
       }
 
-      .btn-primary-custom,
-      .btn-login {
-        background: linear-gradient(135deg, var(--primary), var(--primary-hover));
-        color: white;
+      /* Role Segmented Controller: 3-column equal grid to NEVER clip Admin button */
+      .role-segmented-control {
+        background-color: var(--bg-elevated);
+        border: 1px solid var(--border-color);
+        border-radius: 14px;
+        padding: 5px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+        margin-bottom: 1.5rem;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .role-pill-btn {
+        width: 100%;
+        min-width: 0;
         border: none;
-        border-radius: 10px;
-        padding: 0.75rem;
+        background: transparent;
+        color: var(--text-secondary);
         font-weight: 600;
-        transition: all 0.2s;
+        font-size: 0.85rem;
+        padding: 0.65rem 0.25rem;
+        border-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        outline: none;
+        user-select: none;
       }
 
-      .btn-primary-custom:hover,
-      .btn-login:hover {
+      .role-pill-btn:hover {
+        color: var(--text-primary);
+      }
+
+      .role-pill-btn.active {
+        background-color: var(--bg-card) !important;
+        color: var(--primary) !important;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      }
+
+      [data-theme="dark"] .role-pill-btn.active {
+        background-color: var(--primary) !important;
+        color: #ffffff !important;
+        box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+      }
+
+      /* Form inputs & toggle password */
+      .input-with-eye {
+        position: relative;
+      }
+
+      .btn-toggle-password {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent;
+        border: none;
+        color: var(--text-muted);
+        cursor: pointer;
+        padding: 6px 8px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.15s ease;
+        z-index: 5;
+      }
+
+      .btn-toggle-password:hover {
+        color: var(--primary);
+      }
+
+      .btn-submit-login {
+        background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+        color: #ffffff !important;
+        border: none;
+        border-radius: 12px;
+        padding: 0.85rem 1.5rem;
+        font-weight: 700;
+        font-size: 0.95rem;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 8px 18px -4px rgba(79, 70, 229, 0.35);
+      }
+
+      .btn-submit-login:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 24px -4px rgba(79, 70, 229, 0.45);
+      }
+
+      .btn-submit-login:active {
+        transform: translateY(0);
+      }
+
+      /* Demo chips bar */
+      .auth-demo-bar {
+        background-color: var(--bg-elevated);
+        border: 1px dashed var(--border-color);
+        border-radius: 12px;
+        padding: 0.75rem 1rem;
+        font-size: 0.82rem;
+        margin-top: 1.25rem;
+      }
+
+      .demo-chip {
+        cursor: pointer;
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        padding: 3px 8px;
+        font-weight: 600;
+        font-size: 0.75rem;
+        color: var(--primary);
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        transition: all 0.15s ease;
+        text-decoration: none;
+      }
+
+      .demo-chip:hover {
+        background-color: var(--primary);
+        color: #ffffff !important;
+        border-color: var(--primary);
         transform: translateY(-1px);
-        box-shadow: 0 8px 15px rgba(79, 70, 229, 0.25);
+      }
+
+      /* Transitions for role content */
+      .fade-scale-enter {
+        animation: fadeInScale 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      @keyframes fadeInScale {
+        from {
+          opacity: 0;
+          transform: translateY(8px) scale(0.985);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      /* Responsive layout rules: maintain clean split-screen down to 860px */
+      @media (max-width: 859.98px) {
+        .auth-wrapper {
+          padding: 4rem 1rem 2rem 1rem;
+        }
+        .auth-split-card {
+          flex-direction: column;
+          max-width: 500px;
+          border-radius: 22px;
+        }
+        .auth-visual-side {
+          width: 100%;
+          min-width: 0;
+          border-right: none;
+          border-bottom: 1px solid var(--border-color);
+          padding: 1.5rem 1.25rem;
+        }
+        .auth-form-side {
+          width: 100%;
+          padding: 1.75rem 1.5rem;
+        }
+        .auth-illustration-box {
+          max-width: 180px;
+          min-height: 120px;
+          margin: 0.75rem 0;
+        }
+        .auth-illustration-svg {
+          max-height: 110px;
+        }
+        .visual-quote-box {
+          max-width: 100%;
+          padding: 0.75rem 1rem;
+        }
+        .role-pill-btn {
+          font-size: 0.8rem;
+          padding: 0.55rem 0.2rem;
+          gap: 4px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .auth-wrapper {
+          padding: 3.5rem 0.75rem 1.5rem 0.75rem;
+        }
+        .auth-form-side {
+          padding: 1.5rem 1.15rem;
+        }
+        .role-pill-btn {
+          font-size: 0.76rem;
+          padding: 0.5rem 0.15rem;
+        }
+        .auth-visual-side {
+          padding: 1.25rem 1rem;
+        }
+        .visual-quote-box {
+          display: none; /* Keep screen uncluttered on tiny screens */
+        }
       }
     </style>
   </head>
   <body class="login-page-bg">
-    <!-- Floating Theme Toggle -->
-    <div class="position-absolute top-0 end-0 p-3">
+    <!-- Ambient Background Lighting -->
+    <div class="ambient-glow ambient-glow-1"></div>
+    <div class="ambient-glow ambient-glow-2"></div>
+
+    <!-- Floating Theme Switch -->
+    <div class="auth-theme-switch-container">
       <button id="themeToggleBtn" onclick="toggleTheme()" class="theme-toggle-pill shadow-sm" type="button" aria-label="Toggle Theme">
         <span>☀️ Light</span><span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
       </button>
     </div>
 
-    <div class="login-container">
-      <div class="card login-card p-4 p-md-5">
-        <div class="card-body p-0">
-          <!-- Logo & Header -->
-          <div class="text-center">
-            <div class="logo-icon">
-              <i class="bi bi-mortarboard-fill"></i>
-            </div>
-            <h3 class="fw-extrabold text-dark mb-1">Academic Intelligence</h3>
-            <p class="text-secondary small mb-4">Academic Performance & Examination Intelligence System</p>
+    <!-- Main Authentication Stage -->
+    <div class="auth-wrapper">
+      <div class="auth-split-card">
+        
+        <!-- LEFT COLUMN: Academic Visual Illustration Stage -->
+        <div class="auth-visual-side">
+          <div class="w-100 d-flex flex-column align-items-center">
+            <span class="brand-badge-pill mb-2">
+              <i class="bi bi-mortarboard-fill me-1.5"></i> ACADEMIC INTELLIGENCE
+            </span>
+            <small class="text-secondary fw-semibold text-uppercase" style="font-size: 0.72rem; letter-spacing: 1px;">
+              Examination & Analytics System
+            </small>
           </div>
 
-          <!-- Flash Messages -->
+          <!-- Dynamic Role Illustration Box -->
+          <div class="auth-illustration-box">
+            <!-- 1. STUDENT SVG ILLUSTRATION -->
+            <svg id="illustrStudent" class="auth-illustration-svg" viewBox="0 0 320 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Academy Campus Background -->
+              <rect x="70" y="55" width="180" height="110" rx="4" fill="#E2E8F0" opacity="0.6"/>
+              <polygon points="160,20 60,60 260,60" fill="#CBD5E1" opacity="0.75"/>
+              <!-- Clock Tower & Columns -->
+              <rect x="145" y="25" width="30" height="35" fill="#94A3B8" opacity="0.5"/>
+              <circle cx="160" cy="40" r="7" fill="#FFFFFF"/>
+              <circle cx="160" cy="40" r="1.5" fill="#475569"/>
+              <!-- Pillars -->
+              <rect x="95" y="65" width="10" height="90" rx="2" fill="#CBD5E1"/>
+              <rect x="125" y="65" width="10" height="90" rx="2" fill="#CBD5E1"/>
+              <rect x="185" y="65" width="10" height="90" rx="2" fill="#CBD5E1"/>
+              <rect x="215" y="65" width="10" height="90" rx="2" fill="#CBD5E1"/>
+              <!-- Ground Shadow -->
+              <ellipse cx="160" cy="210" rx="60" ry="10" fill="#000000" opacity="0.08"/>
+              <!-- Student Character -->
+              <!-- Legs & Shoes -->
+              <rect x="144" y="155" width="12" height="42" rx="4" fill="#581C87"/>
+              <rect x="164" y="155" width="12" height="42" rx="4" fill="#581C87"/>
+              <ellipse cx="150" cy="198" rx="8" ry="4" fill="#1E1B4B"/>
+              <ellipse cx="170" cy="198" rx="8" ry="4" fill="#1E1B4B"/>
+              <!-- Body / Blazer & Tie -->
+              <rect x="135" y="105" width="50" height="56" rx="10" fill="#7E22CE"/>
+              <polygon points="160,118 153,105 167,105" fill="#FFFFFF"/>
+              <polygon points="160,135 156,118 164,118" fill="#F59E0B"/>
+              <!-- Green Backpack Straps -->
+              <path d="M142 110 C140 125, 140 145, 144 152" stroke="#10B981" stroke-width="4.5" stroke-linecap="round"/>
+              <path d="M178 110 C180 125, 180 145, 176 152" stroke="#10B981" stroke-width="4.5" stroke-linecap="round"/>
+              <!-- Arms holding Notebook -->
+              <path d="M135 116 C124 126, 126 142, 142 142" stroke="#7E22CE" stroke-width="8" stroke-linecap="round"/>
+              <path d="M185 116 C196 126, 194 142, 178 142" stroke="#7E22CE" stroke-width="8" stroke-linecap="round"/>
+              <!-- Notebook -->
+              <rect x="147" y="128" width="26" height="22" rx="3" fill="#06B6D4" stroke="#FFFFFF" stroke-width="1.5"/>
+              <line x1="152" y1="134" x2="167" y2="134" stroke="#FFFFFF" stroke-width="1.5"/>
+              <line x1="152" y1="139" x2="164" y2="139" stroke="#FFFFFF" stroke-width="1.5"/>
+              <!-- Hands -->
+              <circle cx="145" cy="140" r="4.5" fill="#FBBF24"/>
+              <circle cx="175" cy="140" r="4.5" fill="#FBBF24"/>
+              <!-- Head & Smiling Face -->
+              <circle cx="160" cy="88" r="17" fill="#FBBF24"/>
+              <!-- Hair -->
+              <path d="M143 85 C145 70, 175 70, 177 85 C172 75, 148 75, 143 85 Z" fill="#1E1B4B"/>
+              <!-- Eyes & Smile -->
+              <circle cx="155" cy="87" r="1.8" fill="#1E1B4B"/>
+              <circle cx="165" cy="87" r="1.8" fill="#1E1B4B"/>
+              <path d="M156 93 Q160 97 164 93" stroke="#92400E" stroke-width="1.8" stroke-linecap="round"/>
+              <!-- Floating Graduation Cap Badge -->
+              <polygon points="230,85 245,78 260,85 245,92" fill="#4F46E5"/>
+              <rect x="238" y="90" width="14" height="6" rx="1" fill="#4338CA"/>
+              <path d="M255 88 L257 100" stroke="#F59E0B" stroke-width="2"/>
+            </svg>
+
+            <!-- 2. TEACHER SVG ILLUSTRATION -->
+            <svg id="illustrTeacher" class="auth-illustration-svg d-none" viewBox="0 0 320 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Campus Architecture Outline -->
+              <rect x="70" y="55" width="180" height="110" rx="4" fill="#E2E8F0" opacity="0.6"/>
+              <polygon points="160,20 60,60 260,60" fill="#CBD5E1" opacity="0.75"/>
+              <rect x="145" y="25" width="30" height="35" fill="#94A3B8" opacity="0.5"/>
+              <circle cx="160" cy="40" r="7" fill="#FFFFFF"/>
+              <!-- Pillars -->
+              <rect x="95" y="65" width="10" height="90" rx="2" fill="#CBD5E1"/>
+              <rect x="125" y="65" width="10" height="90" rx="2" fill="#CBD5E1"/>
+              <rect x="185" y="65" width="10" height="90" rx="2" fill="#CBD5E1"/>
+              <rect x="215" y="65" width="10" height="90" rx="2" fill="#CBD5E1"/>
+              <!-- Ground Shadow -->
+              <ellipse cx="160" cy="210" rx="60" ry="10" fill="#000000" opacity="0.08"/>
+              <!-- Teacher Character -->
+              <!-- Legs & Shoes -->
+              <rect x="146" y="162" width="10" height="36" rx="3" fill="#FBBF24"/>
+              <rect x="164" y="162" width="10" height="36" rx="3" fill="#FBBF24"/>
+              <ellipse cx="151" cy="198" rx="8" ry="4" fill="#1E293B"/>
+              <ellipse cx="169" cy="198" rx="8" ry="4" fill="#1E293B"/>
+              <!-- Emerald Skirt / Suit -->
+              <polygon points="140,135 180,135 185,166 135,166" fill="#059669"/>
+              <!-- Blazer Jacket -->
+              <rect x="138" y="104" width="44" height="38" rx="8" fill="#10B981"/>
+              <polygon points="160,116 153,104 167,104" fill="#FFFFFF"/>
+              <!-- Folder in Left Hand -->
+              <rect x="130" y="118" width="18" height="24" rx="2" fill="#FFFFFF" stroke="#047857" stroke-width="1.5"/>
+              <line x1="134" y1="124" x2="144" y2="124" stroke="#10B981" stroke-width="1.5"/>
+              <line x1="134" y1="129" x2="142" y2="129" stroke="#10B981" stroke-width="1.5"/>
+              <!-- Briefcase in Right Hand -->
+              <rect x="176" y="145" width="22" height="18" rx="3" fill="#7C3AED"/>
+              <path d="M182 145 C182 141, 192 141, 192 145" stroke="#7C3AED" stroke-width="2" fill="none"/>
+              <rect x="185" y="152" width="4" height="4" fill="#FBBF24"/>
+              <!-- Arms -->
+              <path d="M140 112 C132 120, 132 130, 137 135" stroke="#10B981" stroke-width="7" stroke-linecap="round"/>
+              <path d="M180 112 C188 124, 186 138, 184 148" stroke="#10B981" stroke-width="7" stroke-linecap="round"/>
+              <!-- Hands -->
+              <circle cx="137" cy="133" r="4" fill="#FBBF24"/>
+              <circle cx="184" cy="146" r="4" fill="#FBBF24"/>
+              <!-- Head & Stylish Hair -->
+              <circle cx="160" cy="86" r="16" fill="#FBBF24"/>
+              <path d="M144 86 C143 68, 177 68, 176 86 C176 96, 172 102, 169 98 C166 76, 154 76, 151 98 C148 102, 144 96, 144 86 Z" fill="#0F172A"/>
+              <!-- Eyes & Warm Smile -->
+              <circle cx="155" cy="85" r="1.8" fill="#0F172A"/>
+              <circle cx="165" cy="85" r="1.8" fill="#0F172A"/>
+              <path d="M156 92 Q160 96 164 92" stroke="#92400E" stroke-width="1.8" stroke-linecap="round"/>
+              <!-- Floating Analytics Icon -->
+              <rect x="235" y="80" width="28" height="24" rx="4" fill="#0EA5E9" stroke="#FFFFFF" stroke-width="1.5"/>
+              <line x1="241" y1="96" x2="241" y2="90" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+              <line x1="249" y1="96" x2="249" y2="85" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+              <line x1="257" y1="96" x2="257" y2="88" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+
+            <!-- 3. ADMIN SVG ILLUSTRATION -->
+            <svg id="illustrAdmin" class="auth-illustration-svg d-none" viewBox="0 0 320 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Institutional Data Center Outline -->
+              <rect x="70" y="55" width="180" height="110" rx="4" fill="#E2E8F0" opacity="0.6"/>
+              <polygon points="160,20 60,60 260,60" fill="#CBD5E1" opacity="0.75"/>
+              <!-- Security Beacon Antenna -->
+              <line x1="160" y1="20" x2="160" y2="6" stroke="#4F46E5" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="160" cy="6" r="3" fill="#10B981"/>
+              <!-- Pillars -->
+              <rect x="95" y="65" width="10" height="90" rx="2" fill="#CBD5E1"/>
+              <rect x="125" y="65" width="10" height="90" rx="2" fill="#CBD5E1"/>
+              <rect x="185" y="65" width="10" height="90" rx="2" fill="#CBD5E1"/>
+              <rect x="215" y="65" width="10" height="90" rx="2" fill="#CBD5E1"/>
+              <!-- Ground Shadow -->
+              <ellipse cx="160" cy="210" rx="60" ry="10" fill="#000000" opacity="0.08"/>
+              <!-- Admin Character -->
+              <!-- Legs & Dark Slacks -->
+              <rect x="145" y="156" width="12" height="42" rx="3" fill="#0F172A"/>
+              <rect x="163" y="156" width="12" height="42" rx="3" fill="#0F172A"/>
+              <ellipse cx="151" cy="198" rx="8" ry="4" fill="#020617"/>
+              <ellipse cx="169" cy="198" rx="8" ry="4" fill="#020617"/>
+              <!-- Navy Formal Suit & Tie -->
+              <rect x="135" y="104" width="50" height="56" rx="10" fill="#1E293B"/>
+              <polygon points="160,118 153,104 167,104" fill="#FFFFFF"/>
+              <polygon points="160,136 156,118 164,118" fill="#4F46E5"/>
+              <!-- Holographic Tablet in Hands -->
+              <rect x="144" y="126" width="32" height="24" rx="4" fill="#1E1B4B" stroke="#06B6D4" stroke-width="2"/>
+              <path d="M149 140 L156 134 L162 137 L171 130" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="171" cy="130" r="1.5" fill="#10B981"/>
+              <!-- Arms holding Tablet -->
+              <path d="M135 114 C124 124, 126 138, 142 140" stroke="#1E293B" stroke-width="8" stroke-linecap="round"/>
+              <path d="M185 114 C196 124, 194 138, 178 140" stroke="#1E293B" stroke-width="8" stroke-linecap="round"/>
+              <!-- Hands -->
+              <circle cx="143" cy="138" r="4.5" fill="#FBBF24"/>
+              <circle cx="177" cy="138" r="4.5" fill="#FBBF24"/>
+              <!-- Head -->
+              <circle cx="160" cy="87" r="16.5" fill="#FBBF24"/>
+              <!-- Short Professional Hair & Spectacles -->
+              <path d="M144 82 C146 68, 174 68, 176 82 C170 74, 150 74, 144 82 Z" fill="#334155"/>
+              <!-- Glasses -->
+              <rect x="150" y="83" width="8" height="6" rx="1.5" stroke="#1E293B" stroke-width="1.5" fill="none"/>
+              <rect x="162" y="83" width="8" height="6" rx="1.5" stroke="#1E293B" stroke-width="1.5" fill="none"/>
+              <line x1="158" y1="86" x2="162" y2="86" stroke="#1E293B" stroke-width="1.5"/>
+              <!-- Confident Smile -->
+              <path d="M157 93 Q160 96 163 93" stroke="#92400E" stroke-width="1.8" stroke-linecap="round"/>
+              <!-- Floating Golden Security Shield -->
+              <path d="M245 74 L258 79 C258 90, 245 98, 245 98 C245 98, 232 90, 232 79 Z" fill="#F59E0B" stroke="#FFFFFF" stroke-width="1.5"/>
+              <path d="M241 85 L244 88 L250 82" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <!-- Dynamic Quote / Feature Pill -->
+          <div class="visual-quote-box">
+            <div id="visualQuoteBadge" class="badge-soft-primary px-2.5 py-1 rounded-pill small fw-bold d-inline-block mb-1.5">
+              <i class="bi bi-mortarboard me-1"></i> Student Portal
+            </div>
+            <p id="visualQuoteText" class="small text-secondary mb-0 fw-medium lh-sm">
+              Empowering learners with real-time academic benchmarking, semester trends & AI marks prediction.
+            </p>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Authentication Form Stage -->
+        <div class="auth-form-side">
+          
+          <!-- Role Switcher Segmented Control -->
+          <div class="role-segmented-control" role="tablist" aria-label="Select Account Role">
+            <button
+              type="button"
+              class="role-pill-btn active"
+              id="tab-student"
+              role="tab"
+              aria-selected="true"
+              data-role="student"
+              onclick="selectRole('student')"
+            >
+              <i class="bi bi-mortarboard-fill me-1.5"></i> Student
+            </button>
+            <button
+              type="button"
+              class="role-pill-btn"
+              id="tab-teacher"
+              role="tab"
+              aria-selected="false"
+              data-role="teacher"
+              onclick="selectRole('teacher')"
+            >
+              <i class="bi bi-person-video3 me-1.5"></i> Teacher
+            </button>
+            <button
+              type="button"
+              class="role-pill-btn"
+              id="tab-admin"
+              role="tab"
+              aria-selected="false"
+              data-role="admin"
+              onclick="selectRole('admin')"
+            >
+              <i class="bi bi-shield-lock-fill me-1.5"></i> Admin
+            </button>
+          </div>
+
+          <!-- Role-Specific Heading and Subtitle -->
+          <div class="mb-3" id="roleHeaderContainer">
+            <h2 class="fw-extrabold mb-1" id="roleHeading" style="letter-spacing: -0.5px;">
+              Welcome Back, Student
+            </h2>
+            <p class="text-secondary small mb-0" id="roleSubtitle">
+              Access your academic performance, semester grades, and examination predictions.
+            </p>
+          </div>
+
+          <!-- Flash Messages (Authoritative Backend Feedback) -->
           {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
               {% for category, message in messages %}
-                <div class="alert alert-{{ category if category != 'error' else 'danger' }} alert-dismissible fade show rounded-3 p-2.5 small mb-3" role="alert">
-                  <i class="bi bi-info-circle-fill me-1"></i> {{ message }}
+                <div class="alert alert-{{ category if category != 'error' else 'danger' }} alert-dismissible fade show rounded-3 p-2.5 small mb-3 shadow-sm" role="alert">
+                  <i class="bi {% if category == 'success' %}bi-check-circle-fill text-success{% else %}bi-exclamation-triangle-fill text-danger{% endif %} me-1.5"></i>
+                  {{ message }}
                   <button type="button" class="btn-close p-2.5" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
               {% endfor %}
             {% endif %}
           {% endwith %}
 
-          <!-- Form -->
-          <form method="POST">
-            <!-- Role Toggle Selector -->
-            <div class="role-selector">
-              <div class="role-option">
-                <input type="radio" name="role" id="role-student" value="student" checked />
-                <label for="role-student" class="role-label">
-                  <i class="bi bi-mortarboard me-1"></i> Student
-                </label>
-              </div>
-              <div class="role-option">
-                <input type="radio" name="role" id="role-teacher" value="teacher" />
-                <label for="role-teacher" class="role-label">
-                  <i class="bi bi-person-video3 me-1"></i> Teacher
-                </label>
-              </div>
-              <div class="role-option">
-                <input type="radio" name="role" id="role-admin" value="admin" />
-                <label for="role-admin" class="role-label">
-                  <i class="bi bi-shield-lock me-1"></i> Admin
-                </label>
-              </div>
-            </div>
+          <!-- Client Validation Alert Container -->
+          <div id="clientErrorAlert" class="alert alert-danger p-2.5 small rounded-3 mb-3 d-none" role="alert">
+            <i class="bi bi-exclamation-circle-fill me-1.5"></i>
+            <span id="clientErrorMessage"></span>
+          </div>
 
+          <!-- Unified Login Form -->
+          <form method="POST" action="{{ url_for('login') }}" id="authForm" novalidate onsubmit="return handleFormSubmit(event)">
+            <input type="hidden" name="role" id="roleInput" value="{{ initial_role or 'student' }}" />
+
+            <!-- Identifier Field (Roll / Teacher ID / Admin ID) -->
             <div class="mb-3">
-              <label for="username" class="form-label fw-semibold text-secondary small">Username</label>
+              <label for="identifierInput" class="form-label small fw-semibold text-secondary mb-1.5" id="identifierLabel">
+                Student ID or Username
+              </label>
               <div class="input-group">
-                <span class="input-group-text bg-white border-end-0 rounded-start-2 text-muted"><i class="bi bi-person"></i></span>
+                <span class="input-group-text">
+                  <i class="bi bi-person-badge" id="identifierIcon"></i>
+                </span>
                 <input
                   type="text"
-                  id="username"
                   name="username"
-                  class="form-control form-control-custom border-start-0 ps-0"
-                  placeholder="Enter username"
+                  id="identifierInput"
+                  class="form-control"
+                  placeholder="Enter your student Roll No (e.g., IT2026001)"
+                  autocomplete="username"
                   required
                 />
               </div>
             </div>
 
-            <div class="mb-4">
-              <label for="password" class="form-label fw-semibold text-secondary small">Password</label>
-              <div class="input-group">
-                <span class="input-group-text bg-white border-end-0 rounded-start-2 text-muted"><i class="bi bi-shield-lock"></i></span>
+            <!-- Password Field with Show/Hide Toggle Button -->
+            <div class="mb-3">
+              <label for="passwordInput" class="form-label small fw-semibold text-secondary mb-1.5">
+                Password
+              </label>
+              <div class="input-group input-with-eye">
+                <span class="input-group-text">
+                  <i class="bi bi-lock-fill"></i>
+                </span>
                 <input
                   type="password"
-                  id="password"
                   name="password"
-                  class="form-control form-control-custom border-start-0 border-end-0 ps-0"
-                  placeholder="Enter password"
+                  id="passwordInput"
+                  class="form-control"
+                  placeholder="Enter your password"
+                  autocomplete="current-password"
                   required
                 />
-                <button class="btn btn-outline-secondary bg-white border border-start-0 rounded-end-2 text-muted" type="button" id="togglePassword">
-                  <i class="bi bi-eye" id="toggleIcon"></i>
+                <button
+                  type="button"
+                  class="btn-toggle-password"
+                  id="togglePasswordBtn"
+                  onclick="togglePasswordVisibility()"
+                  aria-label="Show password"
+                  title="Show / Hide Password"
+                >
+                  <i class="bi bi-eye" id="passwordEyeIcon"></i>
                 </button>
               </div>
             </div>
 
-            <button type="submit" class="btn btn-primary-custom w-100 mb-3">
-              <i class="bi bi-box-arrow-in-right me-1"></i> Log In
-            </button>
+            <!-- Remember Me & Forgot Password Links -->
+            <div class="d-flex align-items-center justify-content-between mb-4">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="rememberMe" name="remember" />
+                <label class="form-check-label small text-secondary" for="rememberMe">
+                  Remember Me
+                </label>
+              </div>
+              <a
+                href="#"
+                class="small text-decoration-none fw-semibold"
+                data-bs-toggle="modal"
+                data-bs-target="#forgotPasswordModal"
+              >
+                Forgot Password?
+              </a>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="d-grid mb-2">
+              <button type="submit" class="btn btn-submit-login" id="submitButton">
+                <span id="submitButtonText">Sign In as Student</span>
+                <i class="bi bi-arrow-right ms-2" id="submitButtonIcon"></i>
+              </button>
+            </div>
           </form>
-          
+
+          <!-- Quick Test Credentials Helper Chips -->
+          <div class="auth-demo-bar">
+            <div class="text-secondary fw-semibold mb-1.5 d-flex align-items-center justify-content-between">
+              <span><i class="bi bi-lightning-charge-fill text-warning me-1"></i> Quick Test Logins:</span>
+              <span class="small opacity-75">Click to auto-fill</span>
+            </div>
+            <div class="d-flex flex-wrap gap-1.5">
+              <span class="demo-chip" onclick="quickFill('student', 'IT2026001', 'student')">
+                <i class="bi bi-mortarboard"></i> Student: IT2026001
+              </span>
+              <span class="demo-chip" onclick="quickFill('teacher', 'T001', 'Teacher@123')">
+                <i class="bi bi-person-video3"></i> Teacher: T001
+              </span>
+              <span class="demo-chip" onclick="quickFill('admin', 'admin', 'admin123')">
+                <i class="bi bi-shield-lock"></i> Admin: admin
+              </span>
+            </div>
+          </div>
+
+          <div class="text-center mt-3">
+            <small class="text-muted" style="font-size: 0.78rem;">
+              Institutional Examination & Academic Performance Intelligence • v2.4
+            </small>
+          </div>
+
         </div>
       </div>
     </div>
-    
+
+    <!-- Forgot Password Modal -->
+    <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-2">
+          <div class="modal-header border-0 pb-0">
+            <h5 class="modal-title fw-bold" id="forgotPasswordModalLabel">
+              <i class="bi bi-key-fill text-primary me-2"></i> Account Password Assistance
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body py-3">
+            <p class="text-secondary mb-3">
+              For security compliance within the Academic Examination System, student and faculty credentials are institutional and verified against the central registrar database.
+            </p>
+            <div class="bg-light p-3 rounded-3 mb-3 border">
+              <div class="small fw-bold text-dark mb-1"><i class="bi bi-building me-1"></i> Examination Controller & IT Support:</div>
+              <div class="small text-secondary"><i class="bi bi-envelope me-1"></i> support@academic-intelligence.edu</div>
+              <div class="small text-secondary"><i class="bi bi-telephone me-1"></i> +91 (022) 2778-9000 (Ext. 204)</div>
+            </div>
+            <small class="text-muted d-block">
+              Please include your <strong>Student Roll Number</strong> or <strong>Faculty ID</strong> when contacting administration for password resets.
+            </small>
+          </div>
+          <div class="modal-footer border-0 pt-0">
+            <button type="button" class="btn btn-secondary btn-sm rounded-pill px-4" data-bs-dismiss="modal">Got It</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap 5 Bundle JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Role Switching & Form Logic -->
     <script>
-      document.getElementById('togglePassword').addEventListener('click', function () {
-        const passwordField = document.getElementById('password');
-        const icon = document.getElementById('toggleIcon');
-        if (passwordField.type === 'password') {
-          passwordField.type = 'text';
-          icon.classList.remove('bi-eye');
-          icon.classList.add('bi-eye-slash');
-        } else {
-          passwordField.type = 'password';
-          icon.classList.remove('bi-eye-slash');
-          icon.classList.add('bi-eye');
+      (function () {
+        "use strict";
+
+        // Role configuration metadata
+        const ROLE_CONFIG = {
+          student: {
+            heading: "Welcome Back, Student",
+            subtitle: "Access your academic performance, semester grades, and examination predictions.",
+            label: "Student Roll Number or Username",
+            placeholder: "Enter your student Roll No (e.g., IT2026001)",
+            icon: "bi bi-person-badge",
+            btnText: "Sign In as Student",
+            btnIcon: "bi bi-arrow-right",
+            badge: '<i class="bi bi-mortarboard me-1"></i> Student Portal',
+            badgeClass: "badge-soft-primary",
+            quote: "Empowering learners with real-time academic benchmarking, semester trends & AI marks prediction."
+          },
+          teacher: {
+            heading: "Welcome Back, Teacher",
+            subtitle: "Monitor assigned subjects, inspect student risk factors, and manage class attendance.",
+            label: "Faculty ID or Username",
+            placeholder: "Enter your faculty ID (e.g., T101 or teacher001)",
+            icon: "bi bi-person-video3",
+            btnText: "Sign In to Faculty Portal",
+            btnIcon: "bi bi-arrow-right",
+            badge: '<i class="bi bi-person-video3 me-1"></i> Faculty Portal',
+            badgeClass: "badge-soft-success",
+            quote: "Comprehensive subject analytics, grade distributions & at-risk student intervention metrics."
+          },
+          admin: {
+            heading: "Administrator Access",
+            subtitle: "Manage academic intelligence, institutional records, and examination governance.",
+            label: "Administrator ID or Username",
+            placeholder: "Enter your admin username or ID (e.g., admin or T001)",
+            icon: "bi bi-shield-lock",
+            btnText: "Sign In as Administrator",
+            btnIcon: "bi bi-shield-lock-fill",
+            badge: '<i class="bi bi-shield-lock me-1"></i> Administration',
+            badgeClass: "badge-soft-danger",
+            quote: "Institutional dashboard monitoring all student cohorts, attendance compliance & predictive analytics."
+          }
+        };
+
+        // DOM elements
+        const roleInput = document.getElementById("roleInput");
+        const roleHeading = document.getElementById("roleHeading");
+        const roleSubtitle = document.getElementById("roleSubtitle");
+        const identifierLabel = document.getElementById("identifierLabel");
+        const identifierInput = document.getElementById("identifierInput");
+        const identifierIcon = document.getElementById("identifierIcon");
+        const submitButtonText = document.getElementById("submitButtonText");
+        const submitButtonIcon = document.getElementById("submitButtonIcon");
+        const visualQuoteBadge = document.getElementById("visualQuoteBadge");
+        const visualQuoteText = document.getElementById("visualQuoteText");
+        const clientErrorAlert = document.getElementById("clientErrorAlert");
+        const clientErrorMessage = document.getElementById("clientErrorMessage");
+
+        // Illustration SVG elements
+        const illustrStudent = document.getElementById("illustrStudent");
+        const illustrTeacher = document.getElementById("illustrTeacher");
+        const illustrAdmin = document.getElementById("illustrAdmin");
+
+        // Role tabs
+        const tabs = {
+          student: document.getElementById("tab-student"),
+          teacher: document.getElementById("tab-teacher"),
+          admin: document.getElementById("tab-admin")
+        };
+
+        window.selectRole = function (roleKey) {
+          if (!ROLE_CONFIG[roleKey]) roleKey = "student";
+
+          // Update hidden input
+          if (roleInput) roleInput.value = roleKey;
+
+          // Update active button state
+          Object.keys(tabs).forEach(function (key) {
+            if (tabs[key]) {
+              const isActive = key === roleKey;
+              tabs[key].classList.toggle("active", isActive);
+              tabs[key].setAttribute("aria-selected", isActive ? "true" : "false");
+            }
+          });
+
+          // Animate text updates
+          const conf = ROLE_CONFIG[roleKey];
+          const headerContainer = document.getElementById("roleHeaderContainer");
+          if (headerContainer) {
+            headerContainer.classList.remove("fade-scale-enter");
+            void headerContainer.offsetWidth; // trigger reflow
+            headerContainer.classList.add("fade-scale-enter");
+          }
+
+          if (roleHeading) roleHeading.textContent = conf.heading;
+          if (roleSubtitle) roleSubtitle.textContent = conf.subtitle;
+          if (identifierLabel) identifierLabel.textContent = conf.label;
+          if (identifierInput) identifierInput.placeholder = conf.placeholder;
+          if (identifierIcon) identifierIcon.className = conf.icon;
+          if (submitButtonText) submitButtonText.textContent = conf.btnText;
+          if (submitButtonIcon) submitButtonIcon.className = conf.btnIcon + " ms-2";
+
+          // Update left visual stage
+          if (visualQuoteBadge) {
+            visualQuoteBadge.innerHTML = conf.badge;
+            visualQuoteBadge.className = conf.badgeClass + " px-2.5 py-1 rounded-pill small fw-bold d-inline-block mb-1.5";
+          }
+          if (visualQuoteText) visualQuoteText.textContent = conf.quote;
+
+          // Toggle active SVG illustration
+          if (illustrStudent) illustrStudent.classList.toggle("d-none", roleKey !== "student");
+          if (illustrTeacher) illustrTeacher.classList.toggle("d-none", roleKey !== "teacher");
+          if (illustrAdmin) illustrAdmin.classList.toggle("d-none", roleKey !== "admin");
+
+          // Clear client error alert
+          if (clientErrorAlert) clientErrorAlert.classList.add("d-none");
+        };
+
+        // Password visibility toggler
+        window.togglePasswordVisibility = function () {
+          const passInput = document.getElementById("passwordInput");
+          const eyeIcon = document.getElementById("passwordEyeIcon");
+          const toggleBtn = document.getElementById("togglePasswordBtn");
+          if (!passInput || !eyeIcon) return;
+
+          if (passInput.type === "password") {
+            passInput.type = "text";
+            eyeIcon.classList.remove("bi-eye");
+            eyeIcon.classList.add("bi-eye-slash");
+            if (toggleBtn) toggleBtn.setAttribute("aria-label", "Hide password");
+          } else {
+            passInput.type = "password";
+            eyeIcon.classList.remove("bi-eye-slash");
+            eyeIcon.classList.add("bi-eye");
+            if (toggleBtn) toggleBtn.setAttribute("aria-label", "Show password");
+          }
+        };
+
+        // Quick fill credentials helper for demo evaluation
+        window.quickFill = function (roleKey, username, password) {
+          selectRole(roleKey);
+          if (identifierInput) identifierInput.value = username;
+          const passInput = document.getElementById("passwordInput");
+          if (passInput) passInput.value = password;
+          if (clientErrorAlert) clientErrorAlert.classList.add("d-none");
+        };
+
+        // Client-side form validation
+        window.handleFormSubmit = function (e) {
+          const username = identifierInput ? identifierInput.value.trim() : "";
+          const password = document.getElementById("passwordInput") ? document.getElementById("passwordInput").value : "";
+          const currentRole = roleInput ? roleInput.value : "student";
+
+          if (!username) {
+            e.preventDefault();
+            showClientError(
+              currentRole === "student"
+                ? "Please enter your Student Roll Number or Username."
+                : currentRole === "teacher"
+                ? "Please enter your Faculty ID or Username."
+                : "Please enter your Administrator Username."
+            );
+            if (identifierInput) identifierInput.focus();
+            return false;
+          }
+
+          if (!password) {
+            e.preventDefault();
+            showClientError("Please enter your account password.");
+            const passInput = document.getElementById("passwordInput");
+            if (passInput) passInput.focus();
+            return false;
+          }
+
+          return true;
+        };
+
+        function showClientError(msg) {
+          if (clientErrorAlert && clientErrorMessage) {
+            clientErrorMessage.textContent = msg;
+            clientErrorAlert.classList.remove("d-none");
+          }
         }
-      });
+
+        // Initialize on DOM load with requested initial_role or query param
+        document.addEventListener("DOMContentLoaded", function () {
+          const params = new URLSearchParams(window.location.search);
+          const roleParam = params.get("role") || "{{ initial_role or 'student' }}";
+          selectRole(roleParam);
+        });
+      })();
     </script>
   </body>
 </html>

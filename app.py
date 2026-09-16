@@ -236,21 +236,28 @@ def login():
     if session.get("student_logged_in"):
         return redirect(url_for("student_dashboard"))
 
+    initial_role = request.args.get("role", "student").strip().lower()
+    if initial_role not in ["student", "teacher", "admin"]:
+        initial_role = "student"
+
     if request.method == "POST":
-        role = request.form.get("role", "student").strip()
+        role = request.form.get("role", "student").strip().lower()
         username = request.form.get("username", "").strip()
         password = request.form.get("password", "").strip()
 
         admin_df, students_df, _, _, _ = load_data()
 
         if role == "admin":
+            admin_df["Username_str"] = admin_df["Username"].astype(str).str.strip()
+            admin_df["Teacher_ID_str"] = admin_df["Teacher_ID"].astype(str).str.strip()
             match = admin_df[
-                (admin_df["Username"].astype(str) == username) &
+                ((admin_df["Username_str"].str.lower() == username.lower()) |
+                 (admin_df["Teacher_ID_str"].str.lower() == username.lower())) &
                 (admin_df["Password"].astype(str) == password)
             ]
             if match.empty:
-                flash("Invalid admin credentials.", "danger")
-                return redirect(url_for("login"))
+                flash("Invalid administrator credentials.", "danger")
+                return redirect(url_for("login", role="admin"))
 
             admin_info = match.iloc[0]
             session.clear()
@@ -265,7 +272,7 @@ def login():
             teacher_df = load_teachers()
             if teacher_df.empty:
                 flash("Teacher database unavailable.", "danger")
-                return redirect(url_for("login"))
+                return redirect(url_for("login", role="teacher"))
 
             teacher_df["Username_str"] = teacher_df["Username"].astype(str).str.strip()
             teacher_df["Teacher_ID_str"] = teacher_df["Teacher_ID"].astype(str).str.strip()
@@ -280,7 +287,7 @@ def login():
             ]
             if match.empty:
                 flash("Invalid teacher credentials or account inactive.", "danger")
-                return redirect(url_for("login"))
+                return redirect(url_for("login", role="teacher"))
 
             teacher_info = match.iloc[0]
             session.clear()
@@ -293,13 +300,16 @@ def login():
             return redirect(url_for("teacher_dashboard"))
 
         else:  # role == "student"
+            students_df["Username_str"] = students_df["Username"].astype(str).str.strip()
+            students_df["Roll_str"] = students_df["Roll"].astype(str).str.strip()
             match = students_df[
-                (students_df["Username"].astype(str) == username) &
+                ((students_df["Username_str"].str.lower() == username.lower()) |
+                 (students_df["Roll_str"].str.lower() == username.lower())) &
                 (students_df["Password"].astype(str) == password)
             ]
             if match.empty:
                 flash("Invalid student credentials.", "danger")
-                return redirect(url_for("login"))
+                return redirect(url_for("login", role="student"))
 
             student_info = match.iloc[0]
             session.clear()
@@ -310,7 +320,7 @@ def login():
             flash(f"Welcome, {student_info['Name']}!", "success")
             return redirect(url_for("student_dashboard"))
 
-    return render_template("login.html")
+    return render_template("login.html", initial_role=initial_role, page_title="Academic Intelligence | Login")
 
 
 # =========================================================
@@ -329,7 +339,7 @@ def teacher_login():
         teacher_df = load_teachers()
         if teacher_df.empty:
             flash("Teacher database is unavailable.", "danger")
-            return redirect(url_for("teacher_login"))
+            return redirect(url_for("login", role="teacher"))
 
         teacher_df["Username_str"] = teacher_df["Username"].astype(str).str.strip()
         teacher_df["Teacher_ID_str"] = teacher_df["Teacher_ID"].astype(str).str.strip()
@@ -345,9 +355,10 @@ def teacher_login():
 
         if match.empty:
             flash("Invalid teacher credentials or account is inactive.", "danger")
-            return redirect(url_for("teacher_login"))
+            return redirect(url_for("login", role="teacher"))
 
         teacher_info = match.iloc[0]
+        session.clear()
         session["teacher_logged_in"] = True
         session["teacher_id"] = str(teacher_info["Teacher_ID"])
         session["teacher_username"] = str(teacher_info["Username"])
@@ -356,7 +367,7 @@ def teacher_login():
         flash(f"Welcome, {teacher_info['Teacher_Name']}!", "success")
         return redirect(url_for("teacher_dashboard"))
 
-    return render_template("teacher_login.html")
+    return render_template("login.html", initial_role="teacher", page_title="Academic Intelligence | Teacher Login")
 
 
 @app.route("/teacher")

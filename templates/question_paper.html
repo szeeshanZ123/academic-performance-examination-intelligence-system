@@ -19,35 +19,22 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}" />
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
     <style>
-      :root {
-        --primary: #4f46e5;
-        --primary-hover: #4338ca;
-        --secondary: #0ea5e9;
-        --success: #10b981;
-        --warning: #f59e0b;
-        --danger: #ef4444;
-        --dark-bg: #0f172a;
-        --body-bg: #f8fafc;
-        --card-bg: #ffffff;
-        --text-main: #1e293b;
-        --text-muted: #64748b;
-        --border-color: #e2e8f0;
-      }
-
       body {
         font-family: "Plus Jakarta Sans", sans-serif;
-        background-color: var(--body-bg);
-        color: var(--text-main);
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
         min-height: 100vh;
       }
 
       /* Navbar */
       .navbar-custom {
-        background-color: var(--dark-bg);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        background-color: var(--navbar-bg) !important;
+        border-bottom: 1px solid var(--border-color);
       }
 
       .brand-badge {
@@ -61,12 +48,12 @@
 
       /* Hero Header */
       .hero-card {
-        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        background: var(--hero-bg) !important;
         border-radius: 20px;
-        color: white;
+        color: var(--hero-text) !important;
         position: relative;
         overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--hero-border) !important;
         box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
       }
 
@@ -83,7 +70,7 @@
 
       /* KPI Cards */
       .kpi-card {
-        background: var(--card-bg);
+        background: var(--bg-card);
         border-radius: 16px;
         border: 1px solid var(--border-color);
         transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -105,16 +92,16 @@
       }
 
       /* Badges */
-      .badge-soft-success { background-color: #d1fae5; color: #065f46; font-weight: 600; }
-      .badge-soft-info { background-color: #e0f2fe; color: #0369a1; font-weight: 600; }
-      .badge-soft-warning { background-color: #fef3c7; color: #92400e; font-weight: 600; }
-      .badge-soft-danger { background-color: #fee2e2; color: #991b1b; font-weight: 600; }
-      .badge-soft-purple { background-color: #f3e8ff; color: #6b21a8; font-weight: 600; }
-      .badge-soft-secondary { background-color: #f1f5f9; color: #475569; font-weight: 600; }
+      .badge-soft-success { background-color: rgba(16, 185, 129, 0.15); color: #10b981; font-weight: 600; }
+      .badge-soft-info { background-color: rgba(6, 182, 212, 0.15); color: #06b6d4; font-weight: 600; }
+      .badge-soft-warning { background-color: rgba(245, 158, 11, 0.15); color: #f59e0b; font-weight: 600; }
+      .badge-soft-danger { background-color: rgba(239, 68, 68, 0.15); color: #ef4444; font-weight: 600; }
+      .badge-soft-purple { background-color: rgba(168, 85, 247, 0.15); color: #a855f7; font-weight: 600; }
+      .badge-soft-secondary { background-color: rgba(148, 163, 184, 0.15); color: #64748b; font-weight: 600; }
 
       /* Chart Cards */
       .chart-card {
-        background: var(--card-bg);
+        background: var(--bg-card);
         border-radius: 16px;
         border: 1px solid var(--border-color);
         padding: 1.5rem;
@@ -127,9 +114,9 @@
       }
 
       .table-custom thead th {
-        background-color: #f8fafc;
+        background-color: var(--table-header-bg);
         border-bottom: 1px solid var(--border-color);
-        color: var(--text-muted);
+        color: var(--table-header-text);
         font-size: 0.8rem;
         font-weight: 700;
         text-transform: uppercase;
@@ -145,19 +132,19 @@
       }
 
       .table-custom tbody tr:hover td {
-        background-color: #f8fafc;
+        background-color: var(--table-row-hover);
       }
 
       .upload-dropzone {
-        border: 2px dashed #cbd5e1;
+        border: 2px dashed var(--border-color);
         border-radius: 16px;
-        background: #f8fafc;
+        background: var(--bg-card);
         transition: all 0.2s ease;
       }
 
       .upload-dropzone:hover {
         border-color: var(--primary);
-        background: #f1f5f9;
+        background: var(--bg-elevated);
       }
 
       .tag-badge {
@@ -165,30 +152,33 @@
         font-size: 0.75rem;
         padding: 2px 8px;
         border-radius: 6px;
-        background: #f1f5f9;
-        color: #334155;
+        background: var(--bg-elevated);
+        color: var(--text-secondary);
         margin: 2px;
-        border: 1px solid #e2e8f0;
+        border: 1px solid var(--border-color);
       }
     </style>
   </head>
   <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
-      <div class="container-fluid px-4 py-2">
-        <a class="navbar-brand d-flex align-items-center text-white text-decoration-none" href="{% if user_role == 'admin' %}{{ url_for('home') }}{% else %}{{ url_for('teacher_dashboard') }}{% endif %}">
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top py-2">
+      <div class="container-fluid px-4">
+        <a class="navbar-brand d-flex align-items-center text-decoration-none" href="{% if user_role == 'admin' %}{{ url_for('home') }}{% else %}{{ url_for('teacher_dashboard') }}{% endif %}">
           <span class="brand-badge me-2"><i class="bi bi-mortarboard-fill me-1"></i> Academic Intelligence</span>
         </a>
 
         <div class="d-flex align-items-center gap-3">
-          <a href="{% if user_role == 'admin' %}{{ url_for('home') }}{% else %}{{ url_for('teacher_dashboard') }}{% endif %}" class="btn btn-outline-light btn-sm rounded-pill px-3">
+          <a href="{% if user_role == 'admin' %}{{ url_for('home') }}{% else %}{{ url_for('teacher_dashboard') }}{% endif %}" class="btn btn-outline-secondary btn-sm rounded-pill px-3">
             <i class="bi bi-arrow-left me-1"></i> Back to Dashboard
           </a>
-          <div class="d-none d-md-flex align-items-center bg-dark bg-opacity-50 px-3 py-1.5 rounded-pill border border-secondary border-opacity-25 text-white-50 small">
+          <div class="d-none d-md-flex align-items-center user-badge-pill px-3 py-1.5 rounded-pill small">
             <i class="bi bi-person-badge text-primary me-2"></i>
-            <span class="text-white fw-medium me-2">{{ user_name }}</span>
+            <span class="fw-medium me-2">{{ user_name }}</span>
             <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-25 text-uppercase">{{ user_role }}</span>
           </div>
+          <button id="themeToggleBtn" onclick="toggleTheme()" class="theme-toggle-pill" type="button" aria-label="Toggle Theme">
+            <span>☀️ Light</span><span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
+          </button>
           <a href="{{ url_for('logout') }}" class="btn btn-outline-danger btn-sm rounded-pill px-3">
             <i class="bi bi-box-arrow-right me-1"></i> Logout
           </a>
@@ -337,6 +327,9 @@
                     <span class="text-muted small fw-semibold"><i class="bi bi-stars text-warning me-1"></i>Quick Demo Samples:</span>
                     <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill" onclick="loadDemoSample('dbms_sem2_sample', 2, 'Database Management Systems')">
                       <i class="bi bi-database me-1"></i> Sem 2 DBMS
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-primary rounded-pill" onclick="loadDemoSample('sem3_python_data_analytics', 3, 'Python for Data Analytics')">
+                      <i class="bi bi-file-earmark-pdf me-1"></i> Sem 3 Python Analytics
                     </button>
                     <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill" onclick="loadDemoSample('python_sem1_sample', 1, 'Python Programming')">
                       <i class="bi bi-filetype-py me-1"></i> Sem 1 Python

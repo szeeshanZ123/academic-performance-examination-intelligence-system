@@ -16,6 +16,8 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}" />
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
     <style>
       :root {
         --primary: #4f46e5;
@@ -29,7 +31,7 @@
 
       body {
         font-family: "Plus Jakarta Sans", sans-serif;
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        background-color: var(--bg-primary);
         min-height: 100vh;
         display: flex;
         align-items: center;
@@ -152,7 +154,14 @@
       }
     </style>
   </head>
-  <body>
+  <body class="login-page-bg">
+    <!-- Floating Theme Toggle -->
+    <div class="position-absolute top-0 end-0 p-3">
+      <button id="themeToggleBtn" onclick="toggleTheme()" class="theme-toggle-pill shadow-sm" type="button" aria-label="Toggle Theme">
+        <span>☀️ Light</span><span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
+      </button>
+    </div>
+
     <div class="login-container">
       <div class="card login-card p-4 p-md-5">
         <div class="card-body p-0">

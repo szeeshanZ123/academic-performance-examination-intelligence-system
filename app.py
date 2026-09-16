@@ -48,11 +48,19 @@ app.register_blueprint(question_paper_bp)
 # HOME
 # =========================================================
 
+@app.route("/admin")
+@app.route("/admin-dashboard")
 @app.route("/")
 def home():
     """
-    Existing Admin Dashboard.
+    Institutional Admin Dashboard.
     """
+    if session.get("student_logged_in"):
+        flash("Access Denied: Students are not authorized to view the Admin Dashboard.", "danger")
+        return redirect(url_for("student_dashboard"))
+    if session.get("teacher_logged_in"):
+        flash("Access Denied: Teachers are not authorized to view the Admin Dashboard.", "warning")
+        return redirect(url_for("teacher_dashboard"))
     if not session.get("admin_logged_in"):
         return redirect(url_for("login"))
 
@@ -245,6 +253,7 @@ def login():
                 return redirect(url_for("login"))
 
             admin_info = match.iloc[0]
+            session.clear()
             session["admin_logged_in"] = True
             session["admin_id"] = str(admin_info["Teacher_ID"])
             session["admin_name"] = str(admin_info["Teacher_Name"])
@@ -274,6 +283,7 @@ def login():
                 return redirect(url_for("login"))
 
             teacher_info = match.iloc[0]
+            session.clear()
             session["teacher_logged_in"] = True
             session["teacher_id"] = str(teacher_info["Teacher_ID"])
             session["teacher_username"] = str(teacher_info["Username"])
@@ -292,6 +302,7 @@ def login():
                 return redirect(url_for("login"))
 
             student_info = match.iloc[0]
+            session.clear()
             session["student_logged_in"] = True
             session["student_roll"] = str(student_info["Roll"])
             session["student_name"] = str(student_info["Name"])
@@ -348,11 +359,15 @@ def teacher_login():
     return render_template("teacher_login.html")
 
 
+@app.route("/teacher")
 @app.route("/teacher-dashboard")
 def teacher_dashboard():
+    if session.get("student_logged_in"):
+        flash("Access Denied: Students are not authorized to view the Teacher Dashboard.", "danger")
+        return redirect(url_for("student_dashboard"))
     if not session.get("teacher_logged_in"):
         flash("Please log in as a teacher first.", "warning")
-        return redirect(url_for("teacher_login"))
+        return redirect(url_for("login"))
 
     teacher_username = session.get("teacher_username")
     assignments = get_teacher_assignments(teacher_username)
@@ -442,7 +457,7 @@ def teacher_dashboard():
 @app.route("/teacher-logout")
 def teacher_logout():
     session.clear()
-    flash("You have been logged out of the Teacher Portal.", "info")
+    flash("You have been logged out successfully.", "info")
     return redirect(url_for("login"))
 
 
@@ -450,9 +465,14 @@ def teacher_logout():
 # STUDENT DASHBOARD
 # =========================================================
 
+@app.route("/student")
 @app.route("/student-dashboard")
 def student_dashboard():
     if not session.get("student_logged_in"):
+        if session.get("admin_logged_in"):
+            return redirect(url_for("home"))
+        if session.get("teacher_logged_in"):
+            return redirect(url_for("teacher_dashboard"))
         flash("Please login first.", "warning")
         return redirect(url_for("login"))
 
@@ -532,7 +552,9 @@ def logout():
 
 @app.route("/student-logout")
 def student_logout():
-    return redirect(url_for("logout"))
+    session.clear()
+    flash("You have been logged out successfully.", "info")
+    return redirect(url_for("login"))
 
 
 
@@ -542,7 +564,11 @@ def student_logout():
 
 @app.route("/student/<roll>")
 def student_profile(roll):
-    if not session.get("admin_logged_in") and not session.get("teacher_logged_in"):
+    if session.get("student_logged_in"):
+        if str(session.get("student_roll")).strip().lower() != str(roll).strip().lower():
+            flash("Access Denied: Students cannot view other students' profiles.", "danger")
+            return redirect(url_for("student_dashboard"))
+    elif not session.get("admin_logged_in") and not session.get("teacher_logged_in"):
         flash("Please log in first to view student profiles.", "warning")
         return redirect(url_for("login"))
 
@@ -619,6 +645,11 @@ def student_profile(roll):
 
 @app.route("/api/student/<roll>")
 def student_api(roll):
+    if not session.get("admin_logged_in") and not session.get("teacher_logged_in"):
+        if not session.get("student_logged_in"):
+            return jsonify({"error": "Unauthorized"}), 401
+        if str(session.get("student_roll")).strip().lower() != str(roll).strip().lower():
+            return jsonify({"error": "Forbidden: Cannot access other student records"}), 403
 
     detail = get_student_detail(roll)
 
@@ -829,6 +860,54 @@ def export_csv():
     ] = "text/csv"
 
     return response
+
+
+# =========================================================
+# CACHE CONTROL, SECURITY HEADERS & ERROR HANDLERS
+# =========================================================
+
+@app.after_request
+def add_security_and_cache_headers(response):
+    """
+    Ensure browser back button cannot restore authenticated session data
+    after logout, and protect against stale cached responses.
+    """
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate, max-age=0"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "SAMEORIGIN"
+    return response
+
+
+@app.errorhandler(404)
+def not_found_error(error):
+    return render_template(
+        "error.html",
+        error_code=404,
+        error_title="Page Not Found",
+        error_message="The page or resource you requested does not exist or has been moved."
+    ), 404
+
+
+@app.errorhandler(403)
+def forbidden_error(error):
+    return render_template(
+        "error.html",
+        error_code=403,
+        error_title="Access Forbidden",
+        error_message="You do not have the required permissions to access this page or record."
+    ), 403
+
+
+@app.errorhandler(500)
+def internal_server_error(error):
+    return render_template(
+        "error.html",
+        error_code=500,
+        error_title="Internal System Error",
+        error_message="A server-side error occurred. Please return to your portal or try again later."
+    ), 500
 
 
 # =========================================================

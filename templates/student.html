@@ -16,32 +16,19 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}" />
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
     <style>
-      :root {
-        --primary: #4f46e5;
-        --primary-hover: #4338ca;
-        --secondary: #0ea5e9;
-        --success: #10b981;
-        --warning: #f59e0b;
-        --danger: #ef4444;
-        --dark-bg: #0f172a;
-        --body-bg: #f8fafc;
-        --card-bg: #ffffff;
-        --text-main: #1e293b;
-        --text-muted: #64748b;
-        --border-color: #e2e8f0;
-      }
-
       body {
         font-family: "Plus Jakarta Sans", sans-serif;
-        background-color: var(--body-bg);
-        color: var(--text-main);
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
         min-height: 100vh;
       }
 
       .navbar-custom {
-        background-color: var(--dark-bg);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        background-color: var(--navbar-bg) !important;
+        border-bottom: 1px solid var(--border-color);
       }
 
       .brand-badge {
@@ -54,12 +41,12 @@
       }
 
       .profile-hero {
-        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        background: var(--hero-bg) !important;
         border-radius: 20px;
-        color: white;
+        color: var(--hero-text) !important;
         position: relative;
         overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--hero-border) !important;
         box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
       }
 
@@ -78,23 +65,23 @@
       }
 
       .card-custom {
-        background: var(--card-bg);
+        background: var(--bg-card);
         border-radius: 16px;
         border: 1px solid var(--border-color);
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
       }
 
       .metric-box {
-        background-color: #f8fafc;
+        background-color: var(--bg-elevated);
         border-radius: 14px;
         border: 1px solid var(--border-color);
         padding: 1.25rem;
       }
 
-      .badge-soft-success { background-color: #d1fae5; color: #065f46; font-weight: 600; }
-      .badge-soft-info { background-color: #e0f2fe; color: #0369a1; font-weight: 600; }
-      .badge-soft-warning { background-color: #fef3c7; color: #92400e; font-weight: 600; }
-      .badge-soft-danger { background-color: #fee2e2; color: #991b1b; font-weight: 600; }
+      .badge-soft-success { background-color: rgba(16, 185, 129, 0.15); color: #10b981; font-weight: 600; }
+      .badge-soft-info { background-color: rgba(6, 182, 212, 0.15); color: #06b6d4; font-weight: 600; }
+      .badge-soft-warning { background-color: rgba(245, 158, 11, 0.15); color: #f59e0b; font-weight: 600; }
+      .badge-soft-danger { background-color: rgba(239, 68, 68, 0.15); color: #ef4444; font-weight: 600; }
 
       .btn-primary-custom {
         background-color: var(--primary);
@@ -111,7 +98,7 @@
         border-radius: 10px;
         font-weight: 600;
         padding: 0.6rem 1.25rem;
-        background: white;
+        background: var(--bg-card);
       }
 
       @media print {
@@ -123,17 +110,20 @@
   </head>
   <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top py-3 no-print">
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top py-3 no-print">
       <div class="container">
         {% if session.get('teacher_logged_in') %}
           <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="{{ url_for('teacher_dashboard') }}">
             <span class="brand-badge me-1"><i class="bi bi-mortarboard-fill me-1"></i> Academic Intelligence</span>
           </a>
           <div class="ms-auto d-flex align-items-center gap-2">
-            <span class="badge bg-secondary bg-opacity-25 text-white-50 border border-secondary border-opacity-25 d-none d-md-inline-block px-3 py-2 rounded-pill me-2">
+            <span class="badge user-badge-pill d-none d-md-inline-block px-3 py-2 rounded-pill me-2">
               <i class="bi bi-person-badge me-1"></i> Faculty: {{ session.get('teacher_name') }}
             </span>
-            <a href="{{ url_for('teacher_dashboard') }}" class="btn btn-outline-light btn-sm rounded-pill px-3">
+            <button id="themeToggleBtn" onclick="toggleTheme()" class="theme-toggle-pill" type="button" aria-label="Toggle Theme">
+              <span>☀️ Light</span><span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
+            </button>
+            <a href="{{ url_for('teacher_dashboard') }}" class="btn btn-outline-secondary btn-sm rounded-pill px-3">
               <i class="bi bi-arrow-left me-1"></i> Teacher Dashboard
             </a>
             <button onclick="window.print()" class="btn btn-primary btn-sm rounded-pill px-3">
@@ -145,7 +135,10 @@
             <span class="brand-badge me-1"><i class="bi bi-mortarboard-fill me-1"></i> Academic Intelligence</span>
           </a>
           <div class="ms-auto d-flex align-items-center gap-2">
-            <a href="{{ url_for('home') }}" class="btn btn-outline-light btn-sm rounded-pill px-3">
+            <button id="themeToggleBtn" onclick="toggleTheme()" class="theme-toggle-pill" type="button" aria-label="Toggle Theme">
+              <span>☀️ Light</span><span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
+            </button>
+            <a href="{{ url_for('home') }}" class="btn btn-outline-secondary btn-sm rounded-pill px-3">
               <i class="bi bi-arrow-left me-1"></i> Admin Dashboard
             </a>
             <button onclick="window.print()" class="btn btn-primary btn-sm rounded-pill px-3">
@@ -170,7 +163,7 @@
           <a href="{{ url_for('home') }}" class="btn btn-outline-custom d-inline-flex align-items-center gap-2">
             <i class="bi bi-arrow-left"></i> Back to All Student Records
           </a>
-          <span class="badge bg-dark bg-opacity-10 text-dark border px-3 py-2 rounded-pill fs-7">
+          <span class="badge bg-secondary bg-opacity-10 text-secondary border px-3 py-2 rounded-pill fs-7">
             <i class="bi bi-shield-lock me-1"></i> Student Profile — Admin View
           </span>
         {% endif %}
@@ -189,14 +182,14 @@
               <span class="badge bg-primary px-3 py-1 rounded-pill fs-7">
                 STATUS: {{ student.Status if student.Status else "ACTIVE" }}
               </span>
-              <span class="badge bg-light text-dark px-3 py-1 rounded-pill fs-7">
+              <span class="badge bg-secondary bg-opacity-25 px-3 py-1 rounded-pill fs-7">
                 SEMESTER {{ student.Semester }} | DIVISION {{ student.Division }}
               </span>
             </div>
-            <h1 class="fw-extrabold text-white mb-1">{{ student.Name }}</h1>
-            <p class="text-white-50 fs-6 mb-0">
-              Roll Number: <strong class="text-white">{{ student.Roll }}</strong> &nbsp;|&nbsp;
-              Admission Year: <strong class="text-white">{{ student.Admission_Year if student.Admission_Year else "2024" }}</strong>
+            <h1 class="fw-extrabold mb-1">{{ student.Name }}</h1>
+            <p class="fs-6 mb-0" style="opacity: 0.85;">
+              Roll Number: <strong>{{ student.Roll }}</strong> &nbsp;|&nbsp;
+              Admission Year: <strong>{{ student.Admission_Year if student.Admission_Year else "2024" }}</strong>
             </p>
           </div>
           <div class="col-md-auto text-md-end mt-3 mt-md-0">

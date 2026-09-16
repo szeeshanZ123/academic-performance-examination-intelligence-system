@@ -52,10 +52,10 @@ class TestBrandingAndLogout(unittest.TestCase):
             self.assertIsNone(sess.get("teacher_id"))
             self.assertIsNone(sess.get("teacher_name"))
 
-        # 5. Verify protected dashboard access after logout is blocked
+        # 5. Verify protected dashboard access after logout is blocked and redirects to general login (not teacher-login)
         res_after = self.client.get("/teacher-dashboard", follow_redirects=False)
         self.assertEqual(res_after.status_code, 302)
-        self.assertIn("/teacher-login", res_after.headers["Location"])
+        self.assertEqual(res_after.headers["Location"], "/login")
 
     def test_student_dashboard_and_logout_flow(self):
         with self.client.session_transaction() as sess:
@@ -71,11 +71,7 @@ class TestBrandingAndLogout(unittest.TestCase):
 
         res_logout = self.client.get("/student-logout", follow_redirects=False)
         self.assertEqual(res_logout.status_code, 302)
-        self.assertEqual(res_logout.headers["Location"], "/logout")
-
-        res_final_logout = self.client.get("/logout", follow_redirects=False)
-        self.assertEqual(res_final_logout.status_code, 302)
-        self.assertEqual(res_final_logout.headers["Location"], "/login")
+        self.assertEqual(res_logout.headers["Location"], "/login")
 
     def test_admin_dashboard_branding_and_logout(self):
         with self.client.session_transaction() as sess:

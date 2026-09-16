@@ -16,6 +16,8 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}" />
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
     <style>
       :root {
         --primary: #4f46e5;
@@ -29,12 +31,13 @@
 
       body {
         font-family: "Plus Jakarta Sans", sans-serif;
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        background-color: var(--bg-primary);
         min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 1.5rem;
+        position: relative;
       }
 
       .login-container {
@@ -71,6 +74,26 @@
         border: 1px solid rgba(255, 255, 255, 0.5);
         border-radius: 24px;
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      }
+
+      [data-theme="dark"] .login-card {
+        background: rgba(21, 30, 45, 0.96);
+        border-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      }
+
+      [data-theme="dark"] .role-selector {
+        background: var(--card-bg-elevated) !important;
+        border-color: var(--border-color) !important;
+      }
+
+      [data-theme="dark"] .role-label {
+        color: var(--text-muted);
+      }
+
+      [data-theme="dark"] .role-option input[type="radio"]:checked + .role-label {
+        background: var(--primary) !important;
+        color: #ffffff !important;
       }
 
       .logo-icon {
@@ -120,23 +143,39 @@
       .role-option input[type="radio"]:checked + .role-label {
         background: white;
         color: var(--primary);
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
       }
 
       .form-control-custom {
         border-radius: 10px;
+        padding: 0.75rem 1rem;
         border: 1px solid var(--border-color);
-        padding: 0.7rem 1rem;
-        font-size: 0.95rem;
-        transition: all 0.2s;
+        background: #ffffff;
+      }
+
+      [data-theme="dark"] .form-control-custom {
+        background: var(--input-bg);
+        border-color: var(--input-border);
+        color: var(--input-text);
       }
 
       .form-control-custom:focus {
         border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+        box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
       }
 
-      .btn-primary-custom {
+      .input-group-text {
+        border-color: var(--border-color);
+      }
+
+      [data-theme="dark"] .input-group-text {
+        background-color: var(--card-bg-elevated) !important;
+        border-color: var(--input-border) !important;
+        color: var(--text-secondary) !important;
+      }
+
+      .btn-primary-custom,
+      .btn-login {
         background: linear-gradient(135deg, var(--primary), var(--primary-hover));
         color: white;
         border: none;
@@ -146,13 +185,21 @@
         transition: all 0.2s;
       }
 
-      .btn-primary-custom:hover {
+      .btn-primary-custom:hover,
+      .btn-login:hover {
         transform: translateY(-1px);
         box-shadow: 0 8px 15px rgba(79, 70, 229, 0.25);
       }
     </style>
   </head>
-  <body>
+  <body class="login-page-bg">
+    <!-- Floating Theme Toggle -->
+    <div class="position-absolute top-0 end-0 p-3">
+      <button id="themeToggleBtn" onclick="toggleTheme()" class="theme-toggle-pill shadow-sm" type="button" aria-label="Toggle Theme">
+        <span>☀️ Light</span><span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
+      </button>
+    </div>
+
     <div class="login-container">
       <div class="card login-card p-4 p-md-5">
         <div class="card-body p-0">

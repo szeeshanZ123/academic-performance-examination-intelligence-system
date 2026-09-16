@@ -173,6 +173,10 @@ def analyze():
 
     if demo_sample:
         sample_path = Path(__file__).parent / "samples" / f"{demo_sample}.txt"
+        if not sample_path.exists():
+            sample_path = Path(__file__).parent / "samples" / f"{demo_sample}.pdf"
+        if not sample_path.exists():
+            sample_path = Path(__file__).parent / "samples" / demo_sample
         if sample_path.exists():
             original_filename = sample_path.name
             extracted_data = extract_text_from_file(sample_path)

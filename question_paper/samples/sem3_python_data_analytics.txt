@@ -1,0 +1,26 @@
+COLLEGE OF ENGINEERING & TECHNOLOGY
+DEPARTMENT OF INFORMATION TECHNOLOGY
+SEMESTER III EXAMINATION — PYTHON FOR DATA ANALYTICS
+Max Marks: 70
+Duration: 3 Hours
+
+Instructions:
+1. Answer all questions.
+2. Figures to the right indicate full marks.
+3. Assume suitable data wherever necessary.
+
+Q1. (a) Define NumPy ndarray. Explain array indexing, slicing, and broadcasting with code examples. [5 Marks]
+Q1. (b) Explain Pandas Series and DataFrame structures. How do they differ in indexing and dimensions? [5 Marks]
+Q1. (c) Write a Python program to create a 3x3 identity matrix and calculate its determinant and inverse using NumPy. [5 Marks]
+
+Q2. (a) Write a Python script to load a real-world CSV dataset using Pandas, identify missing values, and handle them using forward fill and mean imputation. [10 Marks]
+Q2. (b) Explain data grouping and aggregation using groupby() and pivot_table() functions in Pandas with examples. [5 Marks]
+
+Q3. (a) Design an end-to-end data visualization pipeline using Matplotlib and Seaborn to plot histograms, boxplots, and a correlation heatmap for feature analysis. [10 Marks]
+Q3. (b) Differentiate between Exploratory Data Analysis (EDA) and Confirmatory Data Analysis with practical examples. [5 Marks]
+
+Q4. (a) Explain feature scaling and normalization techniques: Min-Max Scaling and Z-Score Standardization using Python scikit-learn. [10 Marks]
+Q4. (b) Write Python code to clean irregular string columns and parse ISO datetime strings in a time-series dataset. [5 Marks]
+
+Q5. (a) Explain statistical outlier detection techniques using Interquartile Range (IQR) and Z-score thresholding in Python. [10 Marks]
+Q5. (b) Write a Python script to calculate Pearson and Spearman rank correlation coefficients between two numerical variables. [5 Marks]

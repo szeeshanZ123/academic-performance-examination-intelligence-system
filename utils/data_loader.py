@@ -18,8 +18,17 @@ SEMESTER_SUBJECTS = {
     6: ["Deep Learning", "Data Science", "Major Project", "Professional Ethics"]
 }
 
-def load_data():
+# In-memory caching for performance optimization without complex external dependencies
+_DATA_CACHE = None
+_ADMIN_CACHE = None
+
+def load_data(force_reload=False):
     """Load admin, student, marks, and attendance datasets with normalized types."""
+    global _DATA_CACHE
+    if _DATA_CACHE is not None and not force_reload:
+        admin_df, students, marks_df, attendance_df, subject_combined = _DATA_CACHE
+        return admin_df.copy(), students.copy(), marks_df.copy(), attendance_df.copy(), subject_combined.copy()
+
     admin_df = pd.read_csv(DATA_DIR / "admin.csv")
     student_df = pd.read_csv(DATA_DIR / "students.csv")
     marks_df = pd.read_csv(DATA_DIR / "marks.csv")
@@ -78,19 +87,27 @@ def load_data():
     students["Attendance"] = students["Attendance"].round(2)
     students["_average_mark"] = students["_average_mark"].round(2)
 
-    return admin_df, students, marks_df, attendance_df, subject_combined
+    _DATA_CACHE = (admin_df, students, marks_df, attendance_df, subject_combined)
+    return admin_df.copy(), students.copy(), marks_df.copy(), attendance_df.copy(), subject_combined.copy()
 
 def get_admin_info():
     """Return primary admin info dictionary."""
+    global _ADMIN_CACHE
+    if _ADMIN_CACHE is not None:
+        return _ADMIN_CACHE.copy()
+
     admin_df = pd.read_csv(DATA_DIR / "admin.csv")
     if not admin_df.empty:
-        return admin_df.iloc[0].to_dict()
-    return {
+        _ADMIN_CACHE = admin_df.iloc[0].to_dict()
+        return _ADMIN_CACHE.copy()
+    default_admin = {
         "Teacher_ID": "T001",
         "Teacher_Name": "Mr. Zeeshan Shaikh",
         "Email": "admin@college.edu",
         "Phone": "9876543210"
     }
+    _ADMIN_CACHE = default_admin
+    return default_admin.copy()
 
 def load_teachers():
     """Load teacher dataset."""

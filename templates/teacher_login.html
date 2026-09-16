@@ -19,16 +19,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}" />
     <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
     <style>
-      :root {
-        --primary: #4f46e5;
-        --primary-hover: #4338ca;
-        --secondary: #0ea5e9;
-        --dark-bg: #0f172a;
-        --body-bg: #f8fafc;
-        --card-bg: #ffffff;
-        --border-color: #e2e8f0;
-      }
-
       body {
         font-family: "Plus Jakarta Sans", sans-serif;
         background-color: var(--bg-primary);
@@ -79,7 +69,7 @@
         width: 54px;
         height: 54px;
         border-radius: 14px;
-        background: linear-gradient(135deg, #4f46e5, #0ea5e9);
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
         color: white;
         display: flex;
         align-items: center;

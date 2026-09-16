@@ -38,7 +38,7 @@
       }
 
       .brand-badge {
-        background: linear-gradient(135deg, #6366f1, #a855f7);
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
         color: white;
         padding: 6px 12px;
         border-radius: 8px;
@@ -64,7 +64,7 @@
         right: -10%;
         width: 350px;
         height: 350px;
-        background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, rgba(0, 0, 0, 0) 70%);
+        background: radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
         border-radius: 50%;
       }
 
@@ -92,12 +92,12 @@
       }
 
       /* Badges */
-      .badge-soft-success { background-color: rgba(16, 185, 129, 0.15); color: #10b981; font-weight: 600; }
-      .badge-soft-info { background-color: rgba(6, 182, 212, 0.15); color: #06b6d4; font-weight: 600; }
-      .badge-soft-warning { background-color: rgba(245, 158, 11, 0.15); color: #f59e0b; font-weight: 600; }
-      .badge-soft-danger { background-color: rgba(239, 68, 68, 0.15); color: #ef4444; font-weight: 600; }
-      .badge-soft-purple { background-color: rgba(168, 85, 247, 0.15); color: #a855f7; font-weight: 600; }
-      .badge-soft-secondary { background-color: rgba(148, 163, 184, 0.15); color: #64748b; font-weight: 600; }
+      .badge-soft-success { background-color: rgba(22, 163, 74, 0.12); color: var(--success); font-weight: 600; }
+      .badge-soft-info { background-color: rgba(59, 130, 246, 0.12); color: var(--secondary); font-weight: 600; }
+      .badge-soft-warning { background-color: rgba(245, 158, 11, 0.12); color: var(--warning); font-weight: 600; }
+      .badge-soft-danger { background-color: rgba(220, 38, 38, 0.12); color: var(--danger); font-weight: 600; }
+      .badge-soft-primary { background-color: rgba(37, 99, 235, 0.12); color: var(--primary); font-weight: 600; }
+      .badge-soft-secondary { background-color: rgba(59, 130, 246, 0.12); color: var(--secondary); font-weight: 600; }
 
       /* Chart Cards */
       .chart-card {
@@ -230,7 +230,7 @@
         <div class="row align-items-center position-relative" style="z-index: 1;">
           <div class="col-lg-8">
             <div class="d-flex align-items-center gap-2 mb-2">
-              <span class="badge bg-indigo bg-opacity-25 text-indigo-200 border border-indigo-400 border-opacity-25 px-3 py-1 rounded-pill small">
+              <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-25 px-3 py-1 rounded-pill small">
                 <i class="bi bi-cpu-fill me-1"></i> Phase 10 — Intelligence Engine
               </span>
               {% if has_analysis %}
@@ -652,7 +652,7 @@
                     </td>
                     <td>
                       {% if q.question_type == 'Programming' %}
-                        <span class="badge badge-soft-purple px-2.5 py-1.5 rounded-pill">
+                        <span class="badge badge-soft-primary px-2.5 py-1.5 rounded-pill">
                           <i class="bi bi-code-slash me-1"></i> Programming
                         </span>
                       {% elif q.question_type == 'Numerical' %}

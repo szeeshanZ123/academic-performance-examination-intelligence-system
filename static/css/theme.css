@@ -6,150 +6,171 @@
    1. SEMANTIC COLOR TOKENS
    -------------------------------------------------------------------------- */
 :root {
-  /* Brand Core */
-  --primary: #4f46e5;
-  --primary-hover: #4338ca;
-  --primary-subtle: rgba(79, 70, 229, 0.12);
-  --secondary: #0ea5e9;
-  --secondary-hover: #0284c7;
-  --success: #10b981;
-  --warning: #f59e0b;
-  --danger: #ef4444;
-  --info: #06b6d4;
+  /* --------------------------------------------------------------------------
+     GLOBAL BLUE DESIGN SYSTEM — LIGHT THEME
+     -------------------------------------------------------------------------- */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F0F8FF;
+  --bg-tertiary: #DBEAFE;
 
-  /* LIGHT MODE SURFACES */
-  --bg-primary: #f5f7fb;
-  --bg-secondary: #ffffff;
-  --bg-card: #ffffff;
-  --card-bg: #ffffff;
-  --body-bg: #f5f7fb;
-  --bg-elevated: #f1f5f9;
-  --bg-subtle: #f8fafc;
+  --primary: #2563EB;
+  --primary-hover: #1E40AF;
+  --secondary: #3B82F6;
 
-  /* LIGHT MODE TYPOGRAPHY */
-  --text-primary: #111827;
+  --success: #16A34A;
+  --warning: #F59E0B;
+  --danger: #DC2626;
+
+  --text-primary: #0F172A;
   --text-secondary: #475569;
-  --text-muted: #64748b;
 
-  /* LIGHT MODE BORDERS & SHADOWS */
-  --border-color: #e2e8f0;
-  --border-subtle: #f1f5f9;
-  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
-  --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --border: #E2E8F0;
 
-  /* LIGHT MODE NAVBAR */
-  --navbar-bg: #ffffff;
-  --navbar-border: #e2e8f0;
-  --navbar-text: #111827;
+  /* Aliases for System-wide Component Compatibility */
+  --bg-card: #F0F8FF;
+  --card-bg: #F0F8FF;
+  --card-bg-elevated: #DBEAFE;
+  --body-bg: #FFFFFF;
+  --bg-elevated: #DBEAFE;
+  --bg-subtle: #F8FAFC;
+  --text-main: #0F172A;
+  --text-muted: #64748B;
+  --border-color: #E2E8F0;
+  --border-subtle: #DBEAFE;
+
+  /* Card Shadows */
+  --card-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+  --card-shadow-hover: 0 10px 24px rgba(15, 23, 42, 0.10);
+
+  /* Navbar */
+  --navbar-bg: #FFFFFF;
+  --navbar-border: #E2E8F0;
+  --navbar-text: #0F172A;
   --navbar-link: #475569;
-  --navbar-link-active: #4f46e5;
-  --navbar-badge-bg: #f1f5f9;
-  --navbar-badge-text: #111827;
-  --navbar-badge-border: #e2e8f0;
+  --navbar-link-active: #2563EB;
+  --navbar-badge-bg: #DBEAFE;
+  --navbar-badge-text: #0F172A;
+  --navbar-badge-border: #E2E8F0;
 
-  /* LIGHT MODE HERO HEADER */
-  --hero-bg: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-  --hero-border: #e2e8f0;
-  --hero-text: #111827;
+  /* Hero Header */
+  --hero-bg: linear-gradient(135deg, #F0F8FF 0%, #DBEAFE 100%);
+  --hero-border: #E2E8F0;
+  --hero-text: #0F172A;
   --hero-subtext: #475569;
-  --hero-badge-bg: rgba(79, 70, 229, 0.1);
-  --hero-badge-text: #4f46e5;
-  --hero-badge-border: rgba(79, 70, 229, 0.25);
-  --hero-stat-bg: #f8fafc;
-  --hero-stat-border: #e2e8f0;
+  --hero-badge-bg: rgba(37, 99, 235, 0.12);
+  --hero-badge-text: #2563EB;
+  --hero-badge-border: rgba(37, 99, 235, 0.25);
+  --hero-stat-bg: #FFFFFF;
+  --hero-stat-border: #E2E8F0;
 
-  /* LIGHT MODE FORMS & INPUTS */
-  --input-bg: #ffffff;
-  --input-border: #cbd5e1;
-  --input-text: #111827;
-  --input-placeholder: #94a3b8;
+  /* Forms & Inputs */
+  --input-bg: #F0F8FF;
+  --input-border: #E2E8F0;
+  --input-text: #0F172A;
+  --input-placeholder: #475569;
 
-  /* LIGHT MODE TABLES */
-  --table-bg: #ffffff;
-  --table-header-bg: #f8fafc;
-  --table-header-text: #475569;
-  --table-row-hover: #f1f5f9;
-  --table-row-border: #e2e8f0;
-  --table-striped-bg: #fafbfd;
+  /* Tables */
+  --table-bg: #F0F8FF;
+  --table-header-bg: #DBEAFE;
+  --table-header-text: #0F172A;
+  --table-row-hover: rgba(37, 99, 235, 0.06);
+  --table-row-border: #E2E8F0;
+  --table-striped-bg: #F8FAFC;
 
-  /* LIGHT MODE DROPDOWNS & MODALS */
-  --dropdown-bg: #ffffff;
-  --dropdown-hover: #f1f5f9;
-  --modal-bg: #ffffff;
-  --modal-border: #e2e8f0;
+  /* Dropdowns & Modals */
+  --dropdown-bg: #FFFFFF;
+  --dropdown-hover: #DBEAFE;
+  --modal-bg: #FFFFFF;
+  --modal-border: #E2E8F0;
 
-  /* CHARTS */
-  --chart-grid: rgba(0, 0, 0, 0.06);
+  /* Charts */
+  --chart-grid: rgba(226, 232, 240, 0.8);
   --chart-text: #475569;
-  --chart-tooltip-bg: #0f172a;
+  --chart-tooltip-bg: #0F172A;
 }
 
 [data-theme="dark"] {
-  /* DARK MODE SURFACES */
-  --bg-primary: #0b1120;
-  --bg-secondary: #111827;
-  --bg-card: #172033;
-  --card-bg: #172033;
-  --body-bg: #0b1120;
-  --bg-elevated: #1e293b;
-  --bg-subtle: #141c2c;
+  /* --------------------------------------------------------------------------
+     GLOBAL BLUE DESIGN SYSTEM — DARK THEME
+     -------------------------------------------------------------------------- */
+  --bg-primary: #0A1428;
+  --bg-secondary: #112240;
+  --bg-tertiary: #1E3A5F;
 
-  /* DARK MODE TYPOGRAPHY */
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
+  --primary: #3B82F6;
+  --primary-hover: #60A5FA;
+  --secondary: #93C5FD;
 
-  /* DARK MODE BORDERS & SHADOWS */
-  --border-color: #334155;
-  --border-subtle: #223048;
-  --card-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
-  --card-shadow-hover: 0 12px 22px rgba(0, 0, 0, 0.45);
+  --success: #22C55E;
+  --warning: #FBBF24;
+  --danger: #F87171;
 
-  /* DARK MODE NAVBAR */
-  --navbar-bg: #0b1120;
-  --navbar-border: #1e293b;
-  --navbar-text: #f8fafc;
-  --navbar-link: #cbd5e1;
-  --navbar-link-active: #818cf8;
-  --navbar-badge-bg: #1e293b;
-  --navbar-badge-text: #f8fafc;
-  --navbar-badge-border: #334155;
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
 
-  /* DARK MODE HERO HEADER */
-  --hero-bg: linear-gradient(135deg, #131e33 0%, #0d1525 100%);
-  --hero-border: #24344d;
-  --hero-text: #ffffff;
-  --hero-subtext: #94a3b8;
-  --hero-badge-bg: rgba(99, 102, 241, 0.2);
-  --hero-badge-text: #818cf8;
-  --hero-badge-border: rgba(99, 102, 241, 0.35);
-  --hero-stat-bg: rgba(255, 255, 255, 0.05);
-  --hero-stat-border: rgba(255, 255, 255, 0.1);
+  --border: #1E293B;
 
-  /* DARK MODE FORMS & INPUTS */
-  --input-bg: #1e293b;
-  --input-border: #334155;
-  --input-text: #f8fafc;
-  --input-placeholder: #64748b;
+  /* Aliases for System-wide Component Compatibility */
+  --bg-card: #112240;
+  --card-bg: #112240;
+  --card-bg-elevated: #1E3A5F;
+  --body-bg: #0A1428;
+  --bg-elevated: #1E3A5F;
+  --bg-subtle: #0E1C33;
+  --text-main: #F1F5F9;
+  --text-muted: #94A3B8;
+  --border-color: #1E293B;
+  --border-subtle: #182C4A;
 
-  /* DARK MODE TABLES */
-  --table-bg: #172033;
-  --table-header-bg: #121927;
-  --table-header-text: #cbd5e1;
-  --table-row-hover: #1e2d48;
-  --table-row-border: #28374d;
-  --table-striped-bg: #141d2d;
+  /* Card Shadows */
+  --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --card-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.55);
 
-  /* DARK MODE DROPDOWNS & MODALS */
-  --dropdown-bg: #172033;
-  --dropdown-hover: #1e293b;
-  --modal-bg: #172033;
-  --modal-border: #334155;
+  /* Navbar */
+  --navbar-bg: #0A1428;
+  --navbar-border: #1E293B;
+  --navbar-text: #F1F5F9;
+  --navbar-link: #94A3B8;
+  --navbar-link-active: #3B82F6;
+  --navbar-badge-bg: #112240;
+  --navbar-badge-text: #F1F5F9;
+  --navbar-badge-border: #1E293B;
 
-  /* CHARTS */
-  --chart-grid: rgba(255, 255, 255, 0.08);
-  --chart-text: #cbd5e1;
-  --chart-tooltip-bg: #1e293b;
+  /* Hero Header */
+  --hero-bg: linear-gradient(135deg, #112240 0%, #1E3A5F 100%);
+  --hero-border: #1E293B;
+  --hero-text: #F1F5F9;
+  --hero-subtext: #94A3B8;
+  --hero-badge-bg: rgba(59, 130, 246, 0.2);
+  --hero-badge-text: #93C5FD;
+  --hero-badge-border: rgba(59, 130, 246, 0.35);
+  --hero-stat-bg: rgba(10, 20, 40, 0.6);
+  --hero-stat-border: #1E293B;
+
+  /* Forms & Inputs */
+  --input-bg: #112240;
+  --input-border: #1E293B;
+  --input-text: #F1F5F9;
+  --input-placeholder: #94A3B8;
+
+  /* Tables */
+  --table-bg: #112240;
+  --table-header-bg: #1E3A5F;
+  --table-header-text: #F1F5F9;
+  --table-row-hover: rgba(59, 130, 246, 0.12);
+  --table-row-border: #1E293B;
+  --table-striped-bg: #0E1C33;
+
+  /* Dropdowns & Modals */
+  --dropdown-bg: #112240;
+  --dropdown-hover: #1E3A5F;
+  --modal-bg: #112240;
+  --modal-border: #1E293B;
+
+  /* Charts */
+  --chart-grid: rgba(30, 41, 59, 0.8);
+  --chart-text: #94A3B8;
+  --chart-tooltip-bg: #0A1428;
 }
 
 /* --------------------------------------------------------------------------
@@ -342,7 +363,7 @@ a:hover {
   background-color: var(--input-bg) !important;
   border-color: var(--primary) !important;
   color: var(--input-text) !important;
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
 }
 
 .form-control::placeholder {
@@ -358,6 +379,100 @@ a:hover {
   background-color: var(--bg-elevated) !important;
   border-color: var(--input-border) !important;
   color: var(--text-secondary) !important;
+}
+
+/* --------------------------------------------------------------------------
+   7B. GLOBAL BUTTONS (SECTION 9)
+   -------------------------------------------------------------------------- */
+.btn-primary,
+.btn-primary-custom {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary-custom:hover,
+.btn-primary-custom:focus {
+  background-color: var(--primary-hover) !important;
+  border-color: var(--primary-hover) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25) !important;
+}
+
+.btn-secondary {
+  background-color: var(--bg-tertiary) !important;
+  color: var(--primary) !important;
+  border: 1px solid var(--border) !important;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: var(--primary) !important;
+  color: #ffffff !important;
+  border-color: var(--primary) !important;
+}
+
+.btn-danger {
+  background-color: var(--danger) !important;
+  border-color: var(--danger) !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+  background-color: #b91c1c !important;
+  border-color: #b91c1c !important;
+  color: #ffffff !important;
+}
+
+.btn-success {
+  background-color: var(--success) !important;
+  border-color: var(--success) !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-success:hover,
+.btn-success:focus {
+  background-color: #15803d !important;
+  border-color: #15803d !important;
+  color: #ffffff !important;
+}
+
+.btn-warning {
+  background-color: var(--warning) !important;
+  border-color: var(--warning) !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-warning:hover,
+.btn-warning:focus {
+  background-color: #d97706 !important;
+  border-color: #d97706 !important;
+  color: #ffffff !important;
+}
+
+.btn-outline-primary {
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+  background-color: transparent !important;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  background-color: var(--primary) !important;
+  color: #ffffff !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -491,33 +606,46 @@ a:hover {
    10. STATUS BADGES & PILLS
    -------------------------------------------------------------------------- */
 .badge-soft-success {
-  background-color: rgba(16, 185, 129, 0.15) !important;
-  color: #10b981 !important;
-  border: 1px solid rgba(16, 185, 129, 0.25);
+  background-color: rgba(22, 163, 74, 0.12) !important;
+  color: var(--success) !important;
+  border: 1px solid rgba(22, 163, 74, 0.25);
+  font-weight: 600;
 }
 
 .badge-soft-warning {
-  background-color: rgba(245, 158, 11, 0.15) !important;
-  color: #f59e0b !important;
+  background-color: rgba(245, 158, 11, 0.12) !important;
+  color: var(--warning) !important;
   border: 1px solid rgba(245, 158, 11, 0.25);
+  font-weight: 600;
 }
 
 .badge-soft-danger {
-  background-color: rgba(239, 68, 68, 0.15) !important;
-  color: #ef4444 !important;
-  border: 1px solid rgba(239, 68, 68, 0.25);
+  background-color: rgba(220, 38, 38, 0.12) !important;
+  color: var(--danger) !important;
+  border: 1px solid rgba(220, 38, 38, 0.25);
+  font-weight: 600;
 }
 
-.badge-soft-info {
-  background-color: rgba(6, 182, 212, 0.15) !important;
-  color: #06b6d4 !important;
-  border: 1px solid rgba(6, 182, 212, 0.25);
+.badge-soft-info,
+.badge-soft-secondary {
+  background-color: rgba(59, 130, 246, 0.12) !important;
+  color: var(--secondary) !important;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  font-weight: 600;
 }
 
 .badge-soft-primary {
-  background-color: rgba(79, 70, 229, 0.15) !important;
-  color: #6366f1 !important;
-  border: 1px solid rgba(79, 70, 229, 0.25);
+  background-color: rgba(37, 99, 235, 0.12) !important;
+  color: var(--primary) !important;
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  font-weight: 600;
+}
+
+.badge-soft-purple {
+  background-color: rgba(59, 130, 246, 0.12) !important;
+  color: var(--primary) !important;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  font-weight: 600;
 }
 
 /* Utility overrides for dark mode */
@@ -1002,7 +1130,7 @@ a:hover {
 
 [data-theme="light"] .navbar-custom .nav-link:hover,
 [data-theme="light"] .navbar-custom .nav-link.active {
-  color: #4f46e5 !important;
+  color: var(--primary) !important;
 }
 
 [data-theme="light"] .navbar-custom .text-white-50 {

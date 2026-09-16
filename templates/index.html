@@ -39,7 +39,7 @@
       }
 
       .brand-badge {
-        background: linear-gradient(135deg, #6366f1, #a855f7);
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
         color: white;
         padding: 6px 12px;
         border-radius: 8px;
@@ -103,7 +103,7 @@
         background-color: var(--primary);
       }
       .kpi-secondary::before {
-        background-color: #8b5cf6;
+        background-color: var(--secondary);
       }
       .kpi-info::before {
         background-color: var(--secondary);
@@ -196,7 +196,7 @@
         width: 34px;
         height: 34px;
         border-radius: 50%;
-        background: linear-gradient(135deg, #4f46e5, #818cf8);
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
         color: white;
         display: inline-flex;
         align-items: center;
@@ -208,28 +208,33 @@
 
       /* Custom Badges */
       .badge-soft-success {
-        background-color: rgba(16, 185, 129, 0.15);
-        color: #10b981;
+        background-color: rgba(22, 163, 74, 0.12);
+        color: var(--success);
         font-weight: 600;
       }
       .badge-soft-info {
-        background-color: rgba(6, 182, 212, 0.15);
-        color: #06b6d4;
+        background-color: rgba(59, 130, 246, 0.12);
+        color: var(--secondary);
         font-weight: 600;
       }
       .badge-soft-warning {
-        background-color: rgba(245, 158, 11, 0.15);
-        color: #f59e0b;
+        background-color: rgba(245, 158, 11, 0.12);
+        color: var(--warning);
         font-weight: 600;
       }
       .badge-soft-danger {
-        background-color: rgba(239, 68, 68, 0.15);
-        color: #ef4444;
+        background-color: rgba(220, 38, 38, 0.12);
+        color: var(--danger);
         font-weight: 600;
       }
-      .badge-soft-purple {
-        background-color: rgba(168, 85, 247, 0.15);
-        color: #a855f7;
+      .badge-soft-secondary {
+        background-color: rgba(59, 130, 246, 0.12);
+        color: var(--secondary);
+        font-weight: 600;
+      }
+      .badge-soft-primary {
+        background-color: rgba(37, 99, 235, 0.12);
+        color: var(--primary);
         font-weight: 600;
       }
 
@@ -367,7 +372,7 @@
         >
           <div class="col-lg-8">
             <span
-              class="badge bg-indigo-500 text-white px-3 py-1.5 rounded-pill fs-7 mb-3 fw-semibold border border-white border-opacity-25"
+              class="badge bg-primary text-white px-3 py-1.5 rounded-pill fs-7 mb-3 fw-semibold border border-white border-opacity-25"
             >
               <i class="bi bi-cpu me-1"></i> EXAMINATION INTELLIGENCE SYSTEM
             </span>
@@ -398,7 +403,7 @@
               <span class="text-muted fw-semibold fs-7 text-uppercase"
                 >Total Students</span
               >
-              <div class="icon-circle bg-indigo-50 text-indigo-600">
+              <div class="icon-circle bg-primary bg-opacity-10 text-primary">
                 <i class="bi bi-people text-primary"></i>
               </div>
             </div>
@@ -414,10 +419,10 @@
                 >Average SGPI</span
               >
               <div
-                class="icon-circle bg-purple-50 text-purple-600"
-                style="background-color: #f3e8ff"
+                class="icon-circle bg-primary bg-opacity-10 text-primary"
+                style="background-color: rgba(37, 99, 235, 0.1);"
               >
-                <i class="bi bi-trophy text-purple" style="color: #8b5cf6"></i>
+                <i class="bi bi-trophy text-primary" style="color: var(--primary);"></i>
               </div>
             </div>
             <h2 class="fw-bold text-dark mb-0">{{ average_sgpi }}</h2>
@@ -851,7 +856,7 @@
                   </td>
                   <td class="text-center">
                     <span
-                      class="badge {% if student.SGPI >= 8.5 %}badge-soft-success{% elif student.SGPI >= 6.5 %}badge-soft-purple{% elif student.SGPI >= 6.0 %}badge-soft-warning{% else %}badge-soft-danger{% endif %} px-2.5 py-1.5 rounded-pill fs-7"
+                      class="badge {% if student.SGPI >= 8.5 %}badge-soft-success{% elif student.SGPI >= 6.5 %}badge-soft-primary{% elif student.SGPI >= 6.0 %}badge-soft-warning{% else %}badge-soft-danger{% endif %} px-2.5 py-1.5 rounded-pill fs-7"
                     >
                       {{ student.SGPI }}
                     </span>
@@ -1130,7 +1135,7 @@
             datasets: [{
               data: gradeValues,
               backgroundColor: [
-                '#10b981', '#3b82f6', '#6366f1', '#8b5cf6', '#ec4899', '#f59e0b', '#ef4444'
+                '#16A34A', '#2563EB', '#3B82F6', '#60A5FA', '#93C5FD', '#F59E0B', '#DC2626'
               ]
             }]
           },
@@ -1152,7 +1157,7 @@
             labels: ['Low (<75%)', 'Med (75-90%)', 'High (≥90%)'],
             datasets: [{
               data: [lowAtt, medAtt, highAtt],
-              backgroundColor: ['#ef4444', '#f59e0b', '#10b981'],
+              backgroundColor: ['#DC2626', '#F59E0B', '#16A34A'],
               borderRadius: 8,
               barThickness: 28
             }]
@@ -1162,7 +1167,7 @@
             maintainAspectRatio: false,
             plugins: { legend: { display: false } },
             scales: {
-              y: { beginAtZero: true, grid: { color: '#f1f5f9' } },
+              y: { beginAtZero: true, grid: { color: 'rgba(226, 232, 240, 0.8)' } },
               x: { grid: { display: false } }
             }
           }
@@ -1184,7 +1189,7 @@
             labels: ['< 6.0', '6.0-7.0', '7.0-8.0', '8.0-9.0', '9.0-10.0'],
             datasets: [{
               data: sgpiBins,
-              backgroundColor: '#6366f1',
+              backgroundColor: '#2563EB',
               borderRadius: 8,
               barThickness: 28
             }]
@@ -1211,7 +1216,7 @@
             labels: topNames,
             datasets: [{
               data: topSgpis,
-              backgroundColor: '#8b5cf6',
+              backgroundColor: '#3B82F6',
               borderRadius: 8,
               barThickness: 20
             }]
@@ -1221,7 +1226,7 @@
             maintainAspectRatio: false,
             plugins: { legend: { display: false } },
             scales: {
-              y: { beginAtZero: true, max: 10, grid: { color: '#f1f5f9' } },
+              y: { beginAtZero: true, max: 10, grid: { color: 'rgba(226, 232, 240, 0.8)' } },
               x: { grid: { display: false } }
             }
           }

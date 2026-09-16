@@ -23,14 +23,32 @@
   const initialTheme = getSavedTheme();
   document.documentElement.setAttribute("data-theme", initialTheme);
 
+  // Global Blue Chart Palette Definition
+  window.chartPalette = {
+    primary: "#2563EB",
+    secondary: "#3B82F6",
+    light: "#93C5FD",
+    success: "#16A34A",
+    warning: "#F59E0B",
+    danger: "#DC2626",
+    dark: {
+      primary: "#3B82F6",
+      secondary: "#93C5FD",
+      light: "#DBEAFE",
+      success: "#22C55E",
+      warning: "#FBBF24",
+      danger: "#F87171"
+    }
+  };
+
   // 2. Chart.js theme color updater
   function updateChartsForTheme(theme) {
     if (typeof Chart === "undefined") return;
 
     const isDark = theme === "dark";
-    const textColor = isDark ? "#cbd5e1" : "#475569";
-    const gridColor = isDark ? "rgba(255, 255, 255, 0.08)" : "rgba(0, 0, 0, 0.06)";
-    const tooltipBg = isDark ? "#1e293b" : "#0f172a";
+    const textColor = isDark ? "#94A3B8" : "#475569";
+    const gridColor = isDark ? "rgba(30, 41, 59, 0.8)" : "rgba(226, 232, 240, 0.8)";
+    const tooltipBg = isDark ? "#112240" : "#0F172A";
 
     Chart.defaults.color = textColor;
     Chart.defaults.borderColor = gridColor;

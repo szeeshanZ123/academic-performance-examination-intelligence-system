@@ -504,22 +504,22 @@ def analyze_question_paper(parsed_info: Dict[str, Any]) -> Dict[str, Any]:
         "difficulty": {
             "labels": list(diff_dist.keys()),
             "data": list(diff_dist.values()),
-            "colors": ["#10b981", "#f59e0b", "#ef4444"]  # Green, Amber, Red
+            "colors": ["#16A34A", "#F59E0B", "#DC2626"]  # Green, Amber, Red
         },
         "question_type": {
             "labels": list(type_dist.keys()),
             "data": list(type_dist.values()),
-            "colors": ["#4f46e5", "#0ea5e9", "#8b5cf6", "#ec4899", "#f97316", "#14b8a6"]
+            "colors": ["#2563EB", "#3B82F6", "#60A5FA", "#93C5FD", "#16A34A", "#F59E0B"]
         },
         "marks_distribution": {
             "labels": list(marks_ranges.keys()),
             "data": list(marks_ranges.values()),
-            "colors": ["#6366f1", "#3b82f6", "#06b6d4", "#10b981", "#94a3b8"]
+            "colors": ["#2563EB", "#3B82F6", "#60A5FA", "#93C5FD", "#16A34A"]
         },
         "topic_clusters": {
             "labels": [c["name"] for c in topic_clusters],
             "data": [c["count"] for c in topic_clusters],
-            "colors": ["#818cf8", "#38bdf8", "#34d399", "#fbbf24"]
+            "colors": ["#2563EB", "#3B82F6", "#60A5FA", "#93C5FD"]
         }
     }
 

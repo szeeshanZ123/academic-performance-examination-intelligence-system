@@ -32,7 +32,7 @@
       }
 
       .brand-badge {
-        background: linear-gradient(135deg, #6366f1, #a855f7);
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
         color: white;
         padding: 6px 12px;
         border-radius: 8px;
@@ -54,14 +54,14 @@
         width: 90px;
         height: 90px;
         border-radius: 50%;
-        background: linear-gradient(135deg, #6366f1, #a855f7);
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
         color: white;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 2.5rem;
         font-weight: 800;
-        box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
+        box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
       }
 
       .card-custom {
@@ -526,14 +526,14 @@
               {
                 label: 'Internal Marks (/30)',
                 data: internalMarks,
-                backgroundColor: '#818cf8',
+                backgroundColor: '#3B82F6',
                 borderRadius: 6,
                 barThickness: 20
               },
               {
                 label: 'External Marks (/70)',
                 data: externalMarks,
-                backgroundColor: '#4f46e5',
+                backgroundColor: '#2563EB',
                 borderRadius: 6,
                 barThickness: 20
               }
@@ -546,7 +546,7 @@
               legend: { position: 'top' }
             },
             scales: {
-              y: { beginAtZero: true, max: 70, grid: { color: '#f1f5f9' } },
+              y: { beginAtZero: true, max: 70, grid: { color: 'rgba(226, 232, 240, 0.8)' } },
               x: { grid: { display: false } }
             }
           }
@@ -568,11 +568,11 @@
             datasets: [{
               label: 'SGPI',
               data: sgpiTrend,
-              borderColor: '#4f46e5',
-              backgroundColor: 'rgba(79, 70, 229, 0.1)',
+              borderColor: '#2563EB',
+              backgroundColor: 'rgba(37, 99, 235, 0.1)',
               fill: true,
               tension: 0.3,
-              pointBackgroundColor: '#4f46e5',
+              pointBackgroundColor: '#2563EB',
               pointBorderColor: '#ffffff',
               pointBorderWidth: 2,
               pointRadius: 5,

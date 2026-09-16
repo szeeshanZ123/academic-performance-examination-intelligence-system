@@ -43,23 +43,23 @@
       .ambient-glow-1 {
         width: 420px;
         height: 420px;
-        background: radial-gradient(circle, rgba(79, 70, 229, 0.16) 0%, rgba(79, 70, 229, 0) 70%);
+        background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, rgba(37, 99, 235, 0) 70%);
         top: -120px;
         left: -100px;
       }
       .ambient-glow-2 {
         width: 440px;
         height: 440px;
-        background: radial-gradient(circle, rgba(14, 165, 233, 0.14) 0%, rgba(14, 165, 233, 0) 70%);
+        background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(59, 130, 246, 0) 70%);
         bottom: -120px;
         right: -100px;
       }
 
       [data-theme="dark"] .ambient-glow-1 {
-        background: radial-gradient(circle, rgba(99, 102, 241, 0.16) 0%, rgba(99, 102, 241, 0) 70%);
+        background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0) 70%);
       }
       [data-theme="dark"] .ambient-glow-2 {
-        background: radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, rgba(14, 165, 233, 0) 70%);
+        background: radial-gradient(circle, rgba(96, 165, 250, 0.10) 0%, rgba(96, 165, 250, 0) 70%);
       }
 
       /* Floating Theme Switcher: fixed in top corner to NEVER collide with card */
@@ -128,7 +128,7 @@
       }
 
       .brand-badge-pill {
-        background: linear-gradient(135deg, #6366f1, #a855f7);
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
         color: #ffffff;
         padding: 6px 14px;
         border-radius: 9999px;
@@ -137,7 +137,7 @@
         letter-spacing: 0.5px;
         display: inline-flex;
         align-items: center;
-        box-shadow: 0 4px 10px rgba(99, 102, 241, 0.25);
+        box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
       }
 
       .auth-illustration-box {
@@ -155,7 +155,7 @@
         width: 100%;
         height: auto;
         max-height: 230px;
-        filter: drop-shadow(0 12px 20px rgba(79, 70, 229, 0.12));
+        filter: drop-shadow(0 12px 20px rgba(37, 99, 235, 0.12));
         transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
       }
 
@@ -175,18 +175,18 @@
       }
 
       .badge-soft-primary {
-        background: rgba(99, 102, 241, 0.12) !important;
+        background: rgba(37, 99, 235, 0.12) !important;
         color: var(--primary) !important;
-        border: 1px solid rgba(99, 102, 241, 0.25) !important;
+        border: 1px solid rgba(37, 99, 235, 0.25) !important;
         font-size: 0.78rem;
         font-weight: 700;
         border-radius: 9999px;
       }
 
       [data-theme="dark"] .badge-soft-primary {
-        background: rgba(99, 102, 241, 0.22) !important;
-        color: #a5b4fc !important;
-        border: 1px solid rgba(99, 102, 241, 0.35) !important;
+        background: rgba(59, 130, 246, 0.2) !important;
+        color: #93C5FD !important;
+        border: 1px solid rgba(59, 130, 246, 0.35) !important;
       }
 
       /* Right Column: Authentication Form Stage */
@@ -255,7 +255,7 @@
       [data-theme="dark"] .role-pill-btn.active {
         background-color: var(--primary) !important;
         color: #ffffff !important;
-        box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
       }
 
       /* Form inputs & toggle password */
@@ -294,12 +294,12 @@
         font-weight: 700;
         font-size: 0.95rem;
         transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 8px 18px -4px rgba(79, 70, 229, 0.35);
+        box-shadow: 0 8px 18px -4px rgba(37, 99, 235, 0.35);
       }
 
       .btn-submit-login:hover {
         transform: translateY(-2px);
-        box-shadow: 0 12px 24px -4px rgba(79, 70, 229, 0.45);
+        box-shadow: 0 12px 24px -4px rgba(37, 99, 235, 0.45);
       }
 
       .btn-submit-login:active {
@@ -462,22 +462,22 @@
               <ellipse cx="160" cy="210" rx="60" ry="10" fill="#000000" opacity="0.08"/>
               <!-- Student Character -->
               <!-- Legs & Shoes -->
-              <rect x="144" y="155" width="12" height="42" rx="4" fill="#581C87"/>
-              <rect x="164" y="155" width="12" height="42" rx="4" fill="#581C87"/>
-              <ellipse cx="150" cy="198" rx="8" ry="4" fill="#1E1B4B"/>
-              <ellipse cx="170" cy="198" rx="8" ry="4" fill="#1E1B4B"/>
+              <rect x="144" y="155" width="12" height="42" rx="4" fill="#1E3A8A"/>
+              <rect x="164" y="155" width="12" height="42" rx="4" fill="#1E3A8A"/>
+              <ellipse cx="150" cy="198" rx="8" ry="4" fill="#0F172A"/>
+              <ellipse cx="170" cy="198" rx="8" ry="4" fill="#0F172A"/>
               <!-- Body / Blazer & Tie -->
-              <rect x="135" y="105" width="50" height="56" rx="10" fill="#7E22CE"/>
+              <rect x="135" y="105" width="50" height="56" rx="10" fill="#2563EB"/>
               <polygon points="160,118 153,105 167,105" fill="#FFFFFF"/>
               <polygon points="160,135 156,118 164,118" fill="#F59E0B"/>
               <!-- Green Backpack Straps -->
-              <path d="M142 110 C140 125, 140 145, 144 152" stroke="#10B981" stroke-width="4.5" stroke-linecap="round"/>
-              <path d="M178 110 C180 125, 180 145, 176 152" stroke="#10B981" stroke-width="4.5" stroke-linecap="round"/>
+              <path d="M142 110 C140 125, 140 145, 144 152" stroke="#16A34A" stroke-width="4.5" stroke-linecap="round"/>
+              <path d="M178 110 C180 125, 180 145, 176 152" stroke="#16A34A" stroke-width="4.5" stroke-linecap="round"/>
               <!-- Arms holding Notebook -->
-              <path d="M135 116 C124 126, 126 142, 142 142" stroke="#7E22CE" stroke-width="8" stroke-linecap="round"/>
-              <path d="M185 116 C196 126, 194 142, 178 142" stroke="#7E22CE" stroke-width="8" stroke-linecap="round"/>
+              <path d="M135 116 C124 126, 126 142, 142 142" stroke="#2563EB" stroke-width="8" stroke-linecap="round"/>
+              <path d="M185 116 C196 126, 194 142, 178 142" stroke="#2563EB" stroke-width="8" stroke-linecap="round"/>
               <!-- Notebook -->
-              <rect x="147" y="128" width="26" height="22" rx="3" fill="#06B6D4" stroke="#FFFFFF" stroke-width="1.5"/>
+              <rect x="147" y="128" width="26" height="22" rx="3" fill="#3B82F6" stroke="#FFFFFF" stroke-width="1.5"/>
               <line x1="152" y1="134" x2="167" y2="134" stroke="#FFFFFF" stroke-width="1.5"/>
               <line x1="152" y1="139" x2="164" y2="139" stroke="#FFFFFF" stroke-width="1.5"/>
               <!-- Hands -->
@@ -486,14 +486,14 @@
               <!-- Head & Smiling Face -->
               <circle cx="160" cy="88" r="17" fill="#FBBF24"/>
               <!-- Hair -->
-              <path d="M143 85 C145 70, 175 70, 177 85 C172 75, 148 75, 143 85 Z" fill="#1E1B4B"/>
+              <path d="M143 85 C145 70, 175 70, 177 85 C172 75, 148 75, 143 85 Z" fill="#0F172A"/>
               <!-- Eyes & Smile -->
-              <circle cx="155" cy="87" r="1.8" fill="#1E1B4B"/>
-              <circle cx="165" cy="87" r="1.8" fill="#1E1B4B"/>
+              <circle cx="155" cy="87" r="1.8" fill="#0F172A"/>
+              <circle cx="165" cy="87" r="1.8" fill="#0F172A"/>
               <path d="M156 93 Q160 97 164 93" stroke="#92400E" stroke-width="1.8" stroke-linecap="round"/>
               <!-- Floating Graduation Cap Badge -->
-              <polygon points="230,85 245,78 260,85 245,92" fill="#4F46E5"/>
-              <rect x="238" y="90" width="14" height="6" rx="1" fill="#4338CA"/>
+              <polygon points="230,85 245,78 260,85 245,92" fill="#2563EB"/>
+              <rect x="238" y="90" width="14" height="6" rx="1" fill="#1E40AF"/>
               <path d="M255 88 L257 100" stroke="#F59E0B" stroke-width="2"/>
             </svg>
 
@@ -527,8 +527,8 @@
               <line x1="134" y1="124" x2="144" y2="124" stroke="#10B981" stroke-width="1.5"/>
               <line x1="134" y1="129" x2="142" y2="129" stroke="#10B981" stroke-width="1.5"/>
               <!-- Briefcase in Right Hand -->
-              <rect x="176" y="145" width="22" height="18" rx="3" fill="#7C3AED"/>
-              <path d="M182 145 C182 141, 192 141, 192 145" stroke="#7C3AED" stroke-width="2" fill="none"/>
+              <rect x="176" y="145" width="22" height="18" rx="3" fill="#1E40AF"/>
+              <path d="M182 145 C182 141, 192 141, 192 145" stroke="#1E40AF" stroke-width="2" fill="none"/>
               <rect x="185" y="152" width="4" height="4" fill="#FBBF24"/>
               <!-- Arms -->
               <path d="M140 112 C132 120, 132 130, 137 135" stroke="#10B981" stroke-width="7" stroke-linecap="round"/>
@@ -544,7 +544,7 @@
               <circle cx="165" cy="85" r="1.8" fill="#0F172A"/>
               <path d="M156 92 Q160 96 164 92" stroke="#92400E" stroke-width="1.8" stroke-linecap="round"/>
               <!-- Floating Analytics Icon -->
-              <rect x="235" y="80" width="28" height="24" rx="4" fill="#0EA5E9" stroke="#FFFFFF" stroke-width="1.5"/>
+              <rect x="235" y="80" width="28" height="24" rx="4" fill="#3B82F6" stroke="#FFFFFF" stroke-width="1.5"/>
               <line x1="241" y1="96" x2="241" y2="90" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
               <line x1="249" y1="96" x2="249" y2="85" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
               <line x1="257" y1="96" x2="257" y2="88" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
@@ -556,8 +556,8 @@
               <rect x="70" y="55" width="180" height="110" rx="4" fill="#E2E8F0" opacity="0.6"/>
               <polygon points="160,20 60,60 260,60" fill="#CBD5E1" opacity="0.75"/>
               <!-- Security Beacon Antenna -->
-              <line x1="160" y1="20" x2="160" y2="6" stroke="#4F46E5" stroke-width="3" stroke-linecap="round"/>
-              <circle cx="160" cy="6" r="3" fill="#10B981"/>
+              <line x1="160" y1="20" x2="160" y2="6" stroke="#2563EB" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="160" cy="6" r="3" fill="#16A34A"/>
               <!-- Pillars -->
               <rect x="95" y="65" width="10" height="90" rx="2" fill="#CBD5E1"/>
               <rect x="125" y="65" width="10" height="90" rx="2" fill="#CBD5E1"/>
@@ -574,7 +574,7 @@
               <!-- Navy Formal Suit & Tie -->
               <rect x="135" y="104" width="50" height="56" rx="10" fill="#1E293B"/>
               <polygon points="160,118 153,104 167,104" fill="#FFFFFF"/>
-              <polygon points="160,136 156,118 164,118" fill="#4F46E5"/>
+              <polygon points="160,136 156,118 164,118" fill="#2563EB"/>
               <!-- Holographic Tablet in Hands -->
               <rect x="144" y="126" width="32" height="24" rx="4" fill="#1E1B4B" stroke="#06B6D4" stroke-width="2"/>
               <path d="M149 140 L156 134 L162 137 L171 130" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>

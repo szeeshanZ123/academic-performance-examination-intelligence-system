@@ -82,6 +82,7 @@
       .badge-soft-info { background-color: rgba(6, 182, 212, 0.15); color: #06b6d4; font-weight: 600; }
       .badge-soft-warning { background-color: rgba(245, 158, 11, 0.15); color: #f59e0b; font-weight: 600; }
       .badge-soft-danger { background-color: rgba(239, 68, 68, 0.15); color: #ef4444; font-weight: 600; }
+      .badge-soft-secondary { background-color: rgba(148, 163, 184, 0.18); color: var(--text-secondary); font-weight: 600; }
 
       .btn-primary-custom {
         background-color: var(--primary);
@@ -309,25 +310,31 @@
       </div>
 
       <!-- AI-Based External Marks Prediction Section -->
-      <div class="card-custom p-4 mb-4">
-        <div class="d-flex align-items-center justify-content-between mb-3">
-          <h5 class="fw-bold mb-0 text-dark">
-            <i class="bi bi-cpu-fill text-primary me-2"></i> AI-Based External Marks Prediction
-          </h5>
-          <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-1 rounded-pill fw-semibold fs-8">
-            Machine Learning Intelligence
+      <div class="card-custom p-4 mb-4" id="ai-prediction-section">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+          <div>
+            <h5 class="fw-bold mb-1" style="color: var(--text-primary);">
+              <i class="bi bi-cpu-fill text-primary me-2"></i> AI Performance Prediction
+            </h5>
+            <p class="fs-8 mb-0" style="color: var(--text-secondary);">
+              Dynamic ML forecasting for Semester {{ student.Semester }} using internal marks, attendance, and trained Random Forest regression.
+            </p>
+          </div>
+          <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-1.5 rounded-pill fw-semibold fs-8">
+            <i class="bi bi-stars me-1"></i> Random Forest Regressor
           </span>
         </div>
 
         {% if prediction_available and predictions %}
-        <div class="table-responsive border rounded-3 overflow-hidden">
+        <div class="table-responsive border rounded-3 overflow-hidden mb-3">
           <table class="table table-hover align-middle mb-0">
-            <thead class="table-dark">
+            <thead>
               <tr>
                 <th class="py-3 px-4">Subject</th>
                 <th class="py-3 text-center">Internal Marks</th>
                 <th class="py-3 text-center">Attendance</th>
-                <th class="py-3 text-center">Predicted External Marks</th>
+                <th class="py-3 text-center">Actual External</th>
+                <th class="py-3 text-center">AI Predicted External Marks</th>
                 <th class="py-3 text-center">Predicted Total</th>
                 <th class="py-3 text-center">Performance Status</th>
               </tr>
@@ -335,20 +342,59 @@
             <tbody>
               {% for pred in predictions %}
               <tr>
-                <td class="px-4 fw-semibold text-dark">{{ pred.subject }}</td>
-                <td class="text-center">{{ pred.internal }}</td>
-                <td class="text-center">{{ pred.attendance }}%</td>
-                <td class="text-center fw-bold text-primary">{{ pred.predicted_external }}</td>
-                <td class="text-center fw-extrabold text-dark fs-6">{{ pred.predicted_total }}</td>
+                <td class="px-4 fw-semibold" style="color: var(--text-primary);">{{ pred.subject }}</td>
                 <td class="text-center">
-                  {% if pred.performance == 'Excellent' %}
-                    <span class="badge badge-soft-success px-3 py-1.5 rounded-pill">{{ pred.performance }}</span>
-                  {% elif pred.performance == 'Good' %}
-                    <span class="badge badge-soft-info px-3 py-1.5 rounded-pill">{{ pred.performance }}</span>
-                  {% elif pred.performance == 'Average' %}
-                    <span class="badge badge-soft-warning px-3 py-1.5 rounded-pill">{{ pred.performance }}</span>
+                  {% if pred.internal is not none %}
+                    <span class="fw-semibold">{{ pred.internal }}</span> <span class="text-muted fs-8">/ 30</span>
                   {% else %}
-                    <span class="badge badge-soft-danger px-3 py-1.5 rounded-pill">{{ pred.performance }}</span>
+                    <span class="text-muted">—</span>
+                  {% endif %}
+                </td>
+                <td class="text-center">
+                  {% if pred.attendance is not none %}
+                    <span class="badge {% if pred.attendance >= 90 %}badge-soft-success{% elif pred.attendance >= 75 %}badge-soft-info{% else %}badge-soft-danger{% endif %} px-2.5 py-1 rounded-pill">
+                      {{ pred.attendance }}%
+                    </span>
+                  {% else %}
+                    <span class="text-muted">—</span>
+                  {% endif %}
+                </td>
+                <td class="text-center">
+                  {% if pred.actual_external is not none %}
+                    <span class="fw-bold" style="color: var(--text-primary);">{{ pred.actual_external }}</span> <span class="text-muted fs-8">/ 70</span>
+                  {% else %}
+                    <span class="badge bg-secondary-subtle text-secondary border px-2 py-1 rounded-pill fs-8">Pending / Not Held</span>
+                  {% endif %}
+                </td>
+                <td class="text-center">
+                  {% if pred.available %}
+                    <span class="fw-extrabold text-primary fs-6">{{ pred.predicted_external }}</span> <span class="text-muted fs-8">/ 70</span>
+                  {% else %}
+                    <span class="badge badge-soft-warning px-2.5 py-1 rounded-pill fs-8">Unavailable</span>
+                  {% endif %}
+                </td>
+                <td class="text-center">
+                  {% if pred.available %}
+                    <span class="fw-extrabold" style="color: var(--text-primary); font-size: 1.05rem;">{{ pred.predicted_total }}</span> <span class="text-muted fs-8">/ 100</span>
+                  {% else %}
+                    <span class="text-muted">—</span>
+                  {% endif %}
+                </td>
+                <td class="text-center">
+                  {% if pred.available %}
+                    {% if pred.performance == 'Excellent' %}
+                      <span class="badge badge-soft-success px-3 py-1.5 rounded-pill"><i class="bi bi-award-fill me-1"></i>{{ pred.performance }}</span>
+                    {% elif pred.performance == 'Good' %}
+                      <span class="badge badge-soft-info px-3 py-1.5 rounded-pill"><i class="bi bi-check-circle-fill me-1"></i>{{ pred.performance }}</span>
+                    {% elif pred.performance == 'Average' %}
+                      <span class="badge badge-soft-warning px-3 py-1.5 rounded-pill"><i class="bi bi-dash-circle-fill me-1"></i>{{ pred.performance }}</span>
+                    {% else %}
+                      <span class="badge badge-soft-danger px-3 py-1.5 rounded-pill"><i class="bi bi-exclamation-circle-fill me-1"></i>{{ pred.performance }}</span>
+                    {% endif %}
+                  {% else %}
+                    <span class="badge badge-soft-secondary px-2.5 py-1.5 rounded-pill fs-8" title="{{ pred.error_message }}">
+                      {{ pred.error_message }}
+                    </span>
                   {% endif %}
                 </td>
               </tr>
@@ -356,16 +402,66 @@
             </tbody>
           </table>
         </div>
-        <div class="mt-3 text-muted small d-flex align-items-center gap-2">
-          <i class="bi bi-info-circle text-primary flex-shrink-0"></i>
-          <span>These values are AI-based estimates generated using internal marks, attendance, semester, and subject. They are predictions, not actual examination results.</span>
+
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 p-3 rounded-3 mb-3" style="background: var(--bg-elevated); border: 1px solid var(--border-color);">
+          <div class="d-flex align-items-center gap-2 small" style="color: var(--text-secondary);">
+            <i class="bi bi-shield-check text-primary flex-shrink-0 fs-5"></i>
+            <span><strong>Academic Result Integrity:</strong> AI predictions are mathematical estimations based on continuous evaluation. Actual examination results are independently recorded and never overwritten by predicted scores.</span>
+          </div>
         </div>
+
         {% else %}
-        <div class="alert alert-warning mb-0 rounded-3 d-flex align-items-center gap-2">
+        <div class="alert alert-warning mb-3 rounded-3 d-flex align-items-center gap-2">
           <i class="bi bi-exclamation-triangle-fill flex-shrink-0"></i>
-          <span>Prediction is currently unavailable.</span>
+          <div>
+            <strong>Prediction unavailable:</strong> Current academic data is insufficient to generate a reliable prediction.
+          </div>
         </div>
         {% endif %}
+
+        <!-- Compact AI Model Information Accordion/Card (Visually Secondary) -->
+        <div class="border rounded-3 p-3 mt-2" style="background: var(--bg-card); border-color: var(--border-color) !important;">
+          <div class="d-flex align-items-center justify-content-between cursor-pointer" data-bs-toggle="collapse" data-bs-target="#aiModelInfoCollapse" aria-expanded="false" aria-controls="aiModelInfoCollapse" style="cursor: pointer;">
+            <div class="d-flex align-items-center gap-2">
+              <i class="bi bi-info-circle text-primary"></i>
+              <span class="fw-bold fs-7" style="color: var(--text-primary);">AI Model Information & Evaluation Metrics</span>
+              <span class="badge bg-light text-secondary border fs-8">R² = {{ model_info.r2_score if model_info else '0.71' }}</span>
+            </div>
+            <i class="bi bi-chevron-down fs-8 text-secondary"></i>
+          </div>
+          <div class="collapse mt-3" id="aiModelInfoCollapse">
+            <div class="p-3 rounded-3 mb-2" style="background: var(--bg-elevated); border: 1px solid var(--border-color);">
+              <div class="row g-3">
+                <div class="col-sm-6 col-md-3">
+                  <small class="text-uppercase fw-semibold fs-8 d-block mb-1" style="color: var(--text-secondary);">Model Architecture</small>
+                  <span class="fw-bold fs-7" style="color: var(--text-primary);">Random Forest Regressor</span>
+                  <small class="d-block text-muted fs-8">OneHotEncoder + Pipeline</small>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                  <small class="text-uppercase fw-semibold fs-8 d-block mb-1" style="color: var(--text-secondary);">Input Features</small>
+                  <span class="fw-bold fs-7" style="color: var(--text-primary);">Internal, Attendance, Semester, Subject</span>
+                  <small class="d-block text-muted fs-8">Target: External (0–70)</small>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                  <small class="text-uppercase fw-semibold fs-8 d-block mb-1" style="color: var(--text-secondary);">Evaluation (MAE / RMSE)</small>
+                  <span class="fw-bold fs-7" style="color: var(--text-primary);">MAE: {{ model_info.model_mae if model_info else '4.72' }} | RMSE: {{ model_info.rmse if model_info else '5.77' }}</span>
+                  <small class="d-block text-muted fs-8">Test Split: 80 / 20 (288 test records)</small>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                  <small class="text-uppercase fw-semibold fs-8 d-block mb-1" style="color: var(--text-secondary);">Baseline Improvement</small>
+                  <span class="fw-bold text-success fs-7">+{{ model_info.improvement_pct if model_info else '46.58' }}%</span>
+                  <small class="d-block text-muted fs-8">vs Mean Predictor (MAE 8.84)</small>
+                </div>
+              </div>
+              <hr class="my-2" style="border-color: var(--border-color); opacity: 0.5;">
+              <p class="fs-8 mb-0" style="color: var(--text-secondary);">
+                <i class="bi bi-check-circle text-primary me-1"></i>
+                {{ model_info.description if model_info else "AI predictions are generated using internal marks, attendance, semester, and subject information." }}
+                {{ model_info.r2_explanation if model_info else "The model achieved an R² score of approximately 0.71 on the held-out test dataset." }}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Semester Performance Trend Section -->

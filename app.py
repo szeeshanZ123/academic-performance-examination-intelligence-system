@@ -29,7 +29,9 @@ from analysis.analytics import (
 
 from ml.predictor import (
     predict_external_marks,
-    classify_predicted_performance
+    classify_predicted_performance,
+    predict_subject_performance,
+    get_model_info
 )
 
 from question_paper.routes import question_paper_bp
@@ -497,35 +499,31 @@ def student_dashboard():
 
     # Generate AI-Based External Marks Predictions for current semester subjects
     predictions = []
-    prediction_available = True
+    prediction_available = False
+    model_info = get_model_info()
+
     try:
         current_semester = int(detail["student"]["Semester"])
         for subj in detail["subjects_list"]:
-            subj_name = str(subj["subject"]).strip()
-            int_marks = float(subj["internal"])
-            att = float(subj["attendance"])
+            subj_name = str(subj.get("subject", "")).strip()
+            int_marks = subj.get("internal")
+            att = subj.get("attendance")
+            act_ext = subj.get("external")
 
-            # Pass ONLY: Internal, Attendance, Semester, Subject
-            pred_ext = predict_external_marks(
+            # Predict safely using per-subject pipeline
+            pred_record = predict_subject_performance(
                 internal_marks=int_marks,
                 attendance=att,
                 semester=current_semester,
                 subject=subj_name,
+                actual_external=act_ext,
             )
-            pred_total = round(int_marks + pred_ext, 2)
-            perf = classify_predicted_performance(pred_total)
+            predictions.append(pred_record)
 
-            predictions.append({
-                "subject": subj_name,
-                "internal": int_marks,
-                "attendance": att,
-                "predicted_external": pred_ext,
-                "predicted_total": pred_total,
-                "performance": perf,
-            })
+        if any(p.get("available") for p in predictions):
+            prediction_available = True
     except Exception as e:
         app.logger.warning(f"ML prediction error for student {roll}: {e}")
-        predictions = []
         prediction_available = False
 
     # Generate Semester Performance & Attendance Trend Analytics
@@ -544,6 +542,7 @@ def student_dashboard():
         recommendations=detail["recommendations"],
         predictions=predictions,
         prediction_available=prediction_available,
+        model_info=model_info,
         trend_summary=trend_info["summary"],
         trend_labels=trend_info["labels"],
         sgpi_trend=trend_info["sgpi_trend"],
@@ -593,35 +592,31 @@ def student_profile(roll):
 
     # Generate AI-Based External Marks Predictions for current semester subjects
     predictions = []
-    prediction_available = True
+    prediction_available = False
+    model_info = get_model_info()
+
     try:
         current_semester = int(detail["student"]["Semester"])
         for subj in detail["subjects_list"]:
-            subj_name = str(subj["subject"]).strip()
-            int_marks = float(subj["internal"])
-            att = float(subj["attendance"])
+            subj_name = str(subj.get("subject", "")).strip()
+            int_marks = subj.get("internal")
+            att = subj.get("attendance")
+            act_ext = subj.get("external")
 
-            # Pass ONLY: Internal, Attendance, Semester, Subject
-            pred_ext = predict_external_marks(
+            # Predict safely using per-subject pipeline
+            pred_record = predict_subject_performance(
                 internal_marks=int_marks,
                 attendance=att,
                 semester=current_semester,
                 subject=subj_name,
+                actual_external=act_ext,
             )
-            pred_total = round(int_marks + pred_ext, 2)
-            perf = classify_predicted_performance(pred_total)
+            predictions.append(pred_record)
 
-            predictions.append({
-                "subject": subj_name,
-                "internal": int_marks,
-                "attendance": att,
-                "predicted_external": pred_ext,
-                "predicted_total": pred_total,
-                "performance": perf,
-            })
+        if any(p.get("available") for p in predictions):
+            prediction_available = True
     except Exception as e:
         app.logger.warning(f"ML prediction error for student profile {roll}: {e}")
-        predictions = []
         prediction_available = False
 
     # Generate Semester Performance & Attendance Trend Analytics
@@ -642,6 +637,7 @@ def student_profile(roll):
         admin=admin_info,
         predictions=predictions,
         prediction_available=prediction_available,
+        model_info=model_info,
         trend_summary=trend_info["summary"],
         trend_labels=trend_info["labels"],
         sgpi_trend=trend_info["sgpi_trend"],

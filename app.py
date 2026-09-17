@@ -34,6 +34,8 @@ from ml.predictor import (
     get_model_info
 )
 
+from utils.student_recommendations import generate_improvement_plan
+
 from question_paper.routes import question_paper_bp
 
 
@@ -549,6 +551,43 @@ def student_dashboard():
         attendance_trend=trend_info["attendance_trend"],
         has_multiple_semesters=trend_info["has_multiple_semesters"],
     )
+
+
+# =========================================================
+# PERSONALIZED STUDENT IMPROVEMENT PLAN (PHASE 8.4)
+# =========================================================
+
+@app.route("/student/improvement-plan", methods=["GET"])
+def student_improvement_plan():
+    """
+    Dedicated full-page personalized student improvement plan.
+    Acting as a personal academic coach grounded strictly in the logged-in student's data.
+    """
+    # Strict student authorization: only logged in students can access
+    if session.get("teacher_logged_in"):
+        flash("Faculty accounts cannot access student improvement plans directly.", "warning")
+        return redirect(url_for("teacher_dashboard"))
+
+    if not session.get("student_logged_in"):
+        flash("Please log in as a student to access your personalized improvement plan.", "warning")
+        return redirect(url_for("login", role="student"))
+
+    roll = session.get("student_roll")
+    if not roll:
+        flash("Student session invalid. Please log in again.", "danger")
+        return redirect(url_for("login", role="student"))
+
+    plan = generate_improvement_plan(str(roll).strip())
+
+    if not plan:
+        flash("Student academic records could not be retrieved.", "warning")
+        return redirect(url_for("student_dashboard"))
+
+    return render_template(
+        "improvement_plan.html",
+        plan=plan
+    )
+
 
 # =========================================================
 # LOGOUT

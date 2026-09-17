@@ -1,0 +1,925 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Academic Intelligence | My Improvement Plan</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}" />
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+    <style>
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        min-height: 100vh;
+      }
+
+      /* Navbar */
+      .navbar-custom {
+        background-color: var(--navbar-bg) !important;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .brand-badge {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+
+      /* Hero Header */
+      .coach-hero {
+        background: var(--hero-bg) !important;
+        border-radius: 20px;
+        color: var(--hero-text) !important;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--hero-border) !important;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+
+      .coach-hero::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 380px;
+        height: 380px;
+        background: radial-gradient(circle, rgba(37, 99, 235, 0.25) 0%, rgba(0, 0, 0, 0) 70%);
+        border-radius: 50%;
+      }
+
+      /* Cards & Section Boxes */
+      .section-card {
+        background: var(--bg-card);
+        border-radius: 16px;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .section-card:hover {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.06);
+      }
+
+      .inner-box {
+        background: var(--bg-elevated);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        padding: 1.25rem;
+      }
+
+      /* Health Metric Cards */
+      .health-metric-card {
+        background: var(--bg-card);
+        border-radius: 16px;
+        border: 1px solid var(--border-color);
+        padding: 1.5rem;
+        transition: all 0.2s ease;
+      }
+
+      .health-metric-card:hover {
+        transform: translateY(-3px);
+      }
+
+      .icon-circle {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+      }
+
+      /* Badges */
+      .badge-soft-success { background-color: rgba(34, 197, 94, 0.14); color: #16a34a; font-weight: 600; }
+      .badge-soft-info { background-color: rgba(59, 130, 246, 0.14); color: #2563eb; font-weight: 600; }
+      .badge-soft-warning { background-color: rgba(245, 158, 11, 0.14); color: #d97706; font-weight: 600; }
+      .badge-soft-danger { background-color: rgba(239, 68, 68, 0.14); color: #dc2626; font-weight: 600; }
+      .badge-soft-primary { background-color: rgba(37, 99, 235, 0.14); color: #2563eb; font-weight: 600; }
+      .badge-soft-secondary { background-color: rgba(100, 116, 139, 0.14); color: #475569; font-weight: 600; }
+      .badge-soft-purple { background-color: rgba(139, 92, 246, 0.14); color: #7c3aed; font-weight: 600; }
+
+      [data-theme="dark"] .badge-soft-success { color: #4ade80; }
+      [data-theme="dark"] .badge-soft-info { color: #60a5fa; }
+      [data-theme="dark"] .badge-soft-warning { color: #fbbf24; }
+      [data-theme="dark"] .badge-soft-danger { color: #f87171; }
+      [data-theme="dark"] .badge-soft-primary { color: #60a5fa; }
+      [data-theme="dark"] .badge-soft-secondary { color: #94a3b8; }
+      [data-theme="dark"] .badge-soft-purple { color: #a78bfa; }
+
+      /* Table */
+      .table-custom {
+        border-collapse: separate;
+        border-spacing: 0;
+        width: 100%;
+      }
+
+      .table-custom thead th {
+        background-color: var(--table-header-bg);
+        border-bottom: 1px solid var(--border-color);
+        color: var(--table-header-text);
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding: 0.85rem 1rem;
+        white-space: nowrap;
+      }
+
+      .table-custom tbody td {
+        padding: 0.85rem 1rem;
+        vertical-align: middle;
+        border-bottom: 1px solid var(--border-color);
+        font-size: 0.92rem;
+        color: var(--text-primary);
+      }
+
+      .table-custom tbody tr:hover td {
+        background-color: var(--table-row-hover);
+      }
+
+      /* Weekly Roadmap Cards */
+      .day-card {
+        background: var(--bg-elevated);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 1rem;
+        height: 100%;
+        transition: all 0.2s ease;
+      }
+
+      .day-card:hover {
+        border-color: var(--primary);
+        transform: translateY(-2px);
+      }
+
+      .day-badge {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding: 3px 8px;
+        border-radius: 6px;
+      }
+
+      /* Interactive Checklist */
+      .checklist-item {
+        background: var(--bg-elevated);
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        padding: 0.85rem 1rem;
+        transition: all 0.2s ease;
+      }
+
+      .checklist-item.checked {
+        opacity: 0.6;
+        text-decoration: line-through;
+        background: rgba(34, 197, 94, 0.05);
+        border-color: rgba(34, 197, 94, 0.3);
+      }
+
+      .custom-checkbox {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+      }
+
+      @media print {
+        .no-print { display: none !important; }
+        body { background: white !important; color: black !important; }
+        .section-card, .coach-hero, .inner-box { box-shadow: none !important; border: 1px solid #ddd !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top py-2.5 no-print">
+      <div class="container-fluid px-4" style="max-width: 1400px;">
+        <a class="navbar-brand d-flex align-items-center text-decoration-none" href="{{ url_for('student_dashboard') }}">
+          <span class="brand-badge me-2"><i class="bi bi-mortarboard-fill me-1"></i> Academic Intelligence</span>
+          <span class="opacity-75 fs-6 d-none d-sm-inline">Personal Academic Coach</span>
+        </a>
+
+        <div class="d-flex align-items-center gap-2">
+          <a href="{{ url_for('student_dashboard') }}" class="btn btn-outline-secondary btn-sm rounded-pill px-3">
+            <i class="bi bi-speedometer2 me-1"></i> Student Dashboard
+          </a>
+          <button onclick="window.print()" class="btn btn-outline-secondary btn-sm rounded-pill px-3 d-none d-md-inline-block">
+            <i class="bi bi-printer me-1"></i> Print Plan
+          </button>
+          <button id="themeToggleBtn" onclick="toggleTheme()" class="theme-toggle-pill" type="button" aria-label="Toggle Theme">
+            <span>☀️ Light</span><span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
+          </button>
+          <a href="{{ url_for('student_logout') }}" class="btn btn-danger btn-sm rounded-pill px-3">
+            <i class="bi bi-box-arrow-right me-1"></i> Logout
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="container-fluid px-4 py-4" style="max-width: 1400px;">
+
+      <!-- Flash Notification Messages -->
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category if category != 'error' else 'danger' }} alert-dismissible fade show rounded-4 shadow-sm mb-4 border-0 d-flex align-items-center justify-content-between p-3" role="alert">
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-info-circle-fill fs-5 text-{{ category }}"></i>
+                <div>{{ message }}</div>
+              </div>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <!-- Page Header (Section 3) -->
+      <div class="coach-hero p-4 p-md-5 mb-4">
+        <div class="row align-items-center position-relative" style="z-index: 1;">
+          <div class="col-lg-8">
+            <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+              <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-25 px-3 py-1 rounded-pill small">
+                <i class="bi bi-compass-fill me-1"></i> Personal Academic Coach
+              </span>
+              <span class="badge bg-light text-dark border px-3 py-1 rounded-pill small">
+                <i class="bi bi-person-fill me-1"></i> {{ plan.student.Name }} ({{ plan.student.Roll }})
+              </span>
+            </div>
+            <h1 class="display-6 fw-bold mb-2">MY IMPROVEMENT PLAN</h1>
+            <p class="lead fs-6 mb-3 opacity-75">
+              Your personalized academic roadmap based on your current performance, attendance, trends, and AI insights.
+            </p>
+
+            <div class="d-flex flex-wrap align-items-center gap-2">
+              <span class="badge bg-secondary px-3 py-1.5 rounded-pill small">
+                Current Semester: <strong>Semester {{ plan.semester }}</strong>
+              </span>
+              <span class="badge bg-primary px-3 py-1.5 rounded-pill small">
+                Overall Performance: <strong>{{ plan.overall_performance }}</strong>
+              </span>
+              {% if plan.areas_needing_attention > 0 %}
+                <span class="badge bg-warning text-dark px-3 py-1.5 rounded-pill small">
+                  Plan Status: <strong>{{ plan.areas_needing_attention }} Area{% if plan.areas_needing_attention != 1 %}s{% endif %} Need Attention</strong>
+                </span>
+              {% else %}
+                <span class="badge bg-success px-3 py-1.5 rounded-pill small">
+                  Plan Status: <strong>All Areas on Track — Excellence Maintenance Plan</strong>
+                </span>
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+            <a href="#action-checklist" class="btn btn-primary rounded-pill px-4 py-2 shadow-sm">
+              <i class="bi bi-check2-square me-1"></i> Jump to Action Checklist
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 4: Overall Academic Health -->
+      <div class="mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h5 class="fw-bold mb-0 text-primary">
+            <i class="bi bi-heart-pulse-fill me-2"></i>ACADEMIC HEALTH
+          </h5>
+          <span class="text-muted small">Real-time dynamic synthesis</span>
+        </div>
+
+        <div class="row g-3">
+          <!-- Overall Score Metric -->
+          <div class="col-md-4">
+            <div class="health-metric-card h-100">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="text-muted small fw-bold text-uppercase">Overall Score</span>
+                <div class="icon-circle bg-primary bg-opacity-10 text-primary">
+                  <i class="bi bi-award-fill"></i>
+                </div>
+              </div>
+              <h2 class="fw-bold mb-1">{{ plan.overall_score }} <span class="fs-6 text-muted fw-normal">/ 100</span></h2>
+              <div class="d-flex align-items-center gap-2 mt-2">
+                <span class="badge badge-soft-{{ 'success' if plan.overall_score >= 75 else ('primary' if plan.overall_score >= 60 else 'warning') }} px-2.5 py-1 rounded-pill">
+                  {{ plan.overall_performance }}
+                </span>
+                <small class="text-muted">Average across Semester {{ plan.semester }}</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Attendance Metric -->
+          <div class="col-md-4">
+            <div class="health-metric-card h-100">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="text-muted small fw-bold text-uppercase">Attendance</span>
+                <div class="icon-circle bg-{{ plan.attendance_plan.badge }} bg-opacity-10 text-{{ plan.attendance_plan.badge }}">
+                  <i class="bi bi-calendar-check-fill"></i>
+                </div>
+              </div>
+              <h2 class="fw-bold mb-1">{{ plan.attendance }}%</h2>
+              <div class="d-flex align-items-center gap-2 mt-2">
+                <span class="badge badge-soft-{{ plan.attendance_plan.badge }} px-2.5 py-1 rounded-pill">
+                  {{ plan.attendance_plan.status }}
+                </span>
+                <small class="text-muted">Target threshold: 75%+</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- SGPI Trend Metric -->
+          <div class="col-md-4">
+            <div class="health-metric-card h-100">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="text-muted small fw-bold text-uppercase">SGPI Trend</span>
+                <div class="icon-circle bg-{{ 'success' if plan.sgpi_trend_direction == 'Improving' else ('warning' if plan.sgpi_trend_direction == 'Declining' else 'info') }} bg-opacity-10 text-{{ 'success' if plan.sgpi_trend_direction == 'Improving' else ('warning' if plan.sgpi_trend_direction == 'Declining' else 'info') }}">
+                  <i class="bi bi-graph-up-arrow"></i>
+                </div>
+              </div>
+              <h2 class="fw-bold mb-1">
+                {{ plan.sgpi_trend_symbol }} {{ plan.sgpi_trend_direction }}
+              </h2>
+              <div class="d-flex align-items-center gap-2 mt-2">
+                <span class="badge badge-soft-{{ 'success' if plan.sgpi_trend_direction == 'Improving' else ('warning' if plan.sgpi_trend_direction == 'Declining' else 'info') }} px-2.5 py-1 rounded-pill">
+                  {{ plan.sgpi_trend_tone }}
+                </span>
+                <small class="text-muted">Current SGPI: {{ plan.sgpi }}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 5: Your Top Priorities -->
+      <div class="section-card p-4 mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div>
+            <h5 class="fw-bold mb-1 text-primary">
+              <i class="bi bi-bullseye text-danger me-2"></i>YOUR TOP PRIORITIES
+            </h5>
+            <p class="text-muted small mb-0">Actionable recommendations prioritized according to your marks, attendance, and exam risks.</p>
+          </div>
+          <span class="badge bg-light text-muted border px-3 py-1 rounded-pill">Personalized Ranking</span>
+        </div>
+
+        <div class="row g-3">
+          {% for p in plan.priorities %}
+            <div class="col-lg-4">
+              <div class="inner-box h-100 d-flex flex-column justify-content-between border-start border-{{ p.badge }} border-4">
+                <div>
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge badge-soft-{{ p.badge }} px-2.5 py-1 rounded-pill">
+                      {{ p.icon }} {{ p.level }}
+                    </span>
+                    <span class="fw-bold text-muted small">#{{ p.number }}</span>
+                  </div>
+                  <h6 class="fw-bold mb-1 fs-6">{{ p.title }}</h6>
+                  <div class="small fw-semibold text-primary mb-2">{{ p.metric }}</div>
+
+                  <div class="mb-2">
+                    <small class="text-muted fw-bold d-block text-uppercase fs-9">Why:</small>
+                    <p class="small text-muted mb-0">{{ p.why }}</p>
+                  </div>
+                </div>
+
+                <div class="mt-3 pt-2 border-top">
+                  <small class="text-muted fw-bold d-block text-uppercase fs-9">Action:</small>
+                  <p class="small text-dark fw-medium mb-0">{{ p.action }}</p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Section 6 & 7: Subject Performance Ranking and Strong Areas -->
+      <div class="row g-4 mb-4">
+        <!-- Subjects That Need Attention (Weakest First) -->
+        <div class="col-lg-7">
+          <div class="section-card p-4 h-100">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div>
+                <h5 class="fw-bold mb-1 text-primary">
+                  <i class="bi bi-bar-chart-line-fill me-2"></i>SUBJECT PERFORMANCE (RANKED)
+                </h5>
+                <p class="text-muted small mb-0">Ranked weakest to strongest to highlight where your effort delivers the highest SGPI boost.</p>
+              </div>
+              <span class="badge bg-light text-muted border">Weakest First</span>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-custom align-middle">
+                <thead>
+                  <tr>
+                    <th>Subject</th>
+                    <th class="text-center">Score</th>
+                    <th class="text-center">Attendance</th>
+                    <th class="text-center">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for s in plan.ranked_subjects %}
+                    <tr>
+                      <td class="fw-semibold">
+                        {{ s.subject }}
+                        <div class="text-muted fs-8 fw-normal">Internal: {{ s.internal }}/30 | External: {{ s.external }}/70</div>
+                      </td>
+                      <td class="text-center fw-bold">
+                        {{ s.total }}%
+                      </td>
+                      <td class="text-center">
+                        <span class="badge {% if s.attendance >= 75 %}badge-soft-success{% else %}badge-soft-danger{% endif %} px-2 py-1 rounded-pill">
+                          {{ s.attendance }}%
+                        </span>
+                      </td>
+                      <td class="text-center">
+                        <span class="badge badge-soft-{{ s.badge }} px-2.5 py-1 rounded-pill">
+                          {{ s.icon }} {{ s.status }}
+                        </span>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Strong Areas & Encouragement (Section 7 & 18) -->
+        <div class="col-lg-5">
+          <div class="section-card p-4 h-100 d-flex flex-column justify-content-between">
+            <div>
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="fw-bold mb-1 text-success">
+                  <i class="bi bi-star-fill text-warning me-2"></i>YOUR STRONG AREAS
+                </h5>
+                <span class="badge badge-soft-success">Excellence</span>
+              </div>
+              <p class="text-muted small mb-3">
+                Balanced academic coaching celebrates what you are doing right. Keep maintaining consistency!
+              </p>
+
+              {% if plan.strong_subjects %}
+                <div class="d-flex flex-column gap-2 mb-3">
+                  {% for ss in plan.strong_subjects %}
+                    <div class="p-2.5 px-3 rounded-3 border d-flex align-items-center justify-content-between" style="background: var(--bg-elevated);">
+                      <div class="d-flex align-items-center gap-2">
+                        <i class="bi bi-check-circle-fill text-success fs-6"></i>
+                        <span class="fw-bold small">{{ ss.subject }}</span>
+                      </div>
+                      <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-2 py-1 rounded-pill">
+                        {{ ss.total }}% ({{ ss.grade }})
+                      </span>
+                    </div>
+                  {% endfor %}
+                </div>
+                <div class="p-3 rounded-3 bg-success bg-opacity-10 border border-success border-opacity-25">
+                  <h6 class="fw-bold text-success mb-1 small"><i class="bi bi-hand-thumbs-up me-1"></i> Keep It Up!</h6>
+                  <p class="small text-muted mb-0">
+                    You are performing strongly in these courses. Continue your revision routine while directing your extra focus toward your weaker subjects.
+                  </p>
+                </div>
+              {% else %}
+                <div class="p-3 rounded-3 border text-center text-muted small" style="background: var(--bg-elevated);">
+                  <i class="bi bi-info-circle text-info d-block fs-4 mb-2"></i>
+                  All current semester subjects have scope for improvement. Focus on the learning topics below to build strong course foundations!
+                </div>
+              {% endif %}
+            </div>
+
+            <!-- Attendance Snapshot -->
+            <div class="mt-3 pt-3 border-top">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="small text-muted">Attendance Health:</span>
+                <span class="badge badge-soft-{{ plan.attendance_plan.badge }} px-2.5 py-1 rounded-pill">
+                  {{ plan.attendance }}% ({{ plan.attendance_plan.status }})
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 8, 9, 10: Topic-Level Learning Plan, Revision, and Practice -->
+      <div class="row g-4 mb-4">
+        <!-- Topic-Level Learning Plan (Section 8) -->
+        <div class="col-lg-6">
+          <div class="section-card p-4 h-100">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div>
+                <h5 class="fw-bold mb-1 text-primary">
+                  <i class="bi bi-journal-bookmark-fill text-primary me-2"></i>WHAT YOU SHOULD LEARN
+                </h5>
+                <p class="text-muted small mb-0">Syllabus-grounded topics identified from your weakest subject areas and question papers.</p>
+              </div>
+              <span class="badge bg-primary px-2.5 py-1 rounded-pill">Core Focus</span>
+            </div>
+
+            <div class="d-flex flex-column gap-3">
+              {% for lt in plan.learning_topics %}
+                <div class="p-3 rounded-3 border" style="background: var(--bg-elevated);">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <div>
+                      <span class="badge badge-soft-{{ lt.badge }} px-2.5 py-1 rounded-pill small me-1">
+                        {{ lt.priority }} PRIORITY
+                      </span>
+                      <span class="fw-bold fs-6">{{ lt.topic }}</span>
+                      <small class="text-muted d-block mt-0.5">Subject: {{ lt.subject }}</small>
+                    </div>
+                  </div>
+
+                  <p class="small text-muted mb-2"><strong>Why this topic:</strong> {{ lt.why }}</p>
+
+                  <div class="p-2.5 rounded-2 bg-white border">
+                    <small class="text-muted fw-bold d-block mb-1.5 fs-8 text-uppercase">Recommended Concepts:</small>
+                    <ol class="mb-0 ps-3 small text-dark">
+                      {% for sub in lt.subtopics %}
+                        <li class="mb-1">{{ sub }}</li>
+                      {% endfor %}
+                    </ol>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <!-- What to Revise & Practice (Section 9 & 10) -->
+        <div class="col-lg-6">
+          <div class="d-flex flex-column gap-4 h-100">
+            <!-- Revision Plan (Section 9) -->
+            <div class="section-card p-4 flex-grow-1">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="fw-bold mb-0 text-primary">
+                  <i class="bi bi-arrow-repeat text-info me-2"></i>WHAT TO REVISE
+                </h6>
+                <span class="badge bg-light text-muted border">High Exam Correlation</span>
+              </div>
+
+              <div class="d-flex flex-column gap-2">
+                {% for rt in plan.revision_topics %}
+                  <div class="p-2.5 px-3 rounded-3 border d-flex align-items-start gap-2.5" style="background: var(--bg-elevated);">
+                    <div class="badge bg-primary rounded-circle px-2 py-1 small">{{ rt.number }}</div>
+                    <div>
+                      <div class="fw-bold small">{{ rt.topic }} <span class="text-muted fw-normal">({{ rt.subject }})</span></div>
+                      <small class="text-muted">{{ rt.reason }}</small>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+
+            <!-- Practice Plan (Section 10) -->
+            <div class="section-card p-4 flex-grow-1">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="fw-bold mb-0 text-primary">
+                  <i class="bi bi-pencil-square text-warning me-2"></i>WHAT TO PRACTICE
+                </h6>
+                <span class="badge bg-light text-muted border">Suggested Sequence: 1 → 2 → 3 → 4</span>
+              </div>
+
+              <div class="row g-2">
+                {% for pt in plan.practice_topics %}
+                  <div class="col-12 col-sm-6">
+                    <div class="p-2.5 px-3 rounded-3 border h-100 d-flex align-items-center gap-2" style="background: var(--bg-elevated);">
+                      <i class="bi bi-check-square text-primary fs-5"></i>
+                      <div>
+                        <div class="fw-bold small">{{ pt.count }} Problems / Tasks</div>
+                        <small class="text-muted fs-8">{{ pt.category }}</small>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 11 & 12: Exam Focus & AI Performance Outlook -->
+      <div class="row g-4 mb-4">
+        <!-- Question Paper Intelligence Connection (Section 11) -->
+        <div class="col-lg-6">
+          <div class="section-card p-4 h-100">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div>
+                <h5 class="fw-bold mb-1 text-primary">
+                  <i class="bi bi-file-earmark-text-fill text-primary me-2"></i>EXAM FOCUS & QUESTION INTELLIGENCE
+                </h5>
+                <p class="text-muted small mb-0">Synthesized directly from analyzed semester examination question papers.</p>
+              </div>
+              <span class="badge bg-light text-dark border">Exam Patterns</span>
+            </div>
+
+            {% if plan.exam_intelligence and plan.exam_intelligence.available %}
+              <div class="p-3 rounded-3 border mb-3" style="background: var(--bg-elevated);">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                  <span class="fw-bold small">{{ plan.exam_intelligence.paper_name }}</span>
+                  <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 rounded-pill">
+                    Total {{ plan.exam_intelligence.total_paper_marks }} Marks
+                  </span>
+                </div>
+                <p class="small text-muted mb-0">Based on verified pattern extraction and marks distribution analytics.</p>
+              </div>
+
+              <div class="row g-3">
+                <div class="col-6">
+                  <div class="p-2.5 rounded-3 border" style="background: var(--bg-elevated);">
+                    <small class="text-muted d-block text-uppercase fs-8">Frequently Asked:</small>
+                    <span class="fw-bold text-primary">{{ plan.exam_intelligence.frequently_asked }}</span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="p-2.5 rounded-3 border" style="background: var(--bg-elevated);">
+                    <small class="text-muted d-block text-uppercase fs-8">High-Mark Topic:</small>
+                    <span class="fw-bold text-success">{{ plan.exam_intelligence.high_mark_topic }} ({{ plan.exam_intelligence.high_mark_val }})</span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="p-2.5 rounded-3 border" style="background: var(--bg-elevated);">
+                    <small class="text-muted d-block text-uppercase fs-8">Common Difficulty:</small>
+                    <span class="fw-bold text-warning">{{ plan.exam_intelligence.common_difficulty }}</span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="p-2.5 rounded-3 border" style="background: var(--bg-elevated);">
+                    <small class="text-muted d-block text-uppercase fs-8">Recommended Focus:</small>
+                    <span class="fw-bold text-dark fs-8">{{ plan.exam_intelligence.recommended_focus }}</span>
+                  </div>
+                </div>
+              </div>
+            {% else %}
+              <div class="p-4 rounded-3 border text-center text-muted" style="background: var(--bg-elevated);">
+                <i class="bi bi-file-earmark-x fs-3 text-muted d-block mb-2"></i>
+                <p class="small mb-0">Exam intelligence will appear once question papers for your subjects are analyzed.</p>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- AI Performance Outlook (Section 12) -->
+        <div class="col-lg-6">
+          <div class="section-card p-4 h-100">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div>
+                <h5 class="fw-bold mb-1 text-primary">
+                  <i class="bi bi-robot text-info me-2"></i>AI PERFORMANCE OUTLOOK
+                </h5>
+                <p class="text-muted small mb-0">Calibrated external marks forecast based on current attendance and internal metrics.</p>
+              </div>
+              <span class="badge badge-soft-{{ plan.outlook_badge }} px-2.5 py-1 rounded-pill">{{ plan.outlook }}</span>
+            </div>
+
+            {% if plan.avg_predicted_ext is not none %}
+              <div class="row g-3 mb-3">
+                <div class="col-6">
+                  <div class="p-3 rounded-3 border text-center" style="background: var(--bg-elevated);">
+                    <small class="text-muted d-block mb-1 text-uppercase fs-8">Predicted External</small>
+                    <h3 class="fw-bold text-primary mb-0">{{ plan.avg_predicted_ext }} <span class="fs-6 text-muted fw-normal">/ 70</span></h3>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="p-3 rounded-3 border text-center" style="background: var(--bg-elevated);">
+                    <small class="text-muted d-block mb-1 text-uppercase fs-8">Predicted Total</small>
+                    <h3 class="fw-bold text-success mb-0">{{ plan.avg_predicted_total }} <span class="fs-6 text-muted fw-normal">/ 100</span></h3>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-3 rounded-3 border mb-3" style="background: var(--bg-elevated);">
+                <small class="text-muted fw-bold d-block mb-1 fs-8 text-uppercase">Recommendation:</small>
+                <p class="small text-dark mb-0">{{ plan.outlook_advice }}</p>
+              </div>
+
+              <!-- Subject-wise mini prediction badges -->
+              <div class="d-flex flex-wrap gap-1.5">
+                {% for pred in plan.predictions %}
+                  {% if pred.available %}
+                    <span class="badge bg-light text-dark border small py-1.5 px-2 rounded-pill">
+                      {{ pred.subject }}: <strong>{{ pred.predicted_external }}/70 M</strong>
+                    </span>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% else %}
+              <div class="p-4 rounded-3 border text-center text-muted" style="background: var(--bg-elevated);">
+                <i class="bi bi-cpu fs-3 text-muted d-block mb-2"></i>
+                <p class="small mb-0">{{ plan.outlook_advice }}</p>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 13 & 14: Attendance Plan & SGPI Trend Analysis -->
+      <div class="row g-4 mb-4">
+        <!-- Attendance Plan (Section 13) -->
+        <div class="col-lg-6">
+          <div class="section-card p-4 h-100">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="fw-bold mb-0 text-primary">
+                <i class="bi bi-calendar3-check me-2"></i>ATTENDANCE PLAN
+              </h5>
+              <span class="badge badge-soft-{{ plan.attendance_plan.badge }} px-2.5 py-1 rounded-pill">
+                {{ plan.attendance_plan.status }}
+              </span>
+            </div>
+
+            <div class="p-3 rounded-3 border mb-3 d-flex align-items-center justify-content-between" style="background: var(--bg-elevated);">
+              <div>
+                <small class="text-muted d-block">Current Overall Attendance:</small>
+                <h3 class="fw-bold mb-0">{{ plan.attendance }}%</h3>
+              </div>
+              <div class="text-end">
+                <small class="text-muted d-block">Recommended Benchmark:</small>
+                <span class="badge bg-primary px-2.5 py-1 rounded-pill">75%+</span>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <small class="text-muted fw-bold d-block mb-1 fs-8 text-uppercase">Action Plan:</small>
+              <p class="small text-dark mb-0">{{ plan.attendance_plan.action }}</p>
+            </div>
+
+            {% if plan.attendance_plan.issues %}
+              <div class="p-2.5 rounded-3 bg-danger bg-opacity-10 border border-danger border-opacity-25">
+                <small class="fw-bold text-danger d-block mb-1">Subjects Below 75% Threshold:</small>
+                <ul class="mb-0 ps-3 small text-muted">
+                  {% for iss in plan.attendance_plan.issues %}
+                    <li><strong>{{ iss.subject }}</strong>: {{ iss.attendance }}%</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- SGPI Trend Analysis (Section 14) -->
+        <div class="col-lg-6">
+          <div class="section-card p-4 h-100">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="fw-bold mb-0 text-primary">
+                <i class="bi bi-graph-up-arrow me-2"></i>SGPI TREND ANALYSIS
+              </h5>
+              <span class="badge badge-soft-{{ 'success' if plan.sgpi_trend_direction == 'Improving' else ('warning' if plan.sgpi_trend_direction == 'Declining' else 'info') }} px-2.5 py-1 rounded-pill">
+                {{ plan.sgpi_trend_symbol }} {{ plan.sgpi_trend_direction }}
+              </span>
+            </div>
+
+            {% if plan.has_multiple_semesters %}
+              <!-- Semester Progression Pills -->
+              <div class="d-flex flex-wrap gap-2 mb-3">
+                {% for sem_label in plan.trend_labels %}
+                  {% set idx = loop.index0 %}
+                  <div class="p-2 px-3 rounded-3 border text-center flex-fill" style="background: var(--bg-elevated);">
+                    <small class="text-muted d-block fs-8">{{ sem_label }}</small>
+                    <span class="fw-bold text-primary">{{ plan.sgpi_history[idx] }}</span>
+                  </div>
+                {% endfor %}
+              </div>
+
+              <div class="p-3 rounded-3 border" style="background: var(--bg-elevated);">
+                <small class="text-muted fw-bold d-block mb-1 fs-8 text-uppercase">Performance Trajectory:</small>
+                <p class="small text-dark mb-0">{{ plan.sgpi_commentary }}</p>
+              </div>
+            {% else %}
+              <div class="p-4 rounded-3 border text-center text-muted" style="background: var(--bg-elevated);">
+                <i class="bi bi-clock-history fs-3 text-muted d-block mb-2"></i>
+                <p class="small mb-0">Historical trend will appear once more semester data is available.</p>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 16: Weekly Study Roadmap -->
+      <div class="section-card p-4 mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div>
+            <h5 class="fw-bold mb-1 text-primary">
+              <i class="bi bi-calendar-week-fill text-primary me-2"></i>YOUR WEEKLY STUDY ROADMAP
+            </h5>
+            <p class="text-muted small mb-0">Suggested study schedule tailored to your weak subjects, practice problem sets, and revision cadence.</p>
+          </div>
+          <span class="badge bg-light text-muted border">Personalized Guidance</span>
+        </div>
+
+        <div class="row g-3">
+          {% for r in plan.roadmap %}
+            <div class="col-12 col-sm-6 col-lg">
+              <div class="day-card d-flex flex-column justify-content-between">
+                <div>
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="day-badge bg-primary bg-opacity-10 text-primary">{{ r.day }}</span>
+                    <span class="badge badge-soft-secondary fs-9">{{ r.focus }}</span>
+                  </div>
+                  <h6 class="fw-bold fs-7 mb-1">{{ r.subject }}</h6>
+                  <p class="small text-muted mb-0">{{ r.activity }}</p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Section 17: Interactive Action Checklist -->
+      <div class="section-card p-4 mb-4" id="action-checklist">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div>
+            <h5 class="fw-bold mb-1 text-primary">
+              <i class="bi bi-check2-all text-success me-2"></i>YOUR ACTION CHECKLIST
+            </h5>
+            <p class="text-muted small mb-0">Track your weekly execution. Check items off as you complete them (progress persists locally in your browser).</p>
+          </div>
+          <button onclick="resetChecklist()" class="btn btn-outline-secondary btn-sm rounded-pill px-3">
+            <i class="bi bi-arrow-counterclockwise me-1"></i> Reset Checklist
+          </button>
+        </div>
+
+        <div class="d-flex flex-column gap-2.5">
+          {% for item in plan.action_checklist %}
+            <div class="checklist-item d-flex align-items-center gap-3" id="item_{{ item.id }}">
+              <input type="checkbox" class="custom-checkbox" id="{{ item.id }}" onchange="toggleChecklistItem('{{ item.id }}')">
+              <label for="{{ item.id }}" class="mb-0 small fw-medium flex-grow-1 cursor-pointer">
+                {{ item.text }}
+              </label>
+              <span class="badge bg-light text-muted border small">{{ item.category }}</span>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Client-Side Checklist LocalStorage Script -->
+    <script>
+      const studentRoll = "{{ plan.student.Roll }}";
+      const storageKey = `academic_checklist_${studentRoll}`;
+
+      function loadChecklistState() {
+        try {
+          const saved = localStorage.getItem(storageKey);
+          if (saved) {
+            const checkedIds = JSON.parse(saved);
+            checkedIds.forEach(id => {
+              const el = document.getElementById(id);
+              const container = document.getElementById(`item_${id}`);
+              if (el) el.checked = true;
+              if (container) container.classList.add("checked");
+            });
+          }
+        } catch (e) {
+          console.error("Failed to load checklist state", e);
+        }
+      }
+
+      function toggleChecklistItem(id) {
+        const el = document.getElementById(id);
+        const container = document.getElementById(`item_${id}`);
+        if (!el || !container) return;
+
+        if (el.checked) {
+          container.classList.add("checked");
+        } else {
+          container.classList.remove("checked");
+        }
+
+        // Save state
+        const allChecked = Array.from(document.querySelectorAll(".custom-checkbox:checked")).map(cb => cb.id);
+        localStorage.setItem(storageKey, JSON.stringify(allChecked));
+      }
+
+      function resetChecklist() {
+        localStorage.removeItem(storageKey);
+        document.querySelectorAll(".custom-checkbox").forEach(cb => {
+          cb.checked = false;
+        });
+        document.querySelectorAll(".checklist-item").forEach(item => {
+          item.classList.remove("checked");
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", loadChecklistState);
+    </script>
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

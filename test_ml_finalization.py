@@ -237,8 +237,8 @@ def test_predictions_differ_with_different_inputs():
 # 7. FLASK ROUTE & STUDENT DASHBOARD UI INTEGRATION
 # ----------------------------------------------------------------------
 
-def test_student_dashboard_renders_ml_section():
-    """Authenticated student accessing /student-dashboard must see the complete ML section."""
+def test_student_dashboard_renders_ml_section_without_technical_telemetry():
+    """Authenticated student accessing /student-dashboard must see user-facing predictions only, with no technical ML telemetry."""
     client = app.test_client()
     _, students, _, _, _ = load_data()
     sample_roll = students.iloc[0]["Roll"]
@@ -252,36 +252,62 @@ def test_student_dashboard_renders_ml_section():
     assert resp.status_code == 200
     html = resp.data.decode("utf-8")
 
-    # Check key section elements
+    # User-facing prediction elements MUST be present
     assert "ai-prediction-section" in html
     assert "AI Performance Prediction" in html
-    assert "Random Forest Regressor" in html
     assert "Actual External" in html
-    assert "AI Predicted External" in html
+    assert "AI Predicted External Marks" in html
     assert "Predicted Total" in html
-    assert "Academic Result Integrity" in html
-    assert "AI Model Information &amp; Evaluation Metrics" in html or "AI Model Information & Evaluation Metrics" in html
-    assert "R² = 0.71" in html
+    assert "Performance Status" in html
+
+    # Technical ML evaluation details MUST NOT be displayed anywhere on Student Dashboard
+    assert "AI Model Information" not in html
+    assert "Random Forest Regressor" not in html
+    assert "OneHotEncoder" not in html
+    assert "Baseline Improvement" not in html
+    assert "MAE:" not in html
+    assert "RMSE:" not in html
+    assert "R² =" not in html
+    assert "Academic Result Integrity" not in html
 
 
-def test_student_profile_renders_ml_section_for_admin():
-    """Admin viewing a student's profile must see the same robust ML prediction section."""
+def test_student_profile_renders_technical_ml_section_only_for_admin():
+    """Admin viewing a student profile can access model evaluation, while student cannot."""
     client = app.test_client()
     _, students, _, _, _ = load_data()
     sample_roll = students.iloc[0]["Roll"]
 
+    # 1. Admin login -> can view technical metrics
     with client.session_transaction() as sess:
         sess["admin_logged_in"] = True
         sess["admin_user"] = "admin"
 
-    resp = client.get(f"/student/{sample_roll}")
-    assert resp.status_code == 200
-    html = resp.data.decode("utf-8")
+    resp_admin = client.get(f"/student/{sample_roll}")
+    assert resp_admin.status_code == 200
+    html_admin = resp_admin.data.decode("utf-8")
 
-    assert "ai-prediction-section" in html
-    assert "AI Performance Prediction" in html
-    assert "Random Forest Regressor" in html
-    assert "Academic Result Integrity" in html
+    assert "ai-prediction-section" in html_admin
+    assert "AI Performance Prediction" in html_admin
+    assert "Random Forest Regressor" in html_admin
+    assert "AI Model Information & Evaluation Metrics (Admin View)" in html_admin
+    assert "R² = 0.71" in html_admin
+
+    # 2. Student login -> sees user-facing predictions only, no technical evaluation
+    with client.session_transaction() as sess:
+        sess.clear()
+        sess["student_logged_in"] = True
+        sess["student_roll"] = sample_roll
+        sess["student_name"] = students.iloc[0]["Name"]
+
+    resp_student = client.get(f"/student/{sample_roll}")
+    assert resp_student.status_code == 200
+    html_student = resp_student.data.decode("utf-8")
+
+    assert "ai-prediction-section" in html_student
+    assert "AI Performance Prediction" in html_student
+    assert "AI Model Information" not in html_student
+    assert "Random Forest Regressor" not in html_student
+    assert "R² =" not in html_student
 
 
 def test_student_cannot_view_other_student_profile():

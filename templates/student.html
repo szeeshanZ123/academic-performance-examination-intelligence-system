@@ -317,12 +317,18 @@
               <i class="bi bi-cpu-fill text-primary me-2"></i> AI Performance Prediction
             </h5>
             <p class="fs-8 mb-0" style="color: var(--text-secondary);">
-              Dynamic ML forecasting for Semester {{ student.Semester }} using internal marks, attendance, and trained Random Forest regression.
+              Performance forecasting for Semester {{ student.Semester }} based on internal marks and attendance.
             </p>
           </div>
+          {% if session.get('admin_logged_in') %}
           <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-1.5 rounded-pill fw-semibold fs-8">
             <i class="bi bi-stars me-1"></i> Random Forest Regressor
           </span>
+          {% else %}
+          <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-1.5 rounded-pill fw-semibold fs-8">
+            <i class="bi bi-stars me-1"></i> Performance Forecast
+          </span>
+          {% endif %}
         </div>
 
         {% if prediction_available and predictions %}
@@ -403,15 +409,8 @@
           </table>
         </div>
 
-        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 p-3 rounded-3 mb-3" style="background: var(--bg-elevated); border: 1px solid var(--border-color);">
-          <div class="d-flex align-items-center gap-2 small" style="color: var(--text-secondary);">
-            <i class="bi bi-shield-check text-primary flex-shrink-0 fs-5"></i>
-            <span><strong>Academic Result Integrity:</strong> AI predictions are mathematical estimations based on continuous evaluation. Actual examination results are independently recorded and never overwritten by predicted scores.</span>
-          </div>
-        </div>
-
         {% else %}
-        <div class="alert alert-warning mb-3 rounded-3 d-flex align-items-center gap-2">
+        <div class="alert alert-warning mb-0 rounded-3 d-flex align-items-center gap-2">
           <i class="bi bi-exclamation-triangle-fill flex-shrink-0"></i>
           <div>
             <strong>Prediction unavailable:</strong> Current academic data is insufficient to generate a reliable prediction.
@@ -419,12 +418,13 @@
         </div>
         {% endif %}
 
-        <!-- Compact AI Model Information Accordion/Card (Visually Secondary) -->
-        <div class="border rounded-3 p-3 mt-2" style="background: var(--bg-card); border-color: var(--border-color) !important;">
+        {% if session.get('admin_logged_in') %}
+        <!-- Compact AI Model Information Accordion/Card (Admin Only) -->
+        <div class="border rounded-3 p-3 mt-3" style="background: var(--bg-card); border-color: var(--border-color) !important;">
           <div class="d-flex align-items-center justify-content-between cursor-pointer" data-bs-toggle="collapse" data-bs-target="#aiModelInfoCollapse" aria-expanded="false" aria-controls="aiModelInfoCollapse" style="cursor: pointer;">
             <div class="d-flex align-items-center gap-2">
               <i class="bi bi-info-circle text-primary"></i>
-              <span class="fw-bold fs-7" style="color: var(--text-primary);">AI Model Information & Evaluation Metrics</span>
+              <span class="fw-bold fs-7" style="color: var(--text-primary);">AI Model Information & Evaluation Metrics (Admin View)</span>
               <span class="badge bg-light text-secondary border fs-8">R² = {{ model_info.r2_score if model_info else '0.71' }}</span>
             </div>
             <i class="bi bi-chevron-down fs-8 text-secondary"></i>
@@ -462,6 +462,7 @@
             </div>
           </div>
         </div>
+        {% endif %}
       </div>
 
       <!-- Semester Performance Trend Section -->

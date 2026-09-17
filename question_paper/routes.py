@@ -206,13 +206,25 @@ def analyze():
         
         try:
             file.save(temp_path)
+            file_size = os.path.getsize(temp_path)
+            if file_size == 0:
+                flash("The uploaded file is empty. Please upload a valid question paper document.", "warning")
+                return redirect(url_for("question_paper.index"))
+
             # Check file size limit
-            if os.path.getsize(temp_path) > MAX_FILE_SIZE_BYTES:
+            if file_size > MAX_FILE_SIZE_BYTES:
                 flash("File exceeds maximum allowed size limit of 10 MB.", "danger")
                 return redirect(url_for("question_paper.index"))
 
             # Extract text
-            extracted_data = extract_text_from_file(temp_path)
+            try:
+                extracted_data = extract_text_from_file(temp_path)
+            except Exception as e_ext:
+                extracted_data = {
+                    "success": False,
+                    "error": f"Unable to process uploaded document: {str(e_ext)}",
+                    "is_scanned": False
+                }
         finally:
             # Always clean up temporary file
             if os.path.exists(temp_path):
@@ -259,8 +271,8 @@ def analyze():
             selected_semester=req_semester
         )
 
-    # 6. Analyze questions (NLP, TF-IDF topic clustering, Rule classification, Difficulty)
-    analysis_result = analyze_question_paper(parsed_info)
+    # 6. Analyze questions (NLP, Syllabus mapping, Bloom taxonomy, Difficulty)
+    analysis_result = analyze_question_paper(parsed_info, subject=req_subject)
     analysis_result["document_meta"] = {
         "filename": original_filename,
         "file_type": extracted_data.get("file_type", "Document"),

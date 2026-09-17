@@ -82,22 +82,31 @@
       }
 
       .icon-circle {
-        width: 48px;
-        height: 48px;
+        width: 46px;
+        height: 46px;
         border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.3rem;
+        font-size: 1.25rem;
       }
 
       /* Badges */
-      .badge-soft-success { background-color: rgba(22, 163, 74, 0.12); color: var(--success); font-weight: 600; }
-      .badge-soft-info { background-color: rgba(59, 130, 246, 0.12); color: var(--secondary); font-weight: 600; }
-      .badge-soft-warning { background-color: rgba(245, 158, 11, 0.12); color: var(--warning); font-weight: 600; }
-      .badge-soft-danger { background-color: rgba(220, 38, 38, 0.12); color: var(--danger); font-weight: 600; }
-      .badge-soft-primary { background-color: rgba(37, 99, 235, 0.12); color: var(--primary); font-weight: 600; }
-      .badge-soft-secondary { background-color: rgba(59, 130, 246, 0.12); color: var(--secondary); font-weight: 600; }
+      .badge-soft-success { background-color: rgba(34, 197, 94, 0.14); color: #16a34a; font-weight: 600; }
+      .badge-soft-info { background-color: rgba(59, 130, 246, 0.14); color: #2563eb; font-weight: 600; }
+      .badge-soft-warning { background-color: rgba(245, 158, 11, 0.14); color: #d97706; font-weight: 600; }
+      .badge-soft-danger { background-color: rgba(239, 68, 68, 0.14); color: #dc2626; font-weight: 600; }
+      .badge-soft-primary { background-color: rgba(37, 99, 235, 0.14); color: #2563eb; font-weight: 600; }
+      .badge-soft-secondary { background-color: rgba(100, 116, 139, 0.14); color: #475569; font-weight: 600; }
+      .badge-soft-purple { background-color: rgba(139, 92, 246, 0.14); color: #7c3aed; font-weight: 600; }
+
+      [data-theme="dark"] .badge-soft-success { color: #4ade80; }
+      [data-theme="dark"] .badge-soft-info { color: #60a5fa; }
+      [data-theme="dark"] .badge-soft-warning { color: #fbbf24; }
+      [data-theme="dark"] .badge-soft-danger { color: #f87171; }
+      [data-theme="dark"] .badge-soft-primary { color: #60a5fa; }
+      [data-theme="dark"] .badge-soft-secondary { color: #94a3b8; }
+      [data-theme="dark"] .badge-soft-purple { color: #a78bfa; }
 
       /* Chart Cards */
       .chart-card {
@@ -107,10 +116,19 @@
         padding: 1.5rem;
       }
 
+      /* Custom Card */
+      .section-card {
+        background: var(--bg-card);
+        border-radius: 16px;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      }
+
       /* Table */
       .table-custom {
         border-collapse: separate;
         border-spacing: 0;
+        width: 100%;
       }
 
       .table-custom thead th {
@@ -122,6 +140,7 @@
         text-transform: uppercase;
         letter-spacing: 0.5px;
         padding: 0.9rem 1rem;
+        white-space: nowrap;
       }
 
       .table-custom tbody td {
@@ -129,10 +148,17 @@
         vertical-align: middle;
         border-bottom: 1px solid var(--border-color);
         font-size: 0.92rem;
+        color: var(--text-primary);
       }
 
       .table-custom tbody tr:hover td {
         background-color: var(--table-row-hover);
+      }
+
+      .table-container-responsive {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
       }
 
       .upload-dropzone {
@@ -147,15 +173,26 @@
         background: var(--bg-elevated);
       }
 
-      .tag-badge {
+      .spin {
+        animation: spin 1s linear infinite;
         display: inline-block;
-        font-size: 0.75rem;
-        padding: 2px 8px;
-        border-radius: 6px;
-        background: var(--bg-elevated);
-        color: var(--text-secondary);
-        margin: 2px;
-        border: 1px solid var(--border-color);
+      }
+
+      @keyframes spin {
+        100% { transform: rotate(360deg); }
+      }
+
+      .progress-bar-custom {
+        height: 8px;
+        border-radius: 4px;
+        background-color: var(--border-color);
+        overflow: hidden;
+      }
+
+      .progress-bar-fill {
+        height: 100%;
+        border-radius: 4px;
+        transition: width 0.4s ease;
       }
     </style>
   </head>
@@ -179,21 +216,18 @@
           <button id="themeToggleBtn" onclick="toggleTheme()" class="theme-toggle-pill" type="button" aria-label="Toggle Theme">
             <span>☀️ Light</span><span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
           </button>
-          <a href="{{ url_for('logout') }}" class="btn btn-outline-danger btn-sm rounded-pill px-3">
-            <i class="bi bi-box-arrow-right me-1"></i> Logout
-          </a>
         </div>
       </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="container-fluid px-4 py-4 max-w-7xl mx-auto" style="max-width: 1400px;">
-      
-      <!-- Flash Messages -->
+    <!-- Main Container -->
+    <main class="container-fluid px-4 py-4" style="max-width: 1400px;">
+
+      <!-- Flash Notification Messages -->
       {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
           {% for category, message in messages %}
-            <div class="alert alert-{{ category }} alert-dismissible fade show rounded-4 shadow-sm mb-4" role="alert">
+            <div class="alert alert-{{ category }} alert-dismissible fade show rounded-4 shadow-sm mb-4 border-0 d-flex align-items-center justify-content-between p-3" role="alert">
               <div class="d-flex align-items-center gap-2">
                 {% if category == 'success' %}
                   <i class="bi bi-check-circle-fill fs-5 text-success"></i>
@@ -231,17 +265,17 @@
           <div class="col-lg-8">
             <div class="d-flex align-items-center gap-2 mb-2">
               <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-25 px-3 py-1 rounded-pill small">
-                <i class="bi bi-cpu-fill me-1"></i> Phase 10 — Intelligence Engine
+                <i class="bi bi-cpu-fill me-1"></i> Phase 8.3 — Question Paper Intelligence
               </span>
               {% if has_analysis %}
-                <span class="badge bg-success bg-opacity-25 text-success-200 border border-success border-opacity-25 px-3 py-1 rounded-pill small">
+                <span class="badge bg-success bg-opacity-25 text-success border border-success border-opacity-25 px-3 py-1 rounded-pill small">
                   <i class="bi bi-check2-circle me-1"></i> Analysis Ready
                 </span>
               {% endif %}
             </div>
             <h1 class="display-6 fw-bold mb-2">Question Paper Intelligence</h1>
-            <p class="text-white-50 lead fs-6 mb-0">
-              Extract, parse, classify, and analyze academic question papers with transparent NLP topic clustering, rule-based Bloom's classification, and marks distribution analytics.
+            <p class="lead fs-6 mb-0 opacity-75">
+              Extract, parse, classify, and analyze examination question papers with syllabus-mapped topics, Bloom's cognitive taxonomy, total marks validation, and academic insights.
             </p>
           </div>
           <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
@@ -254,18 +288,44 @@
         </div>
       </div>
 
+      <!-- Processing State Overlay Card (Displayed dynamically on form submit) -->
+      <div id="processingCard" class="card border-0 shadow-sm rounded-4 p-5 mb-4 text-center d-none" style="background: var(--bg-card);">
+        <div class="spinner-border text-primary mb-3" role="status" style="width: 3.5rem; height: 3.5rem;">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <h4 class="fw-bold mb-2 text-primary">Analyzing Question Paper...</h4>
+        <p class="text-muted small mb-4">Please wait while the system extracts text, detects question numbering, parses marks, maps syllabus topics, and computes cognitive metrics.</p>
+        <div class="mx-auto text-start p-3 rounded-3 border" style="max-width: 420px; background: var(--bg-elevated);">
+          <div class="d-flex align-items-center mb-2 text-success small">
+            <i class="bi bi-check-circle-fill me-2"></i> Reading document & normalizing text
+          </div>
+          <div class="d-flex align-items-center mb-2 text-success small">
+            <i class="bi bi-check-circle-fill me-2"></i> Detecting questions & subquestions
+          </div>
+          <div class="d-flex align-items-center mb-2 text-primary small">
+            <i class="bi bi-arrow-repeat spin me-2"></i> Extracting question marks & calculating totals
+          </div>
+          <div class="d-flex align-items-center mb-2 text-muted small">
+            <i class="bi bi-circle me-2"></i> Mapping syllabus topics & Bloom's taxonomy
+          </div>
+          <div class="d-flex align-items-center text-muted small">
+            <i class="bi bi-circle me-2"></i> Generating difficulty & academic insights
+          </div>
+        </div>
+      </div>
+
       <!-- Upload / Paper Selection Section -->
       <div class="row mb-4" id="upload-section">
         <div class="col-12">
-          <div class="card border-0 shadow-sm rounded-4 p-4" id="upload-card">
-            <div class="d-flex justify-content-between align-items-center mb-3">
+          <div class="card border-0 shadow-sm rounded-4 p-4" id="upload-card" style="background: var(--bg-card);">
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
               <h5 class="fw-bold mb-0">
                 <i class="bi bi-file-earmark-arrow-up text-primary me-2"></i>Upload & Analyze Question Paper
               </h5>
               <span class="text-muted small">Supported Formats: <strong>PDF, DOCX, TXT</strong> (Max 10MB)</span>
             </div>
 
-            <form action="{{ url_for('question_paper.analyze') }}" method="POST" enctype="multipart/form-data">
+            <form id="paperUploadForm" action="{{ url_for('question_paper.analyze') }}" method="POST" enctype="multipart/form-data" onsubmit="showProcessingState()">
               <div class="row g-3">
                 <!-- Semester & Subject Selectors -->
                 {% if user_role == 'teacher' %}
@@ -281,7 +341,7 @@
                     </select>
                     <input type="hidden" name="semester" id="teacherSemesterInput" value="{{ selected_semester }}">
                     <input type="hidden" name="subject" id="teacherSubjectInput" value="{{ selected_subject }}">
-                    <small class="text-muted fs-8">Teachers can only analyze papers for assigned courses.</small>
+                    <small class="text-muted fs-8">Teachers are strictly authorized for their assigned courses.</small>
                   </div>
                 {% else %}
                   <!-- Admin Selectors -->
@@ -316,14 +376,14 @@
                 <!-- Submit Button & Quick Demo Loaders -->
                 <div class="col-12 d-flex flex-wrap align-items-center justify-content-between gap-3 pt-2">
                   <div class="d-flex align-items-center gap-2">
-                    <button type="submit" class="btn btn-primary rounded-pill px-4 fw-semibold">
+                    <button type="submit" id="analyzeBtn" class="btn btn-primary rounded-pill px-4 fw-semibold">
                       <i class="bi bi-lightning-charge-fill me-1"></i> Analyze Question Paper
                     </button>
-                    <button type="reset" class="btn btn-light rounded-pill px-3 text-muted">Clear</button>
+                    <button type="reset" class="btn btn-outline-secondary rounded-pill px-3">Clear</button>
                   </div>
 
-                  <!-- Quick Demo Sample Papers for Testing / Viva -->
-                  <div class="d-flex align-items-center gap-2">
+                  <!-- Quick Demo Sample Papers for Testing / Presentation -->
+                  <div class="d-flex flex-wrap align-items-center gap-2">
                     <span class="text-muted small fw-semibold"><i class="bi bi-stars text-warning me-1"></i>Quick Demo Samples:</span>
                     <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill" onclick="loadDemoSample('dbms_sem2_sample', 2, 'Database Management Systems')">
                       <i class="bi bi-database me-1"></i> Sem 2 DBMS
@@ -343,7 +403,7 @@
       </div>
 
       <!-- Hidden Demo Form for Instant One-Click Submission -->
-      <form id="quickDemoForm" action="{{ url_for('question_paper.analyze') }}" method="POST" style="display: none;">
+      <form id="quickDemoForm" action="{{ url_for('question_paper.analyze') }}" method="POST" style="display: none;" onsubmit="showProcessingState()">
         <input type="hidden" name="demo_sample" id="quickDemoSample">
         <input type="hidden" name="semester" id="quickDemoSemester">
         <input type="hidden" name="subject" id="quickDemoSubject">
@@ -353,103 +413,137 @@
         <!-- Analysis Results Dashboard -->
         
         <!-- Metadata Pill Row -->
-        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 bg-white rounded-4 p-3 border shadow-sm mb-4">
-          <div class="d-flex flex-wrap align-items-center gap-3">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 section-card p-3 mb-4">
+          <div class="d-flex flex-wrap align-items-center gap-2">
             <span class="badge bg-primary px-3 py-2 rounded-pill fs-7">
               <i class="bi bi-book me-1"></i> {{ result.document_meta.subject }}
             </span>
             <span class="badge bg-secondary px-3 py-2 rounded-pill fs-7">
-              <i class="bi bi-calendar-range me-1"></i> Semester {{ result.document_meta.semester }}
+              <i class="bi bi-calendar3 me-1"></i> Semester {{ result.document_meta.semester }}
             </span>
             <span class="badge bg-light text-dark border px-3 py-2 rounded-pill fs-7">
-              <i class="bi bi-file-earmark-text me-1"></i> {{ result.document_meta.filename }} ({{ result.document_meta.file_type }})
+              <i class="bi bi-file-earmark me-1"></i> {{ result.document_meta.filename }} ({{ result.document_meta.file_type }})
             </span>
-            {% if result.kpis.declared_total_marks %}
-              <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-3 py-2 rounded-pill fs-7">
-                <i class="bi bi-award me-1"></i> Printed Paper Total: {{ result.kpis.declared_total_marks }} Marks
+            {% if result.paper_status == 'Valid' %}
+              <span class="badge bg-success px-3 py-2 rounded-pill fs-7">
+                <i class="bi bi-patch-check-fill me-1"></i> Status: Valid
+              </span>
+            {% else %}
+              <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fs-7">
+                <i class="bi bi-exclamation-triangle-fill me-1"></i> Status: Review Required
               </span>
             {% endif %}
           </div>
           <div class="text-muted small">
-            <i class="bi bi-clock-history me-1"></i> Real-time NLP Pipeline
+            <i class="bi bi-check-all text-success me-1"></i> {{ result.kpis.total_questions }} Questions Processed
           </div>
         </div>
 
-        <!-- 5 Top KPI Cards -->
-        <div class="row g-3 mb-4">
-          <!-- KPI 1: Questions Detected -->
-          <div class="col-md-6 col-xl">
-            <div class="kpi-card p-3 h-100">
-              <div class="d-flex align-items-center justify-content-between mb-2">
-                <span class="text-muted small fw-bold text-uppercase">Questions Detected</span>
-                <div class="icon-circle bg-primary bg-opacity-10 text-primary">
-                  <i class="bi bi-list-ol"></i>
+        <!-- Section 13 & 19: Question Paper Summary and Quality Check Cards -->
+        <div class="row g-4 mb-4">
+          <!-- Summary Card (Section 13) -->
+          <div class="col-lg-6">
+            <div class="section-card p-4 h-100">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="fw-bold mb-0 text-primary">
+                  <i class="bi bi-card-checklist me-2"></i>QUESTION PAPER SUMMARY
+                </h6>
+                <span class="badge {% if result.paper_status == 'Valid' %}bg-success{% else %}bg-warning text-dark{% endif %} rounded-pill px-3 py-1">
+                  {% if result.paper_status == 'Valid' %}✓ Successfully analyzed{% else %}⚠ Review Required{% endif %}
+                </span>
+              </div>
+              <p class="text-muted small mb-3">
+                Comprehensive paper-level assessment metrics and mark allocation verification.
+              </p>
+
+              <div class="row g-3 mb-3">
+                <div class="col-6 col-sm-4">
+                  <div class="p-3 rounded-3 border" style="background: var(--bg-elevated);">
+                    <small class="text-muted d-block mb-1">Total Questions</small>
+                    <h4 class="fw-bold mb-0">{{ result.kpis.total_questions }}</h4>
+                  </div>
+                </div>
+                <div class="col-6 col-sm-4">
+                  <div class="p-3 rounded-3 border" style="background: var(--bg-elevated);">
+                    <small class="text-muted d-block mb-1">Detected Marks</small>
+                    <h4 class="fw-bold mb-0 text-success">{{ result.kpis.total_detected_marks }}</h4>
+                  </div>
+                </div>
+                <div class="col-6 col-sm-4">
+                  <div class="p-3 rounded-3 border" style="background: var(--bg-elevated);">
+                    <small class="text-muted d-block mb-1">Declared Total</small>
+                    <h4 class="fw-bold mb-0 text-primary">{{ result.kpis.declared_total_marks or 'N/A' }}</h4>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="p-2 text-center rounded-3 border" style="background: var(--bg-elevated);">
+                    <span class="badge badge-soft-success mb-1">Easy</span>
+                    <div class="fw-bold fs-5">{{ result.kpis.easy_questions_count }}</div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="p-2 text-center rounded-3 border" style="background: var(--bg-elevated);">
+                    <span class="badge badge-soft-warning mb-1">Medium</span>
+                    <div class="fw-bold fs-5">{{ result.kpis.medium_questions_count }}</div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="p-2 text-center rounded-3 border" style="background: var(--bg-elevated);">
+                    <span class="badge badge-soft-danger mb-1">Hard</span>
+                    <div class="fw-bold fs-5">{{ result.kpis.hard_questions_count }}</div>
+                  </div>
                 </div>
               </div>
-              <h3 class="fw-bold mb-1">{{ result.kpis.total_questions }}</h3>
-              <small class="text-muted">Extracted items / subquestions</small>
+
+              <!-- Marks Consistency Indicator (Section 7) -->
+              <div class="p-3 rounded-3 border d-flex align-items-center justify-content-between" style="background: var(--bg-elevated);">
+                <div>
+                  <small class="text-muted d-block">Declared Total vs Detected Total Marks:</small>
+                  <span class="fw-bold">
+                    Declared: {{ result.kpis.declared_total_marks or 'Not Declared' }}M | Detected: {{ result.kpis.total_detected_marks }}M
+                  </span>
+                </div>
+                <div>
+                  {% if result.kpis.marks_status == 'Valid' %}
+                    <span class="badge bg-success px-3 py-1.5 rounded-pill">Status: Valid</span>
+                  {% else %}
+                    <span class="badge bg-warning text-dark px-3 py-1.5 rounded-pill">Status: Review Required</span>
+                  {% endif %}
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- KPI 2: Total Detected Marks -->
-          <div class="col-md-6 col-xl">
-            <div class="kpi-card p-3 h-100">
-              <div class="d-flex align-items-center justify-content-between mb-2">
-                <span class="text-muted small fw-bold text-uppercase">Total Marks Detected</span>
-                <div class="icon-circle bg-success bg-opacity-10 text-success">
-                  <i class="bi bi-calculator"></i>
-                </div>
+          <!-- Quality Check Card (Section 19) -->
+          <div class="col-lg-6">
+            <div class="section-card p-4 h-100">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="fw-bold mb-0 text-primary">
+                  <i class="bi bi-shield-check me-2"></i>QUESTION PAPER QUALITY CHECK
+                </h6>
+                <span class="badge bg-light text-dark border rounded-pill px-3 py-1">Integrity Validation</span>
               </div>
-              <h3 class="fw-bold mb-1">{{ result.kpis.total_detected_marks }}</h3>
-              <small class="text-muted">
-                {% if result.kpis.declared_total_marks %}
-                  vs Declared {{ result.kpis.declared_total_marks }}M
-                {% else %}
-                  {{ result.kpis.questions_with_marks }} questions with marks
-                {% endif %}
-              </small>
-            </div>
-          </div>
+              <p class="text-muted small mb-3">
+                Automated academic validation verifying question extraction, marks integrity, and syllabus mapping.
+              </p>
 
-          <!-- KPI 3: Average Marks / Question -->
-          <div class="col-md-6 col-xl">
-            <div class="kpi-card p-3 h-100">
-              <div class="d-flex align-items-center justify-content-between mb-2">
-                <span class="text-muted small fw-bold text-uppercase">Avg Marks / Q</span>
-                <div class="icon-circle bg-info bg-opacity-10 text-info">
-                  <i class="bi bi-bar-chart-steps"></i>
-                </div>
+              <div class="d-flex flex-column gap-2">
+                {% for check in result.quality_checks %}
+                  <div class="p-2.5 px-3 rounded-3 border d-flex align-items-center justify-content-between" style="background: var(--bg-elevated);">
+                    <div class="d-flex align-items-center gap-2">
+                      {% if check.passed %}
+                        <i class="bi bi-check-circle-fill text-success fs-6"></i>
+                      {% elif check.status == 'info' %}
+                        <i class="bi bi-info-circle-fill text-info fs-6"></i>
+                      {% else %}
+                        <i class="bi bi-exclamation-triangle-fill text-warning fs-6"></i>
+                      {% endif %}
+                      <span class="fw-medium small">{{ check.name }}</span>
+                    </div>
+                    <span class="small text-muted text-end">{{ check.label }}</span>
+                  </div>
+                {% endfor %}
               </div>
-              <h3 class="fw-bold mb-1">{{ result.kpis.average_marks }} <span class="fs-6 text-muted fw-normal">Marks</span></h3>
-              <small class="text-muted">Min: {{ result.kpis.min_marks }}M | Max: {{ result.kpis.max_marks }}M</small>
-            </div>
-          </div>
-
-          <!-- KPI 4: Topic Groups -->
-          <div class="col-md-6 col-xl">
-            <div class="kpi-card p-3 h-100">
-              <div class="d-flex align-items-center justify-content-between mb-2">
-                <span class="text-muted small fw-bold text-uppercase">Topic Groups</span>
-                <div class="icon-circle bg-warning bg-opacity-10 text-warning">
-                  <i class="bi bi-diagram-3"></i>
-                </div>
-              </div>
-              <h3 class="fw-bold mb-1">{{ result.kpis.topic_groups_count }}</h3>
-              <small class="text-muted">TF-IDF & KMeans clusters</small>
-            </div>
-          </div>
-
-          <!-- KPI 5: Hard Questions -->
-          <div class="col-md-6 col-xl">
-            <div class="kpi-card p-3 h-100">
-              <div class="d-flex align-items-center justify-content-between mb-2">
-                <span class="text-muted small fw-bold text-uppercase">High Complexity</span>
-                <div class="icon-circle bg-danger bg-opacity-10 text-danger">
-                  <i class="bi bi-fire"></i>
-                </div>
-              </div>
-              <h3 class="fw-bold mb-1">{{ result.kpis.hard_questions_count }}</h3>
-              <small class="text-muted">Hard / design-level questions</small>
             </div>
           </div>
         </div>
@@ -461,11 +555,11 @@
             <div class="chart-card h-100">
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <h6 class="fw-bold mb-0">
-                  <i class="bi bi-speedometer2 text-success me-2"></i>Difficulty Distribution
+                  <i class="bi bi-speedometer2 text-success me-2"></i>Difficulty
                 </h6>
                 <span class="badge bg-light text-muted border">Estimated</span>
               </div>
-              <div style="position: relative; height: 220px;">
+              <div style="position: relative; height: 210px;">
                 <canvas id="difficultyChart"></canvas>
               </div>
             </div>
@@ -478,73 +572,69 @@
                 <h6 class="fw-bold mb-0">
                   <i class="bi bi-pie-chart text-primary me-2"></i>Question Types
                 </h6>
-                <span class="badge bg-light text-muted border">Bloom / Action</span>
+                <span class="badge bg-light text-muted border">Classified</span>
               </div>
-              <div style="position: relative; height: 220px;">
+              <div style="position: relative; height: 210px;">
                 <canvas id="typeChart"></canvas>
               </div>
             </div>
           </div>
 
-          <!-- Chart 3: Marks Distribution -->
+          <!-- Chart 3: Bloom's Taxonomy Cognitive Levels -->
           <div class="col-lg-6 col-xl-3">
             <div class="chart-card h-100">
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <h6 class="fw-bold mb-0">
-                  <i class="bi bi-bar-chart-line text-info me-2"></i>Marks Allocation
+                  <i class="bi bi-mortarboard text-info me-2"></i>Bloom's Taxonomy
                 </h6>
-                <span class="badge bg-light text-muted border">Buckets</span>
+                <span class="badge bg-light text-muted border">Cognitive</span>
               </div>
-              <div style="position: relative; height: 220px;">
-                <canvas id="marksChart"></canvas>
+              <div style="position: relative; height: 210px;">
+                <canvas id="bloomChart"></canvas>
               </div>
             </div>
           </div>
 
-          <!-- Chart 4: Topic Cluster Distribution -->
+          <!-- Chart 4: Topic Distribution (Section 15) -->
           <div class="col-lg-6 col-xl-3">
             <div class="chart-card h-100">
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <h6 class="fw-bold mb-0">
-                  <i class="bi bi-diagram-3 text-warning me-2"></i>Topic Groups
+                  <i class="bi bi-diagram-3 text-warning me-2"></i>Topic Distribution
                 </h6>
-                <span class="badge bg-light text-muted border">TF-IDF</span>
+                <span class="badge bg-light text-muted border">Syllabus</span>
               </div>
-              <div style="position: relative; height: 220px;">
-                <canvas id="topicClusterChart"></canvas>
+              <div style="position: relative; height: 210px;">
+                <canvas id="topicDistChart"></canvas>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Topic Clusters and Paper Insights Row -->
+        <!-- Topic Marks Distribution and Academic Insights Row (Sections 16 & 18) -->
         <div class="row g-4 mb-4">
-          <!-- Topic Clusters Card -->
+          <!-- Marks Distribution by Topic Card (Section 16) -->
           <div class="col-lg-6">
-            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+            <div class="section-card p-4 h-100">
               <div class="d-flex justify-content-between align-items-center mb-3">
-                <h6 class="fw-bold mb-0">
-                  <i class="bi bi-tags-fill text-primary me-2"></i>Detected Topic Clusters (TF-IDF + KMeans)
+                <h6 class="fw-bold mb-0 text-primary">
+                  <i class="bi bi-bar-chart-steps me-2"></i>Marks Distribution by Topic
                 </h6>
-                <span class="badge bg-light text-muted border">Unsupervised</span>
+                <span class="badge bg-light text-dark border">Total: {{ result.kpis.total_detected_marks }} Marks</span>
               </div>
               <p class="text-muted small mb-3">
-                Automatically clustered question topics based on TF-IDF term weights across all extracted questions.
+                Syllabus weightage breakdown showing which core subject topics carry the most marks.
               </p>
 
               <div class="d-flex flex-column gap-3">
-                {% for cluster in result.topic_clusters %}
-                  <div class="p-3 rounded-3 border bg-light">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                      <span class="fw-bold text-dark fs-7">{{ cluster.name }}</span>
-                      <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 rounded-pill">
-                        {{ cluster.count }} Questions ({{ cluster.percentage }}%)
-                      </span>
+                {% for item in result.topic_distribution %}
+                  <div class="p-2.5 px-3 rounded-3 border" style="background: var(--bg-elevated);">
+                    <div class="d-flex justify-content-between align-items-center mb-1.5">
+                      <span class="fw-semibold small">{{ item.topic }}</span>
+                      <span class="small fw-bold text-primary">{{ item.marks }} Marks <span class="text-muted fw-normal">({{ item.count }} Q, {{ item.marks_percentage }}%)</span></span>
                     </div>
-                    <div class="d-flex flex-wrap gap-1">
-                      {% for term in cluster.top_terms %}
-                        <span class="tag-badge"><i class="bi bi-hash text-muted me-1"></i>{{ term }}</span>
-                      {% endfor %}
+                    <div class="progress-bar-custom">
+                      <div class="progress-bar-fill bg-primary" style="width: {{ item.marks_percentage }}%;"></div>
                     </div>
                   </div>
                 {% endfor %}
@@ -552,27 +642,27 @@
             </div>
           </div>
 
-          <!-- Paper-Level Insights Card -->
+          <!-- Academic Insights Card (Section 18) -->
           <div class="col-lg-6">
-            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+            <div class="section-card p-4 h-100">
               <div class="d-flex justify-content-between align-items-center mb-3">
-                <h6 class="fw-bold mb-0">
-                  <i class="bi bi-lightbulb-fill text-warning me-2"></i>Automated Paper Insights
+                <h6 class="fw-bold mb-0 text-primary">
+                  <i class="bi bi-lightbulb-fill text-warning me-2"></i>Academic Paper Insights
                 </h6>
                 <span class="badge bg-light text-muted border">Data-Grounded</span>
               </div>
               <p class="text-muted small mb-3">
-                Insights generated dynamically from question properties, mark weights, and cognitive taxonomy.
+                Actionable observations generated strictly from actual calculated question distributions and weightages.
               </p>
 
               <div class="d-flex flex-column gap-3">
                 {% for insight in result.insights %}
-                  <div class="p-3 rounded-3 border bg-white shadow-sm d-flex align-items-start gap-3">
-                    <div class="icon-circle bg-{{ insight.type }} bg-opacity-10 text-{{ insight.type }} flex-shrink-0" style="width: 40px; height: 40px; font-size: 1.1rem;">
+                  <div class="p-3 rounded-3 border d-flex align-items-start gap-3" style="background: var(--bg-elevated);">
+                    <div class="icon-circle bg-{{ insight.type }} bg-opacity-10 text-{{ insight.type }} flex-shrink-0" style="width: 38px; height: 38px; font-size: 1.1rem;">
                       <i class="bi {{ insight.icon }}"></i>
                     </div>
                     <div>
-                      <h6 class="fw-bold text-dark mb-1 fs-7">{{ insight.title }}</h6>
+                      <h6 class="fw-bold mb-1 fs-7">{{ insight.title }}</h6>
                       <p class="text-muted small mb-0">{{ insight.text }}</p>
                     </div>
                   </div>
@@ -582,32 +672,50 @@
           </div>
         </div>
 
-        <!-- Extracted Questions Table -->
-        <div class="card border-0 shadow-sm rounded-4 p-4 mb-4">
+        <!-- Section 14: Question-by-Question Results Table -->
+        <div class="section-card p-4 mb-4">
           <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
             <div>
               <h5 class="fw-bold mb-1">
-                <i class="bi bi-table text-primary me-2"></i>Extracted Questions Roster
+                <i class="bi bi-table text-primary me-2"></i>Question-by-Question Results
               </h5>
-              <p class="text-muted small mb-0">Full structured breakdown of extracted questions, marks, classifications, and TF-IDF keywords.</p>
+              <p class="text-muted small mb-0">Detailed breakdown of question phrasing, extracted marks, syllabus topic, question type, Bloom's level, and difficulty.</p>
             </div>
 
-            <!-- Client-side Search and Filter -->
+            <!-- Client-side Search and Filters -->
             <div class="d-flex flex-wrap align-items-center gap-2">
-              <div class="input-group input-group-sm" style="width: 250px;">
+              <div class="input-group input-group-sm" style="width: 240px;">
                 <span class="input-group-text bg-light border-end-0"><i class="bi bi-search text-muted"></i></span>
-                <input type="text" id="tableSearch" class="form-control bg-light border-start-0" placeholder="Search questions / keywords..." onkeyup="filterQuestionsTable()">
+                <input type="text" id="tableSearch" class="form-control bg-light border-start-0" placeholder="Search questions / topics..." onkeyup="filterQuestionsTable()">
               </div>
-              <select id="typeFilter" class="form-select form-select-sm" style="width: 150px;" onchange="filterQuestionsTable()">
+              <select id="topicFilter" class="form-select form-select-sm" style="width: 160px;" onchange="filterQuestionsTable()">
+                <option value="">All Topics</option>
+                {% for item in result.topic_distribution %}
+                  <option value="{{ item.topic }}">{{ item.topic }}</option>
+                {% endfor %}
+              </select>
+              <select id="typeFilter" class="form-select form-select-sm" style="width: 140px;" onchange="filterQuestionsTable()">
                 <option value="">All Types</option>
                 <option value="Definition">Definition</option>
-                <option value="Theory/Descriptive">Theory</option>
+                <option value="Explanation">Explanation</option>
+                <option value="Comparison">Comparison</option>
                 <option value="Programming">Programming</option>
                 <option value="Numerical">Numerical</option>
                 <option value="Application">Application</option>
+                <option value="Problem Solving">Problem Solving</option>
+                <option value="Theory">Theory</option>
               </select>
-              <select id="diffFilter" class="form-select form-select-sm" style="width: 140px;" onchange="filterQuestionsTable()">
-                <option value="">All Difficulties</option>
+              <select id="bloomFilter" class="form-select form-select-sm" style="width: 140px;" onchange="filterQuestionsTable()">
+                <option value="">All Bloom Levels</option>
+                <option value="Remember">Remember</option>
+                <option value="Understand">Understand</option>
+                <option value="Apply">Apply</option>
+                <option value="Analyze">Analyze</option>
+                <option value="Evaluate">Evaluate</option>
+                <option value="Create">Create</option>
+              </select>
+              <select id="diffFilter" class="form-select form-select-sm" style="width: 130px;" onchange="filterQuestionsTable()">
+                <option value="">All Difficulty</option>
                 <option value="Easy">Easy</option>
                 <option value="Medium">Medium</option>
                 <option value="Hard">Hard</option>
@@ -615,85 +723,116 @@
             </div>
           </div>
 
-          <div class="table-responsive">
+          <!-- Responsive Table Container -->
+          <div class="table-container-responsive">
             <table class="table table-custom align-middle" id="questionsTable">
               <thead>
                 <tr>
-                  <th style="width: 8%;">Q. No</th>
-                  <th style="width: 44%;">Question Text</th>
-                  <th style="width: 8%;" class="text-center">Marks</th>
-                  <th style="width: 12%;">Type</th>
-                  <th style="width: 10%;">Difficulty</th>
-                  <th style="width: 18%;">Detected Keywords</th>
+                  <th style="width: 36%;">Question</th>
+                  <th style="width: 10%;" class="text-center">Marks</th>
+                  <th style="width: 18%;">Topic</th>
+                  <th style="width: 14%;">Question Type</th>
+                  <th style="width: 12%;">Bloom Level</th>
+                  <th style="width: 10%;" class="text-center">Difficulty</th>
                 </tr>
               </thead>
               <tbody>
                 {% for q in result.questions %}
-                  <tr class="question-row" data-type="{{ q.question_type }}" data-diff="{{ q.difficulty }}">
-                    <td class="fw-bold text-primary">
-                      {{ q.question_number }}
-                      {% if q.section and q.section != 'General' %}
-                        <div class="text-muted fs-9 fw-normal">{{ q.section }}</div>
-                      {% endif %}
-                    </td>
+                  <tr class="question-row" data-type="{{ q.question_type }}" data-diff="{{ q.difficulty }}" data-topic="{{ q.topic }}" data-bloom="{{ q.bloom_level }}">
                     <td>
-                      <div class="fw-medium text-dark">{{ q.text }}</div>
+                      <div class="d-flex align-items-baseline gap-2">
+                        <span class="badge bg-primary bg-opacity-10 text-primary fw-bold">{{ q.question_number }}</span>
+                        <div class="fw-medium">{{ q.text }}</div>
+                      </div>
                     </td>
                     <td class="text-center">
                       {% if q.marks is not none %}
-                        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-2.5 py-1.5 rounded-pill fw-bold">
+                        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-2.5 py-1 rounded-pill fw-bold">
                           {{ q.marks }} M
                         </span>
                       {% else %}
                         <span class="badge bg-light text-muted border px-2 py-1 rounded-pill">
-                          N/A
+                          Marks not detected
+                        </span>
+                      {% endif %}
+                    </td>
+                    <td>
+                      {% if q.topic == 'Other / Unclassified' %}
+                        <span class="badge badge-soft-secondary px-2.5 py-1 rounded-pill">
+                          <i class="bi bi-question-circle me-1"></i> {{ q.topic }}
+                        </span>
+                      {% else %}
+                        <span class="badge badge-soft-primary px-2.5 py-1 rounded-pill">
+                          <i class="bi bi-tag-fill me-1"></i> {{ q.topic }}
                         </span>
                       {% endif %}
                     </td>
                     <td>
                       {% if q.question_type == 'Programming' %}
-                        <span class="badge badge-soft-primary px-2.5 py-1.5 rounded-pill">
+                        <span class="badge badge-soft-primary px-2.5 py-1 rounded-pill">
                           <i class="bi bi-code-slash me-1"></i> Programming
                         </span>
                       {% elif q.question_type == 'Numerical' %}
-                        <span class="badge badge-soft-info px-2.5 py-1.5 rounded-pill">
+                        <span class="badge badge-soft-info px-2.5 py-1 rounded-pill">
                           <i class="bi bi-calculator me-1"></i> Numerical
                         </span>
                       {% elif q.question_type == 'Definition' %}
-                        <span class="badge badge-soft-success px-2.5 py-1.5 rounded-pill">
+                        <span class="badge badge-soft-success px-2.5 py-1 rounded-pill">
                           <i class="bi bi-bookmark-check me-1"></i> Definition
                         </span>
+                      {% elif q.question_type == 'Comparison' %}
+                        <span class="badge badge-soft-purple px-2.5 py-1 rounded-pill">
+                          <i class="bi bi-arrow-left-right me-1"></i> Comparison
+                        </span>
                       {% elif q.question_type == 'Application' %}
-                        <span class="badge badge-soft-warning px-2.5 py-1.5 rounded-pill">
+                        <span class="badge badge-soft-warning px-2.5 py-1 rounded-pill">
                           <i class="bi bi-gear-wide-connected me-1"></i> Application
                         </span>
+                      {% elif q.question_type == 'Problem Solving' %}
+                        <span class="badge badge-soft-danger px-2.5 py-1 rounded-pill">
+                          <i class="bi bi-tools me-1"></i> Problem Solving
+                        </span>
+                      {% elif q.question_type == 'Explanation' %}
+                        <span class="badge badge-soft-info px-2.5 py-1 rounded-pill">
+                          <i class="bi bi-chat-left-text me-1"></i> Explanation
+                        </span>
                       {% else %}
-                        <span class="badge badge-soft-secondary px-2.5 py-1.5 rounded-pill">
+                        <span class="badge badge-soft-secondary px-2.5 py-1 rounded-pill">
                           <i class="bi bi-journal-text me-1"></i> Theory
                         </span>
                       {% endif %}
                     </td>
                     <td>
+                      {% if q.bloom_level == 'Remember' %}
+                        <span class="badge badge-soft-secondary px-2 py-1 rounded-pill">{{ q.bloom_level }}</span>
+                      {% elif q.bloom_level == 'Understand' %}
+                        <span class="badge badge-soft-info px-2 py-1 rounded-pill">{{ q.bloom_level }}</span>
+                      {% elif q.bloom_level == 'Apply' %}
+                        <span class="badge badge-soft-success px-2 py-1 rounded-pill">{{ q.bloom_level }}</span>
+                      {% elif q.bloom_level == 'Analyze' %}
+                        <span class="badge badge-soft-purple px-2 py-1 rounded-pill">{{ q.bloom_level }}</span>
+                      {% elif q.bloom_level == 'Evaluate' %}
+                        <span class="badge badge-soft-warning px-2 py-1 rounded-pill">{{ q.bloom_level }}</span>
+                      {% elif q.bloom_level == 'Create' %}
+                        <span class="badge badge-soft-danger px-2 py-1 rounded-pill">{{ q.bloom_level }}</span>
+                      {% else %}
+                        <span class="badge bg-light text-muted border px-2 py-1 rounded-pill">Unclassified</span>
+                      {% endif %}
+                    </td>
+                    <td class="text-center">
                       {% if q.difficulty == 'Easy' %}
-                        <span class="badge badge-soft-success px-2.5 py-1.5 rounded-pill">
+                        <span class="badge badge-soft-success px-2.5 py-1 rounded-pill">
                           <i class="bi bi-circle-fill fs-9 me-1"></i> Easy
                         </span>
                       {% elif q.difficulty == 'Medium' %}
-                        <span class="badge badge-soft-warning px-2.5 py-1.5 rounded-pill">
+                        <span class="badge badge-soft-warning px-2.5 py-1 rounded-pill">
                           <i class="bi bi-circle-fill fs-9 me-1"></i> Medium
                         </span>
                       {% else %}
-                        <span class="badge badge-soft-danger px-2.5 py-1.5 rounded-pill">
+                        <span class="badge badge-soft-danger px-2.5 py-1 rounded-pill">
                           <i class="bi bi-circle-fill fs-9 me-1"></i> Hard
                         </span>
                       {% endif %}
-                    </td>
-                    <td>
-                      <div class="d-flex flex-wrap gap-1">
-                        {% for kw in q.keywords %}
-                          <span class="tag-badge">{{ kw }}</span>
-                        {% endfor %}
-                      </div>
                     </td>
                   </tr>
                 {% endfor %}
@@ -702,10 +841,10 @@
           </div>
 
           <!-- Transparency Notice -->
-          <div class="p-3 bg-light rounded-3 border mt-3 text-muted small">
+          <div class="p-3 rounded-3 border mt-3 text-muted small" style="background: var(--bg-elevated);">
             <div class="d-flex align-items-center gap-2">
               <i class="bi bi-shield-check text-success"></i>
-              <span><strong>Methodology Transparency:</strong> Question types are classified via rule-based NLP action verbs; topics are clustered using TF-IDF vectorization & KMeans; difficulty is an estimated metric derived from cognitive verbs, mark weightages, and phrasing complexity.</span>
+              <span><strong>Methodology Transparency:</strong> Topics are mapped to course syllabus; question types & Bloom's cognitive taxonomy are evaluated via deterministic academic action rules; difficulty is derived from cognitive demand, phrasing complexity, and marks weightage.</span>
             </div>
           </div>
         </div>
@@ -714,8 +853,22 @@
 
     </main>
 
-    <!-- JavaScript for Dynamic Selectors and Chart.js Initialization -->
+    <!-- JavaScript for Selectors, Processing State, Filters, and Chart.js -->
     <script>
+      // Show Processing State on submission
+      function showProcessingState() {
+        const procCard = document.getElementById("processingCard");
+        if (procCard) {
+          procCard.classList.remove("d-none");
+          procCard.scrollIntoView({ behavior: "smooth" });
+        }
+        const analyzeBtn = document.getElementById("analyzeBtn");
+        if (analyzeBtn) {
+          analyzeBtn.disabled = true;
+          analyzeBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status"></span>Analyzing...';
+        }
+      }
+
       // Semester Subjects Mapping for Admin
       const semesterSubjectsMap = {{ semester_subjects|tojson|safe }};
 
@@ -748,6 +901,7 @@
       }
 
       function loadDemoSample(sampleId, semester, subject) {
+        showProcessingState();
         document.getElementById("quickDemoSample").value = sampleId;
         document.getElementById("quickDemoSemester").value = semester;
         document.getElementById("quickDemoSubject").value = subject;
@@ -755,21 +909,27 @@
       }
 
       function filterQuestionsTable() {
-        const query = document.getElementById("tableSearch").value.toLowerCase();
-        const typeFilter = document.getElementById("typeFilter").value;
-        const diffFilter = document.getElementById("diffFilter").value;
+        const query = (document.getElementById("tableSearch")?.value || "").toLowerCase();
+        const topicFilter = document.getElementById("topicFilter")?.value || "";
+        const typeFilter = document.getElementById("typeFilter")?.value || "";
+        const bloomFilter = document.getElementById("bloomFilter")?.value || "";
+        const diffFilter = document.getElementById("diffFilter")?.value || "";
 
         const rows = document.querySelectorAll("#questionsTable tbody tr.question-row");
         rows.forEach(row => {
           const text = row.innerText.toLowerCase();
+          const qTopic = row.getAttribute("data-topic") || "";
           const qType = row.getAttribute("data-type") || "";
+          const qBloom = row.getAttribute("data-bloom") || "";
           const qDiff = row.getAttribute("data-diff") || "";
 
-          const matchesQuery = text.includes(query);
+          const matchesQuery = !query || text.includes(query);
+          const matchesTopic = !topicFilter || qTopic === topicFilter;
           const matchesType = !typeFilter || qType.includes(typeFilter);
+          const matchesBloom = !bloomFilter || qBloom === bloomFilter;
           const matchesDiff = !diffFilter || qDiff === diffFilter;
 
-          if (matchesQuery && matchesType && matchesDiff) {
+          if (matchesQuery && matchesTopic && matchesType && matchesBloom && matchesDiff) {
             row.style.display = "";
           } else {
             row.style.display = "none";
@@ -831,15 +991,15 @@
           });
         }
 
-        // 3. Marks Allocation Chart (Bar)
-        if (document.getElementById("marksChart")) {
-          new Chart(document.getElementById("marksChart"), {
+        // 3. Bloom's Taxonomy Cognitive Chart (Bar)
+        if (document.getElementById("bloomChart") && chartsData.bloom_level) {
+          new Chart(document.getElementById("bloomChart"), {
             type: "bar",
             data: {
-              labels: chartsData.marks_distribution.labels,
+              labels: chartsData.bloom_level.labels,
               datasets: [{
-                data: chartsData.marks_distribution.data,
-                backgroundColor: chartsData.marks_distribution.colors,
+                data: chartsData.bloom_level.data,
+                backgroundColor: chartsData.bloom_level.colors,
                 borderRadius: 6
               }]
             },
@@ -857,15 +1017,15 @@
           });
         }
 
-        // 4. Topic Cluster Chart (Horizontal Bar / Polar)
-        if (document.getElementById("topicClusterChart")) {
-          new Chart(document.getElementById("topicClusterChart"), {
+        // 4. Topic Distribution Chart (Horizontal Bar)
+        if (document.getElementById("topicDistChart") && chartsData.topic_distribution) {
+          new Chart(document.getElementById("topicDistChart"), {
             type: "bar",
             data: {
-              labels: chartsData.topic_clusters.labels,
+              labels: chartsData.topic_distribution.labels,
               datasets: [{
-                data: chartsData.topic_clusters.data,
-                backgroundColor: chartsData.topic_clusters.colors,
+                data: chartsData.topic_distribution.data,
+                backgroundColor: chartsData.topic_distribution.colors,
                 borderRadius: 6
               }]
             },

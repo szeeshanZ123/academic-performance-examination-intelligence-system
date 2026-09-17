@@ -1,8 +1,10 @@
-"""Comprehensive test suite for Phase 10 - Question Paper Intelligence.
+"""Comprehensive test suite for Phase 8.3 - Question Paper Intelligence Finalization.
 
 Tests document extraction (PDF, DOCX, TXT), scanned PDF detection,
-question parsing, marks extraction, NLP topic clustering, rule classification,
-difficulty estimation, and Flask role-based access control.
+instruction skipping, question and subquestion parsing, marks extraction,
+total marks validation, syllabus topic mapping, Bloom's Taxonomy,
+question type classification, difficulty estimation, quality checks,
+and Flask role-based access control (teachers restricted to assignments, students blocked).
 """
 
 import os
@@ -14,27 +16,33 @@ import docx
 
 from app import app
 from question_paper.extractor import extract_text_from_file, extract_from_pdf, extract_from_docx, extract_from_txt
-from question_paper.parser import parse_question_paper, extract_marks_from_text, extract_declared_total_marks
+from question_paper.parser import parse_question_paper, extract_marks_from_text, extract_declared_total_marks, is_instruction_line
 from question_paper.analyzer import (
     classify_question_type,
+    classify_bloom_level,
+    classify_topic,
     estimate_question_difficulty,
     extract_keywords_and_clusters,
     analyze_question_paper
 )
 
 
-class TestQuestionPaperIntelligence(unittest.TestCase):
+class TestQuestionPaperIntelligenceFinalization(unittest.TestCase):
     
     @classmethod
     def setUpClass(cls):
         cls.temp_dir = tempfile.mkdtemp()
         
-        # 1. Create a Test TXT paper
+        # 1. Create a Test TXT paper with Instructions and Subquestions
         cls.txt_path = Path(cls.temp_dir) / "test_paper.txt"
         with open(cls.txt_path, "w", encoding="utf-8") as f:
             f.write(
                 "UNIVERSITY EXAMINATION\n"
-                "Max Marks: 50\n\n"
+                "Max Marks: 50\n"
+                "Instructions:\n"
+                "1. Answer all questions.\n"
+                "2. Figures to the right indicate full marks.\n"
+                "3. Assume suitable data wherever necessary.\n\n"
                 "Q1. (a) Define Machine Learning and state its types. [5]\n"
                 "Q1. (b) Explain Linear Regression with cost function. [5]\n"
                 "Q2. (a) Write Python code to implement Decision Tree using scikit-learn. [10]\n"
@@ -84,7 +92,7 @@ class TestQuestionPaperIntelligence(unittest.TestCase):
         shutil.rmtree(cls.temp_dir, ignore_errors=True)
 
     # -------------------------------------------------------------
-    # 1. Extraction Tests
+    # 1. Extraction Tests (PDF, DOCX, TXT, Scanned)
     # -------------------------------------------------------------
     def test_txt_extraction(self):
         result = extract_text_from_file(self.txt_path)
@@ -119,9 +127,26 @@ class TestQuestionPaperIntelligence(unittest.TestCase):
         self.assertIn("Unsupported file extension", result["error"])
 
     # -------------------------------------------------------------
-    # 2. Parsing & Marks Detection Tests
+    # 2. Instruction Skipping & Marks Parsing Tests
     # -------------------------------------------------------------
-    def test_marks_extraction(self):
+    def test_instruction_line_detection(self):
+        self.assertTrue(is_instruction_line("1. Answer all questions."))
+        self.assertTrue(is_instruction_line("Figures to the right indicate full marks."))
+        self.assertTrue(is_instruction_line("Assume suitable data wherever necessary."))
+        self.assertTrue(is_instruction_line("Time: 3 Hours"))
+        self.assertTrue(is_instruction_line("Max Marks: 70"))
+        self.assertFalse(is_instruction_line("Explain Pandas DataFrame and Series. [5]"))
+
+    def test_instruction_skipping_in_parser(self):
+        txt_res = extract_text_from_file(self.txt_path)
+        parsed = parse_question_paper(txt_res["text"])
+        self.assertTrue(parsed["success"])
+        # Exactly 6 academic questions should be parsed; instructions 1., 2., 3. must NOT be questions
+        self.assertEqual(parsed["total_questions"], 6)
+        question_numbers = [q["question_number"] for q in parsed["questions"]]
+        self.assertEqual(question_numbers, ["Q1(a)", "Q1(b)", "Q2(a)", "Q2(b)", "Q3(a)", "Q3(b)"])
+
+    def test_marks_extraction_patterns(self):
         m1, t1 = extract_marks_from_text("Define DBMS and its features. [5]")
         self.assertEqual(m1, 5)
         self.assertEqual(t1, "Define DBMS and its features.")
@@ -134,54 +159,121 @@ class TestQuestionPaperIntelligence(unittest.TestCase):
         self.assertIsNone(m3)
         self.assertEqual(t3, "What is a Database?")
 
-    def test_declared_total_marks(self):
+        m4, t4 = extract_marks_from_text("Write a Python script to filter data. Marks: 10")
+        self.assertEqual(m4, 10)
+
+    def test_declared_total_marks_detection(self):
         text = "UNIVERSITY EXAM\nSubject: DBMS\nMax Marks: 70\nTime: 3 Hours"
         self.assertEqual(extract_declared_total_marks(text), 70)
 
         text2 = "College Exam\nTotal Marks: 100\nDate: 2026"
         self.assertEqual(extract_declared_total_marks(text2), 100)
 
-    def test_full_question_parsing(self):
-        txt_res = extract_text_from_file(self.txt_path)
-        parsed = parse_question_paper(txt_res["text"])
-        self.assertTrue(parsed["success"])
-        self.assertEqual(parsed["total_questions"], 6)
-        self.assertEqual(parsed["declared_total_marks"], 50)
-        self.assertEqual(parsed["total_detected_marks"], 40)  # 5+5+10+5+10+5 = 40
-        self.assertEqual(parsed["questions_with_marks"], 6)
+    # -------------------------------------------------------------
+    # 3. Topic Mapping & "Other / Unclassified" Fallback Tests
+    # -------------------------------------------------------------
+    def test_topic_classification(self):
+        # Python for Data Analytics topics
+        t1 = classify_topic("Explain NumPy ndarray, indexing, and slicing.", "Python for Data Analytics")
+        self.assertEqual(t1, "NumPy")
+
+        t2 = classify_topic("Write a Python script using Pandas dataframe and groupby().", "Python for Data Analytics")
+        self.assertEqual(t2, "Pandas")
+
+        t3 = classify_topic("Handle missing values and feature scaling using scikit-learn.", "Python for Data Analytics")
+        self.assertEqual(t3, "Data Cleaning")
+
+        t4 = classify_topic("Plot boxplots and correlation heatmap using Seaborn.", "Python for Data Analytics")
+        self.assertEqual(t4, "Data Visualization")
+
+        # Unrelated question -> Must map to "Other / Unclassified"
+        t_unrelated = classify_topic("Explain French Revolution and European history.", "Python for Data Analytics")
+        self.assertEqual(t_unrelated, "Other / Unclassified")
 
     # -------------------------------------------------------------
-    # 3. NLP Analysis, Classification & Difficulty Tests
+    # 4. Bloom's Taxonomy & Question Type Tests
     # -------------------------------------------------------------
+    def test_bloom_taxonomy_classification(self):
+        self.assertEqual(classify_bloom_level("Define Polymorphism and state its types."), "Remember")
+        self.assertEqual(classify_bloom_level("Explain the working of TCP three-way handshake."), "Understand")
+        self.assertEqual(classify_bloom_level("Write a Python script to calculate correlation."), "Apply")
+        self.assertEqual(classify_bloom_level("Differentiate between EDA and Confirmatory Data Analysis."), "Analyze")
+        self.assertEqual(classify_bloom_level("Evaluate and justify the choice of BCNF over 3NF."), "Evaluate")
+        self.assertEqual(classify_bloom_level("Design an end-to-end data visualization pipeline."), "Create")
+
     def test_question_type_classification(self):
         self.assertEqual(classify_question_type("Define Polymorphism and state its types.", 5), "Definition")
         self.assertEqual(classify_question_type("Write Python code to implement Binary Search.", 10), "Programming")
         self.assertEqual(classify_question_type("Calculate the determinant of matrix A.", 5), "Numerical")
         self.assertEqual(classify_question_type("Design an ER schema for an e-commerce platform.", 10), "Application")
-        self.assertEqual(classify_question_type("Explain the working of TCP three-way handshake.", 5), "Theory/Descriptive")
+        self.assertEqual(classify_question_type("Compare and contrast supervised vs unsupervised learning.", 5), "Comparison")
+        self.assertEqual(classify_question_type("Explain the working of TCP three-way handshake.", 5), "Explanation")
 
     def test_difficulty_estimation(self):
-        easy_diff = estimate_question_difficulty("Define DBMS and list 3 advantages.", 2, "Definition")
+        easy_diff = estimate_question_difficulty("Define DBMS and list 3 advantages.", 2, "Definition", "Remember")
         self.assertEqual(easy_diff["difficulty"], "Easy")
 
-        hard_diff = estimate_question_difficulty("Design and optimize an end-to-end distributed system architecture with fault tolerance.", 15, "Application")
+        hard_diff = estimate_question_difficulty("Design and optimize an end-to-end distributed system architecture with fault tolerance.", 15, "Application", "Create")
         self.assertEqual(hard_diff["difficulty"], "Hard")
 
-    def test_full_analysis_pipeline(self):
+    # -------------------------------------------------------------
+    # 5. Full Analysis Pipeline & Quality Checks Tests
+    # -------------------------------------------------------------
+    def test_full_analysis_pipeline_and_quality_checks(self):
         txt_res = extract_text_from_file(self.txt_path)
         parsed = parse_question_paper(txt_res["text"])
-        analysis = analyze_question_paper(parsed)
+        analysis = analyze_question_paper(parsed, subject="Machine Learning")
 
         self.assertTrue(analysis["success"])
         self.assertIn("kpis", analysis)
         self.assertIn("charts", analysis)
-        self.assertIn("topic_clusters", analysis)
+        self.assertIn("topic_distribution", analysis)
+        self.assertIn("quality_checks", analysis)
         self.assertIn("insights", analysis)
         self.assertGreater(len(analysis["insights"]), 0)
-        self.assertGreater(len(analysis["top_keywords"]), 0)
+        self.assertGreater(len(analysis["quality_checks"]), 0)
+
+        # Total marks check: 50 declared vs 40 detected -> Review Required
+        self.assertEqual(analysis["kpis"]["declared_total_marks"], 50)
+        self.assertEqual(analysis["kpis"]["total_detected_marks"], 40)
+        self.assertEqual(analysis["kpis"]["marks_status"], "Review Required")
+
+        # Verify each question has Bloom level and Topic
+        for q in analysis["questions"]:
+            self.assertIn("bloom_level", q)
+            self.assertIn("topic", q)
+            self.assertIn("question_type", q)
+            self.assertIn("difficulty", q)
 
     # -------------------------------------------------------------
-    # 4. Flask Security & Role-Based Authorization Tests
+    # 6. Sample Paper End-to-End Tests (Semester 3 PDF)
+    # -------------------------------------------------------------
+    def test_sem3_demo_pdf_pipeline(self):
+        sample_pdf = Path(__file__).parent / "question_paper" / "samples" / "sem3_python_data_analytics.pdf"
+        self.assertTrue(sample_pdf.exists())
+
+        ext = extract_text_from_file(sample_pdf)
+        self.assertTrue(ext["success"])
+
+        parsed = parse_question_paper(ext["text"])
+        self.assertTrue(parsed["success"])
+        self.assertEqual(parsed["total_questions"], 11)
+
+        analyzed = analyze_question_paper(parsed, subject="Python for Data Analytics")
+        self.assertTrue(analyzed["success"])
+        self.assertEqual(analyzed["kpis"]["total_questions"], 11)
+        self.assertEqual(analyzed["kpis"]["total_detected_marks"], 75)
+        self.assertEqual(analyzed["kpis"]["declared_total_marks"], 70)
+        self.assertEqual(analyzed["kpis"]["marks_status"], "Review Required")
+
+        # Verify topic distribution contains Pandas, NumPy, Data Cleaning, etc.
+        topics = [t["topic"] for t in analyzed["topic_distribution"]]
+        self.assertIn("Pandas", topics)
+        self.assertIn("NumPy", topics)
+        self.assertIn("Data Cleaning", topics)
+
+    # -------------------------------------------------------------
+    # 7. Flask Security & Role-Based Authorization Tests
     # -------------------------------------------------------------
     def test_security_access_control(self):
         client = app.test_client()
@@ -200,6 +292,11 @@ class TestQuestionPaperIntelligence(unittest.TestCase):
         res_student = client.get("/question-paper", follow_redirects=False)
         self.assertEqual(res_student.status_code, 302)
         self.assertIn("/student-dashboard", res_student.headers["Location"])
+
+        # Student also blocked from POST /question-paper/analyze
+        res_student_post = client.post("/question-paper/analyze", follow_redirects=False)
+        self.assertEqual(res_student_post.status_code, 302)
+        self.assertIn("/student-dashboard", res_student_post.headers["Location"])
 
         # C. Admin user -> authorized to view portal
         with client.session_transaction() as sess:
@@ -224,7 +321,7 @@ class TestQuestionPaperIntelligence(unittest.TestCase):
         self.assertEqual(res_teacher.status_code, 200)
 
         # E. Teacher unauthorized subject tampering test:
-        # prof_amit is assigned Data Structures (Sem 2) and Python (Sem 1).
+        # prof_amit is assigned Data Structures (Sem 2) and Python Programming (Sem 1).
         # Attempting to analyze "Machine Learning" (Sem 5) must be blocked.
         with open(self.txt_path, "rb") as f:
             res_tamper = client.post(

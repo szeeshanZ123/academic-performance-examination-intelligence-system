@@ -63,13 +63,13 @@ class TestNewStudentIntegrity(unittest.TestCase):
         self.assertIn(b"ZEESHAN HANIF SHAIKH", res.data)
         self.assertIn(b"254228", res.data)
 
-        # 2. Verify student dashboard content
+        # 2. Verify student dashboard content (254228 is in Semester 5)
         res_dash = self.client.get("/student-dashboard")
         self.assertEqual(res_dash.status_code, 200)
         self.assertIn(b"ZEESHAN HANIF SHAIKH", res_dash.data)
         self.assertIn(b"DIVISION B", res_dash.data)
-        self.assertIn(b"Python for Data Analytics", res_dash.data)
-        self.assertIn(b"Operating Systems", res_dash.data)
+        self.assertIn(b"Machine Learning", res_dash.data)
+        self.assertIn(b"Cyber Security", res_dash.data)
 
         # 3. Verify personalized improvement plan
         res_plan = self.client.get("/student/improvement-plan")
@@ -78,7 +78,7 @@ class TestNewStudentIntegrity(unittest.TestCase):
         self.assertIn(b"ZEESHAN HANIF SHAIKH", res_plan.data)
 
     def test_another_new_student_isolation(self):
-        # 1. Login with Roll Number 254102
+        # 1. Login with Roll Number 254102 (Semester 1, Div A)
         res = self.client.post("/login", data={
             "role": "student",
             "username": "254102",
@@ -87,11 +87,12 @@ class TestNewStudentIntegrity(unittest.TestCase):
         self.assertEqual(res.status_code, 200)
         self.assertIn(b"ABDUL AZIZ REHMATULLAH SHAIKH", res.data)
         self.assertIn(b"254102", res.data)
+        self.assertIn(b"Python Programming", res.data)
         # Verify isolation: should NOT contain Zeeshan's name
         self.assertNotIn(b"ZEESHAN HANIF SHAIKH", res.data)
 
     def test_teacher_dashboard_sees_new_students(self):
-        # Login as teacher
+        # Login as teacher (Amit Patil teaches Machine Learning Sem 5 and Operating Systems Sem 3)
         res_login = self.client.post("/login", data={
             "role": "teacher",
             "username": "teacher001",
@@ -99,10 +100,10 @@ class TestNewStudentIntegrity(unittest.TestCase):
         }, follow_redirects=True)
         self.assertEqual(res_login.status_code, 200)
 
-        res = self.client.get("/teacher-dashboard?subject=Operating+Systems&semester=3")
+        # Check Machine Learning in Semester 5
+        res = self.client.get("/teacher-dashboard?subject=Machine+Learning&semester=5")
         self.assertEqual(res.status_code, 200)
-        self.assertIn(b"Operating Systems", res.data)
-        # Search or verify new student exists in cohort
+        self.assertIn(b"Machine Learning", res.data)
         self.assertIn(b"ZEESHAN HANIF SHAIKH", res.data)
         self.assertIn(b"254228", res.data)
 

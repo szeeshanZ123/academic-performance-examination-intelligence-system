@@ -5039,1395 +5039,1627 @@ IT2026060,1,Communication Skills,15,39,54,B
 IT2026060,1,Digital Electronics,15,47,62,B+
 IT2026060,1,Mathematics I,16,46,62,B+
 IT2026060,1,Python Programming,17,47,64,B+
-254102,1,Python Programming,29,64,93,O
-254102,1,Mathematics I,25,61,86,A+
-254102,1,Communication Skills,26,66,92,O
-254102,1,Digital Electronics,25,56,81,A+
-254102,2,Data Structures,24,60,84,A+
-254102,2,Database Management Systems,23,61,84,A+
-254102,2,Statistics,26,62,88,A+
-254102,2,Web Development,25,54,79,A
-254102,3,Python for Data Analytics,25,62,87,A+
-254102,3,Operating Systems,27,68,95,O
-254102,3,Computer Networks,28,60,88,A+
-254102,3,Software Engineering,22,55,77,A
-254103,1,Python Programming,16,24,40,C
-254103,1,Mathematics I,15,31,46,C
-254103,1,Communication Skills,12,20,32,F
-254103,1,Digital Electronics,13,23,36,F
-254103,2,Data Structures,14,35,49,C
-254103,2,Database Management Systems,20,26,46,C
-254103,2,Statistics,12,37,49,C
-254103,2,Web Development,16,30,46,C
-254103,3,Python for Data Analytics,19,33,52,B
-254103,3,Operating Systems,12,30,42,C
-254103,3,Computer Networks,17,22,39,F
-254103,3,Software Engineering,15,28,43,C
-254107,1,Python Programming,16,33,49,C
-254107,1,Mathematics I,10,30,40,C
-254107,1,Communication Skills,13,21,34,F
-254107,1,Digital Electronics,16,24,40,C
-254107,2,Data Structures,10,23,33,F
-254107,2,Database Management Systems,13,35,48,C
-254107,2,Statistics,14,23,37,F
-254107,2,Web Development,15,38,53,B
-254107,3,Python for Data Analytics,13,15,28,F
-254107,3,Operating Systems,11,35,46,C
-254107,3,Computer Networks,16,22,38,F
-254107,3,Software Engineering,16,36,52,B
-254109,1,Python Programming,21,70,91,O
-254109,1,Mathematics I,24,58,82,A+
-254109,1,Communication Skills,30,63,93,O
-254109,1,Digital Electronics,20,55,75,A
-254109,2,Data Structures,23,46,69,B+
-254109,2,Database Management Systems,29,46,75,A
-254109,2,Statistics,30,54,84,A+
-254109,2,Web Development,22,51,73,A
-254109,3,Python for Data Analytics,22,67,89,A+
-254109,3,Operating Systems,27,59,86,A+
-254109,3,Computer Networks,23,55,78,A
-254109,3,Software Engineering,26,60,86,A+
-254110,1,Python Programming,17,45,62,B+
-254110,1,Mathematics I,15,40,55,B
-254110,1,Communication Skills,17,45,62,B+
-254110,1,Digital Electronics,22,40,62,B+
-254110,2,Data Structures,21,42,63,B+
-254110,2,Database Management Systems,17,53,70,A
-254110,2,Statistics,20,41,61,B+
-254110,2,Web Development,23,46,69,B+
-254110,3,Python for Data Analytics,15,47,62,B+
-254110,3,Operating Systems,22,46,68,B+
-254110,3,Computer Networks,18,38,56,B
-254110,3,Software Engineering,20,44,64,B+
-254111,1,Python Programming,22,46,68,B+
-254111,1,Mathematics I,20,45,65,B+
-254111,1,Communication Skills,14,51,65,B+
-254111,1,Digital Electronics,20,43,63,B+
-254111,2,Data Structures,18,59,77,A
-254111,2,Database Management Systems,19,44,63,B+
-254111,2,Statistics,17,40,57,B
-254111,2,Web Development,19,46,65,B+
-254111,3,Python for Data Analytics,21,51,72,A
-254111,3,Operating Systems,18,53,71,A
-254111,3,Computer Networks,20,52,72,A
-254111,3,Software Engineering,18,38,56,B
-254112,1,Python Programming,19,40,59,B
-254112,1,Mathematics I,24,50,74,A
-254112,1,Communication Skills,28,44,72,A
-254112,1,Digital Electronics,21,43,64,B+
-254112,2,Data Structures,24,36,60,B+
-254112,2,Database Management Systems,21,49,70,A
-254112,2,Statistics,14,33,47,C
-254112,2,Web Development,20,46,66,B+
-254112,3,Python for Data Analytics,17,32,49,C
-254112,3,Operating Systems,21,50,71,A
-254112,3,Computer Networks,20,52,72,A
-254112,3,Software Engineering,18,41,59,B
-254113,1,Python Programming,20,44,64,B+
-254113,1,Mathematics I,16,43,59,B
-254113,1,Communication Skills,17,42,59,B
-254113,1,Digital Electronics,20,54,74,A
-254113,2,Data Structures,15,41,56,B
-254113,2,Database Management Systems,19,48,67,B+
-254113,2,Statistics,24,38,62,B+
-254113,2,Web Development,16,45,61,B+
-254113,3,Python for Data Analytics,23,50,73,A
-254113,3,Operating Systems,18,41,59,B
-254113,3,Computer Networks,25,39,64,B+
-254113,3,Software Engineering,19,45,64,B+
-254115,1,Python Programming,24,52,76,A
-254115,1,Mathematics I,19,47,66,B+
-254115,1,Communication Skills,18,54,72,A
-254115,1,Digital Electronics,21,46,67,B+
-254115,2,Data Structures,24,32,56,B
-254115,2,Database Management Systems,24,30,54,B
-254115,2,Statistics,14,41,55,B
-254115,2,Web Development,24,51,75,A
-254115,3,Python for Data Analytics,20,47,67,B+
-254115,3,Operating Systems,22,41,63,B+
-254115,3,Computer Networks,18,44,62,B+
-254115,3,Software Engineering,19,44,63,B+
-254118,1,Python Programming,11,22,33,F
-254118,1,Mathematics I,18,19,37,F
-254118,1,Communication Skills,12,36,48,C
-254118,1,Digital Electronics,13,25,38,F
-254118,2,Data Structures,14,24,38,F
-254118,2,Database Management Systems,13,31,44,C
-254118,2,Statistics,15,38,53,B
-254118,2,Web Development,13,20,33,F
-254118,3,Python for Data Analytics,10,27,37,F
-254118,3,Operating Systems,13,25,38,F
-254118,3,Computer Networks,12,21,33,F
-254118,3,Software Engineering,17,28,45,C
-254119,1,Python Programming,11,21,32,F
-254119,1,Mathematics I,15,20,35,F
-254119,1,Communication Skills,12,32,44,C
-254119,1,Digital Electronics,17,37,54,B
-254119,2,Data Structures,17,21,38,F
-254119,2,Database Management Systems,18,26,44,C
-254119,2,Statistics,10,23,33,F
-254119,2,Web Development,15,21,36,F
-254119,3,Python for Data Analytics,12,26,38,F
-254119,3,Operating Systems,11,33,44,C
-254119,3,Computer Networks,10,34,44,C
-254119,3,Software Engineering,14,32,46,C
-254120,1,Python Programming,20,46,66,B+
-254120,1,Mathematics I,22,41,63,B+
-254120,1,Communication Skills,21,47,68,B+
-254120,1,Digital Electronics,16,50,66,B+
-254120,2,Data Structures,18,42,60,B+
-254120,2,Database Management Systems,23,51,74,A
-254120,2,Statistics,18,33,51,B
-254120,2,Web Development,18,50,68,B+
-254120,3,Python for Data Analytics,20,32,52,B
-254120,3,Operating Systems,19,44,63,B+
-254120,3,Computer Networks,19,41,60,B+
-254120,3,Software Engineering,23,49,72,A
-254121,1,Python Programming,23,40,63,B+
-254121,1,Mathematics I,19,33,52,B
-254121,1,Communication Skills,21,48,69,B+
-254121,1,Digital Electronics,22,38,60,B+
-254121,2,Data Structures,19,59,78,A
-254121,2,Database Management Systems,22,34,56,B
-254121,2,Statistics,26,49,75,A
-254121,2,Web Development,21,46,67,B+
-254121,3,Python for Data Analytics,22,45,67,B+
-254121,3,Operating Systems,17,44,61,B+
-254121,3,Computer Networks,25,54,79,A
-254121,3,Software Engineering,20,38,58,B
-254122,1,Python Programming,25,66,91,O
-254122,1,Mathematics I,25,57,82,A+
-254122,1,Communication Skills,25,50,75,A
-254122,1,Digital Electronics,29,63,92,O
-254122,2,Data Structures,30,70,100,O
-254122,2,Database Management Systems,24,53,77,A
-254122,2,Statistics,24,58,82,A+
-254122,2,Web Development,22,70,92,O
-254122,3,Python for Data Analytics,23,50,73,A
-254122,3,Operating Systems,23,56,79,A
-254122,3,Computer Networks,25,69,94,O
-254122,3,Software Engineering,25,49,74,A
-254123,1,Python Programming,14,35,49,C
-254123,1,Mathematics I,12,40,52,B
-254123,1,Communication Skills,15,32,47,C
-254123,1,Digital Electronics,12,35,47,C
-254123,2,Data Structures,14,29,43,C
-254123,2,Database Management Systems,14,27,41,C
-254123,2,Statistics,14,19,33,F
-254123,2,Web Development,12,29,41,C
-254123,3,Python for Data Analytics,15,37,52,B
-254123,3,Operating Systems,17,21,38,F
-254123,3,Computer Networks,10,32,42,C
-254123,3,Software Engineering,17,27,44,C
-254124,1,Python Programming,20,40,60,B+
-254124,1,Mathematics I,23,41,64,B+
-254124,1,Communication Skills,18,43,61,B+
-254124,1,Digital Electronics,21,45,66,B+
-254124,2,Data Structures,23,45,68,B+
-254124,2,Database Management Systems,27,35,62,B+
-254124,2,Statistics,24,53,77,A
-254124,2,Web Development,20,38,58,B
-254124,3,Python for Data Analytics,19,45,64,B+
-254124,3,Operating Systems,22,33,55,B
-254124,3,Computer Networks,19,45,64,B+
-254124,3,Software Engineering,19,49,68,B+
-254130,1,Python Programming,17,37,54,B
-254130,1,Mathematics I,23,38,61,B+
-254130,1,Communication Skills,25,30,55,B
-254130,1,Digital Electronics,23,36,59,B
-254130,2,Data Structures,22,43,65,B+
-254130,2,Database Management Systems,24,46,70,A
-254130,2,Statistics,20,44,64,B+
-254130,2,Web Development,21,43,64,B+
-254130,3,Python for Data Analytics,19,35,54,B
-254130,3,Operating Systems,21,53,74,A
-254130,3,Computer Networks,17,38,55,B
-254130,3,Software Engineering,19,36,55,B
-254131,1,Python Programming,16,38,54,B
-254131,1,Mathematics I,19,39,58,B
-254131,1,Communication Skills,18,47,65,B+
-254131,1,Digital Electronics,19,34,53,B
-254131,2,Data Structures,20,36,56,B
-254131,2,Database Management Systems,20,39,59,B
-254131,2,Statistics,20,43,63,B+
-254131,2,Web Development,15,35,50,B
-254131,3,Python for Data Analytics,21,50,71,A
-254131,3,Operating Systems,21,50,71,A
-254131,3,Computer Networks,23,29,52,B
-254131,3,Software Engineering,20,43,63,B+
-254132,1,Python Programming,24,40,64,B+
-254132,1,Mathematics I,19,42,61,B+
-254132,1,Communication Skills,22,43,65,B+
-254132,1,Digital Electronics,19,40,59,B
-254132,2,Data Structures,19,46,65,B+
-254132,2,Database Management Systems,23,37,60,B+
-254132,2,Statistics,21,51,72,A
-254132,2,Web Development,19,43,62,B+
-254132,3,Python for Data Analytics,23,43,66,B+
-254132,3,Operating Systems,21,37,58,B
-254132,3,Computer Networks,26,54,80,A+
-254132,3,Software Engineering,19,52,71,A
-254133,1,Python Programming,17,45,62,B+
-254133,1,Mathematics I,21,36,57,B
-254133,1,Communication Skills,21,46,67,B+
-254133,1,Digital Electronics,15,38,53,B
-254133,2,Data Structures,20,44,64,B+
-254133,2,Database Management Systems,15,36,51,B
-254133,2,Statistics,22,39,61,B+
-254133,2,Web Development,20,44,64,B+
-254133,3,Python for Data Analytics,25,39,64,B+
-254133,3,Operating Systems,20,35,55,B
-254133,3,Computer Networks,18,47,65,B+
-254133,3,Software Engineering,21,31,52,B
-254134,1,Python Programming,13,30,43,C
-254134,1,Mathematics I,13,29,42,C
-254134,1,Communication Skills,17,38,55,B
-254134,1,Digital Electronics,14,29,43,C
-254134,2,Data Structures,12,24,36,F
-254134,2,Database Management Systems,15,25,40,C
-254134,2,Statistics,17,26,43,C
-254134,2,Web Development,12,20,32,F
-254134,3,Python for Data Analytics,14,37,51,B
-254134,3,Operating Systems,16,42,58,B
-254134,3,Computer Networks,14,19,33,F
-254134,3,Software Engineering,15,28,43,C
-254135,1,Python Programming,20,50,70,A
-254135,1,Mathematics I,19,48,67,B+
-254135,1,Communication Skills,17,50,67,B+
-254135,1,Digital Electronics,20,45,65,B+
-254135,2,Data Structures,16,46,62,B+
-254135,2,Database Management Systems,18,42,60,B+
-254135,2,Statistics,25,50,75,A
-254135,2,Web Development,20,53,73,A
-254135,3,Python for Data Analytics,18,45,63,B+
-254135,3,Operating Systems,20,49,69,B+
-254135,3,Computer Networks,19,48,67,B+
-254135,3,Software Engineering,19,47,66,B+
-254136,1,Python Programming,22,41,63,B+
-254136,1,Mathematics I,17,39,56,B
-254136,1,Communication Skills,17,38,55,B
-254136,1,Digital Electronics,16,48,64,B+
-254136,2,Data Structures,23,39,62,B+
-254136,2,Database Management Systems,23,35,58,B
-254136,2,Statistics,22,47,69,B+
-254136,2,Web Development,18,49,67,B+
-254136,3,Python for Data Analytics,23,43,66,B+
-254136,3,Operating Systems,18,44,62,B+
-254136,3,Computer Networks,15,45,60,B+
-254136,3,Software Engineering,18,56,74,A
-254139,1,Python Programming,24,61,85,A+
-254139,1,Mathematics I,28,58,86,A+
-254139,1,Communication Skills,23,64,87,A+
-254139,1,Digital Electronics,29,50,79,A
-254139,2,Data Structures,28,56,84,A+
-254139,2,Database Management Systems,24,54,78,A
-254139,2,Statistics,25,50,75,A
-254139,2,Web Development,27,70,97,O
-254139,3,Python for Data Analytics,27,61,88,A+
-254139,3,Operating Systems,25,48,73,A
-254139,3,Computer Networks,25,51,76,A
-254139,3,Software Engineering,24,65,89,A+
-254141,1,Python Programming,21,50,71,A
-254141,1,Mathematics I,22,50,72,A
-254141,1,Communication Skills,23,39,62,B+
-254141,1,Digital Electronics,21,58,79,A
-254141,2,Data Structures,20,42,62,B+
-254141,2,Database Management Systems,23,46,69,B+
-254141,2,Statistics,16,60,76,A
-254141,2,Web Development,18,48,66,B+
-254141,3,Python for Data Analytics,16,38,54,B
-254141,3,Operating Systems,24,46,70,A
-254141,3,Computer Networks,19,61,80,A+
-254141,3,Software Engineering,20,45,65,B+
-254143,1,Python Programming,20,43,63,B+
-254143,1,Mathematics I,21,41,62,B+
-254143,1,Communication Skills,23,47,70,A
-254143,1,Digital Electronics,23,40,63,B+
-254143,2,Data Structures,17,38,55,B
-254143,2,Database Management Systems,18,41,59,B
-254143,2,Statistics,29,48,77,A
-254143,2,Web Development,18,51,69,B+
-254143,3,Python for Data Analytics,15,48,63,B+
-254143,3,Operating Systems,21,50,71,A
-254143,3,Computer Networks,17,39,56,B
-254143,3,Software Engineering,22,42,64,B+
-254144,1,Python Programming,10,24,34,F
-254144,1,Mathematics I,16,18,34,F
-254144,1,Communication Skills,11,34,45,C
-254144,1,Digital Electronics,16,28,44,C
-254144,2,Data Structures,13,22,35,F
-254144,2,Database Management Systems,15,19,34,F
-254144,2,Statistics,13,30,43,C
-254144,2,Web Development,16,20,36,F
-254144,3,Python for Data Analytics,10,34,44,C
-254144,3,Operating Systems,13,30,43,C
-254144,3,Computer Networks,13,33,46,C
-254144,3,Software Engineering,16,32,48,C
-254146,1,Python Programming,20,50,70,A
-254146,1,Mathematics I,18,38,56,B
-254146,1,Communication Skills,17,41,58,B
-254146,1,Digital Electronics,17,49,66,B+
-254146,2,Data Structures,20,31,51,B
-254146,2,Database Management Systems,21,49,70,A
-254146,2,Statistics,24,48,72,A
-254146,2,Web Development,20,38,58,B
-254146,3,Python for Data Analytics,19,45,64,B+
-254146,3,Operating Systems,22,52,74,A
-254146,3,Computer Networks,21,42,63,B+
-254146,3,Software Engineering,19,50,69,B+
-254147,1,Python Programming,18,44,62,B+
-254147,1,Mathematics I,22,38,60,B+
-254147,1,Communication Skills,19,48,67,B+
-254147,1,Digital Electronics,20,48,68,B+
-254147,2,Data Structures,20,34,54,B
-254147,2,Database Management Systems,21,38,59,B
-254147,2,Statistics,22,49,71,A
-254147,2,Web Development,23,41,64,B+
-254147,3,Python for Data Analytics,17,50,67,B+
-254147,3,Operating Systems,21,49,70,A
-254147,3,Computer Networks,18,47,65,B+
-254147,3,Software Engineering,18,31,49,C
-254148,1,Python Programming,27,54,81,A+
-254148,1,Mathematics I,24,54,78,A
-254148,1,Communication Skills,25,63,88,A+
-254148,1,Digital Electronics,29,63,92,O
-254148,2,Data Structures,28,55,83,A+
-254148,2,Database Management Systems,21,60,81,A+
-254148,2,Statistics,27,61,88,A+
-254148,2,Web Development,23,56,79,A
-254148,3,Python for Data Analytics,26,51,77,A
-254148,3,Operating Systems,22,45,67,B+
-254148,3,Computer Networks,23,55,78,A
-254148,3,Software Engineering,22,56,78,A
-254149,1,Python Programming,18,41,59,B
-254149,1,Mathematics I,21,50,71,A
-254149,1,Communication Skills,19,52,71,A
-254149,1,Digital Electronics,20,39,59,B
-254149,2,Data Structures,15,37,52,B
-254149,2,Database Management Systems,19,51,70,A
-254149,2,Statistics,21,52,73,A
-254149,2,Web Development,20,34,54,B
-254149,3,Python for Data Analytics,24,29,53,B
-254149,3,Operating Systems,22,53,75,A
-254149,3,Computer Networks,23,44,67,B+
-254149,3,Software Engineering,18,49,67,B+
-254150,1,Python Programming,18,51,69,B+
-254150,1,Mathematics I,21,53,74,A
-254150,1,Communication Skills,19,42,61,B+
-254150,1,Digital Electronics,22,48,70,A
-254150,2,Data Structures,18,37,55,B
-254150,2,Database Management Systems,23,51,74,A
-254150,2,Statistics,19,40,59,B
-254150,2,Web Development,23,63,86,A+
-254150,3,Python for Data Analytics,21,43,64,B+
-254150,3,Operating Systems,17,49,66,B+
-254150,3,Computer Networks,22,42,64,B+
-254150,3,Software Engineering,18,47,65,B+
-254151,1,Python Programming,12,23,35,F
-254151,1,Mathematics I,15,25,40,C
-254151,1,Communication Skills,17,22,39,F
-254151,1,Digital Electronics,15,25,40,C
-254151,2,Data Structures,11,22,33,F
-254151,2,Database Management Systems,12,29,41,C
-254151,2,Statistics,15,15,30,F
-254151,2,Web Development,18,22,40,C
-254151,3,Python for Data Analytics,15,18,33,F
-254151,3,Operating Systems,14,30,44,C
-254151,3,Computer Networks,10,21,31,F
-254151,3,Software Engineering,15,18,33,F
-254152,1,Python Programming,15,43,58,B
-254152,1,Mathematics I,23,49,72,A
-254152,1,Communication Skills,22,41,63,B+
-254152,1,Digital Electronics,21,42,63,B+
-254152,2,Data Structures,20,49,69,B+
-254152,2,Database Management Systems,22,42,64,B+
-254152,2,Statistics,25,47,72,A
-254152,2,Web Development,21,44,65,B+
-254152,3,Python for Data Analytics,16,35,51,B
-254152,3,Operating Systems,20,52,72,A
-254152,3,Computer Networks,18,40,58,B
-254152,3,Software Engineering,18,47,65,B+
-254153,1,Python Programming,18,38,56,B
-254153,1,Mathematics I,18,50,68,B+
-254153,1,Communication Skills,19,42,61,B+
-254153,1,Digital Electronics,17,34,51,B
-254153,2,Data Structures,16,41,57,B
-254153,2,Database Management Systems,20,45,65,B+
-254153,2,Statistics,18,48,66,B+
-254153,2,Web Development,18,48,66,B+
-254153,3,Python for Data Analytics,19,42,61,B+
-254153,3,Operating Systems,18,48,66,B+
-254153,3,Computer Networks,18,51,69,B+
-254153,3,Software Engineering,17,51,68,B+
-254154,1,Python Programming,16,29,45,C
-254154,1,Mathematics I,10,26,36,F
-254154,1,Communication Skills,10,35,45,C
-254154,1,Digital Electronics,14,25,39,F
-254154,2,Data Structures,15,27,42,C
-254154,2,Database Management Systems,12,30,42,C
-254154,2,Statistics,12,32,44,C
-254154,2,Web Development,13,32,45,C
-254154,3,Python for Data Analytics,11,36,47,C
-254154,3,Operating Systems,15,22,37,F
-254154,3,Computer Networks,16,28,44,C
-254154,3,Software Engineering,15,26,41,C
-254155,1,Python Programming,16,47,63,B+
-254155,1,Mathematics I,18,36,54,B
-254155,1,Communication Skills,20,42,62,B+
-254155,1,Digital Electronics,18,34,52,B
-254155,2,Data Structures,20,45,65,B+
-254155,2,Database Management Systems,17,41,58,B
-254155,2,Statistics,20,53,73,A
-254155,2,Web Development,25,47,72,A
-254155,3,Python for Data Analytics,18,46,64,B+
-254155,3,Operating Systems,20,48,68,B+
-254155,3,Computer Networks,19,48,67,B+
-254155,3,Software Engineering,20,47,67,B+
-254156,1,Python Programming,17,38,55,B
-254156,1,Mathematics I,20,46,66,B+
-254156,1,Communication Skills,22,52,74,A
-254156,1,Digital Electronics,20,61,81,A+
-254156,2,Data Structures,18,36,54,B
-254156,2,Database Management Systems,19,43,62,B+
-254156,2,Statistics,19,35,54,B
-254156,2,Web Development,22,47,69,B+
-254156,3,Python for Data Analytics,20,40,60,B+
-254156,3,Operating Systems,20,38,58,B
-254156,3,Computer Networks,21,44,65,B+
-254156,3,Software Engineering,19,36,55,B
-254159,1,Python Programming,22,48,70,A
-254159,1,Mathematics I,21,41,62,B+
-254159,1,Communication Skills,22,37,59,B
-254159,1,Digital Electronics,18,49,67,B+
-254159,2,Data Structures,23,36,59,B
-254159,2,Database Management Systems,20,51,71,A
-254159,2,Statistics,21,58,79,A
-254159,2,Web Development,20,47,67,B+
-254159,3,Python for Data Analytics,22,43,65,B+
-254159,3,Operating Systems,18,51,69,B+
-254159,3,Computer Networks,17,40,57,B
-254159,3,Software Engineering,23,48,71,A
-254160,1,Python Programming,20,48,68,B+
-254160,1,Mathematics I,18,56,74,A
-254160,1,Communication Skills,17,42,59,B
-254160,1,Digital Electronics,22,46,68,B+
-254160,2,Data Structures,16,47,63,B+
-254160,2,Database Management Systems,22,39,61,B+
-254160,2,Statistics,23,53,76,A
-254160,2,Web Development,27,41,68,B+
-254160,3,Python for Data Analytics,20,37,57,B
-254160,3,Operating Systems,21,49,70,A
-254160,3,Computer Networks,21,45,66,B+
-254160,3,Software Engineering,18,31,49,C
-254161,1,Python Programming,23,44,67,B+
-254161,1,Mathematics I,18,49,67,B+
-254161,1,Communication Skills,18,45,63,B+
-254161,1,Digital Electronics,20,42,62,B+
-254161,2,Data Structures,22,37,59,B
-254161,2,Database Management Systems,20,47,67,B+
-254161,2,Statistics,20,50,70,A
-254161,2,Web Development,20,51,71,A
-254161,3,Python for Data Analytics,19,48,67,B+
-254161,3,Operating Systems,22,33,55,B
-254161,3,Computer Networks,18,38,56,B
-254161,3,Software Engineering,21,32,53,B
-254163,1,Python Programming,21,44,65,B+
-254163,1,Mathematics I,16,41,57,B
-254163,1,Communication Skills,21,42,63,B+
-254163,1,Digital Electronics,19,38,57,B
-254163,2,Data Structures,22,37,59,B
-254163,2,Database Management Systems,20,36,56,B
-254163,2,Statistics,20,44,64,B+
-254163,2,Web Development,21,40,61,B+
-254163,3,Python for Data Analytics,24,37,61,B+
-254163,3,Operating Systems,18,43,61,B+
-254163,3,Computer Networks,23,43,66,B+
-254163,3,Software Engineering,21,37,58,B
-254164,1,Python Programming,14,29,43,C
-254164,1,Mathematics I,15,26,41,C
-254164,1,Communication Skills,15,15,30,F
-254164,1,Digital Electronics,11,31,42,C
-254164,2,Data Structures,15,33,48,C
-254164,2,Database Management Systems,11,27,38,F
-254164,2,Statistics,16,25,41,C
-254164,2,Web Development,17,26,43,C
-254164,3,Python for Data Analytics,13,20,33,F
-254164,3,Operating Systems,16,24,40,C
-254164,3,Computer Networks,16,27,43,C
-254164,3,Software Engineering,16,27,43,C
-254165,1,Python Programming,15,41,56,B
-254165,1,Mathematics I,21,44,65,B+
-254165,1,Communication Skills,26,48,74,A
-254165,1,Digital Electronics,23,38,61,B+
-254165,2,Data Structures,21,55,76,A
-254165,2,Database Management Systems,23,44,67,B+
-254165,2,Statistics,20,40,60,B+
-254165,2,Web Development,22,45,67,B+
-254165,3,Python for Data Analytics,22,47,69,B+
-254165,3,Operating Systems,21,54,75,A
-254165,3,Computer Networks,21,44,65,B+
-254165,3,Software Engineering,16,35,51,B
-254166,1,Python Programming,17,32,49,C
-254166,1,Mathematics I,13,40,53,B
-254166,1,Communication Skills,16,39,55,B
-254166,1,Digital Electronics,19,34,53,B
-254166,2,Data Structures,10,28,38,F
-254166,2,Database Management Systems,13,29,42,C
-254166,2,Statistics,13,27,40,C
-254166,2,Web Development,14,35,49,C
-254166,3,Python for Data Analytics,10,29,39,F
-254166,3,Operating Systems,12,29,41,C
-254166,3,Computer Networks,15,34,49,C
-254166,3,Software Engineering,16,27,43,C
-254167,1,Python Programming,19,46,65,B+
-254167,1,Mathematics I,20,45,65,B+
-254167,1,Communication Skills,18,48,66,B+
-254167,1,Digital Electronics,22,37,59,B
-254167,2,Data Structures,20,50,70,A
-254167,2,Database Management Systems,24,41,65,B+
-254167,2,Statistics,18,31,49,C
-254167,2,Web Development,17,41,58,B
-254167,3,Python for Data Analytics,22,42,64,B+
-254167,3,Operating Systems,26,37,63,B+
-254167,3,Computer Networks,22,44,66,B+
-254167,3,Software Engineering,15,44,59,B
-254168,1,Python Programming,16,54,70,A
-254168,1,Mathematics I,23,47,70,A
-254168,1,Communication Skills,19,43,62,B+
-254168,1,Digital Electronics,18,40,58,B
-254168,2,Data Structures,15,45,60,B+
-254168,2,Database Management Systems,20,48,68,B+
-254168,2,Statistics,17,41,58,B
-254168,2,Web Development,18,49,67,B+
-254168,3,Python for Data Analytics,22,44,66,B+
-254168,3,Operating Systems,21,42,63,B+
-254168,3,Computer Networks,25,49,74,A
-254168,3,Software Engineering,20,43,63,B+
-254169,1,Python Programming,22,41,63,B+
-254169,1,Mathematics I,23,46,69,B+
-254169,1,Communication Skills,21,42,63,B+
-254169,1,Digital Electronics,20,56,76,A
-254169,2,Data Structures,22,35,57,B
-254169,2,Database Management Systems,20,43,63,B+
-254169,2,Statistics,19,47,66,B+
-254169,2,Web Development,20,49,69,B+
-254169,3,Python for Data Analytics,20,42,62,B+
-254169,3,Operating Systems,17,56,73,A
-254169,3,Computer Networks,20,46,66,B+
-254169,3,Software Engineering,18,38,56,B
-254172,1,Python Programming,20,34,54,B
-254172,1,Mathematics I,26,45,71,A
-254172,1,Communication Skills,17,40,57,B
-254172,1,Digital Electronics,15,45,60,B+
-254172,2,Data Structures,23,43,66,B+
-254172,2,Database Management Systems,21,36,57,B
-254172,2,Statistics,20,40,60,B+
-254172,2,Web Development,17,49,66,B+
-254172,3,Python for Data Analytics,18,39,57,B
-254172,3,Operating Systems,19,40,59,B
-254172,3,Computer Networks,21,51,72,A
-254172,3,Software Engineering,22,46,68,B+
-254174,1,Python Programming,19,47,66,B+
-254174,1,Mathematics I,21,39,60,B+
-254174,1,Communication Skills,15,41,56,B
-254174,1,Digital Electronics,21,43,64,B+
-254174,2,Data Structures,24,49,73,A
-254174,2,Database Management Systems,18,45,63,B+
-254174,2,Statistics,22,41,63,B+
-254174,2,Web Development,19,48,67,B+
-254174,3,Python for Data Analytics,20,34,54,B
-254174,3,Operating Systems,18,42,60,B+
-254174,3,Computer Networks,20,49,69,B+
-254174,3,Software Engineering,23,41,64,B+
-254175,1,Python Programming,19,34,53,B
-254175,1,Mathematics I,22,43,65,B+
-254175,1,Communication Skills,23,37,60,B+
-254175,1,Digital Electronics,20,36,56,B
-254175,2,Data Structures,20,48,68,B+
-254175,2,Database Management Systems,23,44,67,B+
-254175,2,Statistics,22,42,64,B+
-254175,2,Web Development,17,42,59,B
-254175,3,Python for Data Analytics,16,46,62,B+
-254175,3,Operating Systems,21,40,61,B+
-254175,3,Computer Networks,26,32,58,B
-254175,3,Software Engineering,19,45,64,B+
-254177,1,Python Programming,21,45,66,B+
-254177,1,Mathematics I,23,52,75,A
-254177,1,Communication Skills,25,39,64,B+
-254177,1,Digital Electronics,20,38,58,B
-254177,2,Data Structures,24,45,69,B+
-254177,2,Database Management Systems,20,35,55,B
-254177,2,Statistics,15,50,65,B+
-254177,2,Web Development,25,40,65,B+
-254177,3,Python for Data Analytics,19,41,60,B+
-254177,3,Operating Systems,24,57,81,A+
-254177,3,Computer Networks,18,45,63,B+
-254177,3,Software Engineering,18,45,63,B+
-254178,1,Python Programming,20,44,64,B+
-254178,1,Mathematics I,23,34,57,B
-254178,1,Communication Skills,15,39,54,B
-254178,1,Digital Electronics,22,48,70,A
-254178,2,Data Structures,24,35,59,B
-254178,2,Database Management Systems,20,56,76,A
-254178,2,Statistics,23,39,62,B+
-254178,2,Web Development,21,38,59,B
-254178,3,Python for Data Analytics,16,39,55,B
-254178,3,Operating Systems,18,47,65,B+
-254178,3,Computer Networks,20,55,75,A
-254178,3,Software Engineering,23,39,62,B+
-254179,1,Python Programming,21,39,60,B+
-254179,1,Mathematics I,14,36,50,B
-254179,1,Communication Skills,22,45,67,B+
-254179,1,Digital Electronics,20,35,55,B
-254179,2,Data Structures,17,48,65,B+
-254179,2,Database Management Systems,19,36,55,B
-254179,2,Statistics,20,42,62,B+
-254179,2,Web Development,23,37,60,B+
-254179,3,Python for Data Analytics,20,47,67,B+
-254179,3,Operating Systems,20,41,61,B+
-254179,3,Computer Networks,21,47,68,B+
-254179,3,Software Engineering,21,43,64,B+
-254180,1,Python Programming,20,43,63,B+
-254180,1,Mathematics I,22,43,65,B+
-254180,1,Communication Skills,22,44,66,B+
-254180,1,Digital Electronics,19,46,65,B+
-254180,2,Data Structures,20,47,67,B+
-254180,2,Database Management Systems,22,41,63,B+
-254180,2,Statistics,16,55,71,A
-254180,2,Web Development,17,39,56,B
-254180,3,Python for Data Analytics,20,45,65,B+
-254180,3,Operating Systems,23,35,58,B
-254180,3,Computer Networks,18,46,64,B+
-254180,3,Software Engineering,17,40,57,B
-254181,1,Python Programming,13,37,50,B
-254181,1,Mathematics I,14,28,42,C
-254181,1,Communication Skills,15,23,38,F
-254181,1,Digital Electronics,16,22,38,F
-254181,2,Data Structures,13,21,34,F
-254181,2,Database Management Systems,13,26,39,F
-254181,2,Statistics,13,37,50,B
-254181,2,Web Development,10,22,32,F
-254181,3,Python for Data Analytics,13,25,38,F
-254181,3,Operating Systems,11,29,40,C
-254181,3,Computer Networks,17,28,45,C
-254181,3,Software Engineering,16,36,52,B
-254182,1,Python Programming,19,41,60,B+
-254182,1,Mathematics I,18,39,57,B
-254182,1,Communication Skills,22,43,65,B+
-254182,1,Digital Electronics,19,47,66,B+
-254182,2,Data Structures,20,36,56,B
-254182,2,Database Management Systems,18,39,57,B
-254182,2,Statistics,18,36,54,B
-254182,2,Web Development,27,39,66,B+
-254182,3,Python for Data Analytics,21,43,64,B+
-254182,3,Operating Systems,16,41,57,B
-254182,3,Computer Networks,21,37,58,B
-254182,3,Software Engineering,21,43,64,B+
-254183,1,Python Programming,25,60,85,A+
-254183,1,Mathematics I,21,58,79,A
-254183,1,Communication Skills,24,56,80,A+
-254183,1,Digital Electronics,27,61,88,A+
-254183,2,Data Structures,27,66,93,O
-254183,2,Database Management Systems,28,63,91,O
-254183,2,Statistics,26,58,84,A+
-254183,2,Web Development,28,55,83,A+
-254183,3,Python for Data Analytics,22,53,75,A
-254183,3,Operating Systems,25,59,84,A+
-254183,3,Computer Networks,25,52,77,A
-254183,3,Software Engineering,26,53,79,A
-254184,1,Python Programming,18,34,52,B
-254184,1,Mathematics I,18,42,60,B+
-254184,1,Communication Skills,20,47,67,B+
-254184,1,Digital Electronics,21,38,59,B
-254184,2,Data Structures,18,41,59,B
-254184,2,Database Management Systems,20,56,76,A
-254184,2,Statistics,21,47,68,B+
-254184,2,Web Development,22,49,71,A
-254184,3,Python for Data Analytics,24,33,57,B
-254184,3,Operating Systems,20,38,58,B
-254184,3,Computer Networks,19,39,58,B
-254184,3,Software Engineering,20,41,61,B+
-254185,1,Python Programming,19,54,73,A
-254185,1,Mathematics I,18,37,55,B
-254185,1,Communication Skills,18,42,60,B+
-254185,1,Digital Electronics,18,34,52,B
-254185,2,Data Structures,20,38,58,B
-254185,2,Database Management Systems,23,43,66,B+
-254185,2,Statistics,20,56,76,A
-254185,2,Web Development,20,46,66,B+
-254185,3,Python for Data Analytics,21,42,63,B+
-254185,3,Operating Systems,18,43,61,B+
-254185,3,Computer Networks,22,38,60,B+
-254185,3,Software Engineering,22,46,68,B+
-254186,1,Python Programming,23,59,82,A+
-254186,1,Mathematics I,23,51,74,A
-254186,1,Communication Skills,24,38,62,B+
-254186,1,Digital Electronics,23,42,65,B+
-254186,2,Data Structures,19,53,72,A
-254186,2,Database Management Systems,19,47,66,B+
-254186,2,Statistics,20,56,76,A
-254186,2,Web Development,21,38,59,B
-254186,3,Python for Data Analytics,19,46,65,B+
-254186,3,Operating Systems,16,36,52,B
-254186,3,Computer Networks,18,32,50,B
-254186,3,Software Engineering,21,33,54,B
-254187,1,Python Programming,21,50,71,A
-254187,1,Mathematics I,22,47,69,B+
-254187,1,Communication Skills,17,40,57,B
-254187,1,Digital Electronics,20,43,63,B+
-254187,2,Data Structures,24,50,74,A
-254187,2,Database Management Systems,20,48,68,B+
-254187,2,Statistics,26,44,70,A
-254187,2,Web Development,24,50,74,A
-254187,3,Python for Data Analytics,23,56,79,A
-254187,3,Operating Systems,24,44,68,B+
-254187,3,Computer Networks,21,42,63,B+
-254187,3,Software Engineering,21,43,64,B+
-254189,1,Python Programming,23,54,77,A
-254189,1,Mathematics I,26,56,82,A+
-254189,1,Communication Skills,28,51,79,A
-254189,1,Digital Electronics,26,67,93,O
-254189,2,Data Structures,28,61,89,A+
-254189,2,Database Management Systems,28,63,91,O
-254189,2,Statistics,24,51,75,A
-254189,2,Web Development,27,55,82,A+
-254189,3,Python for Data Analytics,25,61,86,A+
-254189,3,Operating Systems,20,53,73,A
-254189,3,Computer Networks,27,70,97,O
-254189,3,Software Engineering,27,57,84,A+
-254190,1,Python Programming,20,52,72,A
-254190,1,Mathematics I,18,45,63,B+
-254190,1,Communication Skills,23,34,57,B
-254190,1,Digital Electronics,23,46,69,B+
-254190,2,Data Structures,17,36,53,B
-254190,2,Database Management Systems,18,41,59,B
-254190,2,Statistics,19,42,61,B+
-254190,2,Web Development,20,41,61,B+
-254190,3,Python for Data Analytics,16,51,67,B+
-254190,3,Operating Systems,21,47,68,B+
-254190,3,Computer Networks,21,44,65,B+
-254190,3,Software Engineering,20,47,67,B+
-254201,1,Python Programming,17,49,66,B+
-254201,1,Mathematics I,22,40,62,B+
-254201,1,Communication Skills,19,51,70,A
-254201,1,Digital Electronics,24,38,62,B+
-254201,2,Data Structures,17,35,52,B
-254201,2,Database Management Systems,19,41,60,B+
-254201,2,Statistics,20,42,62,B+
-254201,2,Web Development,21,36,57,B
-254201,3,Python for Data Analytics,19,53,72,A
-254201,3,Operating Systems,19,42,61,B+
-254201,3,Computer Networks,23,57,80,A+
-254201,3,Software Engineering,19,43,62,B+
-254202,1,Python Programming,20,46,66,B+
-254202,1,Mathematics I,17,50,67,B+
-254202,1,Communication Skills,18,49,67,B+
-254202,1,Digital Electronics,19,44,63,B+
-254202,2,Data Structures,16,40,56,B
-254202,2,Database Management Systems,23,56,79,A
-254202,2,Statistics,20,51,71,A
-254202,2,Web Development,21,55,76,A
-254202,3,Python for Data Analytics,15,40,55,B
-254202,3,Operating Systems,17,41,58,B
-254202,3,Computer Networks,20,39,59,B
-254202,3,Software Engineering,21,31,52,B
-254203,1,Python Programming,17,20,37,F
-254203,1,Mathematics I,15,22,37,F
-254203,1,Communication Skills,13,38,51,B
-254203,1,Digital Electronics,12,17,29,F
-254203,2,Data Structures,18,28,46,C
-254203,2,Database Management Systems,11,29,40,C
-254203,2,Statistics,15,27,42,C
-254203,2,Web Development,13,28,41,C
-254203,3,Python for Data Analytics,12,37,49,C
-254203,3,Operating Systems,17,27,44,C
-254203,3,Computer Networks,17,27,44,C
-254203,3,Software Engineering,12,31,43,C
-254204,1,Python Programming,20,36,56,B
-254204,1,Mathematics I,20,38,58,B
-254204,1,Communication Skills,23,47,70,A
-254204,1,Digital Electronics,22,52,74,A
-254204,2,Data Structures,16,51,67,B+
-254204,2,Database Management Systems,22,45,67,B+
-254204,2,Statistics,23,52,75,A
-254204,2,Web Development,21,39,60,B+
-254204,3,Python for Data Analytics,22,48,70,A
-254204,3,Operating Systems,17,33,50,B
-254204,3,Computer Networks,24,50,74,A
-254204,3,Software Engineering,24,41,65,B+
-254205,1,Python Programming,13,29,42,C
-254205,1,Mathematics I,18,35,53,B
-254205,1,Communication Skills,16,22,38,F
-254205,1,Digital Electronics,14,37,51,B
-254205,2,Data Structures,15,29,44,C
-254205,2,Database Management Systems,12,30,42,C
-254205,2,Statistics,12,15,27,F
-254205,2,Web Development,16,30,46,C
-254205,3,Python for Data Analytics,16,28,44,C
-254205,3,Operating Systems,10,38,48,C
-254205,3,Computer Networks,14,25,39,F
-254205,3,Software Engineering,14,34,48,C
-254206,1,Python Programming,17,54,71,A
-254206,1,Mathematics I,23,49,72,A
-254206,1,Communication Skills,17,38,55,B
-254206,1,Digital Electronics,20,41,61,B+
-254206,2,Data Structures,18,48,66,B+
-254206,2,Database Management Systems,17,44,61,B+
-254206,2,Statistics,20,44,64,B+
-254206,2,Web Development,23,34,57,B
-254206,3,Python for Data Analytics,18,50,68,B+
-254206,3,Operating Systems,22,52,74,A
-254206,3,Computer Networks,24,46,70,A
-254206,3,Software Engineering,24,38,62,B+
-254207,1,Python Programming,16,42,58,B
-254207,1,Mathematics I,16,51,67,B+
-254207,1,Communication Skills,22,43,65,B+
-254207,1,Digital Electronics,17,46,63,B+
-254207,2,Data Structures,18,53,71,A
-254207,2,Database Management Systems,23,42,65,B+
-254207,2,Statistics,19,43,62,B+
-254207,2,Web Development,18,50,68,B+
-254207,3,Python for Data Analytics,19,43,62,B+
-254207,3,Operating Systems,20,43,63,B+
-254207,3,Computer Networks,18,45,63,B+
-254207,3,Software Engineering,17,42,59,B
-254208,1,Python Programming,21,46,67,B+
-254208,1,Mathematics I,20,52,72,A
-254208,1,Communication Skills,18,37,55,B
-254208,1,Digital Electronics,22,54,76,A
-254208,2,Data Structures,17,47,64,B+
-254208,2,Database Management Systems,20,42,62,B+
-254208,2,Statistics,23,39,62,B+
-254208,2,Web Development,23,46,69,B+
-254208,3,Python for Data Analytics,20,39,59,B
-254208,3,Operating Systems,20,42,62,B+
-254208,3,Computer Networks,23,36,59,B
-254208,3,Software Engineering,19,39,58,B
-254209,1,Python Programming,22,47,69,B+
-254209,1,Mathematics I,23,55,78,A
-254209,1,Communication Skills,18,35,53,B
-254209,1,Digital Electronics,20,46,66,B+
-254209,2,Data Structures,17,53,70,A
-254209,2,Database Management Systems,19,38,57,B
-254209,2,Statistics,21,49,70,A
-254209,2,Web Development,18,36,54,B
-254209,3,Python for Data Analytics,21,36,57,B
-254209,3,Operating Systems,18,34,52,B
-254209,3,Computer Networks,20,44,64,B+
-254209,3,Software Engineering,21,37,58,B
-254210,1,Python Programming,17,22,39,F
-254210,1,Mathematics I,16,23,39,F
-254210,1,Communication Skills,16,30,46,C
-254210,1,Digital Electronics,14,15,29,F
-254210,2,Data Structures,10,26,36,F
-254210,2,Database Management Systems,15,22,37,F
-254210,2,Statistics,13,28,41,C
-254210,2,Web Development,14,32,46,C
-254210,3,Python for Data Analytics,13,28,41,C
-254210,3,Operating Systems,17,35,52,B
-254210,3,Computer Networks,17,35,52,B
-254210,3,Software Engineering,15,27,42,C
-254211,1,Python Programming,23,46,69,B+
-254211,1,Mathematics I,25,41,66,B+
-254211,1,Communication Skills,20,41,61,B+
-254211,1,Digital Electronics,16,35,51,B
-254211,2,Data Structures,20,46,66,B+
-254211,2,Database Management Systems,22,53,75,A
-254211,2,Statistics,23,41,64,B+
-254211,2,Web Development,22,35,57,B
-254211,3,Python for Data Analytics,23,46,69,B+
-254211,3,Operating Systems,20,47,67,B+
-254211,3,Computer Networks,23,42,65,B+
-254211,3,Software Engineering,20,45,65,B+
-254212,1,Python Programming,21,41,62,B+
-254212,1,Mathematics I,19,42,61,B+
-254212,1,Communication Skills,23,48,71,A
-254212,1,Digital Electronics,18,31,49,C
-254212,2,Data Structures,24,45,69,B+
-254212,2,Database Management Systems,18,47,65,B+
-254212,2,Statistics,17,41,58,B
-254212,2,Web Development,20,52,72,A
-254212,3,Python for Data Analytics,21,32,53,B
-254212,3,Operating Systems,16,43,59,B
-254212,3,Computer Networks,17,41,58,B
-254212,3,Software Engineering,22,37,59,B
-254214,1,Python Programming,20,30,50,B
-254214,1,Mathematics I,20,46,66,B+
-254214,1,Communication Skills,19,51,70,A
-254214,1,Digital Electronics,19,46,65,B+
-254214,2,Data Structures,23,43,66,B+
-254214,2,Database Management Systems,18,37,55,B
-254214,2,Statistics,21,48,69,B+
-254214,2,Web Development,16,45,61,B+
-254214,3,Python for Data Analytics,21,37,58,B
-254214,3,Operating Systems,22,41,63,B+
-254214,3,Computer Networks,23,34,57,B
-254214,3,Software Engineering,20,50,70,A
-254215,1,Python Programming,19,55,74,A
-254215,1,Mathematics I,20,45,65,B+
-254215,1,Communication Skills,18,50,68,B+
-254215,1,Digital Electronics,25,39,64,B+
-254215,2,Data Structures,23,55,78,A
-254215,2,Database Management Systems,16,43,59,B
-254215,2,Statistics,22,51,73,A
-254215,2,Web Development,19,39,58,B
-254215,3,Python for Data Analytics,20,50,70,A
-254215,3,Operating Systems,21,44,65,B+
-254215,3,Computer Networks,23,39,62,B+
-254215,3,Software Engineering,20,44,64,B+
-254216,1,Python Programming,12,29,41,C
-254216,1,Mathematics I,17,22,39,F
-254216,1,Communication Skills,24,29,53,B
-254216,1,Digital Electronics,13,21,34,F
-254216,2,Data Structures,13,37,50,B
-254216,2,Database Management Systems,14,27,41,C
-254216,2,Statistics,13,37,50,B
-254216,2,Web Development,13,31,44,C
-254216,3,Python for Data Analytics,14,30,44,C
-254216,3,Operating Systems,10,24,34,F
-254216,3,Computer Networks,14,29,43,C
-254216,3,Software Engineering,14,33,47,C
-254217,1,Python Programming,19,36,55,B
-254217,1,Mathematics I,21,41,62,B+
-254217,1,Communication Skills,22,52,74,A
-254217,1,Digital Electronics,19,34,53,B
-254217,2,Data Structures,20,36,56,B
-254217,2,Database Management Systems,17,51,68,B+
-254217,2,Statistics,20,48,68,B+
-254217,2,Web Development,18,48,66,B+
-254217,3,Python for Data Analytics,18,41,59,B
-254217,3,Operating Systems,21,39,60,B+
-254217,3,Computer Networks,18,39,57,B
-254217,3,Software Engineering,21,41,62,B+
-254219,1,Python Programming,25,43,68,B+
-254219,1,Mathematics I,20,46,66,B+
-254219,1,Communication Skills,22,47,69,B+
-254219,1,Digital Electronics,20,50,70,A
-254219,2,Data Structures,21,54,75,A
-254219,2,Database Management Systems,19,46,65,B+
-254219,2,Statistics,22,49,71,A
-254219,2,Web Development,21,43,64,B+
-254219,3,Python for Data Analytics,16,42,58,B
-254219,3,Operating Systems,18,44,62,B+
-254219,3,Computer Networks,20,44,64,B+
-254219,3,Software Engineering,18,48,66,B+
-254220,1,Python Programming,19,49,68,B+
-254220,1,Mathematics I,17,37,54,B
-254220,1,Communication Skills,22,44,66,B+
-254220,1,Digital Electronics,19,50,69,B+
-254220,2,Data Structures,22,41,63,B+
-254220,2,Database Management Systems,24,51,75,A
-254220,2,Statistics,19,42,61,B+
-254220,2,Web Development,23,56,79,A
-254220,3,Python for Data Analytics,20,51,71,A
-254220,3,Operating Systems,22,39,61,B+
-254220,3,Computer Networks,24,45,69,B+
-254220,3,Software Engineering,21,37,58,B
-254221,1,Python Programming,19,40,59,B
-254221,1,Mathematics I,19,45,64,B+
-254221,1,Communication Skills,20,41,61,B+
-254221,1,Digital Electronics,21,45,66,B+
-254221,2,Data Structures,20,51,71,A
-254221,2,Database Management Systems,24,44,68,B+
-254221,2,Statistics,18,44,62,B+
-254221,2,Web Development,19,53,72,A
-254221,3,Python for Data Analytics,24,38,62,B+
-254221,3,Operating Systems,19,50,69,B+
-254221,3,Computer Networks,20,41,61,B+
-254221,3,Software Engineering,22,49,71,A
-254224,1,Python Programming,25,68,93,O
-254224,1,Mathematics I,30,66,96,O
-254224,1,Communication Skills,30,61,91,O
-254224,1,Digital Electronics,25,54,79,A
-254224,2,Data Structures,22,49,71,A
-254224,2,Database Management Systems,29,60,89,A+
-254224,2,Statistics,28,57,85,A+
-254224,2,Web Development,29,61,90,O
-254224,3,Python for Data Analytics,26,55,81,A+
-254224,3,Operating Systems,25,61,86,A+
-254224,3,Computer Networks,23,62,85,A+
-254224,3,Software Engineering,22,60,82,A+
-254226,1,Python Programming,22,40,62,B+
-254226,1,Mathematics I,20,42,62,B+
-254226,1,Communication Skills,20,43,63,B+
-254226,1,Digital Electronics,18,44,62,B+
-254226,2,Data Structures,21,59,80,A+
-254226,2,Database Management Systems,18,41,59,B
-254226,2,Statistics,16,48,64,B+
-254226,2,Web Development,20,42,62,B+
-254226,3,Python for Data Analytics,22,33,55,B
-254226,3,Operating Systems,20,51,71,A
-254226,3,Computer Networks,17,45,62,B+
-254226,3,Software Engineering,24,42,66,B+
-254227,1,Python Programming,20,42,62,B+
-254227,1,Mathematics I,21,50,71,A
-254227,1,Communication Skills,17,59,76,A
-254227,1,Digital Electronics,20,43,63,B+
-254227,2,Data Structures,16,41,57,B
-254227,2,Database Management Systems,14,36,50,B
-254227,2,Statistics,17,41,58,B
-254227,2,Web Development,21,49,70,A
-254227,3,Python for Data Analytics,21,40,61,B+
-254227,3,Operating Systems,17,43,60,B+
-254227,3,Computer Networks,19,45,64,B+
-254227,3,Software Engineering,20,39,59,B
-254228,1,Python Programming,27,61,88,A+
-254228,1,Mathematics I,22,64,86,A+
-254228,1,Communication Skills,28,70,98,O
-254228,1,Digital Electronics,28,60,88,A+
-254228,2,Data Structures,28,62,90,O
-254228,2,Database Management Systems,24,49,73,A
-254228,2,Statistics,23,61,84,A+
-254228,2,Web Development,26,51,77,A
-254228,3,Python for Data Analytics,30,62,92,O
-254228,3,Operating Systems,24,44,68,B+
-254228,3,Computer Networks,27,65,92,O
-254228,3,Software Engineering,25,52,77,A
-254229,1,Python Programming,14,23,37,F
-254229,1,Mathematics I,12,25,37,F
-254229,1,Communication Skills,11,33,44,C
-254229,1,Digital Electronics,12,24,36,F
-254229,2,Data Structures,13,15,28,F
-254229,2,Database Management Systems,13,24,37,F
-254229,2,Statistics,12,35,47,C
-254229,2,Web Development,14,35,49,C
-254229,3,Python for Data Analytics,13,23,36,F
-254229,3,Operating Systems,16,20,36,F
-254229,3,Computer Networks,13,23,36,F
-254229,3,Software Engineering,10,25,35,F
-254230,1,Python Programming,25,54,79,A
-254230,1,Mathematics I,25,57,82,A+
-254230,1,Communication Skills,28,50,78,A
-254230,1,Digital Electronics,30,69,99,O
-254230,2,Data Structures,30,65,95,O
-254230,2,Database Management Systems,21,58,79,A
-254230,2,Statistics,26,68,94,O
-254230,2,Web Development,24,51,75,A
-254230,3,Python for Data Analytics,21,68,89,A+
-254230,3,Operating Systems,26,57,83,A+
-254230,3,Computer Networks,26,66,92,O
-254230,3,Software Engineering,21,64,85,A+
-254231,1,Python Programming,22,52,74,A
-254231,1,Mathematics I,21,38,59,B
-254231,1,Communication Skills,17,47,64,B+
-254231,1,Digital Electronics,22,44,66,B+
-254231,2,Data Structures,20,41,61,B+
-254231,2,Database Management Systems,22,57,79,A
-254231,2,Statistics,17,38,55,B
-254231,2,Web Development,20,37,57,B
-254231,3,Python for Data Analytics,19,48,67,B+
-254231,3,Operating Systems,21,38,59,B
-254231,3,Computer Networks,19,43,62,B+
-254231,3,Software Engineering,22,41,63,B+
-254232,1,Python Programming,19,42,61,B+
-254232,1,Mathematics I,22,36,58,B
-254232,1,Communication Skills,20,46,66,B+
-254232,1,Digital Electronics,18,45,63,B+
-254232,2,Data Structures,20,54,74,A
-254232,2,Database Management Systems,20,45,65,B+
-254232,2,Statistics,17,44,61,B+
-254232,2,Web Development,23,43,66,B+
-254232,3,Python for Data Analytics,25,53,78,A
-254232,3,Operating Systems,17,41,58,B
-254232,3,Computer Networks,19,41,60,B+
-254232,3,Software Engineering,16,47,63,B+
-254233,1,Python Programming,18,45,63,B+
-254233,1,Mathematics I,20,46,66,B+
-254233,1,Communication Skills,18,42,60,B+
-254233,1,Digital Electronics,22,40,62,B+
-254233,2,Data Structures,24,45,69,B+
-254233,2,Database Management Systems,19,37,56,B
-254233,2,Statistics,17,39,56,B
-254233,2,Web Development,23,52,75,A
-254233,3,Python for Data Analytics,20,46,66,B+
-254233,3,Operating Systems,17,37,54,B
-254233,3,Computer Networks,17,45,62,B+
-254233,3,Software Engineering,22,46,68,B+
-254234,1,Python Programming,14,29,43,C
-254234,1,Mathematics I,13,26,39,F
-254234,1,Communication Skills,15,38,53,B
-254234,1,Digital Electronics,12,38,50,B
-254234,2,Data Structures,15,31,46,C
-254234,2,Database Management Systems,13,35,48,C
-254234,2,Statistics,13,27,40,C
-254234,2,Web Development,10,20,30,F
-254234,3,Python for Data Analytics,17,32,49,C
-254234,3,Operating Systems,16,15,31,F
-254234,3,Computer Networks,12,35,47,C
-254234,3,Software Engineering,16,32,48,C
-254235,1,Python Programming,17,40,57,B
-254235,1,Mathematics I,22,43,65,B+
-254235,1,Communication Skills,20,48,68,B+
-254235,1,Digital Electronics,17,46,63,B+
-254235,2,Data Structures,19,32,51,B
-254235,2,Database Management Systems,21,41,62,B+
-254235,2,Statistics,22,51,73,A
-254235,2,Web Development,16,49,65,B+
-254235,3,Python for Data Analytics,20,56,76,A
-254235,3,Operating Systems,20,51,71,A
-254235,3,Computer Networks,23,46,69,B+
-254235,3,Software Engineering,22,50,72,A
-254236,1,Python Programming,21,34,55,B
-254236,1,Mathematics I,23,38,61,B+
-254236,1,Communication Skills,16,44,60,B+
-254236,1,Digital Electronics,16,41,57,B
-254236,2,Data Structures,17,43,60,B+
-254236,2,Database Management Systems,25,36,61,B+
-254236,2,Statistics,20,37,57,B
-254236,2,Web Development,21,42,63,B+
-254236,3,Python for Data Analytics,19,45,64,B+
-254236,3,Operating Systems,25,40,65,B+
-254236,3,Computer Networks,19,45,64,B+
-254236,3,Software Engineering,20,42,62,B+
-254237,1,Python Programming,15,37,52,B
-254237,1,Mathematics I,21,48,69,B+
-254237,1,Communication Skills,16,50,66,B+
-254237,1,Digital Electronics,24,45,69,B+
-254237,2,Data Structures,22,40,62,B+
-254237,2,Database Management Systems,23,43,66,B+
-254237,2,Statistics,22,51,73,A
-254237,2,Web Development,17,39,56,B
-254237,3,Python for Data Analytics,23,50,73,A
-254237,3,Operating Systems,20,40,60,B+
-254237,3,Computer Networks,20,47,67,B+
-254237,3,Software Engineering,19,31,50,B
-254238,1,Python Programming,15,53,68,B+
-254238,1,Mathematics I,16,42,58,B
-254238,1,Communication Skills,22,43,65,B+
-254238,1,Digital Electronics,18,40,58,B
-254238,2,Data Structures,19,46,65,B+
-254238,2,Database Management Systems,18,39,57,B
-254238,2,Statistics,22,52,74,A
-254238,2,Web Development,18,49,67,B+
-254238,3,Python for Data Analytics,20,45,65,B+
-254238,3,Operating Systems,19,39,58,B
-254238,3,Computer Networks,19,42,61,B+
-254238,3,Software Engineering,18,49,67,B+
-254239,1,Python Programming,14,28,42,C
-254239,1,Mathematics I,13,22,35,F
-254239,1,Communication Skills,17,21,38,F
-254239,1,Digital Electronics,17,18,35,F
-254239,2,Data Structures,11,37,48,C
-254239,2,Database Management Systems,11,22,33,F
-254239,2,Statistics,14,38,52,B
-254239,2,Web Development,13,22,35,F
-254239,3,Python for Data Analytics,14,29,43,C
-254239,3,Operating Systems,14,21,35,F
-254239,3,Computer Networks,13,31,44,C
-254239,3,Software Engineering,12,33,45,C
-254240,1,Python Programming,23,44,67,B+
-254240,1,Mathematics I,23,40,63,B+
-254240,1,Communication Skills,17,41,58,B
-254240,1,Digital Electronics,20,45,65,B+
-254240,2,Data Structures,23,53,76,A
-254240,2,Database Management Systems,21,47,68,B+
-254240,2,Statistics,22,48,70,A
-254240,2,Web Development,16,37,53,B
-254240,3,Python for Data Analytics,22,46,68,B+
-254240,3,Operating Systems,17,47,64,B+
-254240,3,Computer Networks,19,42,61,B+
-254240,3,Software Engineering,22,37,59,B
-254241,1,Python Programming,26,54,80,A+
-254241,1,Mathematics I,26,66,92,O
-254241,1,Communication Skills,24,58,82,A+
-254241,1,Digital Electronics,23,55,78,A
-254241,2,Data Structures,25,53,78,A
-254241,2,Database Management Systems,20,62,82,A+
-254241,2,Statistics,23,63,86,A+
-254241,2,Web Development,27,67,94,O
-254241,3,Python for Data Analytics,29,54,83,A+
-254241,3,Operating Systems,23,53,76,A
-254241,3,Computer Networks,27,54,81,A+
-254241,3,Software Engineering,25,58,83,A+
-254242,1,Python Programming,19,47,66,B+
-254242,1,Mathematics I,20,34,54,B
-254242,1,Communication Skills,20,50,70,A
-254242,1,Digital Electronics,22,44,66,B+
-254242,2,Data Structures,21,35,56,B
-254242,2,Database Management Systems,17,39,56,B
-254242,2,Statistics,17,51,68,B+
-254242,2,Web Development,24,46,70,A
-254242,3,Python for Data Analytics,18,50,68,B+
-254242,3,Operating Systems,18,43,61,B+
-254242,3,Computer Networks,20,39,59,B
-254242,3,Software Engineering,19,42,61,B+
-254244,1,Python Programming,20,32,52,B
-254244,1,Mathematics I,22,44,66,B+
-254244,1,Communication Skills,21,46,67,B+
-254244,1,Digital Electronics,18,40,58,B
-254244,2,Data Structures,20,37,57,B
-254244,2,Database Management Systems,21,39,60,B+
-254244,2,Statistics,25,43,68,B+
-254244,2,Web Development,18,57,75,A
-254244,3,Python for Data Analytics,20,48,68,B+
-254244,3,Operating Systems,20,46,66,B+
-254244,3,Computer Networks,17,42,59,B
-254244,3,Software Engineering,22,51,73,A
-254248,1,Python Programming,18,41,59,B
-254248,1,Mathematics I,19,40,59,B
-254248,1,Communication Skills,17,45,62,B+
-254248,1,Digital Electronics,22,46,68,B+
-254248,2,Data Structures,17,52,69,B+
-254248,2,Database Management Systems,22,49,71,A
-254248,2,Statistics,20,47,67,B+
-254248,2,Web Development,22,39,61,B+
-254248,3,Python for Data Analytics,24,56,80,A+
-254248,3,Operating Systems,24,47,71,A
-254248,3,Computer Networks,25,44,69,B+
-254248,3,Software Engineering,20,45,65,B+
-254249,1,Python Programming,27,52,79,A
-254249,1,Mathematics I,24,55,79,A
-254249,1,Communication Skills,21,53,74,A
-254249,1,Digital Electronics,26,67,93,O
-254249,2,Data Structures,28,57,85,A+
-254249,2,Database Management Systems,24,63,87,A+
-254249,2,Statistics,24,65,89,A+
-254249,2,Web Development,26,63,89,A+
-254249,3,Python for Data Analytics,25,66,91,O
-254249,3,Operating Systems,27,60,87,A+
-254249,3,Computer Networks,24,52,76,A
-254249,3,Software Engineering,25,60,85,A+
-254250,1,Python Programming,16,52,68,B+
-254250,1,Mathematics I,14,44,58,B
-254250,1,Communication Skills,19,45,64,B+
-254250,1,Digital Electronics,19,44,63,B+
-254250,2,Data Structures,20,34,54,B
-254250,2,Database Management Systems,22,56,78,A
-254250,2,Statistics,19,44,63,B+
-254250,2,Web Development,17,47,64,B+
-254250,3,Python for Data Analytics,19,42,61,B+
-254250,3,Operating Systems,19,45,64,B+
-254250,3,Computer Networks,19,45,64,B+
-254250,3,Software Engineering,20,50,70,A
-254251,1,Python Programming,24,55,79,A
-254251,1,Mathematics I,19,34,53,B
-254251,1,Communication Skills,22,40,62,B+
-254251,1,Digital Electronics,18,50,68,B+
-254251,2,Data Structures,20,47,67,B+
-254251,2,Database Management Systems,22,44,66,B+
-254251,2,Statistics,16,43,59,B
-254251,2,Web Development,22,35,57,B
-254251,3,Python for Data Analytics,16,45,61,B+
-254251,3,Operating Systems,24,46,70,A
-254251,3,Computer Networks,21,37,58,B
-254251,3,Software Engineering,25,40,65,B+
-254252,1,Python Programming,20,54,74,A
-254252,1,Mathematics I,18,42,60,B+
-254252,1,Communication Skills,20,33,53,B
-254252,1,Digital Electronics,23,46,69,B+
-254252,2,Data Structures,18,38,56,B
-254252,2,Database Management Systems,23,44,67,B+
-254252,2,Statistics,23,46,69,B+
-254252,2,Web Development,21,43,64,B+
-254252,3,Python for Data Analytics,20,40,60,B+
-254252,3,Operating Systems,22,41,63,B+
-254252,3,Computer Networks,23,24,47,C
-254252,3,Software Engineering,21,38,59,B
-254253,1,Python Programming,22,56,78,A
-254253,1,Mathematics I,22,60,82,A+
-254253,1,Communication Skills,19,38,57,B
-254253,1,Digital Electronics,20,48,68,B+
-254253,2,Data Structures,20,41,61,B+
-254253,2,Database Management Systems,19,32,51,B
-254253,2,Statistics,21,43,64,B+
-254253,2,Web Development,16,41,57,B
-254253,3,Python for Data Analytics,18,45,63,B+
-254253,3,Operating Systems,21,36,57,B
-254253,3,Computer Networks,20,50,70,A
-254253,3,Software Engineering,20,39,59,B
-254254,1,Python Programming,19,41,60,B+
-254254,1,Mathematics I,18,35,53,B
-254254,1,Communication Skills,17,57,74,A
-254254,1,Digital Electronics,19,42,61,B+
-254254,2,Data Structures,19,43,62,B+
-254254,2,Database Management Systems,20,36,56,B
-254254,2,Statistics,17,54,71,A
-254254,2,Web Development,19,37,56,B
-254254,3,Python for Data Analytics,20,46,66,B+
-254254,3,Operating Systems,17,37,54,B
-254254,3,Computer Networks,17,41,58,B
-254254,3,Software Engineering,23,49,72,A
-254255,1,Python Programming,17,42,59,B
-254255,1,Mathematics I,17,43,60,B+
-254255,1,Communication Skills,18,40,58,B
-254255,1,Digital Electronics,18,58,76,A
-254255,2,Data Structures,21,40,61,B+
-254255,2,Database Management Systems,16,47,63,B+
-254255,2,Statistics,18,47,65,B+
-254255,2,Web Development,22,58,80,A+
-254255,3,Python for Data Analytics,20,45,65,B+
-254255,3,Operating Systems,21,52,73,A
-254255,3,Computer Networks,18,48,66,B+
-254255,3,Software Engineering,18,48,66,B+
-254258,1,Python Programming,15,22,37,F
-254258,1,Mathematics I,12,27,39,F
-254258,1,Communication Skills,16,18,34,F
-254258,1,Digital Electronics,15,18,33,F
-254258,2,Data Structures,15,26,41,C
-254258,2,Database Management Systems,17,31,48,C
-254258,2,Statistics,13,31,44,C
-254258,2,Web Development,11,35,46,C
-254258,3,Python for Data Analytics,10,24,34,F
-254258,3,Operating Systems,11,24,35,F
-254258,3,Computer Networks,13,29,42,C
-254258,3,Software Engineering,11,19,30,F
-254259,1,Python Programming,17,48,65,B+
-254259,1,Mathematics I,18,44,62,B+
-254259,1,Communication Skills,18,49,67,B+
-254259,1,Digital Electronics,18,29,47,C
-254259,2,Data Structures,21,44,65,B+
-254259,2,Database Management Systems,20,52,72,A
-254259,2,Statistics,27,45,72,A
-254259,2,Web Development,22,46,68,B+
-254259,3,Python for Data Analytics,22,32,54,B
-254259,3,Operating Systems,20,42,62,B+
-254259,3,Computer Networks,19,45,64,B+
-254259,3,Software Engineering,25,44,69,B+
-254262,1,Python Programming,19,33,52,B
-254262,1,Mathematics I,24,41,65,B+
-254262,1,Communication Skills,23,40,63,B+
-254262,1,Digital Electronics,24,42,66,B+
-254262,2,Data Structures,24,48,72,A
-254262,2,Database Management Systems,24,34,58,B
-254262,2,Statistics,21,41,62,B+
-254262,2,Web Development,17,54,71,A
-254262,3,Python for Data Analytics,18,47,65,B+
-254262,3,Operating Systems,21,48,69,B+
-254262,3,Computer Networks,20,46,66,B+
-254262,3,Software Engineering,18,36,54,B
-254263,1,Python Programming,21,46,67,B+
-254263,1,Mathematics I,20,42,62,B+
-254263,1,Communication Skills,16,44,60,B+
-254263,1,Digital Electronics,21,38,59,B
-254263,2,Data Structures,19,41,60,B+
-254263,2,Database Management Systems,17,44,61,B+
-254263,2,Statistics,20,39,59,B
-254263,2,Web Development,20,41,61,B+
-254263,3,Python for Data Analytics,19,48,67,B+
-254263,3,Operating Systems,20,38,58,B
-254263,3,Computer Networks,14,32,46,C
-254263,3,Software Engineering,20,55,75,A
-254264,1,Python Programming,26,54,80,A+
-254264,1,Mathematics I,25,60,85,A+
-254264,1,Communication Skills,24,67,91,O
-254264,1,Digital Electronics,29,53,82,A+
-254264,2,Data Structures,27,65,92,O
-254264,2,Database Management Systems,23,45,68,B+
-254264,2,Statistics,25,50,75,A
-254264,2,Web Development,30,53,83,A+
-254264,3,Python for Data Analytics,28,59,87,A+
-254264,3,Operating Systems,24,44,68,B+
-254264,3,Computer Networks,29,62,91,O
-254264,3,Software Engineering,21,56,77,A
-254265,1,Python Programming,19,31,50,B
-254265,1,Mathematics I,20,47,67,B+
-254265,1,Communication Skills,23,42,65,B+
-254265,1,Digital Electronics,19,49,68,B+
-254265,2,Data Structures,16,45,61,B+
-254265,2,Database Management Systems,20,41,61,B+
-254265,2,Statistics,27,44,71,A
-254265,2,Web Development,21,44,65,B+
-254265,3,Python for Data Analytics,28,44,72,A
-254265,3,Operating Systems,18,45,63,B+
-254265,3,Computer Networks,19,46,65,B+
-254265,3,Software Engineering,17,39,56,B
+254102,1,Python Programming,21,46,67,B+
+254102,1,Mathematics I,17,43,60,B+
+254102,1,Communication Skills,22,46,68,B+
+254102,1,Digital Electronics,18,42,60,B+
+254103,1,Python Programming,23,37,60,B+
+254103,1,Mathematics I,22,43,65,B+
+254103,1,Communication Skills,20,41,61,B+
+254103,1,Digital Electronics,22,41,63,B+
+254107,1,Python Programming,12,33,45,C
+254107,1,Mathematics I,11,33,44,C
+254107,1,Communication Skills,14,26,40,C
+254107,1,Digital Electronics,16,32,48,C
+254109,1,Python Programming,18,48,66,B+
+254109,1,Mathematics I,22,52,74,A
+254109,1,Communication Skills,19,42,61,B+
+254109,1,Digital Electronics,19,31,50,B
+254110,1,Python Programming,21,38,59,B
+254110,1,Mathematics I,22,35,57,B
+254110,1,Communication Skills,21,51,72,A
+254110,1,Digital Electronics,18,46,64,B+
+254111,1,Python Programming,22,64,86,A+
+254111,1,Mathematics I,20,47,67,B+
+254111,1,Communication Skills,17,36,53,B
+254111,1,Digital Electronics,20,29,49,C
+254112,1,Python Programming,19,37,56,B
+254112,1,Mathematics I,24,49,73,A
+254112,1,Communication Skills,14,48,62,B+
+254112,1,Digital Electronics,19,40,59,B
+254113,1,Python Programming,19,42,61,B+
+254113,1,Mathematics I,17,45,62,B+
+254113,1,Communication Skills,22,44,66,B+
+254113,1,Digital Electronics,21,52,73,A
+254115,1,Python Programming,15,27,42,C
+254115,1,Mathematics I,14,29,43,C
+254115,1,Communication Skills,16,33,49,C
+254115,1,Digital Electronics,13,32,45,C
+254118,1,Python Programming,17,62,79,A
+254118,1,Mathematics I,18,41,59,B
+254118,1,Communication Skills,20,49,69,B+
+254118,1,Digital Electronics,19,44,63,B+
+254119,1,Python Programming,16,30,46,C
+254119,1,Mathematics I,12,37,49,C
+254119,1,Communication Skills,11,25,36,F
+254119,1,Digital Electronics,10,29,39,F
+254120,1,Python Programming,20,35,55,B
+254120,1,Mathematics I,20,40,60,B+
+254120,1,Communication Skills,21,41,62,B+
+254120,1,Digital Electronics,23,40,63,B+
+254121,1,Python Programming,13,27,40,C
+254121,1,Mathematics I,14,41,55,B
+254121,1,Communication Skills,15,25,40,C
+254121,1,Digital Electronics,14,26,40,C
+254122,1,Python Programming,14,23,37,F
+254122,1,Mathematics I,10,30,40,C
+254122,1,Communication Skills,12,28,40,C
+254122,1,Digital Electronics,15,28,43,C
+254123,1,Python Programming,23,40,63,B+
+254123,1,Mathematics I,21,45,66,B+
+254123,1,Communication Skills,25,49,74,A
+254123,1,Digital Electronics,23,37,60,B+
+254124,1,Python Programming,18,42,60,B+
+254124,1,Mathematics I,24,42,66,B+
+254124,1,Communication Skills,22,50,72,A
+254124,1,Digital Electronics,22,45,67,B+
+254130,1,Python Programming,22,48,70,A
+254130,1,Mathematics I,21,43,64,B+
+254130,1,Communication Skills,18,43,61,B+
+254130,1,Digital Electronics,20,35,55,B
+254131,1,Python Programming,23,38,61,B+
+254131,1,Mathematics I,22,45,67,B+
+254131,1,Communication Skills,18,33,51,B
+254131,1,Digital Electronics,20,46,66,B+
+254132,1,Python Programming,25,56,81,A+
+254132,1,Mathematics I,22,42,64,B+
+254132,1,Communication Skills,25,53,78,A
+254132,1,Digital Electronics,19,50,69,B+
+254133,1,Python Programming,24,38,62,B+
+254133,1,Mathematics I,16,45,61,B+
+254133,1,Communication Skills,23,50,73,A
+254133,1,Digital Electronics,18,41,59,B
+254134,1,Python Programming,26,53,79,A
+254134,1,Mathematics I,24,65,89,A+
+254134,1,Communication Skills,26,68,94,O
+254134,1,Digital Electronics,29,61,90,O
+254134,2,Data Structures,27,52,79,A
+254134,2,Database Management Systems,30,58,88,A+
+254134,2,Statistics,27,63,90,O
+254134,2,Web Development,21,56,77,A
+254135,1,Python Programming,28,57,85,A+
+254135,1,Mathematics I,26,63,89,A+
+254135,1,Communication Skills,26,53,79,A
+254135,1,Digital Electronics,24,52,76,A
+254135,2,Data Structures,26,67,93,O
+254135,2,Database Management Systems,26,49,75,A
+254135,2,Statistics,26,49,75,A
+254135,2,Web Development,27,55,82,A+
+254136,1,Python Programming,10,28,38,F
+254136,1,Mathematics I,17,24,41,C
+254136,1,Communication Skills,13,23,36,F
+254136,1,Digital Electronics,12,22,34,F
+254136,2,Data Structures,15,24,39,F
+254136,2,Database Management Systems,18,24,42,C
+254136,2,Statistics,10,31,41,C
+254136,2,Web Development,14,37,51,B
+254139,1,Python Programming,18,54,72,A
+254139,1,Mathematics I,16,45,61,B+
+254139,1,Communication Skills,22,45,67,B+
+254139,1,Digital Electronics,21,50,71,A
+254139,2,Data Structures,19,41,60,B+
+254139,2,Database Management Systems,17,44,61,B+
+254139,2,Statistics,24,44,68,B+
+254139,2,Web Development,19,41,60,B+
+254141,1,Python Programming,15,30,45,C
+254141,1,Mathematics I,15,23,38,F
+254141,1,Communication Skills,14,22,36,F
+254141,1,Digital Electronics,10,16,26,F
+254141,2,Data Structures,13,29,42,C
+254141,2,Database Management Systems,12,28,40,C
+254141,2,Statistics,13,38,51,B
+254141,2,Web Development,14,19,33,F
+254143,1,Python Programming,15,30,45,C
+254143,1,Mathematics I,15,29,44,C
+254143,1,Communication Skills,13,34,47,C
+254143,1,Digital Electronics,16,20,36,F
+254143,2,Data Structures,14,28,42,C
+254143,2,Database Management Systems,12,15,27,F
+254143,2,Statistics,13,34,47,C
+254143,2,Web Development,11,19,30,F
+254144,1,Python Programming,22,45,67,B+
+254144,1,Mathematics I,18,47,65,B+
+254144,1,Communication Skills,22,50,72,A
+254144,1,Digital Electronics,20,43,63,B+
+254144,2,Data Structures,19,41,60,B+
+254144,2,Database Management Systems,20,41,61,B+
+254144,2,Statistics,18,53,71,A
+254144,2,Web Development,23,46,69,B+
+254146,1,Python Programming,22,44,66,B+
+254146,1,Mathematics I,16,38,54,B
+254146,1,Communication Skills,22,43,65,B+
+254146,1,Digital Electronics,20,50,70,A
+254146,2,Data Structures,18,42,60,B+
+254146,2,Database Management Systems,16,48,64,B+
+254146,2,Statistics,20,41,61,B+
+254146,2,Web Development,14,45,59,B
+254147,1,Python Programming,20,42,62,B+
+254147,1,Mathematics I,17,52,69,B+
+254147,1,Communication Skills,22,37,59,B
+254147,1,Digital Electronics,25,45,70,A
+254147,2,Data Structures,18,47,65,B+
+254147,2,Database Management Systems,20,51,71,A
+254147,2,Statistics,25,53,78,A
+254147,2,Web Development,16,42,58,B
+254148,1,Python Programming,16,48,64,B+
+254148,1,Mathematics I,25,45,70,A
+254148,1,Communication Skills,21,41,62,B+
+254148,1,Digital Electronics,21,43,64,B+
+254148,2,Data Structures,21,41,62,B+
+254148,2,Database Management Systems,24,37,61,B+
+254148,2,Statistics,19,39,58,B
+254148,2,Web Development,20,52,72,A
+254149,1,Python Programming,19,38,57,B
+254149,1,Mathematics I,20,40,60,B+
+254149,1,Communication Skills,19,39,58,B
+254149,1,Digital Electronics,19,52,71,A
+254149,2,Data Structures,18,49,67,B+
+254149,2,Database Management Systems,22,43,65,B+
+254149,2,Statistics,20,29,49,C
+254149,2,Web Development,18,44,62,B+
+254150,1,Python Programming,20,45,65,B+
+254150,1,Mathematics I,20,52,72,A
+254150,1,Communication Skills,20,41,61,B+
+254150,1,Digital Electronics,18,49,67,B+
+254150,2,Data Structures,17,45,62,B+
+254150,2,Database Management Systems,21,50,71,A
+254150,2,Statistics,21,39,60,B+
+254150,2,Web Development,22,47,69,B+
+254151,1,Python Programming,17,48,65,B+
+254151,1,Mathematics I,17,34,51,B
+254151,1,Communication Skills,19,52,71,A
+254151,1,Digital Electronics,21,58,79,A
+254151,2,Data Structures,23,50,73,A
+254151,2,Database Management Systems,19,48,67,B+
+254151,2,Statistics,19,43,62,B+
+254151,2,Web Development,22,42,64,B+
+254152,1,Python Programming,18,31,49,C
+254152,1,Mathematics I,17,37,54,B
+254152,1,Communication Skills,17,47,64,B+
+254152,1,Digital Electronics,16,45,61,B+
+254152,2,Data Structures,21,48,69,B+
+254152,2,Database Management Systems,17,43,60,B+
+254152,2,Statistics,19,35,54,B
+254152,2,Web Development,19,42,61,B+
+254153,1,Python Programming,22,45,67,B+
+254153,1,Mathematics I,16,43,59,B
+254153,1,Communication Skills,20,33,53,B
+254153,1,Digital Electronics,18,47,65,B+
+254153,2,Data Structures,18,46,64,B+
+254153,2,Database Management Systems,20,50,70,A
+254153,2,Statistics,17,45,62,B+
+254153,2,Web Development,21,47,68,B+
+254154,1,Python Programming,17,42,59,B
+254154,1,Mathematics I,22,50,72,A
+254154,1,Communication Skills,13,42,55,B
+254154,1,Digital Electronics,17,41,58,B
+254154,2,Data Structures,17,52,69,B+
+254154,2,Database Management Systems,17,46,63,B+
+254154,2,Statistics,22,41,63,B+
+254154,2,Web Development,19,52,71,A
+254155,1,Python Programming,25,60,85,A+
+254155,1,Mathematics I,25,66,91,O
+254155,1,Communication Skills,29,69,98,O
+254155,1,Digital Electronics,30,52,82,A+
+254155,2,Data Structures,23,59,82,A+
+254155,2,Database Management Systems,27,50,77,A
+254155,2,Statistics,27,60,87,A+
+254155,2,Web Development,21,52,73,A
+254156,1,Python Programming,12,32,44,C
+254156,1,Mathematics I,20,39,59,B
+254156,1,Communication Skills,17,42,59,B
+254156,1,Digital Electronics,21,47,68,B+
+254156,2,Data Structures,18,42,60,B+
+254156,2,Database Management Systems,19,44,63,B+
+254156,2,Statistics,21,39,60,B+
+254156,2,Web Development,16,51,67,B+
+254159,1,Python Programming,24,51,75,A
+254159,1,Mathematics I,23,47,70,A
+254159,1,Communication Skills,25,32,57,B
+254159,1,Digital Electronics,22,43,65,B+
+254159,2,Data Structures,19,45,64,B+
+254159,2,Database Management Systems,23,29,52,B
+254159,2,Statistics,16,35,51,B
+254159,2,Web Development,20,41,61,B+
+254160,1,Python Programming,23,49,72,A
+254160,1,Mathematics I,18,40,58,B
+254160,1,Communication Skills,24,47,71,A
+254160,1,Digital Electronics,22,49,71,A
+254160,2,Data Structures,16,40,56,B
+254160,2,Database Management Systems,21,50,71,A
+254160,2,Statistics,20,57,77,A
+254160,2,Web Development,22,44,66,B+
+254160,3,Python for Data Analytics,25,45,70,A
+254160,3,Operating Systems,18,48,66,B+
+254160,3,Computer Networks,18,51,69,B+
+254160,3,Software Engineering,18,44,62,B+
+254161,1,Python Programming,17,41,58,B
+254161,1,Mathematics I,20,53,73,A
+254161,1,Communication Skills,20,52,72,A
+254161,1,Digital Electronics,16,52,68,B+
+254161,2,Data Structures,15,44,59,B
+254161,2,Database Management Systems,24,40,64,B+
+254161,2,Statistics,18,38,56,B
+254161,2,Web Development,16,38,54,B
+254161,3,Python for Data Analytics,16,35,51,B
+254161,3,Operating Systems,18,37,55,B
+254161,3,Computer Networks,20,41,61,B+
+254161,3,Software Engineering,24,45,69,B+
+254163,1,Python Programming,20,55,75,A
+254163,1,Mathematics I,21,44,65,B+
+254163,1,Communication Skills,25,54,79,A
+254163,1,Digital Electronics,25,50,75,A
+254163,2,Data Structures,26,42,68,B+
+254163,2,Database Management Systems,18,44,62,B+
+254163,2,Statistics,17,42,59,B
+254163,2,Web Development,17,34,51,B
+254163,3,Python for Data Analytics,21,43,64,B+
+254163,3,Operating Systems,21,50,71,A
+254163,3,Computer Networks,22,42,64,B+
+254163,3,Software Engineering,22,48,70,A
+254164,1,Python Programming,13,35,48,C
+254164,1,Mathematics I,17,32,49,C
+254164,1,Communication Skills,12,19,31,F
+254164,1,Digital Electronics,13,28,41,C
+254164,2,Data Structures,13,29,42,C
+254164,2,Database Management Systems,14,29,43,C
+254164,2,Statistics,12,33,45,C
+254164,2,Web Development,12,35,47,C
+254164,3,Python for Data Analytics,10,23,33,F
+254164,3,Operating Systems,16,29,45,C
+254164,3,Computer Networks,16,23,39,F
+254164,3,Software Engineering,11,27,38,F
+254165,1,Python Programming,24,48,72,A
+254165,1,Mathematics I,22,48,70,A
+254165,1,Communication Skills,23,54,77,A
+254165,1,Digital Electronics,20,46,66,B+
+254165,2,Data Structures,20,48,68,B+
+254165,2,Database Management Systems,20,55,75,A
+254165,2,Statistics,20,49,69,B+
+254165,2,Web Development,21,44,65,B+
+254165,3,Python for Data Analytics,20,37,57,B
+254165,3,Operating Systems,17,50,67,B+
+254165,3,Computer Networks,21,43,64,B+
+254165,3,Software Engineering,15,37,52,B
+254166,1,Python Programming,19,38,57,B
+254166,1,Mathematics I,19,51,70,A
+254166,1,Communication Skills,22,46,68,B+
+254166,1,Digital Electronics,18,35,53,B
+254166,2,Data Structures,17,43,60,B+
+254166,2,Database Management Systems,19,40,59,B
+254166,2,Statistics,18,36,54,B
+254166,2,Web Development,18,40,58,B
+254166,3,Python for Data Analytics,19,50,69,B+
+254166,3,Operating Systems,21,36,57,B
+254166,3,Computer Networks,19,46,65,B+
+254166,3,Software Engineering,20,45,65,B+
+254167,1,Python Programming,29,56,85,A+
+254167,1,Mathematics I,24,68,92,O
+254167,1,Communication Skills,21,64,85,A+
+254167,1,Digital Electronics,27,57,84,A+
+254167,2,Data Structures,25,58,83,A+
+254167,2,Database Management Systems,27,53,80,A+
+254167,2,Statistics,28,61,89,A+
+254167,2,Web Development,29,48,77,A
+254167,3,Python for Data Analytics,23,52,75,A
+254167,3,Operating Systems,25,53,78,A
+254167,3,Computer Networks,28,59,87,A+
+254167,3,Software Engineering,20,56,76,A
+254168,1,Python Programming,26,42,68,B+
+254168,1,Mathematics I,28,53,81,A+
+254168,1,Communication Skills,27,62,89,A+
+254168,1,Digital Electronics,30,48,78,A
+254168,2,Data Structures,28,66,94,O
+254168,2,Database Management Systems,26,52,78,A
+254168,2,Statistics,24,54,78,A
+254168,2,Web Development,29,56,85,A+
+254168,3,Python for Data Analytics,25,51,76,A
+254168,3,Operating Systems,26,61,87,A+
+254168,3,Computer Networks,28,59,87,A+
+254168,3,Software Engineering,25,58,83,A+
+254169,1,Python Programming,22,49,71,A
+254169,1,Mathematics I,23,41,64,B+
+254169,1,Communication Skills,17,50,67,B+
+254169,1,Digital Electronics,21,49,70,A
+254169,2,Data Structures,18,47,65,B+
+254169,2,Database Management Systems,18,31,49,C
+254169,2,Statistics,23,57,80,A+
+254169,2,Web Development,21,40,61,B+
+254169,3,Python for Data Analytics,22,48,70,A
+254169,3,Operating Systems,21,51,72,A
+254169,3,Computer Networks,21,54,75,A
+254169,3,Software Engineering,22,40,62,B+
+254172,1,Python Programming,21,46,67,B+
+254172,1,Mathematics I,22,50,72,A
+254172,1,Communication Skills,25,51,76,A
+254172,1,Digital Electronics,18,37,55,B
+254172,2,Data Structures,18,33,51,B
+254172,2,Database Management Systems,14,37,51,B
+254172,2,Statistics,19,50,69,B+
+254172,2,Web Development,21,46,67,B+
+254172,3,Python for Data Analytics,19,46,65,B+
+254172,3,Operating Systems,20,41,61,B+
+254172,3,Computer Networks,16,31,47,C
+254172,3,Software Engineering,22,38,60,B+
+254174,1,Python Programming,18,40,58,B
+254174,1,Mathematics I,19,48,67,B+
+254174,1,Communication Skills,21,44,65,B+
+254174,1,Digital Electronics,19,39,58,B
+254174,2,Data Structures,17,43,60,B+
+254174,2,Database Management Systems,24,36,60,B+
+254174,2,Statistics,20,42,62,B+
+254174,2,Web Development,18,40,58,B
+254174,3,Python for Data Analytics,19,47,66,B+
+254174,3,Operating Systems,15,41,56,B
+254174,3,Computer Networks,23,48,71,A
+254174,3,Software Engineering,19,39,58,B
+254175,1,Python Programming,17,51,68,B+
+254175,1,Mathematics I,17,49,66,B+
+254175,1,Communication Skills,19,37,56,B
+254175,1,Digital Electronics,18,40,58,B
+254175,2,Data Structures,21,48,69,B+
+254175,2,Database Management Systems,19,44,63,B+
+254175,2,Statistics,24,49,73,A
+254175,2,Web Development,23,50,73,A
+254175,3,Python for Data Analytics,22,45,67,B+
+254175,3,Operating Systems,19,41,60,B+
+254175,3,Computer Networks,22,35,57,B
+254175,3,Software Engineering,19,38,57,B
+254177,1,Python Programming,20,40,60,B+
+254177,1,Mathematics I,26,47,73,A
+254177,1,Communication Skills,21,52,73,A
+254177,1,Digital Electronics,19,45,64,B+
+254177,2,Data Structures,17,44,61,B+
+254177,2,Database Management Systems,21,34,55,B
+254177,2,Statistics,23,46,69,B+
+254177,2,Web Development,24,42,66,B+
+254177,3,Python for Data Analytics,21,46,67,B+
+254177,3,Operating Systems,22,33,55,B
+254177,3,Computer Networks,25,51,76,A
+254177,3,Software Engineering,15,50,65,B+
+254178,1,Python Programming,22,46,68,B+
+254178,1,Mathematics I,21,43,64,B+
+254178,1,Communication Skills,20,45,65,B+
+254178,1,Digital Electronics,19,49,68,B+
+254178,2,Data Structures,17,46,63,B+
+254178,2,Database Management Systems,20,45,65,B+
+254178,2,Statistics,23,41,64,B+
+254178,2,Web Development,22,44,66,B+
+254178,3,Python for Data Analytics,20,53,73,A
+254178,3,Operating Systems,19,48,67,B+
+254178,3,Computer Networks,17,42,59,B
+254178,3,Software Engineering,18,44,62,B+
+254179,1,Python Programming,19,38,57,B
+254179,1,Mathematics I,25,34,59,B
+254179,1,Communication Skills,19,44,63,B+
+254179,1,Digital Electronics,19,40,59,B
+254179,2,Data Structures,20,38,58,B
+254179,2,Database Management Systems,21,42,63,B+
+254179,2,Statistics,16,39,55,B
+254179,2,Web Development,22,39,61,B+
+254179,3,Python for Data Analytics,22,36,58,B
+254179,3,Operating Systems,20,45,65,B+
+254179,3,Computer Networks,19,30,49,C
+254179,3,Software Engineering,20,47,67,B+
+254180,1,Python Programming,12,27,39,F
+254180,1,Mathematics I,12,21,33,F
+254180,1,Communication Skills,15,24,39,F
+254180,1,Digital Electronics,16,36,52,B
+254180,2,Data Structures,16,24,40,C
+254180,2,Database Management Systems,14,15,29,F
+254180,2,Statistics,10,27,37,F
+254180,2,Web Development,13,19,32,F
+254180,3,Python for Data Analytics,12,27,39,F
+254180,3,Operating Systems,16,25,41,C
+254180,3,Computer Networks,11,32,43,C
+254180,3,Software Engineering,15,32,47,C
+254181,1,Python Programming,17,32,49,C
+254181,1,Mathematics I,17,22,39,F
+254181,1,Communication Skills,16,34,50,B
+254181,1,Digital Electronics,13,38,51,B
+254181,2,Data Structures,12,32,44,C
+254181,2,Database Management Systems,13,22,35,F
+254181,2,Statistics,11,35,46,C
+254181,2,Web Development,13,21,34,F
+254181,3,Python for Data Analytics,14,31,45,C
+254181,3,Operating Systems,11,22,33,F
+254181,3,Computer Networks,14,33,47,C
+254181,3,Software Engineering,17,25,42,C
+254182,1,Python Programming,10,32,42,C
+254182,1,Mathematics I,14,23,37,F
+254182,1,Communication Skills,13,33,46,C
+254182,1,Digital Electronics,15,37,52,B
+254182,2,Data Structures,13,15,28,F
+254182,2,Database Management Systems,11,25,36,F
+254182,2,Statistics,14,31,45,C
+254182,2,Web Development,13,23,36,F
+254182,3,Python for Data Analytics,15,21,36,F
+254182,3,Operating Systems,13,19,32,F
+254182,3,Computer Networks,13,21,34,F
+254182,3,Software Engineering,10,42,52,B
+254183,1,Python Programming,23,52,75,A
+254183,1,Mathematics I,19,44,63,B+
+254183,1,Communication Skills,15,44,59,B
+254183,1,Digital Electronics,17,43,60,B+
+254183,2,Data Structures,22,42,64,B+
+254183,2,Database Management Systems,19,43,62,B+
+254183,2,Statistics,22,58,80,A+
+254183,2,Web Development,23,42,65,B+
+254183,3,Python for Data Analytics,18,38,56,B
+254183,3,Operating Systems,19,35,54,B
+254183,3,Computer Networks,17,56,73,A
+254183,3,Software Engineering,21,57,78,A
+254184,1,Python Programming,20,43,63,B+
+254184,1,Mathematics I,18,41,59,B
+254184,1,Communication Skills,20,55,75,A
+254184,1,Digital Electronics,22,43,65,B+
+254184,2,Data Structures,18,47,65,B+
+254184,2,Database Management Systems,21,47,68,B+
+254184,2,Statistics,22,44,66,B+
+254184,2,Web Development,23,41,64,B+
+254184,3,Python for Data Analytics,20,47,67,B+
+254184,3,Operating Systems,20,58,78,A
+254184,3,Computer Networks,22,39,61,B+
+254184,3,Software Engineering,19,49,68,B+
+254184,4,Java Programming,20,40,60,B+
+254184,4,Data Visualization,27,32,59,B
+254184,4,Cloud Computing,19,44,63,B+
+254184,4,Artificial Intelligence,22,44,66,B+
+254185,1,Python Programming,22,37,59,B
+254185,1,Mathematics I,20,47,67,B+
+254185,1,Communication Skills,20,50,70,A
+254185,1,Digital Electronics,20,51,71,A
+254185,2,Data Structures,19,48,67,B+
+254185,2,Database Management Systems,22,33,55,B
+254185,2,Statistics,18,38,56,B
+254185,2,Web Development,21,32,53,B
+254185,3,Python for Data Analytics,18,42,60,B+
+254185,3,Operating Systems,23,43,66,B+
+254185,3,Computer Networks,24,46,70,A
+254185,3,Software Engineering,17,52,69,B+
+254185,4,Java Programming,24,55,79,A
+254185,4,Data Visualization,22,35,57,B
+254185,4,Cloud Computing,18,40,58,B
+254185,4,Artificial Intelligence,20,38,58,B
+254186,1,Python Programming,24,61,85,A+
+254186,1,Mathematics I,23,52,75,A
+254186,1,Communication Skills,26,67,93,O
+254186,1,Digital Electronics,25,58,83,A+
+254186,2,Data Structures,23,59,82,A+
+254186,2,Database Management Systems,22,50,72,A
+254186,2,Statistics,26,66,92,O
+254186,2,Web Development,24,52,76,A
+254186,3,Python for Data Analytics,25,60,85,A+
+254186,3,Operating Systems,26,47,73,A
+254186,3,Computer Networks,25,49,74,A
+254186,3,Software Engineering,26,65,91,O
+254186,4,Java Programming,22,69,91,O
+254186,4,Data Visualization,27,49,76,A
+254186,4,Cloud Computing,29,51,80,A+
+254186,4,Artificial Intelligence,24,43,67,B+
+254187,1,Python Programming,18,27,45,C
+254187,1,Mathematics I,10,21,31,F
+254187,1,Communication Skills,10,23,33,F
+254187,1,Digital Electronics,12,21,33,F
+254187,2,Data Structures,16,24,40,C
+254187,2,Database Management Systems,18,29,47,C
+254187,2,Statistics,15,27,42,C
+254187,2,Web Development,12,28,40,C
+254187,3,Python for Data Analytics,15,24,39,F
+254187,3,Operating Systems,13,36,49,C
+254187,3,Computer Networks,14,30,44,C
+254187,3,Software Engineering,13,28,41,C
+254187,4,Java Programming,13,34,47,C
+254187,4,Data Visualization,13,44,57,B
+254187,4,Cloud Computing,16,35,51,B
+254187,4,Artificial Intelligence,12,22,34,F
+254189,1,Python Programming,26,49,75,A
+254189,1,Mathematics I,30,59,89,A+
+254189,1,Communication Skills,28,55,83,A+
+254189,1,Digital Electronics,21,69,90,O
+254189,2,Data Structures,26,54,80,A+
+254189,2,Database Management Systems,21,58,79,A
+254189,2,Statistics,25,66,91,O
+254189,2,Web Development,25,50,75,A
+254189,3,Python for Data Analytics,21,56,77,A
+254189,3,Operating Systems,28,56,84,A+
+254189,3,Computer Networks,24,67,91,O
+254189,3,Software Engineering,23,63,86,A+
+254189,4,Java Programming,25,67,92,O
+254189,4,Data Visualization,29,54,83,A+
+254189,4,Cloud Computing,24,60,84,A+
+254189,4,Artificial Intelligence,27,65,92,O
+254190,1,Python Programming,20,29,49,C
+254190,1,Mathematics I,24,53,77,A
+254190,1,Communication Skills,20,42,62,B+
+254190,1,Digital Electronics,21,38,59,B
+254190,2,Data Structures,23,38,61,B+
+254190,2,Database Management Systems,21,48,69,B+
+254190,2,Statistics,19,41,60,B+
+254190,2,Web Development,21,44,65,B+
+254190,3,Python for Data Analytics,17,48,65,B+
+254190,3,Operating Systems,21,42,63,B+
+254190,3,Computer Networks,20,54,74,A
+254190,3,Software Engineering,19,35,54,B
+254190,4,Java Programming,23,48,71,A
+254190,4,Data Visualization,21,36,57,B
+254190,4,Cloud Computing,21,48,69,B+
+254190,4,Artificial Intelligence,20,46,66,B+
+254201,1,Python Programming,28,63,91,O
+254201,1,Mathematics I,25,56,81,A+
+254201,1,Communication Skills,28,59,87,A+
+254201,1,Digital Electronics,26,64,90,O
+254201,2,Data Structures,25,51,76,A
+254201,2,Database Management Systems,28,65,93,O
+254201,2,Statistics,26,62,88,A+
+254201,2,Web Development,29,56,85,A+
+254201,3,Python for Data Analytics,22,67,89,A+
+254201,3,Operating Systems,28,56,84,A+
+254201,3,Computer Networks,30,55,85,A+
+254201,3,Software Engineering,30,70,100,O
+254201,4,Java Programming,25,60,85,A+
+254201,4,Data Visualization,25,59,84,A+
+254201,4,Cloud Computing,22,60,82,A+
+254201,4,Artificial Intelligence,27,59,86,A+
+254202,1,Python Programming,24,46,70,A
+254202,1,Mathematics I,16,47,63,B+
+254202,1,Communication Skills,23,47,70,A
+254202,1,Digital Electronics,21,47,68,B+
+254202,2,Data Structures,23,46,69,B+
+254202,2,Database Management Systems,19,45,64,B+
+254202,2,Statistics,22,44,66,B+
+254202,2,Web Development,18,35,53,B
+254202,3,Python for Data Analytics,21,40,61,B+
+254202,3,Operating Systems,15,38,53,B
+254202,3,Computer Networks,19,52,71,A
+254202,3,Software Engineering,18,48,66,B+
+254202,4,Java Programming,19,43,62,B+
+254202,4,Data Visualization,23,39,62,B+
+254202,4,Cloud Computing,19,38,57,B
+254202,4,Artificial Intelligence,22,40,62,B+
+254203,1,Python Programming,23,40,63,B+
+254203,1,Mathematics I,19,47,66,B+
+254203,1,Communication Skills,21,52,73,A
+254203,1,Digital Electronics,18,52,70,A
+254203,2,Data Structures,21,48,69,B+
+254203,2,Database Management Systems,17,47,64,B+
+254203,2,Statistics,20,34,54,B
+254203,2,Web Development,19,48,67,B+
+254203,3,Python for Data Analytics,20,44,64,B+
+254203,3,Operating Systems,18,61,79,A
+254203,3,Computer Networks,18,45,63,B+
+254203,3,Software Engineering,19,51,70,A
+254203,4,Java Programming,20,38,58,B
+254203,4,Data Visualization,20,43,63,B+
+254203,4,Cloud Computing,19,44,63,B+
+254203,4,Artificial Intelligence,20,51,71,A
+254204,1,Python Programming,20,47,67,B+
+254204,1,Mathematics I,26,39,65,B+
+254204,1,Communication Skills,21,48,69,B+
+254204,1,Digital Electronics,23,35,58,B
+254204,2,Data Structures,19,40,59,B
+254204,2,Database Management Systems,14,40,54,B
+254204,2,Statistics,22,53,75,A
+254204,2,Web Development,23,31,54,B
+254204,3,Python for Data Analytics,17,42,59,B
+254204,3,Operating Systems,20,52,72,A
+254204,3,Computer Networks,18,35,53,B
+254204,3,Software Engineering,23,45,68,B+
+254204,4,Java Programming,23,44,67,B+
+254204,4,Data Visualization,22,40,62,B+
+254204,4,Cloud Computing,17,45,62,B+
+254204,4,Artificial Intelligence,20,51,71,A
+254205,1,Python Programming,19,38,57,B
+254205,1,Mathematics I,19,50,69,B+
+254205,1,Communication Skills,20,52,72,A
+254205,1,Digital Electronics,22,45,67,B+
+254205,2,Data Structures,23,42,65,B+
+254205,2,Database Management Systems,24,41,65,B+
+254205,2,Statistics,27,53,80,A+
+254205,2,Web Development,19,39,58,B
+254205,3,Python for Data Analytics,16,45,61,B+
+254205,3,Operating Systems,19,49,68,B+
+254205,3,Computer Networks,17,58,75,A
+254205,3,Software Engineering,19,48,67,B+
+254205,4,Java Programming,23,39,62,B+
+254205,4,Data Visualization,19,52,71,A
+254205,4,Cloud Computing,19,51,70,A
+254205,4,Artificial Intelligence,19,45,64,B+
+254206,1,Python Programming,22,32,54,B
+254206,1,Mathematics I,23,33,56,B
+254206,1,Communication Skills,19,37,56,B
+254206,1,Digital Electronics,23,46,69,B+
+254206,2,Data Structures,24,49,73,A
+254206,2,Database Management Systems,21,44,65,B+
+254206,2,Statistics,17,39,56,B
+254206,2,Web Development,16,40,56,B
+254206,3,Python for Data Analytics,21,38,59,B
+254206,3,Operating Systems,23,41,64,B+
+254206,3,Computer Networks,18,41,59,B
+254206,3,Software Engineering,18,44,62,B+
+254206,4,Java Programming,20,50,70,A
+254206,4,Data Visualization,19,40,59,B
+254206,4,Cloud Computing,25,52,77,A
+254206,4,Artificial Intelligence,21,46,67,B+
+254207,1,Python Programming,21,46,67,B+
+254207,1,Mathematics I,19,47,66,B+
+254207,1,Communication Skills,23,44,67,B+
+254207,1,Digital Electronics,16,26,42,C
+254207,2,Data Structures,20,51,71,A
+254207,2,Database Management Systems,19,43,62,B+
+254207,2,Statistics,21,47,68,B+
+254207,2,Web Development,22,45,67,B+
+254207,3,Python for Data Analytics,24,41,65,B+
+254207,3,Operating Systems,20,41,61,B+
+254207,3,Computer Networks,23,44,67,B+
+254207,3,Software Engineering,18,48,66,B+
+254207,4,Java Programming,16,49,65,B+
+254207,4,Data Visualization,17,41,58,B
+254207,4,Cloud Computing,19,38,57,B
+254207,4,Artificial Intelligence,22,40,62,B+
+254208,1,Python Programming,21,39,60,B+
+254208,1,Mathematics I,22,38,60,B+
+254208,1,Communication Skills,19,37,56,B
+254208,1,Digital Electronics,19,42,61,B+
+254208,2,Data Structures,19,53,72,A
+254208,2,Database Management Systems,16,38,54,B
+254208,2,Statistics,19,41,60,B+
+254208,2,Web Development,17,45,62,B+
+254208,3,Python for Data Analytics,23,44,67,B+
+254208,3,Operating Systems,22,52,74,A
+254208,3,Computer Networks,16,41,57,B
+254208,3,Software Engineering,24,36,60,B+
+254208,4,Java Programming,24,49,73,A
+254208,4,Data Visualization,18,43,61,B+
+254208,4,Cloud Computing,24,43,67,B+
+254208,4,Artificial Intelligence,22,50,72,A
+254209,1,Python Programming,17,43,60,B+
+254209,1,Mathematics I,19,36,55,B
+254209,1,Communication Skills,17,40,57,B
+254209,1,Digital Electronics,20,49,69,B+
+254209,2,Data Structures,21,43,64,B+
+254209,2,Database Management Systems,19,41,60,B+
+254209,2,Statistics,21,51,72,A
+254209,2,Web Development,20,42,62,B+
+254209,3,Python for Data Analytics,19,54,73,A
+254209,3,Operating Systems,23,39,62,B+
+254209,3,Computer Networks,24,59,83,A+
+254209,3,Software Engineering,22,48,70,A
+254209,4,Java Programming,22,43,65,B+
+254209,4,Data Visualization,21,40,61,B+
+254209,4,Cloud Computing,23,46,69,B+
+254209,4,Artificial Intelligence,23,37,60,B+
+254210,1,Python Programming,16,39,55,B
+254210,1,Mathematics I,19,45,64,B+
+254210,1,Communication Skills,19,38,57,B
+254210,1,Digital Electronics,20,39,59,B
+254210,2,Data Structures,22,48,70,A
+254210,2,Database Management Systems,20,39,59,B
+254210,2,Statistics,23,40,63,B+
+254210,2,Web Development,18,44,62,B+
+254210,3,Python for Data Analytics,19,46,65,B+
+254210,3,Operating Systems,22,38,60,B+
+254210,3,Computer Networks,17,45,62,B+
+254210,3,Software Engineering,17,46,63,B+
+254210,4,Java Programming,20,48,68,B+
+254210,4,Data Visualization,17,54,71,A
+254210,4,Cloud Computing,18,44,62,B+
+254210,4,Artificial Intelligence,22,40,62,B+
+254211,1,Python Programming,22,51,73,A
+254211,1,Mathematics I,18,48,66,B+
+254211,1,Communication Skills,19,54,73,A
+254211,1,Digital Electronics,18,37,55,B
+254211,2,Data Structures,18,42,60,B+
+254211,2,Database Management Systems,18,34,52,B
+254211,2,Statistics,20,38,58,B
+254211,2,Web Development,23,43,66,B+
+254211,3,Python for Data Analytics,20,56,76,A
+254211,3,Operating Systems,20,46,66,B+
+254211,3,Computer Networks,21,42,63,B+
+254211,3,Software Engineering,18,43,61,B+
+254211,4,Java Programming,22,38,60,B+
+254211,4,Data Visualization,22,46,68,B+
+254211,4,Cloud Computing,21,37,58,B
+254211,4,Artificial Intelligence,19,52,71,A
+254212,1,Python Programming,10,27,37,F
+254212,1,Mathematics I,13,28,41,C
+254212,1,Communication Skills,16,30,46,C
+254212,1,Digital Electronics,11,30,41,C
+254212,2,Data Structures,13,32,45,C
+254212,2,Database Management Systems,12,33,45,C
+254212,2,Statistics,12,24,36,F
+254212,2,Web Development,16,29,45,C
+254212,3,Python for Data Analytics,14,19,33,F
+254212,3,Operating Systems,12,20,32,F
+254212,3,Computer Networks,17,19,36,F
+254212,3,Software Engineering,18,22,40,C
+254212,4,Java Programming,17,19,36,F
+254212,4,Data Visualization,18,31,49,C
+254212,4,Cloud Computing,13,32,45,C
+254212,4,Artificial Intelligence,14,34,48,C
+254214,1,Python Programming,19,45,64,B+
+254214,1,Mathematics I,18,59,77,A
+254214,1,Communication Skills,21,53,74,A
+254214,1,Digital Electronics,23,52,75,A
+254214,2,Data Structures,19,53,72,A
+254214,2,Database Management Systems,22,47,69,B+
+254214,2,Statistics,18,47,65,B+
+254214,2,Web Development,18,39,57,B
+254214,3,Python for Data Analytics,23,44,67,B+
+254214,3,Operating Systems,21,44,65,B+
+254214,3,Computer Networks,18,34,52,B
+254214,3,Software Engineering,20,46,66,B+
+254214,4,Java Programming,17,51,68,B+
+254214,4,Data Visualization,21,46,67,B+
+254214,4,Cloud Computing,21,34,55,B
+254214,4,Artificial Intelligence,26,49,75,A
+254215,1,Python Programming,19,36,55,B
+254215,1,Mathematics I,22,39,61,B+
+254215,1,Communication Skills,21,45,66,B+
+254215,1,Digital Electronics,17,32,49,C
+254215,2,Data Structures,19,47,66,B+
+254215,2,Database Management Systems,21,36,57,B
+254215,2,Statistics,17,37,54,B
+254215,2,Web Development,15,41,56,B
+254215,3,Python for Data Analytics,17,43,60,B+
+254215,3,Operating Systems,18,56,74,A
+254215,3,Computer Networks,23,42,65,B+
+254215,3,Software Engineering,22,38,60,B+
+254215,4,Java Programming,27,42,69,B+
+254215,4,Data Visualization,19,49,68,B+
+254215,4,Cloud Computing,17,51,68,B+
+254215,4,Artificial Intelligence,14,44,58,B
+254215,5,Machine Learning,22,46,68,B+
+254215,5,Cyber Security,20,46,66,B+
+254215,5,Big Data Analytics,18,39,57,B
+254215,5,Business Intelligence,22,50,72,A
+254216,1,Python Programming,30,50,80,A+
+254216,1,Mathematics I,28,49,77,A
+254216,1,Communication Skills,24,51,75,A
+254216,1,Digital Electronics,28,62,90,O
+254216,2,Data Structures,26,70,96,O
+254216,2,Database Management Systems,28,66,94,O
+254216,2,Statistics,25,55,80,A+
+254216,2,Web Development,26,65,91,O
+254216,3,Python for Data Analytics,24,64,88,A+
+254216,3,Operating Systems,24,51,75,A
+254216,3,Computer Networks,29,51,80,A+
+254216,3,Software Engineering,30,55,85,A+
+254216,4,Java Programming,24,57,81,A+
+254216,4,Data Visualization,25,51,76,A
+254216,4,Cloud Computing,30,62,92,O
+254216,4,Artificial Intelligence,27,60,87,A+
+254216,5,Machine Learning,25,55,80,A+
+254216,5,Cyber Security,26,59,85,A+
+254216,5,Big Data Analytics,28,60,88,A+
+254216,5,Business Intelligence,25,60,85,A+
+254217,1,Python Programming,20,39,59,B
+254217,1,Mathematics I,21,31,52,B
+254217,1,Communication Skills,22,54,76,A
+254217,1,Digital Electronics,19,50,69,B+
+254217,2,Data Structures,19,55,74,A
+254217,2,Database Management Systems,23,48,71,A
+254217,2,Statistics,18,42,60,B+
+254217,2,Web Development,18,38,56,B
+254217,3,Python for Data Analytics,20,40,60,B+
+254217,3,Operating Systems,18,44,62,B+
+254217,3,Computer Networks,18,46,64,B+
+254217,3,Software Engineering,24,55,79,A
+254217,4,Java Programming,24,44,68,B+
+254217,4,Data Visualization,17,50,67,B+
+254217,4,Cloud Computing,20,51,71,A
+254217,4,Artificial Intelligence,23,43,66,B+
+254217,5,Machine Learning,25,38,63,B+
+254217,5,Cyber Security,20,33,53,B
+254217,5,Big Data Analytics,21,45,66,B+
+254217,5,Business Intelligence,23,51,74,A
+254219,1,Python Programming,23,33,56,B
+254219,1,Mathematics I,23,41,64,B+
+254219,1,Communication Skills,21,58,79,A
+254219,1,Digital Electronics,23,46,69,B+
+254219,2,Data Structures,18,46,64,B+
+254219,2,Database Management Systems,22,45,67,B+
+254219,2,Statistics,15,47,62,B+
+254219,2,Web Development,22,41,63,B+
+254219,3,Python for Data Analytics,19,41,60,B+
+254219,3,Operating Systems,19,40,59,B
+254219,3,Computer Networks,19,45,64,B+
+254219,3,Software Engineering,24,51,75,A
+254219,4,Java Programming,22,38,60,B+
+254219,4,Data Visualization,20,53,73,A
+254219,4,Cloud Computing,21,45,66,B+
+254219,4,Artificial Intelligence,18,46,64,B+
+254219,5,Machine Learning,18,31,49,C
+254219,5,Cyber Security,22,46,68,B+
+254219,5,Big Data Analytics,22,44,66,B+
+254219,5,Business Intelligence,16,54,70,A
+254220,1,Python Programming,28,55,83,A+
+254220,1,Mathematics I,23,53,76,A
+254220,1,Communication Skills,23,68,91,O
+254220,1,Digital Electronics,29,63,92,O
+254220,2,Data Structures,23,52,75,A
+254220,2,Database Management Systems,26,55,81,A+
+254220,2,Statistics,24,62,86,A+
+254220,2,Web Development,23,58,81,A+
+254220,3,Python for Data Analytics,26,58,84,A+
+254220,3,Operating Systems,29,48,77,A
+254220,3,Computer Networks,24,64,88,A+
+254220,3,Software Engineering,28,66,94,O
+254220,4,Java Programming,30,60,90,O
+254220,4,Data Visualization,30,52,82,A+
+254220,4,Cloud Computing,24,56,80,A+
+254220,4,Artificial Intelligence,28,58,86,A+
+254220,5,Machine Learning,27,49,76,A
+254220,5,Cyber Security,20,43,63,B+
+254220,5,Big Data Analytics,22,67,89,A+
+254220,5,Business Intelligence,26,58,84,A+
+254221,1,Python Programming,23,41,64,B+
+254221,1,Mathematics I,19,56,75,A
+254221,1,Communication Skills,18,44,62,B+
+254221,1,Digital Electronics,20,44,64,B+
+254221,2,Data Structures,20,44,64,B+
+254221,2,Database Management Systems,19,51,70,A
+254221,2,Statistics,24,38,62,B+
+254221,2,Web Development,20,33,53,B
+254221,3,Python for Data Analytics,21,33,54,B
+254221,3,Operating Systems,15,34,49,C
+254221,3,Computer Networks,19,46,65,B+
+254221,3,Software Engineering,21,52,73,A
+254221,4,Java Programming,22,29,51,B
+254221,4,Data Visualization,19,53,72,A
+254221,4,Cloud Computing,24,39,63,B+
+254221,4,Artificial Intelligence,23,46,69,B+
+254221,5,Machine Learning,20,41,61,B+
+254221,5,Cyber Security,14,50,64,B+
+254221,5,Big Data Analytics,26,43,69,B+
+254221,5,Business Intelligence,21,58,79,A
+254224,1,Python Programming,17,36,53,B
+254224,1,Mathematics I,21,34,55,B
+254224,1,Communication Skills,17,33,50,B
+254224,1,Digital Electronics,10,24,34,F
+254224,2,Data Structures,14,30,44,C
+254224,2,Database Management Systems,15,34,49,C
+254224,2,Statistics,13,15,28,F
+254224,2,Web Development,12,23,35,F
+254224,3,Python for Data Analytics,16,32,48,C
+254224,3,Operating Systems,11,27,38,F
+254224,3,Computer Networks,18,33,51,B
+254224,3,Software Engineering,16,30,46,C
+254224,4,Java Programming,15,33,48,C
+254224,4,Data Visualization,11,30,41,C
+254224,4,Cloud Computing,11,23,34,F
+254224,4,Artificial Intelligence,14,31,45,C
+254224,5,Machine Learning,15,26,41,C
+254224,5,Cyber Security,15,31,46,C
+254224,5,Big Data Analytics,13,18,31,F
+254224,5,Business Intelligence,16,28,44,C
+254226,1,Python Programming,30,64,94,O
+254226,1,Mathematics I,24,61,85,A+
+254226,1,Communication Skills,22,45,67,B+
+254226,1,Digital Electronics,26,59,85,A+
+254226,2,Data Structures,28,55,83,A+
+254226,2,Database Management Systems,24,54,78,A
+254226,2,Statistics,26,60,86,A+
+254226,2,Web Development,27,62,89,A+
+254226,3,Python for Data Analytics,28,66,94,O
+254226,3,Operating Systems,28,60,88,A+
+254226,3,Computer Networks,26,54,80,A+
+254226,3,Software Engineering,27,43,70,A
+254226,4,Java Programming,24,45,69,B+
+254226,4,Data Visualization,25,56,81,A+
+254226,4,Cloud Computing,26,57,83,A+
+254226,4,Artificial Intelligence,25,43,68,B+
+254226,5,Machine Learning,30,70,100,O
+254226,5,Cyber Security,28,60,88,A+
+254226,5,Big Data Analytics,26,60,86,A+
+254226,5,Business Intelligence,28,61,89,A+
+254227,1,Python Programming,15,27,42,C
+254227,1,Mathematics I,16,26,42,C
+254227,1,Communication Skills,10,31,41,C
+254227,1,Digital Electronics,11,22,33,F
+254227,2,Data Structures,13,30,43,C
+254227,2,Database Management Systems,12,41,53,B
+254227,2,Statistics,13,27,40,C
+254227,2,Web Development,17,25,42,C
+254227,3,Python for Data Analytics,12,33,45,C
+254227,3,Operating Systems,14,27,41,C
+254227,3,Computer Networks,11,22,33,F
+254227,3,Software Engineering,15,26,41,C
+254227,4,Java Programming,14,15,29,F
+254227,4,Data Visualization,14,30,44,C
+254227,4,Cloud Computing,13,35,48,C
+254227,4,Artificial Intelligence,13,30,43,C
+254227,5,Machine Learning,17,27,44,C
+254227,5,Cyber Security,12,21,33,F
+254227,5,Big Data Analytics,15,32,47,C
+254227,5,Business Intelligence,10,29,39,F
+254228,1,Python Programming,19,44,63,B+
+254228,1,Mathematics I,16,48,64,B+
+254228,1,Communication Skills,22,34,56,B
+254228,1,Digital Electronics,23,52,75,A
+254228,2,Data Structures,19,55,74,A
+254228,2,Database Management Systems,20,45,65,B+
+254228,2,Statistics,18,50,68,B+
+254228,2,Web Development,25,39,64,B+
+254228,3,Python for Data Analytics,23,55,78,A
+254228,3,Operating Systems,16,43,59,B
+254228,3,Computer Networks,22,51,73,A
+254228,3,Software Engineering,19,39,58,B
+254228,4,Java Programming,20,50,70,A
+254228,4,Data Visualization,21,44,65,B+
+254228,4,Cloud Computing,23,39,62,B+
+254228,4,Artificial Intelligence,20,44,64,B+
+254228,5,Machine Learning,18,59,77,A
+254228,5,Cyber Security,18,40,58,B
+254228,5,Big Data Analytics,20,51,71,A
+254228,5,Business Intelligence,16,42,58,B
+254229,1,Python Programming,20,47,67,B+
+254229,1,Mathematics I,23,36,59,B
+254229,1,Communication Skills,20,53,73,A
+254229,1,Digital Electronics,19,50,69,B+
+254229,2,Data Structures,24,38,62,B+
+254229,2,Database Management Systems,17,39,56,B
+254229,2,Statistics,19,35,54,B
+254229,2,Web Development,20,39,59,B
+254229,3,Python for Data Analytics,24,46,70,A
+254229,3,Operating Systems,19,43,62,B+
+254229,3,Computer Networks,16,42,58,B
+254229,3,Software Engineering,18,32,50,B
+254229,4,Java Programming,23,34,57,B
+254229,4,Data Visualization,21,47,68,B+
+254229,4,Cloud Computing,22,34,56,B
+254229,4,Artificial Intelligence,23,43,66,B+
+254229,5,Machine Learning,17,52,69,B+
+254229,5,Cyber Security,24,42,66,B+
+254229,5,Big Data Analytics,19,55,74,A
+254229,5,Business Intelligence,21,32,53,B
+254230,1,Python Programming,25,51,76,A
+254230,1,Mathematics I,29,69,98,O
+254230,1,Communication Skills,22,70,92,O
+254230,1,Digital Electronics,21,65,86,A+
+254230,2,Data Structures,26,60,86,A+
+254230,2,Database Management Systems,30,57,87,A+
+254230,2,Statistics,24,59,83,A+
+254230,2,Web Development,23,64,87,A+
+254230,3,Python for Data Analytics,26,55,81,A+
+254230,3,Operating Systems,27,52,79,A
+254230,3,Computer Networks,29,58,87,A+
+254230,3,Software Engineering,20,66,86,A+
+254230,4,Java Programming,26,58,84,A+
+254230,4,Data Visualization,26,60,86,A+
+254230,4,Cloud Computing,26,61,87,A+
+254230,4,Artificial Intelligence,26,60,86,A+
+254230,5,Machine Learning,29,56,85,A+
+254230,5,Cyber Security,26,50,76,A
+254230,5,Big Data Analytics,30,70,100,O
+254230,5,Business Intelligence,26,65,91,O
+254231,1,Python Programming,23,51,74,A
+254231,1,Mathematics I,19,38,57,B
+254231,1,Communication Skills,25,47,72,A
+254231,1,Digital Electronics,23,63,86,A+
+254231,2,Data Structures,18,37,55,B
+254231,2,Database Management Systems,20,39,59,B
+254231,2,Statistics,17,42,59,B
+254231,2,Web Development,23,41,64,B+
+254231,3,Python for Data Analytics,18,36,54,B
+254231,3,Operating Systems,23,51,74,A
+254231,3,Computer Networks,23,50,73,A
+254231,3,Software Engineering,21,47,68,B+
+254231,4,Java Programming,21,48,69,B+
+254231,4,Data Visualization,20,43,63,B+
+254231,4,Cloud Computing,23,46,69,B+
+254231,4,Artificial Intelligence,26,44,70,A
+254231,5,Machine Learning,17,32,49,C
+254231,5,Cyber Security,17,46,63,B+
+254231,5,Big Data Analytics,16,43,59,B
+254231,5,Business Intelligence,21,46,67,B+
+254232,1,Python Programming,26,60,86,A+
+254232,1,Mathematics I,30,54,84,A+
+254232,1,Communication Skills,29,64,93,O
+254232,1,Digital Electronics,27,56,83,A+
+254232,2,Data Structures,24,63,87,A+
+254232,2,Database Management Systems,22,67,89,A+
+254232,2,Statistics,27,64,91,O
+254232,2,Web Development,26,49,75,A
+254232,3,Python for Data Analytics,27,50,77,A
+254232,3,Operating Systems,25,57,82,A+
+254232,3,Computer Networks,27,57,84,A+
+254232,3,Software Engineering,28,61,89,A+
+254232,4,Java Programming,27,63,90,O
+254232,4,Data Visualization,26,53,79,A
+254232,4,Cloud Computing,27,57,84,A+
+254232,4,Artificial Intelligence,25,56,81,A+
+254232,5,Machine Learning,26,63,89,A+
+254232,5,Cyber Security,22,59,81,A+
+254232,5,Big Data Analytics,20,51,71,A
+254232,5,Business Intelligence,24,49,73,A
+254233,1,Python Programming,18,51,69,B+
+254233,1,Mathematics I,23,27,50,B
+254233,1,Communication Skills,23,47,70,A
+254233,1,Digital Electronics,24,51,75,A
+254233,2,Data Structures,23,47,70,A
+254233,2,Database Management Systems,27,48,75,A
+254233,2,Statistics,18,39,57,B
+254233,2,Web Development,23,46,69,B+
+254233,3,Python for Data Analytics,22,39,61,B+
+254233,3,Operating Systems,22,42,64,B+
+254233,3,Computer Networks,17,48,65,B+
+254233,3,Software Engineering,20,37,57,B
+254233,4,Java Programming,19,51,70,A
+254233,4,Data Visualization,24,49,73,A
+254233,4,Cloud Computing,22,45,67,B+
+254233,4,Artificial Intelligence,21,39,60,B+
+254233,5,Machine Learning,18,36,54,B
+254233,5,Cyber Security,23,45,68,B+
+254233,5,Big Data Analytics,23,30,53,B
+254233,5,Business Intelligence,23,43,66,B+
+254234,1,Python Programming,20,41,61,B+
+254234,1,Mathematics I,19,49,68,B+
+254234,1,Communication Skills,16,47,63,B+
+254234,1,Digital Electronics,19,32,51,B
+254234,2,Data Structures,22,37,59,B
+254234,2,Database Management Systems,17,36,53,B
+254234,2,Statistics,22,49,71,A
+254234,2,Web Development,20,55,75,A
+254234,3,Python for Data Analytics,17,45,62,B+
+254234,3,Operating Systems,19,35,54,B
+254234,3,Computer Networks,22,48,70,A
+254234,3,Software Engineering,17,38,55,B
+254234,4,Java Programming,26,42,68,B+
+254234,4,Data Visualization,18,60,78,A
+254234,4,Cloud Computing,19,45,64,B+
+254234,4,Artificial Intelligence,22,44,66,B+
+254234,5,Machine Learning,19,33,52,B
+254234,5,Cyber Security,14,41,55,B
+254234,5,Big Data Analytics,19,41,60,B+
+254234,5,Business Intelligence,23,53,76,A
+254235,1,Python Programming,19,34,53,B
+254235,1,Mathematics I,19,53,72,A
+254235,1,Communication Skills,18,33,51,B
+254235,1,Digital Electronics,19,43,62,B+
+254235,2,Data Structures,22,48,70,A
+254235,2,Database Management Systems,20,43,63,B+
+254235,2,Statistics,24,43,67,B+
+254235,2,Web Development,21,45,66,B+
+254235,3,Python for Data Analytics,18,43,61,B+
+254235,3,Operating Systems,21,41,62,B+
+254235,3,Computer Networks,21,53,74,A
+254235,3,Software Engineering,22,47,69,B+
+254235,4,Java Programming,20,42,62,B+
+254235,4,Data Visualization,22,46,68,B+
+254235,4,Cloud Computing,21,44,65,B+
+254235,4,Artificial Intelligence,18,52,70,A
+254235,5,Machine Learning,18,46,64,B+
+254235,5,Cyber Security,17,39,56,B
+254235,5,Big Data Analytics,20,40,60,B+
+254235,5,Business Intelligence,18,28,46,C
+254236,1,Python Programming,18,48,66,B+
+254236,1,Mathematics I,20,40,60,B+
+254236,1,Communication Skills,18,52,70,A
+254236,1,Digital Electronics,21,43,64,B+
+254236,2,Data Structures,23,41,64,B+
+254236,2,Database Management Systems,18,39,57,B
+254236,2,Statistics,20,39,59,B
+254236,2,Web Development,22,50,72,A
+254236,3,Python for Data Analytics,17,48,65,B+
+254236,3,Operating Systems,21,45,66,B+
+254236,3,Computer Networks,19,47,66,B+
+254236,3,Software Engineering,17,55,72,A
+254236,4,Java Programming,20,44,64,B+
+254236,4,Data Visualization,18,51,69,B+
+254236,4,Cloud Computing,15,34,49,C
+254236,4,Artificial Intelligence,18,56,74,A
+254236,5,Machine Learning,18,49,67,B+
+254236,5,Cyber Security,25,47,72,A
+254236,5,Big Data Analytics,21,38,59,B
+254236,5,Business Intelligence,21,47,68,B+
+254237,1,Python Programming,29,62,91,O
+254237,1,Mathematics I,21,56,77,A
+254237,1,Communication Skills,22,56,78,A
+254237,1,Digital Electronics,25,49,74,A
+254237,2,Data Structures,26,55,81,A+
+254237,2,Database Management Systems,27,60,87,A+
+254237,2,Statistics,27,51,78,A
+254237,2,Web Development,25,58,83,A+
+254237,3,Python for Data Analytics,24,53,77,A
+254237,3,Operating Systems,26,50,76,A
+254237,3,Computer Networks,23,51,74,A
+254237,3,Software Engineering,24,70,94,O
+254237,4,Java Programming,29,65,94,O
+254237,4,Data Visualization,27,59,86,A+
+254237,4,Cloud Computing,23,63,86,A+
+254237,4,Artificial Intelligence,27,62,89,A+
+254237,5,Machine Learning,27,51,78,A
+254237,5,Cyber Security,26,52,78,A
+254237,5,Big Data Analytics,27,49,76,A
+254237,5,Business Intelligence,30,51,81,A+
+254238,1,Python Programming,14,41,55,B
+254238,1,Mathematics I,24,49,73,A
+254238,1,Communication Skills,17,49,66,B+
+254238,1,Digital Electronics,20,46,66,B+
+254238,2,Data Structures,21,48,69,B+
+254238,2,Database Management Systems,15,52,67,B+
+254238,2,Statistics,23,44,67,B+
+254238,2,Web Development,19,46,65,B+
+254238,3,Python for Data Analytics,20,37,57,B
+254238,3,Operating Systems,21,42,63,B+
+254238,3,Computer Networks,16,35,51,B
+254238,3,Software Engineering,22,40,62,B+
+254238,4,Java Programming,17,40,57,B
+254238,4,Data Visualization,22,43,65,B+
+254238,4,Cloud Computing,20,48,68,B+
+254238,4,Artificial Intelligence,17,46,63,B+
+254238,5,Machine Learning,19,32,51,B
+254238,5,Cyber Security,21,41,62,B+
+254238,5,Big Data Analytics,22,51,73,A
+254238,5,Business Intelligence,16,49,65,B+
+254238,6,Deep Learning,20,56,76,A
+254238,6,Data Science,20,51,71,A
+254238,6,Major Project,23,46,69,B+
+254238,6,Professional Ethics,22,50,72,A
+254239,1,Python Programming,23,39,62,B+
+254239,1,Mathematics I,19,41,60,B+
+254239,1,Communication Skills,20,45,65,B+
+254239,1,Digital Electronics,26,53,79,A
+254239,2,Data Structures,20,41,61,B+
+254239,2,Database Management Systems,23,33,56,B
+254239,2,Statistics,22,52,74,A
+254239,2,Web Development,20,44,64,B+
+254239,3,Python for Data Analytics,20,48,68,B+
+254239,3,Operating Systems,17,46,63,B+
+254239,3,Computer Networks,24,38,62,B+
+254239,3,Software Engineering,21,57,78,A
+254239,4,Java Programming,19,40,59,B
+254239,4,Data Visualization,17,39,56,B
+254239,4,Cloud Computing,18,50,68,B+
+254239,4,Artificial Intelligence,19,44,63,B+
+254239,5,Machine Learning,20,50,70,A
+254239,5,Cyber Security,18,47,65,B+
+254239,5,Big Data Analytics,25,45,70,A
+254239,5,Business Intelligence,21,39,60,B+
+254239,6,Deep Learning,21,47,68,B+
+254239,6,Data Science,17,41,58,B
+254239,6,Major Project,19,47,66,B+
+254239,6,Professional Ethics,17,37,54,B
+254240,1,Python Programming,25,56,81,A+
+254240,1,Mathematics I,26,60,86,A+
+254240,1,Communication Skills,29,55,84,A+
+254240,1,Digital Electronics,30,50,80,A+
+254240,2,Data Structures,25,47,72,A
+254240,2,Database Management Systems,25,53,78,A
+254240,2,Statistics,24,58,82,A+
+254240,2,Web Development,27,49,76,A
+254240,3,Python for Data Analytics,24,53,77,A
+254240,3,Operating Systems,29,65,94,O
+254240,3,Computer Networks,28,60,88,A+
+254240,3,Software Engineering,26,45,71,A
+254240,4,Java Programming,24,48,72,A
+254240,4,Data Visualization,25,65,90,O
+254240,4,Cloud Computing,28,53,81,A+
+254240,4,Artificial Intelligence,25,51,76,A
+254240,5,Machine Learning,26,58,84,A+
+254240,5,Cyber Security,25,52,77,A
+254240,5,Big Data Analytics,29,51,80,A+
+254240,5,Business Intelligence,29,48,77,A
+254240,6,Deep Learning,23,67,90,O
+254240,6,Data Science,23,52,75,A
+254240,6,Major Project,26,68,94,O
+254240,6,Professional Ethics,25,52,77,A
+254241,1,Python Programming,23,44,67,B+
+254241,1,Mathematics I,20,47,67,B+
+254241,1,Communication Skills,19,46,65,B+
+254241,1,Digital Electronics,21,43,64,B+
+254241,2,Data Structures,17,41,58,B
+254241,2,Database Management Systems,20,46,66,B+
+254241,2,Statistics,19,43,62,B+
+254241,2,Web Development,19,52,71,A
+254241,3,Python for Data Analytics,20,38,58,B
+254241,3,Operating Systems,24,47,71,A
+254241,3,Computer Networks,21,30,51,B
+254241,3,Software Engineering,22,46,68,B+
+254241,4,Java Programming,17,38,55,B
+254241,4,Data Visualization,21,37,58,B
+254241,4,Cloud Computing,21,38,59,B
+254241,4,Artificial Intelligence,19,44,63,B+
+254241,5,Machine Learning,17,38,55,B
+254241,5,Cyber Security,19,41,60,B+
+254241,5,Big Data Analytics,21,44,65,B+
+254241,5,Business Intelligence,18,43,61,B+
+254241,6,Deep Learning,23,33,56,B
+254241,6,Data Science,20,46,66,B+
+254241,6,Major Project,19,36,55,B
+254241,6,Professional Ethics,18,35,53,B
+254242,1,Python Programming,19,46,65,B+
+254242,1,Mathematics I,20,51,71,A
+254242,1,Communication Skills,20,36,56,B
+254242,1,Digital Electronics,19,46,65,B+
+254242,2,Data Structures,23,42,65,B+
+254242,2,Database Management Systems,20,47,67,B+
+254242,2,Statistics,17,41,58,B
+254242,2,Web Development,21,39,60,B+
+254242,3,Python for Data Analytics,16,41,57,B
+254242,3,Operating Systems,23,39,62,B+
+254242,3,Computer Networks,20,49,69,B+
+254242,3,Software Engineering,16,54,70,A
+254242,4,Java Programming,18,45,63,B+
+254242,4,Data Visualization,23,46,69,B+
+254242,4,Cloud Computing,21,38,59,B
+254242,4,Artificial Intelligence,22,43,65,B+
+254242,5,Machine Learning,19,50,69,B+
+254242,5,Cyber Security,18,40,58,B
+254242,5,Big Data Analytics,19,48,67,B+
+254242,5,Business Intelligence,19,44,63,B+
+254242,6,Deep Learning,22,53,75,A
+254242,6,Data Science,22,44,66,B+
+254242,6,Major Project,22,34,56,B
+254242,6,Professional Ethics,23,46,69,B+
+254244,1,Python Programming,19,25,44,C
+254244,1,Mathematics I,16,38,54,B
+254244,1,Communication Skills,12,26,38,F
+254244,1,Digital Electronics,18,22,40,C
+254244,2,Data Structures,14,25,39,F
+254244,2,Database Management Systems,14,29,43,C
+254244,2,Statistics,11,38,49,C
+254244,2,Web Development,11,33,44,C
+254244,3,Python for Data Analytics,14,29,43,C
+254244,3,Operating Systems,12,33,45,C
+254244,3,Computer Networks,15,25,40,C
+254244,3,Software Engineering,16,33,49,C
+254244,4,Java Programming,15,34,49,C
+254244,4,Data Visualization,16,24,40,C
+254244,4,Cloud Computing,11,30,41,C
+254244,4,Artificial Intelligence,14,32,46,C
+254244,5,Machine Learning,15,21,36,F
+254244,5,Cyber Security,13,31,44,C
+254244,5,Big Data Analytics,14,28,42,C
+254244,5,Business Intelligence,15,35,50,B
+254244,6,Deep Learning,12,27,39,F
+254244,6,Data Science,14,29,43,C
+254244,6,Major Project,15,30,45,C
+254244,6,Professional Ethics,16,29,45,C
+254248,1,Python Programming,22,42,64,B+
+254248,1,Mathematics I,20,54,74,A
+254248,1,Communication Skills,21,51,72,A
+254248,1,Digital Electronics,19,45,64,B+
+254248,2,Data Structures,19,38,57,B
+254248,2,Database Management Systems,15,40,55,B
+254248,2,Statistics,19,42,61,B+
+254248,2,Web Development,24,40,64,B+
+254248,3,Python for Data Analytics,16,39,55,B
+254248,3,Operating Systems,21,45,66,B+
+254248,3,Computer Networks,19,49,68,B+
+254248,3,Software Engineering,18,33,51,B
+254248,4,Java Programming,18,50,68,B+
+254248,4,Data Visualization,19,45,64,B+
+254248,4,Cloud Computing,19,35,54,B
+254248,4,Artificial Intelligence,19,47,66,B+
+254248,5,Machine Learning,21,45,66,B+
+254248,5,Cyber Security,18,50,68,B+
+254248,5,Big Data Analytics,20,42,62,B+
+254248,5,Business Intelligence,21,37,58,B
+254248,6,Deep Learning,19,48,67,B+
+254248,6,Data Science,23,52,75,A
+254248,6,Major Project,24,46,70,A
+254248,6,Professional Ethics,18,28,46,C
+254249,1,Python Programming,13,24,37,F
+254249,1,Mathematics I,12,23,35,F
+254249,1,Communication Skills,10,27,37,F
+254249,1,Digital Electronics,16,17,33,F
+254249,2,Data Structures,12,30,42,C
+254249,2,Database Management Systems,16,39,55,B
+254249,2,Statistics,15,24,39,F
+254249,2,Web Development,14,41,55,B
+254249,3,Python for Data Analytics,14,28,42,C
+254249,3,Operating Systems,15,28,43,C
+254249,3,Computer Networks,12,32,44,C
+254249,3,Software Engineering,13,33,46,C
+254249,4,Java Programming,12,32,44,C
+254249,4,Data Visualization,17,29,46,C
+254249,4,Cloud Computing,18,22,40,C
+254249,4,Artificial Intelligence,12,28,40,C
+254249,5,Machine Learning,10,34,44,C
+254249,5,Cyber Security,16,23,39,F
+254249,5,Big Data Analytics,14,36,50,B
+254249,5,Business Intelligence,14,35,49,C
+254249,6,Deep Learning,14,31,45,C
+254249,6,Data Science,18,27,45,C
+254249,6,Major Project,16,34,50,B
+254249,6,Professional Ethics,16,34,50,B
+254250,1,Python Programming,21,43,64,B+
+254250,1,Mathematics I,19,40,59,B
+254250,1,Communication Skills,23,35,58,B
+254250,1,Digital Electronics,19,45,64,B+
+254250,2,Data Structures,20,38,58,B
+254250,2,Database Management Systems,19,34,53,B
+254250,2,Statistics,13,42,55,B
+254250,2,Web Development,21,42,63,B+
+254250,3,Python for Data Analytics,19,43,62,B+
+254250,3,Operating Systems,19,44,63,B+
+254250,3,Computer Networks,22,56,78,A
+254250,3,Software Engineering,19,50,69,B+
+254250,4,Java Programming,19,47,66,B+
+254250,4,Data Visualization,21,44,65,B+
+254250,4,Cloud Computing,24,47,71,A
+254250,4,Artificial Intelligence,21,42,63,B+
+254250,5,Machine Learning,21,46,67,B+
+254250,5,Cyber Security,16,52,68,B+
+254250,5,Big Data Analytics,23,47,70,A
+254250,5,Business Intelligence,16,47,63,B+
+254250,6,Deep Learning,24,43,67,B+
+254250,6,Data Science,15,40,55,B
+254250,6,Major Project,19,39,58,B
+254250,6,Professional Ethics,24,38,62,B+
+254251,1,Python Programming,21,49,70,A
+254251,1,Mathematics I,18,51,69,B+
+254251,1,Communication Skills,19,43,62,B+
+254251,1,Digital Electronics,22,44,66,B+
+254251,2,Data Structures,24,44,68,B+
+254251,2,Database Management Systems,21,56,77,A
+254251,2,Statistics,20,40,60,B+
+254251,2,Web Development,16,38,54,B
+254251,3,Python for Data Analytics,17,43,60,B+
+254251,3,Operating Systems,19,40,59,B
+254251,3,Computer Networks,22,49,71,A
+254251,3,Software Engineering,22,52,74,A
+254251,4,Java Programming,21,51,72,A
+254251,4,Data Visualization,22,49,71,A
+254251,4,Cloud Computing,16,42,58,B
+254251,4,Artificial Intelligence,22,42,64,B+
+254251,5,Machine Learning,22,42,64,B+
+254251,5,Cyber Security,20,53,73,A
+254251,5,Big Data Analytics,23,47,70,A
+254251,5,Business Intelligence,19,38,57,B
+254251,6,Deep Learning,21,40,61,B+
+254251,6,Data Science,20,39,59,B
+254251,6,Major Project,21,43,64,B+
+254251,6,Professional Ethics,17,47,64,B+
+254252,1,Python Programming,16,40,56,B
+254252,1,Mathematics I,17,40,57,B
+254252,1,Communication Skills,19,45,64,B+
+254252,1,Digital Electronics,17,35,52,B
+254252,2,Data Structures,17,42,59,B
+254252,2,Database Management Systems,18,25,43,C
+254252,2,Statistics,21,39,60,B+
+254252,2,Web Development,17,42,59,B
+254252,3,Python for Data Analytics,18,42,60,B+
+254252,3,Operating Systems,19,40,59,B
+254252,3,Computer Networks,20,44,64,B+
+254252,3,Software Engineering,20,47,67,B+
+254252,4,Java Programming,20,44,64,B+
+254252,4,Data Visualization,20,40,60,B+
+254252,4,Cloud Computing,24,40,64,B+
+254252,4,Artificial Intelligence,19,37,56,B
+254252,5,Machine Learning,22,48,70,A
+254252,5,Cyber Security,22,47,69,B+
+254252,5,Big Data Analytics,20,49,69,B+
+254252,5,Business Intelligence,19,44,63,B+
+254252,6,Deep Learning,19,50,69,B+
+254252,6,Data Science,20,41,61,B+
+254252,6,Major Project,23,49,72,A
+254252,6,Professional Ethics,21,36,57,B
+254253,1,Python Programming,17,35,52,B
+254253,1,Mathematics I,10,36,46,C
+254253,1,Communication Skills,13,27,40,C
+254253,1,Digital Electronics,14,23,37,F
+254253,2,Data Structures,14,25,39,F
+254253,2,Database Management Systems,10,38,48,C
+254253,2,Statistics,13,27,40,C
+254253,2,Web Development,16,31,47,C
+254253,3,Python for Data Analytics,10,29,39,F
+254253,3,Operating Systems,13,23,36,F
+254253,3,Computer Networks,13,18,31,F
+254253,3,Software Engineering,14,22,36,F
+254253,4,Java Programming,10,20,30,F
+254253,4,Data Visualization,14,27,41,C
+254253,4,Cloud Computing,13,21,34,F
+254253,4,Artificial Intelligence,16,25,41,C
+254253,5,Machine Learning,12,35,47,C
+254253,5,Cyber Security,12,21,33,F
+254253,5,Big Data Analytics,15,20,35,F
+254253,5,Business Intelligence,16,29,45,C
+254253,6,Deep Learning,16,36,52,B
+254253,6,Data Science,16,28,44,C
+254253,6,Major Project,17,37,54,B
+254253,6,Professional Ethics,16,30,46,C
+254254,1,Python Programming,21,51,72,A
+254254,1,Mathematics I,17,31,48,C
+254254,1,Communication Skills,19,36,55,B
+254254,1,Digital Electronics,24,39,63,B+
+254254,2,Data Structures,22,45,67,B+
+254254,2,Database Management Systems,18,30,48,C
+254254,2,Statistics,23,48,71,A
+254254,2,Web Development,15,42,57,B
+254254,3,Python for Data Analytics,19,56,75,A
+254254,3,Operating Systems,25,35,60,B+
+254254,3,Computer Networks,22,40,62,B+
+254254,3,Software Engineering,19,49,68,B+
+254254,4,Java Programming,16,40,56,B
+254254,4,Data Visualization,21,42,63,B+
+254254,4,Cloud Computing,20,43,63,B+
+254254,4,Artificial Intelligence,18,38,56,B
+254254,5,Machine Learning,22,43,65,B+
+254254,5,Cyber Security,21,24,45,C
+254254,5,Big Data Analytics,26,43,69,B+
+254254,5,Business Intelligence,19,41,60,B+
+254254,6,Deep Learning,23,51,74,A
+254254,6,Data Science,20,50,70,A
+254254,6,Major Project,17,48,65,B+
+254254,6,Professional Ethics,21,39,60,B+
+254255,1,Python Programming,19,40,59,B
+254255,1,Mathematics I,23,55,78,A
+254255,1,Communication Skills,15,50,65,B+
+254255,1,Digital Electronics,16,41,57,B
+254255,2,Data Structures,23,47,70,A
+254255,2,Database Management Systems,18,46,64,B+
+254255,2,Statistics,22,45,67,B+
+254255,2,Web Development,19,41,60,B+
+254255,3,Python for Data Analytics,22,36,58,B
+254255,3,Operating Systems,19,45,64,B+
+254255,3,Computer Networks,27,47,74,A
+254255,3,Software Engineering,18,38,56,B
+254255,4,Java Programming,20,45,65,B+
+254255,4,Data Visualization,22,52,74,A
+254255,4,Cloud Computing,16,46,62,B+
+254255,4,Artificial Intelligence,22,40,62,B+
+254255,5,Machine Learning,20,50,70,A
+254255,5,Cyber Security,19,48,67,B+
+254255,5,Big Data Analytics,19,40,59,B
+254255,5,Business Intelligence,21,50,71,A
+254255,6,Deep Learning,17,38,55,B
+254255,6,Data Science,16,35,51,B
+254255,6,Major Project,16,37,53,B
+254255,6,Professional Ethics,18,51,69,B+
+254258,1,Python Programming,24,35,59,B
+254258,1,Mathematics I,23,46,69,B+
+254258,1,Communication Skills,17,51,68,B+
+254258,1,Digital Electronics,20,32,52,B
+254258,2,Data Structures,20,39,59,B
+254258,2,Database Management Systems,22,52,74,A
+254258,2,Statistics,22,40,62,B+
+254258,2,Web Development,19,40,59,B
+254258,3,Python for Data Analytics,15,37,52,B
+254258,3,Operating Systems,19,43,62,B+
+254258,3,Computer Networks,15,48,63,B+
+254258,3,Software Engineering,17,48,65,B+
+254258,4,Java Programming,18,36,54,B
+254258,4,Data Visualization,23,52,75,A
+254258,4,Cloud Computing,19,42,61,B+
+254258,4,Artificial Intelligence,16,52,68,B+
+254258,5,Machine Learning,22,50,72,A
+254258,5,Cyber Security,20,38,58,B
+254258,5,Big Data Analytics,21,41,62,B+
+254258,5,Business Intelligence,23,49,72,A
+254258,6,Deep Learning,19,29,48,C
+254258,6,Data Science,22,56,78,A
+254258,6,Major Project,24,44,68,B+
+254258,6,Professional Ethics,20,33,53,B
+254259,1,Python Programming,17,46,63,B+
+254259,1,Mathematics I,20,48,68,B+
+254259,1,Communication Skills,17,36,53,B
+254259,1,Digital Electronics,22,49,71,A
+254259,2,Data Structures,20,45,65,B+
+254259,2,Database Management Systems,18,43,61,B+
+254259,2,Statistics,26,56,82,A+
+254259,2,Web Development,22,39,61,B+
+254259,3,Python for Data Analytics,17,41,58,B
+254259,3,Operating Systems,19,43,62,B+
+254259,3,Computer Networks,20,39,59,B
+254259,3,Software Engineering,17,45,62,B+
+254259,4,Java Programming,23,47,70,A
+254259,4,Data Visualization,23,41,64,B+
+254259,4,Cloud Computing,20,48,68,B+
+254259,4,Artificial Intelligence,21,51,72,A
+254259,5,Machine Learning,23,49,72,A
+254259,5,Cyber Security,17,42,59,B
+254259,5,Big Data Analytics,21,40,61,B+
+254259,5,Business Intelligence,18,51,69,B+
+254259,6,Deep Learning,16,44,60,B+
+254259,6,Data Science,20,47,67,B+
+254259,6,Major Project,20,48,68,B+
+254259,6,Professional Ethics,22,47,69,B+
+254262,1,Python Programming,23,67,90,O
+254262,1,Mathematics I,29,56,85,A+
+254262,1,Communication Skills,28,60,88,A+
+254262,1,Digital Electronics,25,62,87,A+
+254262,2,Data Structures,23,63,86,A+
+254262,2,Database Management Systems,25,62,87,A+
+254262,2,Statistics,29,55,84,A+
+254262,2,Web Development,26,60,86,A+
+254262,3,Python for Data Analytics,21,61,82,A+
+254262,3,Operating Systems,24,63,87,A+
+254262,3,Computer Networks,29,61,90,O
+254262,3,Software Engineering,25,57,82,A+
+254262,4,Java Programming,24,55,79,A
+254262,4,Data Visualization,24,61,85,A+
+254262,4,Cloud Computing,27,53,80,A+
+254262,4,Artificial Intelligence,28,62,90,O
+254262,5,Machine Learning,26,61,87,A+
+254262,5,Cyber Security,24,64,88,A+
+254262,5,Big Data Analytics,26,61,87,A+
+254262,5,Business Intelligence,24,60,84,A+
+254262,6,Deep Learning,24,57,81,A+
+254262,6,Data Science,26,59,85,A+
+254262,6,Major Project,22,58,80,A+
+254262,6,Professional Ethics,25,54,79,A
+254263,1,Python Programming,17,15,32,F
+254263,1,Mathematics I,13,27,40,C
+254263,1,Communication Skills,13,21,34,F
+254263,1,Digital Electronics,14,25,39,F
+254263,2,Data Structures,16,32,48,C
+254263,2,Database Management Systems,15,25,40,C
+254263,2,Statistics,12,26,38,F
+254263,2,Web Development,13,30,43,C
+254263,3,Python for Data Analytics,13,34,47,C
+254263,3,Operating Systems,15,28,43,C
+254263,3,Computer Networks,12,23,35,F
+254263,3,Software Engineering,16,27,43,C
+254263,4,Java Programming,13,23,36,F
+254263,4,Data Visualization,15,24,39,F
+254263,4,Cloud Computing,13,29,42,C
+254263,4,Artificial Intelligence,15,30,45,C
+254263,5,Machine Learning,13,30,43,C
+254263,5,Cyber Security,12,33,45,C
+254263,5,Big Data Analytics,12,25,37,F
+254263,5,Business Intelligence,10,24,34,F
+254263,6,Deep Learning,18,26,44,C
+254263,6,Data Science,14,33,47,C
+254263,6,Major Project,11,29,40,C
+254263,6,Professional Ethics,10,24,34,F
+254264,1,Python Programming,11,34,45,C
+254264,1,Mathematics I,10,33,43,C
+254264,1,Communication Skills,17,29,46,C
+254264,1,Digital Electronics,16,33,49,C
+254264,2,Data Structures,13,26,39,F
+254264,2,Database Management Systems,17,30,47,C
+254264,2,Statistics,11,19,30,F
+254264,2,Web Development,13,21,34,F
+254264,3,Python for Data Analytics,10,23,33,F
+254264,3,Operating Systems,16,31,47,C
+254264,3,Computer Networks,15,22,37,F
+254264,3,Software Engineering,11,29,40,C
+254264,4,Java Programming,19,35,54,B
+254264,4,Data Visualization,13,22,35,F
+254264,4,Cloud Computing,10,24,34,F
+254264,4,Artificial Intelligence,20,31,51,B
+254264,5,Machine Learning,16,19,35,F
+254264,5,Cyber Security,16,27,43,C
+254264,5,Big Data Analytics,16,17,33,F
+254264,5,Business Intelligence,12,31,43,C
+254264,6,Deep Learning,16,34,50,B
+254264,6,Data Science,16,31,47,C
+254264,6,Major Project,13,35,48,C
+254264,6,Professional Ethics,13,34,47,C
+254265,1,Python Programming,15,43,58,B
+254265,1,Mathematics I,19,57,76,A
+254265,1,Communication Skills,23,44,67,B+
+254265,1,Digital Electronics,20,44,64,B+
+254265,2,Data Structures,17,47,64,B+
+254265,2,Database Management Systems,17,39,56,B
+254265,2,Statistics,20,48,68,B+
+254265,2,Web Development,22,47,69,B+
+254265,3,Python for Data Analytics,18,46,64,B+
+254265,3,Operating Systems,19,53,72,A
+254265,3,Computer Networks,23,54,77,A
+254265,3,Software Engineering,14,46,60,B+
+254265,4,Java Programming,22,33,55,B
+254265,4,Data Visualization,18,52,70,A
+254265,4,Cloud Computing,17,46,63,B+
+254265,4,Artificial Intelligence,18,45,63,B+
+254265,5,Machine Learning,23,44,67,B+
+254265,5,Cyber Security,16,42,58,B
+254265,5,Big Data Analytics,19,43,62,B+
+254265,5,Business Intelligence,21,39,60,B+
+254265,6,Deep Learning,21,43,64,B+
+254265,6,Data Science,17,50,67,B+
+254265,6,Major Project,19,51,70,A
+254265,6,Professional Ethics,19,44,63,B+

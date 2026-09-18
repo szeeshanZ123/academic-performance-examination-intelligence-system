@@ -249,7 +249,7 @@ class TestQuestionPaperIntelligenceFinalization(unittest.TestCase):
     # 6. Sample Paper End-to-End Tests (Semester 3 PDF)
     # -------------------------------------------------------------
     def test_sem3_demo_pdf_pipeline(self):
-        sample_pdf = Path(__file__).parent / "question_paper" / "samples" / "sem3_python_data_analytics.pdf"
+        sample_pdf = Path(__file__).resolve().parents[1] / "question_paper" / "samples" / "sem3_python_data_analytics.pdf"
         self.assertTrue(sample_pdf.exists())
 
         ext = extract_text_from_file(sample_pdf)

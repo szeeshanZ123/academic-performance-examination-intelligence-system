@@ -67,6 +67,8 @@ desktop.ini
 # Project specific logs & output
 logs/
 *.log
+.pytest_cache/
+scratch/
 reports/*.pdf
 reports/*.html
 reports/*.png

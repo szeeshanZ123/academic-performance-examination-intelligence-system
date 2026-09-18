@@ -40,7 +40,7 @@
         position: absolute;
         width: 120px;
         height: 120px;
-        background: radial-gradient(circle, rgba(99, 102, 241, 0.45) 0%, rgba(0, 0, 0, 0) 70%);
+        background: radial-gradient(circle, rgba(37, 99, 235, 0.25) 0%, rgba(0, 0, 0, 0) 70%);
         top: -40px;
         left: -40px;
         z-index: -1;
@@ -51,18 +51,17 @@
         position: absolute;
         width: 120px;
         height: 120px;
-        background: radial-gradient(circle, rgba(14, 165, 233, 0.45) 0%, rgba(0, 0, 0, 0) 70%);
+        background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
         bottom: -40px;
         right: -40px;
         z-index: -1;
       }
 
       .login-card {
-        background: rgba(255, 255, 255, 0.96);
-        backdrop-filter: blur(16px);
-        border: 1px solid rgba(255, 255, 255, 0.5);
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
         border-radius: 24px;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        box-shadow: var(--card-shadow-hover);
       }
 
       .logo-icon {
@@ -76,13 +75,13 @@
         justify-content: center;
         font-size: 1.6rem;
         margin: 0 auto 1.25rem;
-        box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.35);
+        box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.35);
       }
 
       .portal-badge {
         display: inline-block;
-        background: #eef2ff;
-        color: #4338ca;
+        background: var(--bg-elevated);
+        color: var(--primary);
         font-size: 0.78rem;
         font-weight: 700;
         text-transform: uppercase;
@@ -90,9 +89,12 @@
         padding: 4px 12px;
         border-radius: 20px;
         margin-bottom: 0.75rem;
+        border: 1px solid var(--border-color);
       }
 
       .form-control-custom {
+        background-color: var(--input-bg);
+        color: var(--input-text);
         border-radius: 10px;
         border: 1px solid var(--border-color);
         padding: 0.7rem 1rem;
@@ -102,7 +104,7 @@
 
       .form-control-custom:focus {
         border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
       }
 
       .btn-primary-custom {
@@ -117,16 +119,16 @@
 
       .btn-primary-custom:hover {
         transform: translateY(-1px);
-        box-shadow: 0 8px 15px rgba(79, 70, 229, 0.25);
+        box-shadow: 0 8px 15px rgba(37, 99, 235, 0.25);
       }
 
       .demo-pill {
-        background: #f1f5f9;
-        border: 1px dashed #cbd5e1;
+        background: var(--bg-elevated);
+        border: 1px dashed var(--border-color);
         border-radius: 10px;
         padding: 0.5rem 0.75rem;
         font-size: 0.8rem;
-        color: #475569;
+        color: var(--text-secondary);
       }
     </style>
   </head>

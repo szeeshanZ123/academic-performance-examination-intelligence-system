@@ -64,10 +64,10 @@
   --hero-stat-border: #E2E8F0;
 
   /* Forms & Inputs */
-  --input-bg: #F0F8FF;
+  --input-bg: #FFFFFF;
   --input-border: #E2E8F0;
   --input-text: #0F172A;
-  --input-placeholder: #475569;
+  --input-placeholder: #64748B;
 
   /* Tables */
   --table-bg: #F0F8FF;
@@ -120,7 +120,7 @@
   --text-main: #F1F5F9;
   --text-muted: #94A3B8;
   --border-color: #1E293B;
-  --border-subtle: #182C4A;
+  --border-subtle: #1E3A5F;
 
   /* Card Shadows */
   --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
@@ -176,14 +176,29 @@
 /* --------------------------------------------------------------------------
    2. BASE & GLOBAL RESETS
    -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   background-color: var(--bg-primary) !important;
   color: var(--text-primary) !important;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary) !important;
+  letter-spacing: -0.02em;
 }
 
 p, span, label, td, th {
@@ -192,7 +207,10 @@ p, span, label, td, th {
 
 a {
   color: var(--primary);
+  text-decoration: none;
+  transition: color 0.15s ease;
 }
+
 a:hover {
   color: var(--primary-hover);
 }
@@ -207,15 +225,40 @@ a:hover {
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
+.navbar-custom .navbar-brand {
+  color: var(--text-primary) !important;
+  font-weight: 700;
+}
+
 .navbar-custom .nav-link {
   color: var(--navbar-link) !important;
   font-weight: 500;
-  transition: color 0.15s ease;
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+  transition: color 0.15s ease, background-color 0.15s ease;
 }
 
-.navbar-custom .nav-link:hover,
+.navbar-custom .nav-link:hover {
+  color: var(--primary) !important;
+  background-color: rgba(37, 99, 235, 0.05);
+}
+
 .navbar-custom .nav-link.active {
   color: var(--navbar-link-active) !important;
+  font-weight: 700;
+  background-color: rgba(37, 99, 235, 0.1);
+}
+
+.brand-badge {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #ffffff !important;
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
 }
 
 .user-badge-pill {
@@ -228,7 +271,8 @@ a:hover {
    4. ADAPTIVE HERO HEADERS
    -------------------------------------------------------------------------- */
 .hero-card,
-.profile-hero {
+.profile-hero,
+.coach-hero {
   background: var(--hero-bg) !important;
   border: 1px solid var(--hero-border) !important;
   border-radius: 20px;
@@ -240,17 +284,20 @@ a:hover {
 }
 
 .hero-card h1, .hero-card h2, .hero-card h3,
-.profile-hero h1, .profile-hero h2, .profile-hero h3 {
+.profile-hero h1, .profile-hero h2, .profile-hero h3,
+.coach-hero h1, .coach-hero h2, .coach-hero h3 {
   color: var(--hero-text) !important;
 }
 
 .hero-card p,
-.profile-hero p {
+.profile-hero p,
+.coach-hero p {
   color: var(--hero-subtext) !important;
 }
 
 .hero-card .badge-portal,
-.profile-hero .badge-portal {
+.profile-hero .badge-portal,
+.coach-hero .badge-portal {
   background-color: var(--hero-badge-bg) !important;
   color: var(--hero-badge-text) !important;
   border: 1px solid var(--hero-badge-border) !important;
@@ -272,18 +319,24 @@ a:hover {
 .assignment-card,
 .filter-card,
 .info-card,
-.profile-card {
+.profile-card,
+.section-card,
+.card-custom,
+.health-metric-card,
+.report-sheet {
   background-color: var(--bg-card) !important;
   border: 1px solid var(--border-color) !important;
   border-radius: 16px;
   box-shadow: var(--card-shadow);
   color: var(--text-primary) !important;
-  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .card:hover,
 .kpi-card:hover,
-.assignment-card:hover {
+.assignment-card:hover,
+.section-card:hover,
+.health-metric-card:hover {
   box-shadow: var(--card-shadow-hover);
 }
 
@@ -298,50 +351,73 @@ a:hover {
   border-top: 1px solid var(--border-color) !important;
 }
 
+.inner-box,
+.metric-box {
+  background-color: var(--bg-elevated) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+  border-radius: 14px;
+}
+
 /* Teaching assignment cards */
 .assignment-card {
   text-decoration: none;
   display: block;
+  cursor: pointer;
 }
 
 .assignment-card.active {
   border-color: var(--primary) !important;
-  background-color: rgba(79, 70, 229, 0.08) !important;
-  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15) !important;
+  background-color: rgba(37, 99, 235, 0.08) !important;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15) !important;
 }
 
 /* --------------------------------------------------------------------------
    6. TABLES
    -------------------------------------------------------------------------- */
-.table {
+.table,
+.table-custom {
   color: var(--text-primary) !important;
   border-color: var(--table-row-border) !important;
   background-color: var(--table-bg) !important;
+  width: 100%;
+  margin-bottom: 0;
 }
 
-.table > :not(caption) > * > * {
+.table > :not(caption) > * > *,
+.table-custom > :not(caption) > * > * {
   background-color: var(--table-bg) !important;
   color: var(--text-primary) !important;
   border-bottom-color: var(--table-row-border) !important;
 }
 
-.table thead th {
+.table thead th,
+.table-custom thead th {
   background-color: var(--table-header-bg) !important;
   color: var(--table-header-text) !important;
   border-bottom: 2px solid var(--table-row-border) !important;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   font-size: 0.8rem;
   letter-spacing: 0.5px;
+  padding: 0.9rem 1rem;
+  white-space: nowrap;
 }
 
-.table-hover > tbody > tr:hover > * {
+.table-hover > tbody > tr:hover > *,
+.table-custom > tbody > tr:hover > td {
   background-color: var(--table-row-hover) !important;
   color: var(--text-primary) !important;
 }
 
 .table-striped > tbody > tr:nth-of-type(odd) > * {
   background-color: var(--table-striped-bg) !important;
+}
+
+.table-responsive {
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+  -webkit-overflow-scrolling: touch;
 }
 
 /* --------------------------------------------------------------------------
@@ -355,11 +431,14 @@ a:hover {
   border: 1px solid var(--input-border) !important;
   color: var(--input-text) !important;
   border-radius: 10px;
+  min-height: 42px;
   transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
 }
 
 .form-control:focus,
-.form-select:focus {
+.form-select:focus,
+.form-control-custom:focus,
+.form-select-custom:focus {
   background-color: var(--input-bg) !important;
   border-color: var(--primary) !important;
   color: var(--input-text) !important;
@@ -368,6 +447,7 @@ a:hover {
 
 .form-control::placeholder {
   color: var(--input-placeholder) !important;
+  opacity: 0.8;
 }
 
 .form-select option {
@@ -382,15 +462,26 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   7B. GLOBAL BUTTONS (SECTION 9)
+   8. GLOBAL BUTTONS
    -------------------------------------------------------------------------- */
+.btn {
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 0.55rem 1.15rem;
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
 .btn-primary,
 .btn-primary-custom {
   background-color: var(--primary) !important;
   border-color: var(--primary) !important;
   color: #ffffff !important;
-  font-weight: 600;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-primary:hover,
@@ -401,14 +492,13 @@ a:hover {
   border-color: var(--primary-hover) !important;
   color: #ffffff !important;
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25) !important;
+  transform: translateY(-1px);
 }
 
 .btn-secondary {
   background-color: var(--bg-tertiary) !important;
   color: var(--primary) !important;
   border: 1px solid var(--border) !important;
-  font-weight: 600;
-  transition: all 0.2s ease;
 }
 
 .btn-secondary:hover,
@@ -416,14 +506,13 @@ a:hover {
   background-color: var(--primary) !important;
   color: #ffffff !important;
   border-color: var(--primary) !important;
+  transform: translateY(-1px);
 }
 
 .btn-danger {
   background-color: var(--danger) !important;
   border-color: var(--danger) !important;
   color: #ffffff !important;
-  font-weight: 600;
-  transition: all 0.2s ease;
 }
 
 .btn-danger:hover,
@@ -431,14 +520,13 @@ a:hover {
   background-color: #b91c1c !important;
   border-color: #b91c1c !important;
   color: #ffffff !important;
+  transform: translateY(-1px);
 }
 
 .btn-success {
   background-color: var(--success) !important;
   border-color: var(--success) !important;
   color: #ffffff !important;
-  font-weight: 600;
-  transition: all 0.2s ease;
 }
 
 .btn-success:hover,
@@ -446,14 +534,13 @@ a:hover {
   background-color: #15803d !important;
   border-color: #15803d !important;
   color: #ffffff !important;
+  transform: translateY(-1px);
 }
 
 .btn-warning {
   background-color: var(--warning) !important;
   border-color: var(--warning) !important;
   color: #ffffff !important;
-  font-weight: 600;
-  transition: all 0.2s ease;
 }
 
 .btn-warning:hover,
@@ -461,6 +548,7 @@ a:hover {
   background-color: #d97706 !important;
   border-color: #d97706 !important;
   color: #ffffff !important;
+  transform: translateY(-1px);
 }
 
 .btn-outline-primary {
@@ -473,10 +561,48 @@ a:hover {
 .btn-outline-primary:focus {
   background-color: var(--primary) !important;
   color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+.btn-outline-secondary {
+  border-color: var(--border-color) !important;
+  color: var(--text-secondary) !important;
+  background-color: transparent !important;
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-secondary:focus {
+  background-color: var(--bg-elevated) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+}
+
+.btn-outline-danger {
+  border-color: var(--danger) !important;
+  color: var(--danger) !important;
+  background-color: transparent !important;
+}
+
+.btn-outline-danger:hover,
+.btn-outline-danger:focus {
+  background-color: var(--danger) !important;
+  color: #ffffff !important;
+}
+
+.btn-outline-success {
+  border-color: var(--success) !important;
+  color: var(--success) !important;
+  background-color: transparent !important;
+}
+
+.btn-outline-success:hover,
+.btn-outline-success:focus {
+  background-color: var(--success) !important;
+  color: #ffffff !important;
 }
 
 /* --------------------------------------------------------------------------
-   8. MODERN PILL THEME SWITCH
+   9. MODERN PILL THEME SWITCH
    -------------------------------------------------------------------------- */
 .theme-toggle-pill,
 .theme-toggle-btn {
@@ -486,11 +612,12 @@ a:hover {
   background-color: var(--bg-elevated) !important;
   border: 1px solid var(--border-color) !important;
   color: var(--text-primary) !important;
-  padding: 5px 12px;
+  padding: 6px 14px;
   border-radius: 9999px;
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
+  min-height: 38px;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   user-select: none;
   outline: none;
@@ -534,18 +661,21 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   9. DROPDOWNS, MODALS & ACCORDIONS
+   10. DROPDOWNS, MODALS & ACCORDIONS
    -------------------------------------------------------------------------- */
 .dropdown-menu {
   background-color: var(--dropdown-bg) !important;
   border: 1px solid var(--border-color) !important;
   box-shadow: var(--card-shadow-hover) !important;
-  border-radius: 12px;
+  border-radius: 14px;
+  padding: 0.5rem;
 }
 
 .dropdown-item {
   color: var(--text-primary) !important;
-  transition: background-color 0.15s ease;
+  border-radius: 8px;
+  padding: 0.55rem 1rem;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .dropdown-item:hover,
@@ -563,6 +693,7 @@ a:hover {
   border: 1px solid var(--modal-border) !important;
   color: var(--text-primary) !important;
   border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
 }
 
 .modal-header,
@@ -577,7 +708,7 @@ a:hover {
 .accordion-item {
   background-color: var(--bg-card) !important;
   border: 1px solid var(--border-color) !important;
-  border-radius: 12px !important;
+  border-radius: 14px !important;
   margin-bottom: 0.75rem;
   overflow: hidden;
 }
@@ -603,27 +734,29 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   10. STATUS BADGES & PILLS
+   11. STATUS BADGES & PILLS
    -------------------------------------------------------------------------- */
+.badge {
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
 .badge-soft-success {
   background-color: rgba(22, 163, 74, 0.12) !important;
   color: var(--success) !important;
   border: 1px solid rgba(22, 163, 74, 0.25);
-  font-weight: 600;
 }
 
 .badge-soft-warning {
   background-color: rgba(245, 158, 11, 0.12) !important;
   color: var(--warning) !important;
   border: 1px solid rgba(245, 158, 11, 0.25);
-  font-weight: 600;
 }
 
 .badge-soft-danger {
   background-color: rgba(220, 38, 38, 0.12) !important;
   color: var(--danger) !important;
   border: 1px solid rgba(220, 38, 38, 0.25);
-  font-weight: 600;
 }
 
 .badge-soft-info,
@@ -631,92 +764,55 @@ a:hover {
   background-color: rgba(59, 130, 246, 0.12) !important;
   color: var(--secondary) !important;
   border: 1px solid rgba(59, 130, 246, 0.25);
-  font-weight: 600;
 }
 
 .badge-soft-primary {
   background-color: rgba(37, 99, 235, 0.12) !important;
   color: var(--primary) !important;
   border: 1px solid rgba(37, 99, 235, 0.25);
-  font-weight: 600;
 }
 
 .badge-soft-purple {
   background-color: rgba(59, 130, 246, 0.12) !important;
   color: var(--primary) !important;
   border: 1px solid rgba(59, 130, 246, 0.25);
-  font-weight: 600;
 }
 
-/* Utility overrides for dark mode */
-[data-theme="dark"] .bg-white {
-  background-color: var(--bg-card) !important;
-}
-[data-theme="dark"] .bg-light {
-  background-color: var(--bg-elevated) !important;
-  color: var(--text-primary) !important;
-}
-[data-theme="dark"] .text-dark {
-  color: var(--text-primary) !important;
-}
-[data-theme="dark"] .text-muted,
-[data-theme="dark"] .text-secondary {
-  color: var(--text-muted) !important;
-}
-[data-theme="dark"] .border {
-  border-color: var(--border-color) !important;
-}
-
-/* --------------------------------------------------------------------------
-   11. AUTHENTICATION PAGES SPECIFICS
-   -------------------------------------------------------------------------- */
-.login-card {
-  background: var(--bg-card) !important;
-  border: 1px solid var(--border-color) !important;
-  border-radius: 24px;
-  box-shadow: var(--card-shadow-hover);
-}
-
-[data-theme="dark"] .login-card {
-  background: rgba(23, 32, 51, 0.95) !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6) !important;
-}
-
-.role-selector {
-  background-color: var(--bg-elevated) !important;
-  border: 1px solid var(--border-color) !important;
-  border-radius: 12px;
-  padding: 4px;
-  display: flex;
-}
-
-.role-label {
-  display: block;
-  padding: 8px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 600;
+/* Nav Pills Custom */
+.nav-pills-custom .nav-link {
   color: var(--text-secondary);
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 0.55rem 1rem;
   transition: all 0.2s;
-  text-align: center;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
 }
 
-.role-option input[type="radio"]:checked + .role-label {
-  background-color: var(--bg-card) !important;
-  color: var(--primary) !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+.nav-pills-custom .nav-link:hover {
+  color: var(--primary);
+  border-color: var(--primary);
 }
 
-[data-theme="dark"] .role-option input[type="radio"]:checked + .role-label {
+.nav-pills-custom .nav-link.active {
   background-color: var(--primary) !important;
   color: #ffffff !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
 }
 
 /* --------------------------------------------------------------------------
-   11B. UNIFIED AUTHENTICATION SPLIT-SCREEN SYSTEM
+   12. AUTHENTICATION & LOGIN PAGE
    -------------------------------------------------------------------------- */
+.login-page-bg {
+  background: radial-gradient(ellipse at top, #eef2ff 0%, #f5f7fb 100%) !important;
+  min-height: 100vh;
+}
+
+[data-theme="dark"] .login-page-bg {
+  background: radial-gradient(ellipse at top, #1E3A5F 0%, #0A1428 100%) !important;
+}
+
 .auth-wrapper {
   min-height: 100vh;
   display: flex;
@@ -742,15 +838,15 @@ a:hover {
 }
 
 [data-theme="dark"] .auth-split-card {
-  background-color: #151f33;
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  background-color: #112240;
+  border-color: #1E293B;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
 }
 
 /* Left Visual Stage */
 .auth-visual-side {
   width: 44%;
-  background: linear-gradient(145deg, #f0f4ff 0%, #e8eeff 50%, #f5f7fb 100%);
+  background: linear-gradient(145deg, #F0F8FF 0%, #DBEAFE 100%);
   border-right: 1px solid var(--border-color);
   padding: 2.75rem 2.25rem;
   display: flex;
@@ -764,8 +860,8 @@ a:hover {
 }
 
 [data-theme="dark"] .auth-visual-side {
-  background: linear-gradient(145deg, #111a2e 0%, #15223c 50%, #0d1525 100%);
-  border-right-color: rgba(255, 255, 255, 0.08);
+  background: linear-gradient(145deg, #0A1428 0%, #112240 50%, #1E3A5F 100%);
+  border-right-color: #1E293B;
 }
 
 .auth-illustration-box {
@@ -783,7 +879,7 @@ a:hover {
   width: 100%;
   height: auto;
   max-height: 240px;
-  filter: drop-shadow(0 12px 20px rgba(79, 70, 229, 0.12));
+  filter: drop-shadow(0 12px 20px rgba(37, 99, 235, 0.15));
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
 }
 
@@ -803,23 +899,7 @@ a:hover {
 }
 
 [data-theme="dark"] .auth-form-side {
-  background-color: #151f33;
-}
-
-/* Soft badge */
-.badge-soft-primary {
-  background: rgba(99, 102, 241, 0.12) !important;
-  color: var(--primary) !important;
-  border: 1px solid rgba(99, 102, 241, 0.25) !important;
-  font-size: 0.78rem;
-  font-weight: 700;
-  border-radius: 9999px;
-}
-
-[data-theme="dark"] .badge-soft-primary {
-  background: rgba(99, 102, 241, 0.22) !important;
-  color: #a5b4fc !important;
-  border: 1px solid rgba(99, 102, 241, 0.35) !important;
+  background-color: #112240;
 }
 
 /* Role Segmented Controller: 3-column equal grid to NEVER clip Admin button */
@@ -872,10 +952,9 @@ a:hover {
 [data-theme="dark"] .role-pill-btn.active {
   background-color: var(--primary) !important;
   color: #ffffff !important;
-  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
 }
 
-/* Form inputs & toggle password */
 .input-with-eye {
   position: relative;
 }
@@ -902,7 +981,6 @@ a:hover {
   color: var(--primary);
 }
 
-/* Demo chips bar */
 .auth-demo-bar {
   background-color: var(--bg-elevated);
   border: 1px dashed var(--border-color);
@@ -935,7 +1013,6 @@ a:hover {
   transform: translateY(-1px);
 }
 
-/* Floating theme toggle for auth page: fixed in viewport corner */
 .auth-theme-switch-container {
   position: fixed;
   top: 1.25rem;
@@ -943,10 +1020,61 @@ a:hover {
   z-index: 1050;
 }
 
-/* Responsive layout: maintains split screen down to 860px */
+/* --------------------------------------------------------------------------
+   13. UPLOAD DROPZONE & MISC UTILITIES
+   -------------------------------------------------------------------------- */
+.upload-dropzone {
+  background-color: var(--bg-card) !important;
+  border: 2px dashed var(--border-color) !important;
+  color: var(--text-primary) !important;
+  border-radius: 16px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.upload-dropzone:hover {
+  border-color: var(--primary) !important;
+  background-color: var(--bg-elevated) !important;
+}
+
+.tag-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background-color: var(--bg-elevated) !important;
+  color: var(--text-secondary) !important;
+  margin: 2px;
+  border: 1px solid var(--border-color) !important;
+}
+
+/* Dark Mode Overrides for Common Bootstrap Utilities */
+[data-theme="dark"] .bg-white {
+  background-color: var(--bg-card) !important;
+}
+[data-theme="dark"] .bg-light {
+  background-color: var(--bg-elevated) !important;
+  color: var(--text-primary) !important;
+}
+[data-theme="dark"] .text-dark {
+  color: var(--text-primary) !important;
+}
+[data-theme="dark"] .text-muted,
+[data-theme="dark"] .text-secondary {
+  color: var(--text-muted) !important;
+}
+[data-theme="dark"] .border {
+  border-color: var(--border-color) !important;
+}
+
+/* --------------------------------------------------------------------------
+   14. RESPONSIVE BREAKPOINTS & MOBILE POLISH
+   -------------------------------------------------------------------------- */
 @media (max-width: 859.98px) {
   .auth-wrapper {
-    padding: 4rem 1rem 2rem 1rem;
+    padding: 4.5rem 1rem 2rem 1rem;
   }
   .auth-split-card {
     flex-direction: column;
@@ -958,7 +1086,7 @@ a:hover {
     min-width: 0;
     border-right: none;
     border-bottom: 1px solid var(--border-color);
-    padding: 1.5rem 1.25rem;
+    padding: 1.75rem 1.25rem;
   }
   .auth-form-side {
     width: 100%;
@@ -972,10 +1100,6 @@ a:hover {
   .auth-illustration-svg {
     max-height: 110px;
   }
-  .visual-quote-box {
-    max-width: 100%;
-    padding: 0.75rem 1rem;
-  }
   .role-pill-btn {
     font-size: 0.8rem;
     padding: 0.55rem 0.2rem;
@@ -983,27 +1107,29 @@ a:hover {
   }
 }
 
-@media (max-width: 480px) {
-  .auth-wrapper {
-    padding: 3.5rem 0.75rem 1.5rem 0.75rem;
+@media (max-width: 575.98px) {
+  .hero-card,
+  .profile-hero,
+  .coach-hero {
+    padding: 1.5rem !important;
+    border-radius: 16px;
   }
-  .auth-form-side {
-    padding: 1.5rem 1.15rem;
+  .hero-card h1,
+  .profile-hero h1,
+  .coach-hero h1 {
+    font-size: 1.5rem !important;
+  }
+  .kpi-card {
+    padding: 1rem !important;
   }
   .role-pill-btn {
-    font-size: 0.76rem;
+    font-size: 0.75rem;
     padding: 0.5rem 0.15rem;
-  }
-  .auth-visual-side {
-    padding: 1.25rem 1rem;
-  }
-  .visual-quote-box {
-    display: none;
   }
 }
 
 /* --------------------------------------------------------------------------
-   12. SMOOTH SCROLLBAR
+   15. CUSTOM SCROLLBAR
    -------------------------------------------------------------------------- */
 ::-webkit-scrollbar {
   width: 8px;
@@ -1022,145 +1148,3 @@ a:hover {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted);
 }
-
-/* --------------------------------------------------------------------------
-   13. COMPREHENSIVE COMPONENT ADAPTATIONS
-   -------------------------------------------------------------------------- */
-.login-page-bg {
-  background: radial-gradient(ellipse at top, #eef2ff 0%, #f5f7fb 100%) !important;
-  min-height: 100vh;
-}
-
-[data-theme="dark"] .login-page-bg {
-  background: radial-gradient(ellipse at top, #1e293b 0%, #0b1120 100%) !important;
-}
-
-.metric-box {
-  background-color: var(--bg-elevated) !important;
-  border: 1px solid var(--border-color) !important;
-  color: var(--text-primary) !important;
-  border-radius: 14px;
-}
-
-.card-custom {
-  background-color: var(--bg-card) !important;
-  border: 1px solid var(--border-color) !important;
-  color: var(--text-primary) !important;
-  border-radius: 16px;
-}
-
-.upload-dropzone {
-  background-color: var(--bg-card) !important;
-  border: 2px dashed var(--border-color) !important;
-  color: var(--text-primary) !important;
-  border-radius: 16px;
-  transition: all 0.2s ease;
-}
-
-.upload-dropzone:hover {
-  border-color: var(--primary) !important;
-  background-color: var(--bg-elevated) !important;
-}
-
-.tag-badge {
-  display: inline-block;
-  font-size: 0.75rem;
-  padding: 2px 8px;
-  border-radius: 6px;
-  background-color: var(--bg-elevated) !important;
-  color: var(--text-secondary) !important;
-  margin: 2px;
-  border: 1px solid var(--border-color) !important;
-}
-
-/* Hero card text adaptations */
-[data-theme="light"] .hero-card h1,
-[data-theme="light"] .hero-card h2,
-[data-theme="light"] .hero-card h3,
-[data-theme="light"] .hero-card .display-6,
-[data-theme="light"] .hero-card .text-white,
-[data-theme="light"] .profile-hero h1,
-[data-theme="light"] .profile-hero h2,
-[data-theme="light"] .profile-hero h3,
-[data-theme="light"] .profile-hero .display-6,
-[data-theme="light"] .profile-hero .text-white {
-  color: #0f172a !important;
-}
-
-[data-theme="light"] .hero-card p,
-[data-theme="light"] .hero-card .text-white-50,
-[data-theme="light"] .profile-hero p,
-[data-theme="light"] .profile-hero .text-white-50 {
-  color: #475569 !important;
-}
-
-[data-theme="light"] .hero-stat-box {
-  background-color: #ffffff !important;
-  border: 1px solid #e2e8f0 !important;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-}
-
-[data-theme="light"] .hero-stat-box .text-white {
-  color: #0f172a !important;
-}
-
-[data-theme="light"] .hero-stat-box .text-white-50 {
-  color: #64748b !important;
-}
-
-[data-theme="dark"] .hero-stat-box {
-  background-color: rgba(255, 255, 255, 0.05) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-}
-
-/* Navbar adaptations */
-[data-theme="light"] .navbar-custom {
-  background-color: #ffffff !important;
-  border-bottom: 1px solid #e2e8f0 !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-}
-
-[data-theme="light"] .navbar-custom .navbar-brand {
-  color: #0f172a !important;
-}
-
-[data-theme="light"] .navbar-custom .nav-link {
-  color: #475569 !important;
-}
-
-[data-theme="light"] .navbar-custom .nav-link:hover,
-[data-theme="light"] .navbar-custom .nav-link.active {
-  color: var(--primary) !important;
-}
-
-[data-theme="light"] .navbar-custom .text-white-50 {
-  color: #64748b !important;
-}
-
-[data-theme="light"] .navbar-custom .text-white {
-  color: #0f172a !important;
-}
-
-[data-theme="light"] .navbar-custom .bg-dark {
-  background-color: #f1f5f9 !important;
-  border-color: #e2e8f0 !important;
-}
-
-[data-theme="light"] .navbar-custom .border-secondary {
-  border-color: #e2e8f0 !important;
-}
-
-[data-theme="light"] .navbar-custom .btn-outline-light {
-  color: #475569 !important;
-  border-color: #cbd5e1 !important;
-}
-
-[data-theme="light"] .navbar-custom .btn-outline-light:hover {
-  background-color: #f1f5f9 !important;
-  color: #0f172a !important;
-}
-
-[data-theme="light"] .navbar-toggler-icon {
-  filter: invert(0.8);
-}
-

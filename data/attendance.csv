@@ -5039,3 +5039,1395 @@ IT2026060,1,Communication Skills,76.0
 IT2026060,1,Digital Electronics,76.0
 IT2026060,1,Mathematics I,84.0
 IT2026060,1,Python Programming,74.0
+254102,1,Python Programming,84.6
+254102,1,Mathematics I,91.4
+254102,1,Communication Skills,83.6
+254102,1,Digital Electronics,86.0
+254102,2,Data Structures,96.7
+254102,2,Database Management Systems,95.4
+254102,2,Statistics,91.2
+254102,2,Web Development,94.2
+254102,3,Python for Data Analytics,96.3
+254102,3,Operating Systems,98.0
+254102,3,Computer Networks,83.8
+254102,3,Software Engineering,93.5
+254103,1,Python Programming,58.9
+254103,1,Mathematics I,72.0
+254103,1,Communication Skills,67.2
+254103,1,Digital Electronics,63.4
+254103,2,Data Structures,66.6
+254103,2,Database Management Systems,64.7
+254103,2,Statistics,76.7
+254103,2,Web Development,63.2
+254103,3,Python for Data Analytics,60.7
+254103,3,Operating Systems,73.7
+254103,3,Computer Networks,69.7
+254103,3,Software Engineering,61.8
+254107,1,Python Programming,68.4
+254107,1,Mathematics I,70.4
+254107,1,Communication Skills,63.0
+254107,1,Digital Electronics,68.8
+254107,2,Data Structures,67.0
+254107,2,Database Management Systems,62.5
+254107,2,Statistics,67.2
+254107,2,Web Development,68.2
+254107,3,Python for Data Analytics,68.4
+254107,3,Operating Systems,72.3
+254107,3,Computer Networks,69.5
+254107,3,Software Engineering,78.5
+254109,1,Python Programming,92.3
+254109,1,Mathematics I,97.5
+254109,1,Communication Skills,96.6
+254109,1,Digital Electronics,90.5
+254109,2,Data Structures,94.1
+254109,2,Database Management Systems,83.0
+254109,2,Statistics,88.1
+254109,2,Web Development,95.4
+254109,3,Python for Data Analytics,87.4
+254109,3,Operating Systems,91.4
+254109,3,Computer Networks,98.0
+254109,3,Software Engineering,91.7
+254110,1,Python Programming,79.3
+254110,1,Mathematics I,79.3
+254110,1,Communication Skills,87.1
+254110,1,Digital Electronics,85.1
+254110,2,Data Structures,76.9
+254110,2,Database Management Systems,84.0
+254110,2,Statistics,83.2
+254110,2,Web Development,83.5
+254110,3,Python for Data Analytics,89.1
+254110,3,Operating Systems,79.2
+254110,3,Computer Networks,83.2
+254110,3,Software Engineering,77.3
+254111,1,Python Programming,84.9
+254111,1,Mathematics I,75.6
+254111,1,Communication Skills,87.4
+254111,1,Digital Electronics,78.2
+254111,2,Data Structures,75.5
+254111,2,Database Management Systems,79.3
+254111,2,Statistics,82.8
+254111,2,Web Development,80.5
+254111,3,Python for Data Analytics,79.3
+254111,3,Operating Systems,88.2
+254111,3,Computer Networks,77.2
+254111,3,Software Engineering,77.9
+254112,1,Python Programming,77.6
+254112,1,Mathematics I,83.4
+254112,1,Communication Skills,84.1
+254112,1,Digital Electronics,92.6
+254112,2,Data Structures,79.0
+254112,2,Database Management Systems,74.3
+254112,2,Statistics,80.6
+254112,2,Web Development,77.2
+254112,3,Python for Data Analytics,82.6
+254112,3,Operating Systems,85.0
+254112,3,Computer Networks,80.3
+254112,3,Software Engineering,78.1
+254113,1,Python Programming,81.9
+254113,1,Mathematics I,89.2
+254113,1,Communication Skills,83.0
+254113,1,Digital Electronics,73.7
+254113,2,Data Structures,78.5
+254113,2,Database Management Systems,84.1
+254113,2,Statistics,87.9
+254113,2,Web Development,84.7
+254113,3,Python for Data Analytics,84.8
+254113,3,Operating Systems,79.0
+254113,3,Computer Networks,90.0
+254113,3,Software Engineering,80.2
+254115,1,Python Programming,83.2
+254115,1,Mathematics I,75.9
+254115,1,Communication Skills,81.2
+254115,1,Digital Electronics,85.2
+254115,2,Data Structures,79.7
+254115,2,Database Management Systems,89.3
+254115,2,Statistics,90.9
+254115,2,Web Development,92.5
+254115,3,Python for Data Analytics,73.6
+254115,3,Operating Systems,87.3
+254115,3,Computer Networks,77.6
+254115,3,Software Engineering,80.7
+254118,1,Python Programming,75.6
+254118,1,Mathematics I,67.7
+254118,1,Communication Skills,64.9
+254118,1,Digital Electronics,63.8
+254118,2,Data Structures,63.4
+254118,2,Database Management Systems,64.3
+254118,2,Statistics,64.5
+254118,2,Web Development,70.7
+254118,3,Python for Data Analytics,75.9
+254118,3,Operating Systems,64.6
+254118,3,Computer Networks,78.3
+254118,3,Software Engineering,72.3
+254119,1,Python Programming,58.0
+254119,1,Mathematics I,64.4
+254119,1,Communication Skills,72.6
+254119,1,Digital Electronics,61.8
+254119,2,Data Structures,69.8
+254119,2,Database Management Systems,62.7
+254119,2,Statistics,69.9
+254119,2,Web Development,69.4
+254119,3,Python for Data Analytics,68.2
+254119,3,Operating Systems,58.3
+254119,3,Computer Networks,65.2
+254119,3,Software Engineering,63.8
+254120,1,Python Programming,80.1
+254120,1,Mathematics I,86.6
+254120,1,Communication Skills,78.3
+254120,1,Digital Electronics,83.0
+254120,2,Data Structures,82.4
+254120,2,Database Management Systems,77.3
+254120,2,Statistics,81.5
+254120,2,Web Development,81.2
+254120,3,Python for Data Analytics,86.0
+254120,3,Operating Systems,74.7
+254120,3,Computer Networks,82.0
+254120,3,Software Engineering,81.8
+254121,1,Python Programming,79.9
+254121,1,Mathematics I,85.4
+254121,1,Communication Skills,78.4
+254121,1,Digital Electronics,89.8
+254121,2,Data Structures,72.6
+254121,2,Database Management Systems,82.5
+254121,2,Statistics,81.3
+254121,2,Web Development,80.6
+254121,3,Python for Data Analytics,84.7
+254121,3,Operating Systems,86.6
+254121,3,Computer Networks,77.2
+254121,3,Software Engineering,86.0
+254122,1,Python Programming,95.9
+254122,1,Mathematics I,89.1
+254122,1,Communication Skills,97.9
+254122,1,Digital Electronics,85.5
+254122,2,Data Structures,91.9
+254122,2,Database Management Systems,93.1
+254122,2,Statistics,96.4
+254122,2,Web Development,98.0
+254122,3,Python for Data Analytics,89.6
+254122,3,Operating Systems,78.1
+254122,3,Computer Networks,85.4
+254122,3,Software Engineering,94.2
+254123,1,Python Programming,64.2
+254123,1,Mathematics I,69.7
+254123,1,Communication Skills,69.4
+254123,1,Digital Electronics,62.7
+254123,2,Data Structures,70.0
+254123,2,Database Management Systems,62.3
+254123,2,Statistics,64.5
+254123,2,Web Development,65.9
+254123,3,Python for Data Analytics,65.7
+254123,3,Operating Systems,69.0
+254123,3,Computer Networks,64.2
+254123,3,Software Engineering,71.8
+254124,1,Python Programming,82.2
+254124,1,Mathematics I,67.5
+254124,1,Communication Skills,83.7
+254124,1,Digital Electronics,84.1
+254124,2,Data Structures,78.9
+254124,2,Database Management Systems,78.5
+254124,2,Statistics,70.9
+254124,2,Web Development,78.5
+254124,3,Python for Data Analytics,92.3
+254124,3,Operating Systems,82.3
+254124,3,Computer Networks,79.9
+254124,3,Software Engineering,86.2
+254130,1,Python Programming,81.9
+254130,1,Mathematics I,82.7
+254130,1,Communication Skills,78.6
+254130,1,Digital Electronics,75.8
+254130,2,Data Structures,82.8
+254130,2,Database Management Systems,83.6
+254130,2,Statistics,74.6
+254130,2,Web Development,84.5
+254130,3,Python for Data Analytics,73.7
+254130,3,Operating Systems,76.9
+254130,3,Computer Networks,85.8
+254130,3,Software Engineering,79.0
+254131,1,Python Programming,85.7
+254131,1,Mathematics I,81.8
+254131,1,Communication Skills,75.8
+254131,1,Digital Electronics,74.9
+254131,2,Data Structures,84.6
+254131,2,Database Management Systems,72.2
+254131,2,Statistics,81.9
+254131,2,Web Development,77.1
+254131,3,Python for Data Analytics,77.2
+254131,3,Operating Systems,80.9
+254131,3,Computer Networks,76.0
+254131,3,Software Engineering,83.1
+254132,1,Python Programming,75.8
+254132,1,Mathematics I,85.1
+254132,1,Communication Skills,66.2
+254132,1,Digital Electronics,75.8
+254132,2,Data Structures,75.6
+254132,2,Database Management Systems,75.0
+254132,2,Statistics,85.8
+254132,2,Web Development,78.6
+254132,3,Python for Data Analytics,81.2
+254132,3,Operating Systems,79.0
+254132,3,Computer Networks,85.8
+254132,3,Software Engineering,87.4
+254133,1,Python Programming,83.0
+254133,1,Mathematics I,76.2
+254133,1,Communication Skills,82.4
+254133,1,Digital Electronics,88.4
+254133,2,Data Structures,79.6
+254133,2,Database Management Systems,77.5
+254133,2,Statistics,76.5
+254133,2,Web Development,76.1
+254133,3,Python for Data Analytics,84.7
+254133,3,Operating Systems,87.6
+254133,3,Computer Networks,70.1
+254133,3,Software Engineering,91.1
+254134,1,Python Programming,69.3
+254134,1,Mathematics I,67.5
+254134,1,Communication Skills,69.9
+254134,1,Digital Electronics,64.2
+254134,2,Data Structures,71.9
+254134,2,Database Management Systems,62.5
+254134,2,Statistics,72.4
+254134,2,Web Development,66.2
+254134,3,Python for Data Analytics,67.2
+254134,3,Operating Systems,75.4
+254134,3,Computer Networks,70.4
+254134,3,Software Engineering,69.2
+254135,1,Python Programming,79.7
+254135,1,Mathematics I,87.1
+254135,1,Communication Skills,74.4
+254135,1,Digital Electronics,88.1
+254135,2,Data Structures,85.5
+254135,2,Database Management Systems,87.1
+254135,2,Statistics,85.2
+254135,2,Web Development,79.2
+254135,3,Python for Data Analytics,90.8
+254135,3,Operating Systems,84.0
+254135,3,Computer Networks,80.7
+254135,3,Software Engineering,76.6
+254136,1,Python Programming,83.1
+254136,1,Mathematics I,86.7
+254136,1,Communication Skills,79.7
+254136,1,Digital Electronics,75.0
+254136,2,Data Structures,79.0
+254136,2,Database Management Systems,77.1
+254136,2,Statistics,81.0
+254136,2,Web Development,85.6
+254136,3,Python for Data Analytics,89.1
+254136,3,Operating Systems,90.3
+254136,3,Computer Networks,80.9
+254136,3,Software Engineering,89.5
+254139,1,Python Programming,94.4
+254139,1,Mathematics I,87.1
+254139,1,Communication Skills,85.8
+254139,1,Digital Electronics,92.2
+254139,2,Data Structures,85.4
+254139,2,Database Management Systems,86.8
+254139,2,Statistics,92.1
+254139,2,Web Development,94.8
+254139,3,Python for Data Analytics,86.2
+254139,3,Operating Systems,98.0
+254139,3,Computer Networks,84.1
+254139,3,Software Engineering,86.2
+254141,1,Python Programming,81.4
+254141,1,Mathematics I,80.4
+254141,1,Communication Skills,84.7
+254141,1,Digital Electronics,78.6
+254141,2,Data Structures,82.7
+254141,2,Database Management Systems,80.7
+254141,2,Statistics,81.8
+254141,2,Web Development,75.4
+254141,3,Python for Data Analytics,81.9
+254141,3,Operating Systems,74.5
+254141,3,Computer Networks,87.2
+254141,3,Software Engineering,78.7
+254143,1,Python Programming,80.7
+254143,1,Mathematics I,82.2
+254143,1,Communication Skills,76.7
+254143,1,Digital Electronics,82.1
+254143,2,Data Structures,87.2
+254143,2,Database Management Systems,87.8
+254143,2,Statistics,84.0
+254143,2,Web Development,86.0
+254143,3,Python for Data Analytics,79.8
+254143,3,Operating Systems,86.0
+254143,3,Computer Networks,76.1
+254143,3,Software Engineering,86.7
+254144,1,Python Programming,58.5
+254144,1,Mathematics I,72.8
+254144,1,Communication Skills,66.3
+254144,1,Digital Electronics,80.4
+254144,2,Data Structures,69.8
+254144,2,Database Management Systems,71.4
+254144,2,Statistics,79.6
+254144,2,Web Development,65.2
+254144,3,Python for Data Analytics,72.9
+254144,3,Operating Systems,67.2
+254144,3,Computer Networks,72.7
+254144,3,Software Engineering,72.7
+254146,1,Python Programming,73.1
+254146,1,Mathematics I,75.8
+254146,1,Communication Skills,76.8
+254146,1,Digital Electronics,81.7
+254146,2,Data Structures,79.1
+254146,2,Database Management Systems,86.7
+254146,2,Statistics,83.2
+254146,2,Web Development,80.1
+254146,3,Python for Data Analytics,79.3
+254146,3,Operating Systems,78.6
+254146,3,Computer Networks,81.0
+254146,3,Software Engineering,83.7
+254147,1,Python Programming,86.8
+254147,1,Mathematics I,77.6
+254147,1,Communication Skills,82.7
+254147,1,Digital Electronics,92.6
+254147,2,Data Structures,80.4
+254147,2,Database Management Systems,81.1
+254147,2,Statistics,81.8
+254147,2,Web Development,76.9
+254147,3,Python for Data Analytics,75.9
+254147,3,Operating Systems,83.0
+254147,3,Computer Networks,78.4
+254147,3,Software Engineering,88.3
+254148,1,Python Programming,85.8
+254148,1,Mathematics I,93.6
+254148,1,Communication Skills,93.9
+254148,1,Digital Electronics,94.9
+254148,2,Data Structures,89.7
+254148,2,Database Management Systems,87.6
+254148,2,Statistics,84.2
+254148,2,Web Development,88.4
+254148,3,Python for Data Analytics,91.2
+254148,3,Operating Systems,94.6
+254148,3,Computer Networks,83.9
+254148,3,Software Engineering,88.9
+254149,1,Python Programming,86.0
+254149,1,Mathematics I,82.1
+254149,1,Communication Skills,83.2
+254149,1,Digital Electronics,78.3
+254149,2,Data Structures,80.9
+254149,2,Database Management Systems,77.5
+254149,2,Statistics,68.4
+254149,2,Web Development,83.8
+254149,3,Python for Data Analytics,87.2
+254149,3,Operating Systems,82.9
+254149,3,Computer Networks,77.3
+254149,3,Software Engineering,78.6
+254150,1,Python Programming,78.1
+254150,1,Mathematics I,70.6
+254150,1,Communication Skills,87.4
+254150,1,Digital Electronics,78.8
+254150,2,Data Structures,86.4
+254150,2,Database Management Systems,84.2
+254150,2,Statistics,86.4
+254150,2,Web Development,75.4
+254150,3,Python for Data Analytics,78.1
+254150,3,Operating Systems,81.5
+254150,3,Computer Networks,81.3
+254150,3,Software Engineering,81.0
+254151,1,Python Programming,69.8
+254151,1,Mathematics I,61.4
+254151,1,Communication Skills,72.6
+254151,1,Digital Electronics,56.0
+254151,2,Data Structures,68.8
+254151,2,Database Management Systems,80.9
+254151,2,Statistics,70.6
+254151,2,Web Development,65.7
+254151,3,Python for Data Analytics,62.8
+254151,3,Operating Systems,70.8
+254151,3,Computer Networks,73.4
+254151,3,Software Engineering,76.4
+254152,1,Python Programming,90.2
+254152,1,Mathematics I,71.5
+254152,1,Communication Skills,77.1
+254152,1,Digital Electronics,82.4
+254152,2,Data Structures,87.4
+254152,2,Database Management Systems,83.4
+254152,2,Statistics,71.7
+254152,2,Web Development,75.4
+254152,3,Python for Data Analytics,84.5
+254152,3,Operating Systems,90.6
+254152,3,Computer Networks,81.6
+254152,3,Software Engineering,83.6
+254153,1,Python Programming,80.2
+254153,1,Mathematics I,81.0
+254153,1,Communication Skills,78.0
+254153,1,Digital Electronics,90.5
+254153,2,Data Structures,80.0
+254153,2,Database Management Systems,79.9
+254153,2,Statistics,80.9
+254153,2,Web Development,82.5
+254153,3,Python for Data Analytics,73.7
+254153,3,Operating Systems,84.5
+254153,3,Computer Networks,84.7
+254153,3,Software Engineering,80.3
+254154,1,Python Programming,70.7
+254154,1,Mathematics I,71.9
+254154,1,Communication Skills,66.7
+254154,1,Digital Electronics,64.7
+254154,2,Data Structures,65.8
+254154,2,Database Management Systems,62.9
+254154,2,Statistics,72.4
+254154,2,Web Development,75.1
+254154,3,Python for Data Analytics,67.8
+254154,3,Operating Systems,70.4
+254154,3,Computer Networks,67.4
+254154,3,Software Engineering,71.7
+254155,1,Python Programming,86.9
+254155,1,Mathematics I,83.8
+254155,1,Communication Skills,78.6
+254155,1,Digital Electronics,80.3
+254155,2,Data Structures,85.4
+254155,2,Database Management Systems,82.0
+254155,2,Statistics,73.1
+254155,2,Web Development,81.6
+254155,3,Python for Data Analytics,79.1
+254155,3,Operating Systems,84.6
+254155,3,Computer Networks,82.1
+254155,3,Software Engineering,86.6
+254156,1,Python Programming,84.3
+254156,1,Mathematics I,82.5
+254156,1,Communication Skills,90.1
+254156,1,Digital Electronics,78.0
+254156,2,Data Structures,77.1
+254156,2,Database Management Systems,83.8
+254156,2,Statistics,83.2
+254156,2,Web Development,95.3
+254156,3,Python for Data Analytics,76.3
+254156,3,Operating Systems,78.5
+254156,3,Computer Networks,82.4
+254156,3,Software Engineering,85.7
+254159,1,Python Programming,86.0
+254159,1,Mathematics I,80.7
+254159,1,Communication Skills,73.7
+254159,1,Digital Electronics,85.3
+254159,2,Data Structures,76.8
+254159,2,Database Management Systems,90.9
+254159,2,Statistics,76.9
+254159,2,Web Development,82.6
+254159,3,Python for Data Analytics,76.1
+254159,3,Operating Systems,85.0
+254159,3,Computer Networks,84.3
+254159,3,Software Engineering,78.4
+254160,1,Python Programming,74.8
+254160,1,Mathematics I,83.0
+254160,1,Communication Skills,79.8
+254160,1,Digital Electronics,76.2
+254160,2,Data Structures,83.8
+254160,2,Database Management Systems,82.0
+254160,2,Statistics,74.7
+254160,2,Web Development,85.2
+254160,3,Python for Data Analytics,83.9
+254160,3,Operating Systems,84.8
+254160,3,Computer Networks,90.4
+254160,3,Software Engineering,87.3
+254161,1,Python Programming,85.3
+254161,1,Mathematics I,83.7
+254161,1,Communication Skills,79.6
+254161,1,Digital Electronics,87.6
+254161,2,Data Structures,80.9
+254161,2,Database Management Systems,82.7
+254161,2,Statistics,79.8
+254161,2,Web Development,83.0
+254161,3,Python for Data Analytics,76.9
+254161,3,Operating Systems,78.1
+254161,3,Computer Networks,82.6
+254161,3,Software Engineering,91.5
+254163,1,Python Programming,79.0
+254163,1,Mathematics I,80.7
+254163,1,Communication Skills,85.0
+254163,1,Digital Electronics,85.3
+254163,2,Data Structures,75.0
+254163,2,Database Management Systems,81.4
+254163,2,Statistics,79.8
+254163,2,Web Development,83.1
+254163,3,Python for Data Analytics,76.4
+254163,3,Operating Systems,88.3
+254163,3,Computer Networks,81.2
+254163,3,Software Engineering,81.7
+254164,1,Python Programming,66.9
+254164,1,Mathematics I,63.2
+254164,1,Communication Skills,73.7
+254164,1,Digital Electronics,69.0
+254164,2,Data Structures,64.8
+254164,2,Database Management Systems,70.8
+254164,2,Statistics,62.8
+254164,2,Web Development,60.9
+254164,3,Python for Data Analytics,69.3
+254164,3,Operating Systems,66.7
+254164,3,Computer Networks,67.2
+254164,3,Software Engineering,63.8
+254165,1,Python Programming,77.4
+254165,1,Mathematics I,78.2
+254165,1,Communication Skills,91.0
+254165,1,Digital Electronics,74.1
+254165,2,Data Structures,80.1
+254165,2,Database Management Systems,83.4
+254165,2,Statistics,91.3
+254165,2,Web Development,84.6
+254165,3,Python for Data Analytics,73.6
+254165,3,Operating Systems,90.8
+254165,3,Computer Networks,75.1
+254165,3,Software Engineering,82.1
+254166,1,Python Programming,60.2
+254166,1,Mathematics I,63.7
+254166,1,Communication Skills,73.0
+254166,1,Digital Electronics,67.9
+254166,2,Data Structures,79.1
+254166,2,Database Management Systems,67.5
+254166,2,Statistics,72.1
+254166,2,Web Development,67.6
+254166,3,Python for Data Analytics,71.3
+254166,3,Operating Systems,70.3
+254166,3,Computer Networks,67.9
+254166,3,Software Engineering,59.2
+254167,1,Python Programming,86.7
+254167,1,Mathematics I,80.8
+254167,1,Communication Skills,80.5
+254167,1,Digital Electronics,77.8
+254167,2,Data Structures,81.6
+254167,2,Database Management Systems,81.6
+254167,2,Statistics,87.5
+254167,2,Web Development,74.4
+254167,3,Python for Data Analytics,83.3
+254167,3,Operating Systems,81.8
+254167,3,Computer Networks,77.7
+254167,3,Software Engineering,72.0
+254168,1,Python Programming,88.2
+254168,1,Mathematics I,79.1
+254168,1,Communication Skills,84.3
+254168,1,Digital Electronics,73.8
+254168,2,Data Structures,79.4
+254168,2,Database Management Systems,84.8
+254168,2,Statistics,79.0
+254168,2,Web Development,81.5
+254168,3,Python for Data Analytics,85.7
+254168,3,Operating Systems,75.1
+254168,3,Computer Networks,86.6
+254168,3,Software Engineering,84.1
+254169,1,Python Programming,92.3
+254169,1,Mathematics I,79.1
+254169,1,Communication Skills,86.0
+254169,1,Digital Electronics,91.0
+254169,2,Data Structures,86.5
+254169,2,Database Management Systems,75.8
+254169,2,Statistics,78.2
+254169,2,Web Development,90.4
+254169,3,Python for Data Analytics,77.3
+254169,3,Operating Systems,76.9
+254169,3,Computer Networks,76.5
+254169,3,Software Engineering,72.1
+254172,1,Python Programming,91.1
+254172,1,Mathematics I,92.1
+254172,1,Communication Skills,82.3
+254172,1,Digital Electronics,91.2
+254172,2,Data Structures,77.6
+254172,2,Database Management Systems,78.7
+254172,2,Statistics,78.2
+254172,2,Web Development,82.3
+254172,3,Python for Data Analytics,73.4
+254172,3,Operating Systems,83.3
+254172,3,Computer Networks,81.2
+254172,3,Software Engineering,78.8
+254174,1,Python Programming,80.0
+254174,1,Mathematics I,82.5
+254174,1,Communication Skills,85.6
+254174,1,Digital Electronics,80.1
+254174,2,Data Structures,74.6
+254174,2,Database Management Systems,84.3
+254174,2,Statistics,83.9
+254174,2,Web Development,88.6
+254174,3,Python for Data Analytics,87.6
+254174,3,Operating Systems,76.2
+254174,3,Computer Networks,79.8
+254174,3,Software Engineering,77.5
+254175,1,Python Programming,79.6
+254175,1,Mathematics I,82.4
+254175,1,Communication Skills,87.3
+254175,1,Digital Electronics,77.0
+254175,2,Data Structures,81.8
+254175,2,Database Management Systems,87.3
+254175,2,Statistics,81.5
+254175,2,Web Development,72.9
+254175,3,Python for Data Analytics,79.4
+254175,3,Operating Systems,80.1
+254175,3,Computer Networks,86.9
+254175,3,Software Engineering,79.3
+254177,1,Python Programming,82.1
+254177,1,Mathematics I,83.6
+254177,1,Communication Skills,80.5
+254177,1,Digital Electronics,80.0
+254177,2,Data Structures,77.0
+254177,2,Database Management Systems,80.9
+254177,2,Statistics,85.8
+254177,2,Web Development,80.4
+254177,3,Python for Data Analytics,75.6
+254177,3,Operating Systems,87.0
+254177,3,Computer Networks,79.6
+254177,3,Software Engineering,79.2
+254178,1,Python Programming,83.8
+254178,1,Mathematics I,84.5
+254178,1,Communication Skills,86.1
+254178,1,Digital Electronics,81.9
+254178,2,Data Structures,79.5
+254178,2,Database Management Systems,86.1
+254178,2,Statistics,92.2
+254178,2,Web Development,92.7
+254178,3,Python for Data Analytics,79.8
+254178,3,Operating Systems,82.4
+254178,3,Computer Networks,72.8
+254178,3,Software Engineering,88.3
+254179,1,Python Programming,82.5
+254179,1,Mathematics I,86.2
+254179,1,Communication Skills,86.8
+254179,1,Digital Electronics,90.4
+254179,2,Data Structures,79.9
+254179,2,Database Management Systems,74.9
+254179,2,Statistics,85.5
+254179,2,Web Development,74.9
+254179,3,Python for Data Analytics,85.3
+254179,3,Operating Systems,84.1
+254179,3,Computer Networks,75.0
+254179,3,Software Engineering,81.6
+254180,1,Python Programming,73.6
+254180,1,Mathematics I,74.7
+254180,1,Communication Skills,73.5
+254180,1,Digital Electronics,84.5
+254180,2,Data Structures,83.0
+254180,2,Database Management Systems,89.3
+254180,2,Statistics,79.9
+254180,2,Web Development,77.3
+254180,3,Python for Data Analytics,73.4
+254180,3,Operating Systems,87.8
+254180,3,Computer Networks,84.2
+254180,3,Software Engineering,78.6
+254181,1,Python Programming,61.5
+254181,1,Mathematics I,72.9
+254181,1,Communication Skills,72.9
+254181,1,Digital Electronics,64.6
+254181,2,Data Structures,73.3
+254181,2,Database Management Systems,62.8
+254181,2,Statistics,71.7
+254181,2,Web Development,71.2
+254181,3,Python for Data Analytics,63.7
+254181,3,Operating Systems,66.1
+254181,3,Computer Networks,63.2
+254181,3,Software Engineering,64.3
+254182,1,Python Programming,76.1
+254182,1,Mathematics I,75.3
+254182,1,Communication Skills,81.7
+254182,1,Digital Electronics,83.1
+254182,2,Data Structures,79.7
+254182,2,Database Management Systems,85.0
+254182,2,Statistics,91.2
+254182,2,Web Development,81.5
+254182,3,Python for Data Analytics,85.0
+254182,3,Operating Systems,84.7
+254182,3,Computer Networks,79.7
+254182,3,Software Engineering,75.6
+254183,1,Python Programming,94.6
+254183,1,Mathematics I,85.0
+254183,1,Communication Skills,86.0
+254183,1,Digital Electronics,84.3
+254183,2,Data Structures,84.5
+254183,2,Database Management Systems,87.3
+254183,2,Statistics,91.9
+254183,2,Web Development,82.5
+254183,3,Python for Data Analytics,86.4
+254183,3,Operating Systems,93.3
+254183,3,Computer Networks,95.2
+254183,3,Software Engineering,94.2
+254184,1,Python Programming,86.8
+254184,1,Mathematics I,77.2
+254184,1,Communication Skills,79.1
+254184,1,Digital Electronics,85.3
+254184,2,Data Structures,74.8
+254184,2,Database Management Systems,75.4
+254184,2,Statistics,80.2
+254184,2,Web Development,75.2
+254184,3,Python for Data Analytics,77.7
+254184,3,Operating Systems,85.3
+254184,3,Computer Networks,73.1
+254184,3,Software Engineering,82.0
+254185,1,Python Programming,73.1
+254185,1,Mathematics I,81.2
+254185,1,Communication Skills,66.2
+254185,1,Digital Electronics,78.8
+254185,2,Data Structures,82.0
+254185,2,Database Management Systems,73.7
+254185,2,Statistics,84.8
+254185,2,Web Development,79.4
+254185,3,Python for Data Analytics,82.3
+254185,3,Operating Systems,73.4
+254185,3,Computer Networks,74.8
+254185,3,Software Engineering,72.1
+254186,1,Python Programming,79.3
+254186,1,Mathematics I,79.2
+254186,1,Communication Skills,86.5
+254186,1,Digital Electronics,81.9
+254186,2,Data Structures,80.2
+254186,2,Database Management Systems,84.5
+254186,2,Statistics,78.8
+254186,2,Web Development,75.8
+254186,3,Python for Data Analytics,83.4
+254186,3,Operating Systems,85.8
+254186,3,Computer Networks,75.4
+254186,3,Software Engineering,76.0
+254187,1,Python Programming,81.9
+254187,1,Mathematics I,77.0
+254187,1,Communication Skills,76.4
+254187,1,Digital Electronics,79.6
+254187,2,Data Structures,78.5
+254187,2,Database Management Systems,76.8
+254187,2,Statistics,83.3
+254187,2,Web Development,86.3
+254187,3,Python for Data Analytics,79.9
+254187,3,Operating Systems,85.8
+254187,3,Computer Networks,77.6
+254187,3,Software Engineering,77.5
+254189,1,Python Programming,90.4
+254189,1,Mathematics I,93.1
+254189,1,Communication Skills,87.4
+254189,1,Digital Electronics,95.8
+254189,2,Data Structures,89.5
+254189,2,Database Management Systems,81.6
+254189,2,Statistics,96.9
+254189,2,Web Development,89.1
+254189,3,Python for Data Analytics,90.9
+254189,3,Operating Systems,87.4
+254189,3,Computer Networks,92.6
+254189,3,Software Engineering,86.4
+254190,1,Python Programming,80.3
+254190,1,Mathematics I,80.6
+254190,1,Communication Skills,82.9
+254190,1,Digital Electronics,85.6
+254190,2,Data Structures,82.0
+254190,2,Database Management Systems,83.4
+254190,2,Statistics,81.6
+254190,2,Web Development,84.3
+254190,3,Python for Data Analytics,75.5
+254190,3,Operating Systems,86.0
+254190,3,Computer Networks,80.3
+254190,3,Software Engineering,92.0
+254201,1,Python Programming,86.4
+254201,1,Mathematics I,78.3
+254201,1,Communication Skills,83.6
+254201,1,Digital Electronics,79.9
+254201,2,Data Structures,80.2
+254201,2,Database Management Systems,73.3
+254201,2,Statistics,85.6
+254201,2,Web Development,83.0
+254201,3,Python for Data Analytics,80.9
+254201,3,Operating Systems,73.5
+254201,3,Computer Networks,72.4
+254201,3,Software Engineering,78.0
+254202,1,Python Programming,79.5
+254202,1,Mathematics I,83.6
+254202,1,Communication Skills,76.6
+254202,1,Digital Electronics,83.3
+254202,2,Data Structures,81.8
+254202,2,Database Management Systems,83.7
+254202,2,Statistics,78.9
+254202,2,Web Development,76.9
+254202,3,Python for Data Analytics,80.7
+254202,3,Operating Systems,85.7
+254202,3,Computer Networks,85.3
+254202,3,Software Engineering,80.9
+254203,1,Python Programming,67.2
+254203,1,Mathematics I,69.3
+254203,1,Communication Skills,67.8
+254203,1,Digital Electronics,77.8
+254203,2,Data Structures,67.3
+254203,2,Database Management Systems,65.3
+254203,2,Statistics,61.1
+254203,2,Web Development,67.3
+254203,3,Python for Data Analytics,62.2
+254203,3,Operating Systems,71.2
+254203,3,Computer Networks,81.0
+254203,3,Software Engineering,71.2
+254204,1,Python Programming,73.9
+254204,1,Mathematics I,85.1
+254204,1,Communication Skills,83.8
+254204,1,Digital Electronics,71.8
+254204,2,Data Structures,78.5
+254204,2,Database Management Systems,92.9
+254204,2,Statistics,82.8
+254204,2,Web Development,82.4
+254204,3,Python for Data Analytics,81.7
+254204,3,Operating Systems,83.2
+254204,3,Computer Networks,78.4
+254204,3,Software Engineering,78.9
+254205,1,Python Programming,65.2
+254205,1,Mathematics I,78.9
+254205,1,Communication Skills,65.9
+254205,1,Digital Electronics,73.3
+254205,2,Data Structures,68.7
+254205,2,Database Management Systems,72.8
+254205,2,Statistics,73.7
+254205,2,Web Development,67.0
+254205,3,Python for Data Analytics,62.5
+254205,3,Operating Systems,73.3
+254205,3,Computer Networks,69.5
+254205,3,Software Engineering,65.6
+254206,1,Python Programming,80.2
+254206,1,Mathematics I,86.5
+254206,1,Communication Skills,70.6
+254206,1,Digital Electronics,81.3
+254206,2,Data Structures,75.4
+254206,2,Database Management Systems,97.0
+254206,2,Statistics,75.2
+254206,2,Web Development,82.1
+254206,3,Python for Data Analytics,79.3
+254206,3,Operating Systems,82.1
+254206,3,Computer Networks,79.2
+254206,3,Software Engineering,81.8
+254207,1,Python Programming,80.3
+254207,1,Mathematics I,78.9
+254207,1,Communication Skills,95.2
+254207,1,Digital Electronics,84.3
+254207,2,Data Structures,76.8
+254207,2,Database Management Systems,76.5
+254207,2,Statistics,90.0
+254207,2,Web Development,68.7
+254207,3,Python for Data Analytics,82.7
+254207,3,Operating Systems,80.4
+254207,3,Computer Networks,74.2
+254207,3,Software Engineering,83.6
+254208,1,Python Programming,76.3
+254208,1,Mathematics I,84.4
+254208,1,Communication Skills,78.7
+254208,1,Digital Electronics,79.8
+254208,2,Data Structures,76.6
+254208,2,Database Management Systems,74.8
+254208,2,Statistics,76.4
+254208,2,Web Development,76.5
+254208,3,Python for Data Analytics,81.1
+254208,3,Operating Systems,74.8
+254208,3,Computer Networks,78.1
+254208,3,Software Engineering,89.3
+254209,1,Python Programming,78.0
+254209,1,Mathematics I,78.9
+254209,1,Communication Skills,80.6
+254209,1,Digital Electronics,88.4
+254209,2,Data Structures,80.7
+254209,2,Database Management Systems,83.0
+254209,2,Statistics,84.4
+254209,2,Web Development,87.6
+254209,3,Python for Data Analytics,81.2
+254209,3,Operating Systems,83.7
+254209,3,Computer Networks,80.8
+254209,3,Software Engineering,89.8
+254210,1,Python Programming,61.4
+254210,1,Mathematics I,64.7
+254210,1,Communication Skills,73.1
+254210,1,Digital Electronics,64.2
+254210,2,Data Structures,67.3
+254210,2,Database Management Systems,71.9
+254210,2,Statistics,70.1
+254210,2,Web Development,61.7
+254210,3,Python for Data Analytics,69.9
+254210,3,Operating Systems,67.2
+254210,3,Computer Networks,57.6
+254210,3,Software Engineering,75.1
+254211,1,Python Programming,80.2
+254211,1,Mathematics I,79.9
+254211,1,Communication Skills,76.5
+254211,1,Digital Electronics,85.3
+254211,2,Data Structures,76.4
+254211,2,Database Management Systems,79.4
+254211,2,Statistics,81.4
+254211,2,Web Development,87.0
+254211,3,Python for Data Analytics,74.5
+254211,3,Operating Systems,80.7
+254211,3,Computer Networks,83.9
+254211,3,Software Engineering,84.2
+254212,1,Python Programming,77.4
+254212,1,Mathematics I,72.0
+254212,1,Communication Skills,71.7
+254212,1,Digital Electronics,79.6
+254212,2,Data Structures,73.6
+254212,2,Database Management Systems,82.8
+254212,2,Statistics,83.2
+254212,2,Web Development,86.4
+254212,3,Python for Data Analytics,88.5
+254212,3,Operating Systems,88.3
+254212,3,Computer Networks,83.4
+254212,3,Software Engineering,75.9
+254214,1,Python Programming,81.8
+254214,1,Mathematics I,77.1
+254214,1,Communication Skills,80.2
+254214,1,Digital Electronics,79.0
+254214,2,Data Structures,82.8
+254214,2,Database Management Systems,84.6
+254214,2,Statistics,84.7
+254214,2,Web Development,71.0
+254214,3,Python for Data Analytics,83.3
+254214,3,Operating Systems,80.9
+254214,3,Computer Networks,84.2
+254214,3,Software Engineering,72.7
+254215,1,Python Programming,73.9
+254215,1,Mathematics I,81.9
+254215,1,Communication Skills,85.4
+254215,1,Digital Electronics,78.6
+254215,2,Data Structures,81.0
+254215,2,Database Management Systems,85.8
+254215,2,Statistics,90.6
+254215,2,Web Development,75.0
+254215,3,Python for Data Analytics,89.6
+254215,3,Operating Systems,80.3
+254215,3,Computer Networks,80.5
+254215,3,Software Engineering,90.0
+254216,1,Python Programming,66.0
+254216,1,Mathematics I,63.4
+254216,1,Communication Skills,77.4
+254216,1,Digital Electronics,65.5
+254216,2,Data Structures,63.5
+254216,2,Database Management Systems,72.4
+254216,2,Statistics,74.9
+254216,2,Web Development,73.6
+254216,3,Python for Data Analytics,73.7
+254216,3,Operating Systems,70.5
+254216,3,Computer Networks,63.8
+254216,3,Software Engineering,65.2
+254217,1,Python Programming,69.3
+254217,1,Mathematics I,84.3
+254217,1,Communication Skills,77.1
+254217,1,Digital Electronics,82.5
+254217,2,Data Structures,91.3
+254217,2,Database Management Systems,76.7
+254217,2,Statistics,84.6
+254217,2,Web Development,77.9
+254217,3,Python for Data Analytics,82.2
+254217,3,Operating Systems,76.1
+254217,3,Computer Networks,81.9
+254217,3,Software Engineering,75.4
+254219,1,Python Programming,83.8
+254219,1,Mathematics I,78.6
+254219,1,Communication Skills,85.3
+254219,1,Digital Electronics,83.0
+254219,2,Data Structures,78.4
+254219,2,Database Management Systems,72.5
+254219,2,Statistics,76.2
+254219,2,Web Development,81.1
+254219,3,Python for Data Analytics,91.0
+254219,3,Operating Systems,74.9
+254219,3,Computer Networks,80.6
+254219,3,Software Engineering,78.0
+254220,1,Python Programming,80.1
+254220,1,Mathematics I,89.9
+254220,1,Communication Skills,84.8
+254220,1,Digital Electronics,92.3
+254220,2,Data Structures,82.1
+254220,2,Database Management Systems,87.0
+254220,2,Statistics,76.2
+254220,2,Web Development,83.4
+254220,3,Python for Data Analytics,96.4
+254220,3,Operating Systems,74.8
+254220,3,Computer Networks,76.8
+254220,3,Software Engineering,79.3
+254221,1,Python Programming,78.9
+254221,1,Mathematics I,78.9
+254221,1,Communication Skills,82.8
+254221,1,Digital Electronics,84.2
+254221,2,Data Structures,83.3
+254221,2,Database Management Systems,82.4
+254221,2,Statistics,85.1
+254221,2,Web Development,81.1
+254221,3,Python for Data Analytics,79.6
+254221,3,Operating Systems,84.2
+254221,3,Computer Networks,80.9
+254221,3,Software Engineering,80.7
+254224,1,Python Programming,87.9
+254224,1,Mathematics I,95.7
+254224,1,Communication Skills,89.4
+254224,1,Digital Electronics,95.2
+254224,2,Data Structures,98.0
+254224,2,Database Management Systems,95.6
+254224,2,Statistics,83.7
+254224,2,Web Development,84.1
+254224,3,Python for Data Analytics,90.4
+254224,3,Operating Systems,90.0
+254224,3,Computer Networks,93.4
+254224,3,Software Engineering,95.4
+254226,1,Python Programming,70.6
+254226,1,Mathematics I,81.7
+254226,1,Communication Skills,85.1
+254226,1,Digital Electronics,73.0
+254226,2,Data Structures,85.2
+254226,2,Database Management Systems,74.6
+254226,2,Statistics,73.7
+254226,2,Web Development,78.8
+254226,3,Python for Data Analytics,80.4
+254226,3,Operating Systems,78.6
+254226,3,Computer Networks,85.2
+254226,3,Software Engineering,85.0
+254227,1,Python Programming,74.9
+254227,1,Mathematics I,84.1
+254227,1,Communication Skills,81.0
+254227,1,Digital Electronics,81.8
+254227,2,Data Structures,84.3
+254227,2,Database Management Systems,73.0
+254227,2,Statistics,76.6
+254227,2,Web Development,72.8
+254227,3,Python for Data Analytics,81.7
+254227,3,Operating Systems,76.4
+254227,3,Computer Networks,80.8
+254227,3,Software Engineering,86.6
+254228,1,Python Programming,89.3
+254228,1,Mathematics I,95.3
+254228,1,Communication Skills,86.7
+254228,1,Digital Electronics,83.2
+254228,2,Data Structures,98.0
+254228,2,Database Management Systems,86.4
+254228,2,Statistics,93.6
+254228,2,Web Development,91.0
+254228,3,Python for Data Analytics,94.0
+254228,3,Operating Systems,90.4
+254228,3,Computer Networks,90.7
+254228,3,Software Engineering,95.4
+254229,1,Python Programming,80.9
+254229,1,Mathematics I,68.8
+254229,1,Communication Skills,68.0
+254229,1,Digital Electronics,58.5
+254229,2,Data Structures,65.7
+254229,2,Database Management Systems,65.1
+254229,2,Statistics,75.2
+254229,2,Web Development,66.5
+254229,3,Python for Data Analytics,71.5
+254229,3,Operating Systems,68.8
+254229,3,Computer Networks,67.9
+254229,3,Software Engineering,77.4
+254230,1,Python Programming,91.0
+254230,1,Mathematics I,94.7
+254230,1,Communication Skills,88.7
+254230,1,Digital Electronics,92.8
+254230,2,Data Structures,90.3
+254230,2,Database Management Systems,84.6
+254230,2,Statistics,92.2
+254230,2,Web Development,81.2
+254230,3,Python for Data Analytics,95.3
+254230,3,Operating Systems,90.7
+254230,3,Computer Networks,93.0
+254230,3,Software Engineering,81.4
+254231,1,Python Programming,82.2
+254231,1,Mathematics I,80.6
+254231,1,Communication Skills,85.5
+254231,1,Digital Electronics,85.5
+254231,2,Data Structures,83.5
+254231,2,Database Management Systems,84.6
+254231,2,Statistics,74.5
+254231,2,Web Development,87.8
+254231,3,Python for Data Analytics,81.8
+254231,3,Operating Systems,80.8
+254231,3,Computer Networks,81.6
+254231,3,Software Engineering,85.1
+254232,1,Python Programming,78.9
+254232,1,Mathematics I,72.3
+254232,1,Communication Skills,84.7
+254232,1,Digital Electronics,78.6
+254232,2,Data Structures,87.0
+254232,2,Database Management Systems,75.0
+254232,2,Statistics,78.9
+254232,2,Web Development,82.9
+254232,3,Python for Data Analytics,81.9
+254232,3,Operating Systems,78.5
+254232,3,Computer Networks,77.2
+254232,3,Software Engineering,90.0
+254233,1,Python Programming,82.4
+254233,1,Mathematics I,74.9
+254233,1,Communication Skills,80.7
+254233,1,Digital Electronics,77.1
+254233,2,Data Structures,74.0
+254233,2,Database Management Systems,75.3
+254233,2,Statistics,91.3
+254233,2,Web Development,86.4
+254233,3,Python for Data Analytics,81.5
+254233,3,Operating Systems,85.5
+254233,3,Computer Networks,84.3
+254233,3,Software Engineering,75.0
+254234,1,Python Programming,63.5
+254234,1,Mathematics I,67.4
+254234,1,Communication Skills,67.5
+254234,1,Digital Electronics,62.5
+254234,2,Data Structures,65.2
+254234,2,Database Management Systems,72.9
+254234,2,Statistics,68.1
+254234,2,Web Development,65.8
+254234,3,Python for Data Analytics,68.0
+254234,3,Operating Systems,62.0
+254234,3,Computer Networks,68.4
+254234,3,Software Engineering,69.4
+254235,1,Python Programming,78.1
+254235,1,Mathematics I,81.2
+254235,1,Communication Skills,80.7
+254235,1,Digital Electronics,78.7
+254235,2,Data Structures,76.4
+254235,2,Database Management Systems,87.0
+254235,2,Statistics,86.4
+254235,2,Web Development,85.8
+254235,3,Python for Data Analytics,82.8
+254235,3,Operating Systems,81.7
+254235,3,Computer Networks,75.5
+254235,3,Software Engineering,77.5
+254236,1,Python Programming,79.6
+254236,1,Mathematics I,80.7
+254236,1,Communication Skills,86.2
+254236,1,Digital Electronics,79.0
+254236,2,Data Structures,86.2
+254236,2,Database Management Systems,70.0
+254236,2,Statistics,78.8
+254236,2,Web Development,81.1
+254236,3,Python for Data Analytics,83.9
+254236,3,Operating Systems,85.3
+254236,3,Computer Networks,85.4
+254236,3,Software Engineering,75.2
+254237,1,Python Programming,84.4
+254237,1,Mathematics I,80.4
+254237,1,Communication Skills,76.0
+254237,1,Digital Electronics,80.6
+254237,2,Data Structures,81.8
+254237,2,Database Management Systems,83.8
+254237,2,Statistics,84.0
+254237,2,Web Development,83.3
+254237,3,Python for Data Analytics,74.4
+254237,3,Operating Systems,76.9
+254237,3,Computer Networks,78.8
+254237,3,Software Engineering,80.2
+254238,1,Python Programming,74.3
+254238,1,Mathematics I,71.8
+254238,1,Communication Skills,76.6
+254238,1,Digital Electronics,81.4
+254238,2,Data Structures,73.6
+254238,2,Database Management Systems,76.8
+254238,2,Statistics,87.0
+254238,2,Web Development,83.0
+254238,3,Python for Data Analytics,70.2
+254238,3,Operating Systems,72.4
+254238,3,Computer Networks,86.5
+254238,3,Software Engineering,76.7
+254239,1,Python Programming,75.0
+254239,1,Mathematics I,70.2
+254239,1,Communication Skills,57.4
+254239,1,Digital Electronics,69.0
+254239,2,Data Structures,76.0
+254239,2,Database Management Systems,65.6
+254239,2,Statistics,69.8
+254239,2,Web Development,64.4
+254239,3,Python for Data Analytics,68.0
+254239,3,Operating Systems,67.1
+254239,3,Computer Networks,69.7
+254239,3,Software Engineering,71.3
+254240,1,Python Programming,82.8
+254240,1,Mathematics I,79.9
+254240,1,Communication Skills,87.5
+254240,1,Digital Electronics,76.0
+254240,2,Data Structures,83.6
+254240,2,Database Management Systems,69.1
+254240,2,Statistics,83.0
+254240,2,Web Development,76.0
+254240,3,Python for Data Analytics,75.1
+254240,3,Operating Systems,75.9
+254240,3,Computer Networks,80.6
+254240,3,Software Engineering,75.9
+254241,1,Python Programming,90.3
+254241,1,Mathematics I,81.7
+254241,1,Communication Skills,92.3
+254241,1,Digital Electronics,84.4
+254241,2,Data Structures,83.3
+254241,2,Database Management Systems,93.1
+254241,2,Statistics,88.2
+254241,2,Web Development,91.8
+254241,3,Python for Data Analytics,90.0
+254241,3,Operating Systems,88.7
+254241,3,Computer Networks,96.4
+254241,3,Software Engineering,91.3
+254242,1,Python Programming,77.2
+254242,1,Mathematics I,78.9
+254242,1,Communication Skills,76.9
+254242,1,Digital Electronics,85.6
+254242,2,Data Structures,88.9
+254242,2,Database Management Systems,81.4
+254242,2,Statistics,82.4
+254242,2,Web Development,76.1
+254242,3,Python for Data Analytics,79.8
+254242,3,Operating Systems,85.9
+254242,3,Computer Networks,78.0
+254242,3,Software Engineering,84.2
+254244,1,Python Programming,81.9
+254244,1,Mathematics I,87.9
+254244,1,Communication Skills,87.6
+254244,1,Digital Electronics,75.1
+254244,2,Data Structures,86.5
+254244,2,Database Management Systems,77.0
+254244,2,Statistics,84.9
+254244,2,Web Development,79.9
+254244,3,Python for Data Analytics,79.5
+254244,3,Operating Systems,75.6
+254244,3,Computer Networks,75.0
+254244,3,Software Engineering,93.2
+254248,1,Python Programming,78.1
+254248,1,Mathematics I,79.9
+254248,1,Communication Skills,77.1
+254248,1,Digital Electronics,88.5
+254248,2,Data Structures,80.4
+254248,2,Database Management Systems,85.8
+254248,2,Statistics,80.5
+254248,2,Web Development,83.0
+254248,3,Python for Data Analytics,86.3
+254248,3,Operating Systems,86.3
+254248,3,Computer Networks,73.1
+254248,3,Software Engineering,76.9
+254249,1,Python Programming,87.3
+254249,1,Mathematics I,95.1
+254249,1,Communication Skills,91.0
+254249,1,Digital Electronics,97.9
+254249,2,Data Structures,84.6
+254249,2,Database Management Systems,98.0
+254249,2,Statistics,82.9
+254249,2,Web Development,87.9
+254249,3,Python for Data Analytics,92.9
+254249,3,Operating Systems,86.8
+254249,3,Computer Networks,92.1
+254249,3,Software Engineering,94.1
+254250,1,Python Programming,83.3
+254250,1,Mathematics I,74.9
+254250,1,Communication Skills,82.6
+254250,1,Digital Electronics,84.8
+254250,2,Data Structures,82.2
+254250,2,Database Management Systems,87.6
+254250,2,Statistics,81.8
+254250,2,Web Development,80.9
+254250,3,Python for Data Analytics,85.5
+254250,3,Operating Systems,89.1
+254250,3,Computer Networks,78.0
+254250,3,Software Engineering,82.0
+254251,1,Python Programming,74.5
+254251,1,Mathematics I,83.2
+254251,1,Communication Skills,77.1
+254251,1,Digital Electronics,77.9
+254251,2,Data Structures,79.2
+254251,2,Database Management Systems,81.6
+254251,2,Statistics,83.7
+254251,2,Web Development,79.3
+254251,3,Python for Data Analytics,78.4
+254251,3,Operating Systems,74.6
+254251,3,Computer Networks,84.9
+254251,3,Software Engineering,82.5
+254252,1,Python Programming,88.7
+254252,1,Mathematics I,77.2
+254252,1,Communication Skills,72.6
+254252,1,Digital Electronics,84.8
+254252,2,Data Structures,80.0
+254252,2,Database Management Systems,81.9
+254252,2,Statistics,81.9
+254252,2,Web Development,88.9
+254252,3,Python for Data Analytics,84.4
+254252,3,Operating Systems,84.6
+254252,3,Computer Networks,72.4
+254252,3,Software Engineering,89.4
+254253,1,Python Programming,81.0
+254253,1,Mathematics I,82.1
+254253,1,Communication Skills,84.7
+254253,1,Digital Electronics,80.9
+254253,2,Data Structures,79.3
+254253,2,Database Management Systems,89.2
+254253,2,Statistics,79.9
+254253,2,Web Development,80.2
+254253,3,Python for Data Analytics,80.0
+254253,3,Operating Systems,69.3
+254253,3,Computer Networks,89.9
+254253,3,Software Engineering,78.5
+254254,1,Python Programming,81.5
+254254,1,Mathematics I,81.0
+254254,1,Communication Skills,81.1
+254254,1,Digital Electronics,83.3
+254254,2,Data Structures,76.6
+254254,2,Database Management Systems,78.4
+254254,2,Statistics,80.9
+254254,2,Web Development,86.6
+254254,3,Python for Data Analytics,79.3
+254254,3,Operating Systems,79.5
+254254,3,Computer Networks,78.5
+254254,3,Software Engineering,76.0
+254255,1,Python Programming,82.0
+254255,1,Mathematics I,70.7
+254255,1,Communication Skills,77.8
+254255,1,Digital Electronics,86.1
+254255,2,Data Structures,77.5
+254255,2,Database Management Systems,84.4
+254255,2,Statistics,87.0
+254255,2,Web Development,84.2
+254255,3,Python for Data Analytics,83.6
+254255,3,Operating Systems,82.4
+254255,3,Computer Networks,76.2
+254255,3,Software Engineering,82.1
+254258,1,Python Programming,65.0
+254258,1,Mathematics I,57.5
+254258,1,Communication Skills,74.5
+254258,1,Digital Electronics,66.5
+254258,2,Data Structures,69.3
+254258,2,Database Management Systems,70.2
+254258,2,Statistics,64.4
+254258,2,Web Development,65.9
+254258,3,Python for Data Analytics,68.7
+254258,3,Operating Systems,61.1
+254258,3,Computer Networks,69.7
+254258,3,Software Engineering,67.8
+254259,1,Python Programming,83.0
+254259,1,Mathematics I,87.3
+254259,1,Communication Skills,80.8
+254259,1,Digital Electronics,84.7
+254259,2,Data Structures,80.8
+254259,2,Database Management Systems,88.9
+254259,2,Statistics,82.0
+254259,2,Web Development,69.1
+254259,3,Python for Data Analytics,74.5
+254259,3,Operating Systems,80.0
+254259,3,Computer Networks,80.0
+254259,3,Software Engineering,84.8
+254262,1,Python Programming,85.4
+254262,1,Mathematics I,74.9
+254262,1,Communication Skills,78.5
+254262,1,Digital Electronics,80.1
+254262,2,Data Structures,75.7
+254262,2,Database Management Systems,86.0
+254262,2,Statistics,77.1
+254262,2,Web Development,81.6
+254262,3,Python for Data Analytics,87.0
+254262,3,Operating Systems,85.8
+254262,3,Computer Networks,80.4
+254262,3,Software Engineering,83.3
+254263,1,Python Programming,79.6
+254263,1,Mathematics I,82.2
+254263,1,Communication Skills,82.8
+254263,1,Digital Electronics,78.9
+254263,2,Data Structures,74.9
+254263,2,Database Management Systems,82.9
+254263,2,Statistics,82.9
+254263,2,Web Development,76.4
+254263,3,Python for Data Analytics,80.1
+254263,3,Operating Systems,95.0
+254263,3,Computer Networks,78.4
+254263,3,Software Engineering,83.6
+254264,1,Python Programming,89.0
+254264,1,Mathematics I,87.4
+254264,1,Communication Skills,89.1
+254264,1,Digital Electronics,98.0
+254264,2,Data Structures,91.0
+254264,2,Database Management Systems,80.1
+254264,2,Statistics,83.2
+254264,2,Web Development,90.4
+254264,3,Python for Data Analytics,89.7
+254264,3,Operating Systems,93.6
+254264,3,Computer Networks,85.3
+254264,3,Software Engineering,92.8
+254265,1,Python Programming,74.3
+254265,1,Mathematics I,82.7
+254265,1,Communication Skills,80.7
+254265,1,Digital Electronics,79.0
+254265,2,Data Structures,88.5
+254265,2,Database Management Systems,84.3
+254265,2,Statistics,80.7
+254265,2,Web Development,85.9
+254265,3,Python for Data Analytics,92.5
+254265,3,Operating Systems,85.5
+254265,3,Computer Networks,80.2
+254265,3,Software Engineering,71.9

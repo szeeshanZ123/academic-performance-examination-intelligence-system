@@ -76,10 +76,22 @@ def load_data(force_reload=False):
     students = students.merge(mark_summary, on=["Roll_No", "Semester"], how="left")
     students = students.merge(attendance_summary, on=["Roll_No", "Semester"], how="left")
 
-    # Assign Division A/B (first 30 in semester -> A, next 30 -> B)
+    # Assign Division A/B:
+    # 2541xx -> Division A (Official Div A list)
+    # 2542xx -> Division B (Official Div B list)
+    # Legacy cohorts -> first 30 in semester = A, remainder = B
     students = students.sort_values(["Semester", "Roll_No"]).reset_index(drop=True)
     position = students.groupby("Semester").cumcount()
-    students["Division"] = position.floordiv(30).map({0: "A", 1: "B"}).fillna("B")
+    
+    def _assign_division(row, pos):
+        roll_str = str(row["Roll_No"]).strip()
+        if roll_str.startswith("2541"):
+            return "A"
+        elif roll_str.startswith("2542"):
+            return "B"
+        return "A" if pos < 30 else "B"
+
+    students["Division"] = [_assign_division(row, pos) for row, pos in zip(students.to_dict(orient="records"), position)]
 
     # Standardize column names & metrics
     students = students.rename(columns={"Roll_No": "Roll", "Student_Name": "Name"})

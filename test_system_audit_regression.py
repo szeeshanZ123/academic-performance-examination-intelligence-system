@@ -65,19 +65,19 @@ class TestSystemAuditRegression(unittest.TestCase):
     # 1. DATA INTEGRITY AUDIT (Parts 4 & 5)
     # =========================================================================
     def test_01_dataset_integrity(self):
-        """Verify student count, marks count, attendance count, and lack of duplicates/future records."""
-        # 360 Students
-        self.assertEqual(len(self.students_df), 360, "Must contain exactly 360 students")
-        self.assertEqual(self.students_df["Roll"].nunique(), 360, "Roll numbers must be unique")
+        # Total students: 476 (360 legacy + 116 appended)
+        self.assertEqual(len(self.students_df), 476, "Must contain exactly 476 students")
+        self.assertEqual(self.students_df["Roll"].nunique(), 476, "Roll numbers must be unique")
 
-        # 60 Students per semester (Sem 1 to 6)
+        # Students per semester (60 in Sem 1,2,4,5,6 and 176 in Sem 3)
         sem_counts = self.students_df["Semester"].value_counts().to_dict()
-        for s in range(1, 7):
+        for s in [1, 2, 4, 5, 6]:
             self.assertEqual(sem_counts.get(s, 0), 60, f"Semester {s} must have exactly 60 current students")
+        self.assertEqual(sem_counts.get(3, 0), 176, "Semester 3 must have 176 students (60 legacy + 116 appended)")
 
-        # Exactly 5,040 Marks and 5,040 Attendance records
-        self.assertEqual(len(self.marks_df), 5040, "Must contain exactly 5,040 marks records")
-        self.assertEqual(len(self.attendance_df), 5040, "Must contain exactly 5,040 attendance records")
+        # Exactly 6,432 Marks and 6,432 Attendance records
+        self.assertEqual(len(self.marks_df), 6432, "Must contain exactly 6,432 marks records")
+        self.assertEqual(len(self.attendance_df), 6432, "Must contain exactly 6,432 attendance records")
 
         # Duplicate checks
         marks_dupes = self.marks_df.duplicated(subset=["Roll_No", "Semester", "Subject"]).sum()

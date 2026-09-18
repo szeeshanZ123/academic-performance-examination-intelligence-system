@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Academic Intelligence | My Academic Report</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}" />
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+    <style>
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        min-height: 100vh;
+      }
+      .navbar-custom {
+        background-color: var(--navbar-bg) !important;
+        border-bottom: 1px solid var(--border-color);
+      }
+      .brand-badge {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-weight: 700;
+      }
+      .report-sheet {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        box-shadow: var(--card-shadow);
+        overflow: hidden;
+      }
+      .report-header-banner {
+        background: var(--hero-bg);
+        border-bottom: 1px solid var(--border-color);
+        padding: 2.25rem 2rem;
+      }
+      .kpi-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 14px;
+        padding: 1.25rem;
+      }
+      .table-custom th {
+        background-color: var(--table-header-bg);
+        color: var(--table-header-text);
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        padding: 0.85rem 1rem;
+        border: none;
+      }
+      .table-custom td {
+        padding: 0.8rem 1rem;
+        vertical-align: middle;
+        font-size: 0.9rem;
+        border-bottom: 1px solid var(--border-color);
+      }
+      .table-custom tr:hover td {
+        background-color: var(--table-row-hover);
+      }
+      .section-badge {
+        background: rgba(37, 99, 235, 0.1);
+        color: var(--primary);
+        font-weight: 700;
+        font-size: 0.75rem;
+        padding: 4px 10px;
+        border-radius: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top py-3">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="{{ url_for('student_dashboard') }}">
+          <span class="brand-badge"><i class="bi bi-mortarboard-fill me-1"></i> Academic Intelligence</span>
+          <span class="text-muted fs-6 d-none d-sm-inline">| My Academic Report</span>
+        </a>
+        <div class="ms-auto d-flex align-items-center gap-2">
+          <a href="{{ url_for('student_dashboard') }}" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+            <i class="bi bi-arrow-left me-1"></i> Dashboard
+          </a>
+          <a href="{{ url_for('student_improvement_plan') }}" class="btn btn-outline-info btn-sm rounded-pill px-3">
+            <i class="bi bi-compass me-1"></i> Improvement Plan
+          </a>
+          <button id="themeToggleBtn" onclick="toggleTheme()" class="theme-toggle-pill" type="button" aria-label="Toggle Theme">
+            <span>☀️ Light</span><span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
+          </button>
+          <a href="{{ url_for('student_logout') }}" class="btn btn-outline-danger btn-sm rounded-pill px-3">
+            <i class="bi bi-box-arrow-right me-1"></i> Logout
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container py-4">
+      <!-- Title & Download Controls -->
+      <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-4">
+        <div>
+          <h2 class="fw-bold mb-1">My Academic Report</h2>
+          <p class="text-muted mb-0">Official academic performance record, assessment breakdown, and AI outlook.</p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <a href="{{ url_for('student_report_export_csv') }}" class="btn btn-outline-success rounded-pill px-3 fw-semibold" onclick="handleExportClick(this, 'CSV')">
+            <i class="bi bi-filetype-csv me-1"></i> Export CSV
+          </a>
+          <a href="{{ url_for('student_report_export_pdf') }}" class="btn btn-primary rounded-pill px-4 fw-semibold shadow-sm" onclick="handleExportClick(this, 'PDF')">
+            <i class="bi bi-file-earmark-pdf me-1"></i> Download PDF
+          </a>
+        </div>
+      </div>
+
+      <!-- Export Notification Banner -->
+      <div id="exportStatusAlert" class="alert alert-info alert-dismissible fade d-none mb-4" role="alert">
+        <span id="exportStatusText">Generating report...</span>
+        <button type="button" class="btn-close" onclick="document.getElementById('exportStatusAlert').classList.add('d-none')"></button>
+      </div>
+
+      <!-- REPORT PREVIEW SHEET -->
+      <div class="report-sheet mb-4">
+        <!-- Sheet Header Banner -->
+        <div class="report-header-banner">
+          <div class="row align-items-center">
+            <div class="col-md-8">
+              <span class="section-badge mb-2 d-inline-block">Verified Academic Document</span>
+              <h3 class="fw-bold mb-1">{{ student.Name }}</h3>
+              <div class="text-muted">
+                Roll No: <strong>{{ student.Roll }}</strong> | Semester: <strong>Semester {{ semester }}</strong> | Division: <strong>{{ student.Division }}</strong>
+              </div>
+            </div>
+            <div class="col-md-4 text-md-end mt-3 mt-md-0">
+              <div class="d-inline-block text-start p-3 rounded-3" style="background: var(--bg-card); border: 1px solid var(--border-color);">
+                <div class="small text-muted">Current SGPI</div>
+                <div class="fs-4 fw-extrabold text-primary">{{ overall_summary.sgpi }}</div>
+                <div class="small text-muted">Overall Attendance: <strong>{{ overall_summary.attendance }}%</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-4 p-md-5">
+          <!-- 1. STUDENT INFORMATION -->
+          <div class="mb-5">
+            <h5 class="fw-bold mb-3"><i class="bi bi-person-lines-fill text-primary me-2"></i>Student Information</h5>
+            <div class="row g-3">
+              <div class="col-sm-6 col-md-3">
+                <div class="kpi-card">
+                  <div class="text-muted small">Full Name</div>
+                  <div class="fw-bold mt-1">{{ student.Name }}</div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <div class="kpi-card">
+                  <div class="text-muted small">Roll Number</div>
+                  <div class="fw-bold mt-1">{{ student.Roll }}</div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <div class="kpi-card">
+                  <div class="text-muted small">Current Semester</div>
+                  <div class="fw-bold mt-1">Semester {{ semester }}</div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <div class="kpi-card">
+                  <div class="text-muted small">Academic Standing</div>
+                  <div class="fw-bold mt-1 text-success">{{ overall_summary.overall_performance }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. ACADEMIC PERFORMANCE (Subject Table) -->
+          <div class="mb-5">
+            <h5 class="fw-bold mb-3"><i class="bi bi-journal-text text-primary me-2"></i>Academic Performance</h5>
+            <div class="table-responsive rounded-3 border">
+              <table class="table table-custom mb-0">
+                <thead>
+                  <tr>
+                    <th>Subject</th>
+                    <th class="text-center">Internal (30)</th>
+                    <th class="text-center">External (70)</th>
+                    <th class="text-center">Total (100)</th>
+                    <th class="text-center">Percentage</th>
+                    <th class="text-center">Grade</th>
+                    <th class="text-center">Attendance</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for s in academic_performance %}
+                    <tr>
+                      <td class="fw-semibold">{{ s.subject }}</td>
+                      <td class="text-center">{{ s.internal }}</td>
+                      <td class="text-center">{{ s.external }}</td>
+                      <td class="text-center fw-bold">{{ s.total }}</td>
+                      <td class="text-center">{{ s.percentage }}</td>
+                      <td class="text-center fw-bold text-primary">{{ s.grade }}</td>
+                      <td class="text-center">
+                        <span class="badge {% if s.attendance >= 75 %}bg-success bg-opacity-15 text-success{% else %}bg-danger bg-opacity-15 text-danger{% endif %} rounded-pill">
+                          {{ s.attendance }}%
+                        </span>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 3. ATTENDANCE SUMMARY -->
+          <div class="mb-5">
+            <h5 class="fw-bold mb-3"><i class="bi bi-calendar2-check text-primary me-2"></i>Attendance Compliance</h5>
+            <div class="card-custom p-4">
+              <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+                <div>
+                  <h6 class="fw-bold mb-1">Overall Attendance Status: <span class="{% if overall_summary.attendance >= 75 %}text-success{% else %}text-danger{% endif %}">{{ attendance_status }}</span></h6>
+                  <p class="text-muted small mb-0">
+                    Mandatory university examination eligibility requires a minimum attendance threshold of 75.0%.
+                  </p>
+                </div>
+                <div class="text-md-end">
+                  <div class="fs-3 fw-bold {% if overall_summary.attendance >= 75 %}text-success{% else %}text-danger{% endif %}">
+                    {{ overall_summary.attendance }}%
+                  </div>
+                  <span class="badge {% if overall_summary.attendance >= 75 %}bg-success{% else %}bg-danger{% endif %} text-white rounded-pill px-3">
+                    {% if overall_summary.attendance >= 75 %}Eligible{% else %}Needs Attention{% endif %}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. ACADEMIC HISTORY -->
+          <div class="mb-5">
+            <h5 class="fw-bold mb-3"><i class="bi bi-graph-up-arrow text-primary me-2"></i>Academic Progression History</h5>
+            {% if academic_history.trend_data %}
+              <div class="table-responsive rounded-3 border">
+                <table class="table table-custom mb-0">
+                  <thead>
+                    <tr>
+                      <th>Semester</th>
+                      <th class="text-center">Average Total</th>
+                      <th class="text-center">Internal Avg</th>
+                      <th class="text-center">External Avg</th>
+                      <th class="text-center">Attendance</th>
+                      <th class="text-center">Semester SGPI</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for h in academic_history.trend_data %}
+                      <tr>
+                        <td class="fw-bold">Semester {{ h.semester }}</td>
+                        <td class="text-center">{{ h.average_total }}</td>
+                        <td class="text-center">{{ h.average_internal }}</td>
+                        <td class="text-center">{{ h.average_external }}</td>
+                        <td class="text-center">{{ h.average_attendance }}%</td>
+                        <td class="text-center fw-bold text-primary">{{ h.sgpi }}</td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            {% else %}
+              <div class="card-custom p-4 text-center text-muted">
+                Historical progression records will appear after multi-term examination completion.
+              </div>
+            {% endif %}
+          </div>
+
+          <!-- 5. AI PERFORMANCE OUTLOOK -->
+          <div class="mb-5">
+            <h5 class="fw-bold mb-3"><i class="bi bi-cpu text-primary me-2"></i>AI Performance Outlook</h5>
+            {% if ai_outlook.available and ai_outlook.predictions %}
+              <div class="row g-3">
+                {% for p in ai_outlook.predictions %}
+                  <div class="col-md-6">
+                    <div class="card-custom p-3">
+                      <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="fw-bold">{{ p.subject }}</span>
+                        <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill">
+                          {{ p.classification.label if p.classification else 'Projected' }}
+                        </span>
+                      </div>
+                      <div class="d-flex justify-content-between align-items-baseline">
+                        <div>
+                          <div class="text-muted small">Predicted External:</div>
+                          <div class="fs-4 fw-extrabold text-primary">{{ p.predicted_external }} / 70</div>
+                        </div>
+                        <div class="text-end">
+                          <div class="text-muted small">Projected Total:</div>
+                          <div class="fs-5 fw-bold">{{ p.predicted_total }} / 100</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            {% else %}
+              <div class="card-custom p-3 text-muted text-center">
+                AI prediction unavailable for current session.
+              </div>
+            {% endif %}
+          </div>
+
+          <!-- 6. IMPROVEMENT PLAN SUMMARY (Phase 8.4) -->
+          <div class="mb-2">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="fw-bold mb-0"><i class="bi bi-bullseye text-primary me-2"></i>Personalized Improvement Plan Summary</h5>
+              <a href="{{ url_for('student_improvement_plan') }}" class="btn btn-outline-primary btn-sm rounded-pill">
+                Open Full Improvement Plan <i class="bi bi-arrow-right ms-1"></i>
+              </a>
+            </div>
+            {% if improvement_plan %}
+              <div class="card-custom p-4">
+                <div class="row g-4">
+                  <div class="col-md-4">
+                    <h6 class="fw-bold text-muted small text-uppercase">Weak Subjects Focus</h6>
+                    {% if improvement_plan.weak_subjects %}
+                      <ul class="list-unstyled mb-0">
+                        {% for w in improvement_plan.weak_subjects %}
+                          <li class="mb-1"><i class="bi bi-exclamation-circle text-danger me-1"></i> <strong>{{ w.subject }}</strong> ({{ w.total }} / 100)</li>
+                        {% endfor %}
+                      </ul>
+                    {% else %}
+                      <p class="text-success small mb-0"><i class="bi bi-check-circle me-1"></i> No weak subjects identified. All courses performing stably.</p>
+                    {% endif %}
+                  </div>
+
+                  <div class="col-md-4">
+                    <h6 class="fw-bold text-muted small text-uppercase">Priority Topics</h6>
+                    {% if improvement_plan.learning_topics %}
+                      <ul class="list-unstyled mb-0 small">
+                        {% for t in improvement_plan.learning_topics[:3] %}
+                          <li class="mb-1 text-primary"><i class="bi bi-arrow-right-short"></i> {{ t.topic }}</li>
+                        {% endfor %}
+                      </ul>
+                    {% else %}
+                      <p class="text-muted small mb-0">Standard syllabus revision topics.</p>
+                    {% endif %}
+                  </div>
+
+                  <div class="col-md-4">
+                    <h6 class="fw-bold text-muted small text-uppercase">Recommended Action</h6>
+                    {% if improvement_plan.action_checklist %}
+                      <ul class="list-unstyled mb-0 small">
+                        {% for a in improvement_plan.action_checklist[:2] %}
+                          <li class="mb-1"><i class="bi bi-check2-square text-primary me-1"></i> {{ a.text }}</li>
+                        {% endfor %}
+                      </ul>
+                    {% else %}
+                      <p class="text-muted small mb-0">Maintain regular lecture attendance and practice past papers.</p>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            {% else %}
+              <div class="card-custom p-3 text-muted text-center">
+                Improvement insights unavailable.
+              </div>
+            {% endif %}
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function handleExportClick(btn, type) {
+        const alertBox = document.getElementById('exportStatusAlert');
+        const alertText = document.getElementById('exportStatusText');
+        alertBox.className = 'alert alert-info alert-dismissible fade show mb-4';
+        alertText.innerText = 'Generating report...';
+
+        setTimeout(() => {
+          alertBox.className = 'alert alert-success alert-dismissible fade show mb-4';
+          alertText.innerText = 'Report generated successfully.';
+          setTimeout(() => {
+            alertBox.classList.add('d-none');
+          }, 4000);
+        }, 1200);
+      }
+    </script>
+  </body>
+</html>

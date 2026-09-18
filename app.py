@@ -7,7 +7,8 @@ from flask import (
     make_response,
     session,
     flash,
-    url_for
+    url_for,
+    abort
 )
 
 from utils.data_loader import (
@@ -37,6 +38,23 @@ from ml.predictor import (
 from utils.student_recommendations import generate_improvement_plan
 
 from question_paper.routes import question_paper_bp
+
+from reports.report_service import (
+    get_admin_reports_data,
+    get_teacher_reports_data,
+    get_student_report_data
+)
+from reports.csv_export import (
+    export_admin_csv,
+    export_teacher_csv,
+    export_student_csv,
+    sanitize_filename
+)
+from reports.pdf_export import (
+    generate_student_pdf,
+    generate_teacher_pdf,
+    generate_admin_pdf
+)
 
 
 app = Flask(__name__)
@@ -906,6 +924,337 @@ def export_csv():
     ] = "text/csv"
 
     return response
+
+
+# =========================================================
+# PHASE 8.5 — REPORTS & EXPORT SYSTEM
+# =========================================================
+
+# ---------------------------------------------------------
+# 1. ADMIN REPORTS & EXPORTS
+# ---------------------------------------------------------
+
+@app.route("/admin/reports")
+@app.route("/reports")
+def admin_reports():
+    """Institutional Academic Reports Center with dynamic filtering."""
+    if session.get("student_logged_in"):
+        abort(403)
+    if session.get("teacher_logged_in"):
+        abort(403)
+    if not session.get("admin_logged_in"):
+        flash("Please log in as an administrator to access reports.", "warning")
+        return redirect(url_for("login", role="admin"))
+
+    filters = {
+        "semester": request.args.get("semester", "").strip(),
+        "subject": request.args.get("subject", "").strip(),
+        "student": request.args.get("student", "").strip(),
+        "attendance_range": request.args.get("attendance_range", "all").strip(),
+        "performance_range": request.args.get("performance_range", "all").strip(),
+        "report_type": request.args.get("report_type", "overall").strip()
+    }
+
+    report_data = get_admin_reports_data(filters)
+
+    return render_template(
+        "admin_reports.html",
+        active_filters=filters,
+        available_subjects=report_data["available_subjects"],
+        kpis=report_data["kpis"],
+        performance_records=report_data["performance_records"],
+        attendance_records=report_data["attendance_records"],
+        at_risk_records=report_data["at_risk_records"],
+        semester_summary=report_data["semester_summary"],
+        subject_summary=report_data["subject_summary"],
+        admin=report_data["admin"]
+    )
+
+
+@app.route("/admin/reports/export-csv")
+def admin_reports_export_csv():
+    """Stream authorized CSV export for admin report respecting active filters."""
+    if session.get("student_logged_in") or session.get("teacher_logged_in") or not session.get("admin_logged_in"):
+        abort(403)
+
+    report_type = request.args.get("report_type", "performance").strip().lower()
+    filters = {
+        "semester": request.args.get("semester", "").strip(),
+        "subject": request.args.get("subject", "").strip(),
+        "student": request.args.get("student", "").strip(),
+        "attendance_range": request.args.get("attendance_range", "all").strip(),
+        "performance_range": request.args.get("performance_range", "all").strip(),
+        "report_type": report_type
+    }
+
+    try:
+        report_data = get_admin_reports_data(filters)
+        csv_str, filename = export_admin_csv(report_data, report_type)
+        response = make_response(csv_str)
+        response.headers["Content-Disposition"] = f'attachment; filename="{filename}"'
+        response.headers["Content-Type"] = "text/csv; charset=utf-8"
+        return response
+    except Exception as e:
+        app.logger.error(f"Admin CSV export error: {e}")
+        flash("Unable to generate the report. Please try again.", "danger")
+        return redirect(url_for("admin_reports"))
+
+
+@app.route("/admin/reports/export-pdf")
+def admin_reports_export_pdf():
+    """Generate and stream professional ReportLab PDF for admin report."""
+    if session.get("student_logged_in") or session.get("teacher_logged_in") or not session.get("admin_logged_in"):
+        abort(403)
+
+    report_type = request.args.get("report_type", "overall").strip().lower()
+    filters = {
+        "semester": request.args.get("semester", "").strip(),
+        "subject": request.args.get("subject", "").strip(),
+        "student": request.args.get("student", "").strip(),
+        "attendance_range": request.args.get("attendance_range", "all").strip(),
+        "performance_range": request.args.get("performance_range", "all").strip(),
+        "report_type": report_type
+    }
+
+    try:
+        report_data = get_admin_reports_data(filters)
+        pdf_bytes = generate_admin_pdf(report_data, report_type)
+        sem = filters.get("semester", "")
+        filename = sanitize_filename(f"admin_{report_type}_report{'_sem' + sem if sem else ''}.pdf")
+        response = make_response(pdf_bytes)
+        response.headers["Content-Disposition"] = f'attachment; filename="{filename}"'
+        response.headers["Content-Type"] = "application/pdf"
+        return response
+    except Exception as e:
+        app.logger.error(f"Admin PDF export error: {e}")
+        flash("Unable to generate the report. Please try again.", "danger")
+        return redirect(url_for("admin_reports"))
+
+
+# ---------------------------------------------------------
+# 2. TEACHER REPORTS & EXPORTS
+# ---------------------------------------------------------
+
+@app.route("/teacher/reports")
+def teacher_reports():
+    """Faculty Reports Center restricted to assigned subjects/semesters."""
+    if session.get("student_logged_in"):
+        abort(403)
+    if not session.get("teacher_logged_in"):
+        flash("Please log in as faculty to view reports.", "warning")
+        return redirect(url_for("login", role="teacher"))
+
+    teacher_username = session.get("teacher_username")
+    assignments = get_teacher_assignments(teacher_username)
+    if not assignments:
+        flash("No active teaching assignments found for your account.", "warning")
+        return redirect(url_for("teacher_dashboard"))
+
+    req_subject = request.args.get("subject", "").strip()
+    req_semester = request.args.get("semester", "").strip()
+    req_report_type = request.args.get("report_type", "subject").strip().lower()
+    req_student = request.args.get("student", "").strip()
+
+    if req_subject and req_semester:
+        is_assigned = any(
+            (a["Subject"].strip().lower() == req_subject.lower()) and
+            (str(a["Semester"]) == str(req_semester))
+            for a in assignments
+        )
+        if not is_assigned:
+            abort(403)
+        sel_subject = req_subject
+        try:
+            sel_semester = int(req_semester)
+        except ValueError:
+            sel_semester = assignments[0]["Semester"]
+    else:
+        sel_subject = assignments[0]["Subject"]
+        sel_semester = assignments[0]["Semester"]
+
+    report_data = get_teacher_reports_data(teacher_username, sel_subject, sel_semester, req_student)
+    if not report_data:
+        abort(403)
+
+    return render_template(
+        "teacher_reports.html",
+        teacher=report_data["teacher"],
+        assignments=report_data["assignments"],
+        selected_subject=sel_subject,
+        selected_semester=sel_semester,
+        kpis=report_data["kpis"],
+        students=report_data["students"],
+        at_risk_students=report_data["at_risk_students"],
+        attendance_records=report_data["attendance_records"],
+        selected_student_detail=report_data["selected_student_detail"],
+        selected_student_roll=req_student,
+        active_report_type=req_report_type
+    )
+
+
+@app.route("/teacher/reports/export-csv")
+def teacher_reports_export_csv():
+    """Export authorized teacher class or student report as CSV."""
+    if session.get("student_logged_in") or not session.get("teacher_logged_in"):
+        abort(403)
+
+    teacher_username = session.get("teacher_username")
+    assignments = get_teacher_assignments(teacher_username)
+
+    req_subject = request.args.get("subject", "").strip()
+    req_semester = request.args.get("semester", "").strip()
+    report_type = request.args.get("report_type", "subject").strip().lower()
+    student_roll = request.args.get("student", "").strip()
+
+    is_assigned = any(
+        (a["Subject"].strip().lower() == req_subject.lower()) and
+        (str(a["Semester"]) == str(req_semester))
+        for a in assignments
+    )
+    if not is_assigned:
+        abort(403)
+
+    try:
+        report_data = get_teacher_reports_data(teacher_username, req_subject, int(req_semester), student_roll)
+        if not report_data:
+            abort(403)
+        csv_str, filename = export_teacher_csv(report_data, report_type, student_roll)
+        response = make_response(csv_str)
+        response.headers["Content-Disposition"] = f'attachment; filename="{filename}"'
+        response.headers["Content-Type"] = "text/csv; charset=utf-8"
+        return response
+    except Exception as e:
+        app.logger.error(f"Teacher CSV export error: {e}")
+        flash("Unable to generate the report. Please try again.", "danger")
+        return redirect(url_for("teacher_reports", subject=req_subject, semester=req_semester))
+
+
+@app.route("/teacher/reports/export-pdf")
+def teacher_reports_export_pdf():
+    """Generate and stream ReportLab PDF for authorized teacher scope."""
+    if session.get("student_logged_in") or not session.get("teacher_logged_in"):
+        abort(403)
+
+    teacher_username = session.get("teacher_username")
+    assignments = get_teacher_assignments(teacher_username)
+
+    req_subject = request.args.get("subject", "").strip()
+    req_semester = request.args.get("semester", "").strip()
+    report_type = request.args.get("report_type", "subject").strip().lower()
+    student_roll = request.args.get("student", "").strip()
+
+    is_assigned = any(
+        (a["Subject"].strip().lower() == req_subject.lower()) and
+        (str(a["Semester"]) == str(req_semester))
+        for a in assignments
+    )
+    if not is_assigned:
+        abort(403)
+
+    try:
+        report_data = get_teacher_reports_data(teacher_username, req_subject, int(req_semester), student_roll)
+        if not report_data:
+            abort(403)
+        pdf_bytes = generate_teacher_pdf(report_data, report_type, student_roll)
+        subj_slug = req_subject.lower().replace(" ", "_")
+        filename = sanitize_filename(f"teacher_{report_type}_{subj_slug}_sem{req_semester}.pdf")
+        response = make_response(pdf_bytes)
+        response.headers["Content-Disposition"] = f'attachment; filename="{filename}"'
+        response.headers["Content-Type"] = "application/pdf"
+        return response
+    except Exception as e:
+        app.logger.error(f"Teacher PDF export error: {e}")
+        flash("Unable to generate the report. Please try again.", "danger")
+        return redirect(url_for("teacher_reports", subject=req_subject, semester=req_semester))
+
+
+# ---------------------------------------------------------
+# 3. STUDENT REPORTS & EXPORTS
+# ---------------------------------------------------------
+
+@app.route("/student/report")
+@app.route("/student/academic-report")
+def student_report():
+    """Polished 'My Academic Report' preview page strictly for logged-in student."""
+    if not session.get("student_logged_in"):
+        flash("Please log in as a student to view your report.", "warning")
+        return redirect(url_for("login", role="student"))
+
+    # Cross-student inspection check
+    req_student = request.args.get("student") or request.args.get("roll")
+    if req_student and req_student.strip().lower() != str(session.get("student_roll")).strip().lower():
+        abort(403)
+
+    roll = session.get("student_roll")
+    student_data = get_student_report_data(roll)
+    if not student_data:
+        flash("Student academic records could not be retrieved.", "warning")
+        return redirect(url_for("student_dashboard"))
+
+    return render_template(
+        "student_report.html",
+        student=student_data["student"],
+        semester=student_data["semester"],
+        academic_performance=student_data["academic_performance"],
+        overall_summary=student_data["overall_summary"],
+        attendance_status=student_data["attendance_status"],
+        academic_history=student_data["academic_history"],
+        ai_outlook=student_data["ai_outlook"],
+        improvement_plan=student_data["improvement_plan"]
+    )
+
+
+@app.route("/student/report/export-csv")
+def student_report_export_csv():
+    """Export logged-in student's personal academic report as CSV."""
+    if not session.get("student_logged_in"):
+        abort(403)
+
+    req_student = request.args.get("student") or request.args.get("roll")
+    if req_student and req_student.strip().lower() != str(session.get("student_roll")).strip().lower():
+        abort(403)
+
+    roll = session.get("student_roll")
+    try:
+        student_data = get_student_report_data(roll)
+        if not student_data:
+            abort(404)
+        csv_str, filename = export_student_csv(student_data)
+        response = make_response(csv_str)
+        response.headers["Content-Disposition"] = f'attachment; filename="{filename}"'
+        response.headers["Content-Type"] = "text/csv; charset=utf-8"
+        return response
+    except Exception as e:
+        app.logger.error(f"Student CSV export error: {e}")
+        flash("Unable to generate the report. Please try again.", "danger")
+        return redirect(url_for("student_report"))
+
+
+@app.route("/student/report/export-pdf")
+def student_report_export_pdf():
+    """Generate and stream multi-page ReportLab PDF for logged-in student."""
+    if not session.get("student_logged_in"):
+        abort(403)
+
+    req_student = request.args.get("student") or request.args.get("roll")
+    if req_student and req_student.strip().lower() != str(session.get("student_roll")).strip().lower():
+        abort(403)
+
+    roll = session.get("student_roll")
+    try:
+        student_data = get_student_report_data(roll)
+        if not student_data:
+            abort(404)
+        pdf_bytes = generate_student_pdf(student_data)
+        filename = sanitize_filename(f"academic_report_{roll}.pdf")
+        response = make_response(pdf_bytes)
+        response.headers["Content-Disposition"] = f'attachment; filename="{filename}"'
+        response.headers["Content-Type"] = "application/pdf"
+        return response
+    except Exception as e:
+        app.logger.error(f"Student PDF export error: {e}")
+        flash("Unable to generate the report. Please try again.", "danger")
+        return redirect(url_for("student_report"))
 
 
 # =========================================================

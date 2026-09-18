@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Academic Intelligence | Faculty Reports</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}" />
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+    <style>
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        min-height: 100vh;
+      }
+      .navbar-custom {
+        background-color: var(--navbar-bg) !important;
+        border-bottom: 1px solid var(--border-color);
+      }
+      .brand-badge {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-weight: 700;
+      }
+      .card-custom {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        box-shadow: var(--card-shadow);
+      }
+      .assignment-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        background: var(--bg-card);
+        color: var(--text-primary);
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.2s;
+      }
+      .assignment-pill:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+      }
+      .assignment-pill.active {
+        background: var(--primary);
+        color: white !important;
+        border-color: var(--primary);
+      }
+      .kpi-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 14px;
+        padding: 1.25rem;
+      }
+      .table-custom th {
+        background-color: var(--table-header-bg);
+        color: var(--table-header-text);
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        padding: 0.85rem 1rem;
+        border: none;
+      }
+      .table-custom td {
+        padding: 0.8rem 1rem;
+        vertical-align: middle;
+        font-size: 0.9rem;
+        border-bottom: 1px solid var(--border-color);
+      }
+      .table-custom tr:hover td {
+        background-color: var(--table-row-hover);
+      }
+      .nav-pills-custom .nav-link {
+        color: var(--text-secondary);
+        font-weight: 600;
+        border-radius: 10px;
+        padding: 0.55rem 1rem;
+      }
+      .nav-pills-custom .nav-link.active {
+        background: var(--primary);
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top py-3">
+      <div class="container-fluid px-4">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="{{ url_for('teacher_dashboard') }}">
+          <span class="brand-badge"><i class="bi bi-mortarboard-fill me-1"></i> Academic Intelligence</span>
+          <span class="text-muted fs-6 d-none d-sm-inline">| Faculty Reports</span>
+        </a>
+        <div class="ms-auto d-flex align-items-center gap-3">
+          <a href="{{ url_for('teacher_dashboard') }}" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+            <i class="bi bi-arrow-left me-1"></i> Dashboard
+          </a>
+          <button id="themeToggleBtn" onclick="toggleTheme()" class="theme-toggle-pill" type="button" aria-label="Toggle Theme">
+            <span>☀️ Light</span><span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
+          </button>
+          <a href="{{ url_for('teacher_logout') }}" class="btn btn-outline-danger btn-sm rounded-pill px-3">
+            <i class="bi bi-box-arrow-right me-1"></i> Logout
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid px-4 py-4">
+      <!-- Title & Actions -->
+      <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-4">
+        <div>
+          <h2 class="fw-bold mb-1">Subject & Student Reports</h2>
+          <p class="text-muted mb-0">Authorized performance records for <strong>{{ selected_subject }}</strong> (Semester {{ selected_semester }}).</p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <a href="{{ url_for('teacher_reports_export_csv', subject=selected_subject, semester=selected_semester, report_type=active_report_type, student=selected_student_roll) }}" class="btn btn-outline-success" onclick="handleExportClick(this, 'CSV')">
+            <i class="bi bi-filetype-csv me-1"></i> Export CSV
+          </a>
+          <a href="{{ url_for('teacher_reports_export_pdf', subject=selected_subject, semester=selected_semester, report_type=active_report_type, student=selected_student_roll) }}" class="btn btn-primary" onclick="handleExportClick(this, 'PDF')">
+            <i class="bi bi-file-earmark-pdf me-1"></i> Download PDF
+          </a>
+        </div>
+      </div>
+
+      <!-- Export Notification Banner -->
+      <div id="exportStatusAlert" class="alert alert-info alert-dismissible fade d-none" role="alert">
+        <span id="exportStatusText">Generating report...</span>
+        <button type="button" class="btn-close" onclick="document.getElementById('exportStatusAlert').classList.add('d-none')"></button>
+      </div>
+
+      <!-- Assigned Subjects Selector Bar -->
+      <div class="card-custom p-3 mb-4">
+        <div class="d-flex align-items-center justify-content-between mb-2">
+          <span class="small fw-bold text-muted text-uppercase">Your Assigned Subjects</span>
+          <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill">{{ assignments|length }} Assigned</span>
+        </div>
+        <div class="d-flex flex-wrap gap-2">
+          {% for a in assignments %}
+            {% set is_active = (a.Subject == selected_subject and a.Semester == selected_semester) %}
+            <a href="{{ url_for('teacher_reports', subject=a.Subject, semester=a.Semester) }}" class="assignment-pill {% if is_active %}active{% endif %}">
+              <i class="bi bi-book me-1"></i>
+              <span>{{ a.Subject }}</span>
+              <span class="badge {% if is_active %}bg-light text-primary{% else %}bg-secondary bg-opacity-25 text-dark{% endif %} rounded-pill">Sem {{ a.Semester }}</span>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Class KPI Metrics -->
+      <div class="row g-3 mb-4">
+        <div class="col-6 col-md-3">
+          <div class="kpi-card text-center">
+            <div class="text-muted small fw-bold">ENROLLED STUDENTS</div>
+            <div class="fs-4 fw-extrabold text-primary mt-1">{{ kpis.total_students }}</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="kpi-card text-center">
+            <div class="text-muted small fw-bold">CLASS AVERAGE MARKS</div>
+            <div class="fs-4 fw-extrabold text-primary mt-1">{{ kpis.average_marks }} / 100</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-2">
+          <div class="kpi-card text-center">
+            <div class="text-muted small fw-bold">HIGHEST SCORE</div>
+            <div class="fs-4 fw-extrabold text-success mt-1">{{ kpis.highest_marks }}</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-2">
+          <div class="kpi-card text-center">
+            <div class="text-muted small fw-bold">LOWEST SCORE</div>
+            <div class="fs-4 fw-extrabold text-danger mt-1">{{ kpis.lowest_marks }}</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-2">
+          <div class="kpi-card text-center">
+            <div class="text-muted small fw-bold">AVG ATTENDANCE</div>
+            <div class="fs-4 fw-extrabold text-primary mt-1">{{ kpis.average_attendance }}%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sub-Report Navigation Pills -->
+      <ul class="nav nav-pills nav-pills-custom gap-2 mb-4">
+        <li class="nav-item">
+          <a class="nav-link {% if active_report_type == 'subject' %}active{% endif %}" href="{{ url_for('teacher_reports', subject=selected_subject, semester=selected_semester, report_type='subject') }}">
+            <i class="bi bi-people-fill me-1"></i> Class Performance
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if active_report_type == 'attendance' %}active{% endif %}" href="{{ url_for('teacher_reports', subject=selected_subject, semester=selected_semester, report_type='attendance') }}">
+            <i class="bi bi-calendar-check me-1"></i> Attendance Roster
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if active_report_type == 'at_risk' %}active{% endif %}" href="{{ url_for('teacher_reports', subject=selected_subject, semester=selected_semester, report_type='at_risk') }}">
+            <i class="bi bi-exclamation-triangle-fill me-1"></i> At-Risk ({{ at_risk_students|length }})
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if active_report_type == 'student' %}active{% endif %}" href="{{ url_for('teacher_reports', subject=selected_subject, semester=selected_semester, report_type='student') }}">
+            <i class="bi bi-person-badge me-1"></i> Student Drill-Down
+          </a>
+        </li>
+      </ul>
+
+      <!-- Report Card Body -->
+      <div class="card-custom p-0 overflow-hidden">
+        
+        <!-- 1. SUBJECT PERFORMANCE TABLE -->
+        {% if active_report_type == 'subject' %}
+          <div class="table-responsive">
+            <table class="table table-custom mb-0">
+              <thead>
+                <tr>
+                  <th>Roll No</th>
+                  <th>Student Name</th>
+                  <th class="text-center">Internal (30)</th>
+                  <th class="text-center">External (70)</th>
+                  <th class="text-center">Total (100)</th>
+                  <th class="text-center">Grade</th>
+                  <th class="text-center">Attendance</th>
+                  <th class="text-center">Status</th>
+                  <th class="text-center">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for s in students %}
+                  <tr>
+                    <td class="fw-bold">{{ s.Roll }}</td>
+                    <td class="fw-semibold">{{ s.Name }}</td>
+                    <td class="text-center">{{ s.Internal }}</td>
+                    <td class="text-center">{{ s.External }}</td>
+                    <td class="text-center fw-bold">{{ s.Total }}</td>
+                    <td class="text-center fw-bold">{{ s.Grade }}</td>
+                    <td class="text-center">
+                      <span class="badge {% if s.Attendance >= 75 %}bg-success bg-opacity-15 text-success{% else %}bg-danger bg-opacity-15 text-danger{% endif %} rounded-pill">
+                        {{ s.Attendance }}%
+                      </span>
+                    </td>
+                    <td class="text-center">
+                      {% if s.status == 'Honors' %}
+                        <span class="badge bg-primary bg-opacity-15 text-primary rounded-pill px-2.5">Honors</span>
+                      {% elif s.status == 'At Risk' %}
+                        <span class="badge bg-danger bg-opacity-15 text-danger rounded-pill px-2.5">At Risk</span>
+                      {% else %}
+                        <span class="badge bg-success bg-opacity-15 text-success rounded-pill px-2.5">Good</span>
+                      {% endif %}
+                    </td>
+                    <td class="text-center">
+                      <a href="{{ url_for('teacher_reports', subject=selected_subject, semester=selected_semester, report_type='student', student=s.Roll) }}" class="btn btn-outline-primary btn-sm rounded-pill px-2.5 py-0.5">
+                        Inspect
+                      </a>
+                    </td>
+                  </tr>
+                {% else %}
+                  <tr>
+                    <td colspan="9" class="text-center py-5 text-muted">No students found in this assigned class.</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+        <!-- 2. ATTENDANCE ROSTER -->
+        {% elif active_report_type == 'attendance' %}
+          <div class="table-responsive">
+            <table class="table table-custom mb-0">
+              <thead>
+                <tr>
+                  <th>Roll No</th>
+                  <th>Student Name</th>
+                  <th>Subject</th>
+                  <th>Semester</th>
+                  <th class="text-center">Attendance</th>
+                  <th class="text-center">Eligibility Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for a in attendance_records %}
+                  <tr>
+                    <td class="fw-bold">{{ a.roll }}</td>
+                    <td class="fw-semibold">{{ a.name }}</td>
+                    <td>{{ a.subject }}</td>
+                    <td>Semester {{ a.semester }}</td>
+                    <td class="text-center fw-bold">{{ a.attendance }}%</td>
+                    <td class="text-center">
+                      {% if a.status == 'Good' %}
+                        <span class="badge bg-success bg-opacity-15 text-success rounded-pill px-3">Good (Eligible)</span>
+                      {% else %}
+                        <span class="badge bg-danger bg-opacity-15 text-danger rounded-pill px-3">Needs Attention</span>
+                      {% endif %}
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+        <!-- 3. AT-RISK STUDENTS -->
+        {% elif active_report_type == 'at_risk' %}
+          <div class="table-responsive">
+            <table class="table table-custom mb-0">
+              <thead>
+                <tr>
+                  <th>Roll No</th>
+                  <th>Student Name</th>
+                  <th class="text-center">Internal</th>
+                  <th class="text-center">External</th>
+                  <th class="text-center">Total</th>
+                  <th class="text-center">Attendance</th>
+                  <th>Identified Concern</th>
+                  <th class="text-center">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for ar in at_risk_students %}
+                  <tr>
+                    <td class="fw-bold">{{ ar.Roll }}</td>
+                    <td class="fw-semibold">{{ ar.Name }}</td>
+                    <td class="text-center">{{ ar.Internal }}</td>
+                    <td class="text-center">{{ ar.External }}</td>
+                    <td class="text-center fw-bold text-danger">{{ ar.Total }}</td>
+                    <td class="text-center fw-bold {% if ar.Attendance < 75 %}text-danger{% endif %}">{{ ar.Attendance }}%</td>
+                    <td><span class="badge bg-danger bg-opacity-15 text-danger rounded-pill px-3">{{ ar.risk_reason }}</span></td>
+                    <td class="text-center">
+                      <a href="{{ url_for('teacher_reports', subject=selected_subject, semester=selected_semester, report_type='student', student=ar.Roll) }}" class="btn btn-outline-danger btn-sm rounded-pill px-2.5 py-0.5">
+                        Inspect
+                      </a>
+                    </td>
+                  </tr>
+                {% else %}
+                  <tr>
+                    <td colspan="8" class="text-center py-5 text-muted">
+                      <i class="bi bi-check-circle text-success fs-2 d-block mb-2"></i>
+                      No students are currently marked at-risk in this subject.
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+        <!-- 4. STUDENT DRILL-DOWN -->
+        {% elif active_report_type == 'student' %}
+          <div class="p-4">
+            <!-- Student Selector Dropdown -->
+            <form method="GET" action="{{ url_for('teacher_reports') }}" class="mb-4">
+              <input type="hidden" name="subject" value="{{ selected_subject }}" />
+              <input type="hidden" name="semester" value="{{ selected_semester }}" />
+              <input type="hidden" name="report_type" value="student" />
+              
+              <div class="row g-2 align-items-center">
+                <div class="col-md-6">
+                  <label class="form-label small fw-bold text-muted">Select Assigned Student</label>
+                  <select name="student" class="form-select" onchange="this.form.submit()">
+                    <option value="">-- Choose a student from this class --</option>
+                    {% for s in students %}
+                      <option value="{{ s.Roll }}" {% if selected_student_roll == s.Roll %}selected{% endif %}>
+                        {{ s.Roll }} — {{ s.Name }} (Total: {{ s.Total }}, Att: {{ s.Attendance }}%)
+                      </option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+            </form>
+
+            {% if selected_student_detail %}
+              {% set st = selected_student_detail.student %}
+              <!-- Student Profile Card -->
+              <div class="card-custom p-4 mb-4">
+                <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 border-bottom pb-3 mb-3">
+                  <div>
+                    <h4 class="fw-bold mb-1">{{ st.Name }}</h4>
+                    <span class="text-muted">Roll No: <strong>{{ st.Roll }}</strong> | Semester: <strong>{{ st.Semester }}</strong> | Division: <strong>{{ st.Division }}</strong></span>
+                  </div>
+                  <div class="d-flex align-items-center gap-2">
+                    <a href="{{ url_for('teacher_reports_export_csv', subject=selected_subject, semester=selected_semester, report_type='student', student=st.Roll) }}" class="btn btn-outline-success btn-sm rounded-pill px-3">
+                      <i class="bi bi-filetype-csv me-1"></i> Export Student CSV
+                    </a>
+                    <a href="{{ url_for('teacher_reports_export_pdf', subject=selected_subject, semester=selected_semester, report_type='student', student=st.Roll) }}" class="btn btn-primary btn-sm rounded-pill px-3">
+                      <i class="bi bi-file-earmark-pdf me-1"></i> Download Student PDF
+                    </a>
+                  </div>
+                </div>
+
+                <div class="row g-3 mb-4">
+                  <div class="col-md-3">
+                    <div class="kpi-card text-center">
+                      <div class="text-muted small fw-bold">OVERALL SGPI</div>
+                      <div class="fs-4 fw-extrabold text-primary mt-1">{{ st.SGPI }}</div>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="kpi-card text-center">
+                      <div class="text-muted small fw-bold">OVERALL ATTENDANCE</div>
+                      <div class="fs-4 fw-extrabold text-primary mt-1">{{ st.Attendance }}%</div>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="kpi-card text-center">
+                      <div class="text-muted small fw-bold">PERFORMANCE LEVEL</div>
+                      <div class="fs-5 fw-extrabold text-success mt-1">{{ selected_student_detail.overall_performance }}</div>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="kpi-card text-center">
+                      <div class="text-muted small fw-bold">ACADEMIC RISK</div>
+                      <div class="fs-5 fw-extrabold {% if selected_student_detail.academic_risk == 'Low' %}text-success{% else %}text-danger{% endif %} mt-1">
+                        {{ selected_student_detail.academic_risk }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <h6 class="fw-bold mb-2">Semester Course Breakdown</h6>
+                <div class="table-responsive">
+                  <table class="table table-custom mb-0">
+                    <thead>
+                      <tr>
+                        <th>Subject</th>
+                        <th class="text-center">Internal (30)</th>
+                        <th class="text-center">External (70)</th>
+                        <th class="text-center">Total (100)</th>
+                        <th class="text-center">Grade</th>
+                        <th class="text-center">Attendance</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for sb in selected_student_detail.subjects_list %}
+                        <tr {% if sb.subject == selected_subject %}class="table-primary"{% endif %}>
+                          <td class="fw-semibold">
+                            {{ sb.subject }}
+                            {% if sb.subject == selected_subject %}
+                              <span class="badge bg-primary text-white rounded-pill ms-2">Your Subject</span>
+                            {% endif %}
+                          </td>
+                          <td class="text-center">{{ sb.internal }}</td>
+                          <td class="text-center">{{ sb.external }}</td>
+                          <td class="text-center fw-bold">{{ sb.total }}</td>
+                          <td class="text-center fw-bold">{{ sb.grade }}</td>
+                          <td class="text-center">{{ sb.attendance }}%</td>
+                        </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            {% else %}
+              <div class="text-center py-5 text-muted">
+                <i class="bi bi-person-search fs-1 d-block mb-2"></i>
+                Select a student from the dropdown above to view and export their authorized individual report.
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function handleExportClick(btn, type) {
+        const alertBox = document.getElementById('exportStatusAlert');
+        const alertText = document.getElementById('exportStatusText');
+        alertBox.className = 'alert alert-info alert-dismissible fade show mb-4';
+        alertText.innerText = 'Generating report...';
+
+        setTimeout(() => {
+          alertBox.className = 'alert alert-success alert-dismissible fade show mb-4';
+          alertText.innerText = 'Report generated successfully.';
+          setTimeout(() => {
+            alertBox.classList.add('d-none');
+          }, 4000);
+        }, 1200);
+      }
+    </script>
+  </body>
+</html>

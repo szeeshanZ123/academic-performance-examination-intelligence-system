@@ -184,6 +184,9 @@
           <a href="{{ url_for('question_paper.index') }}" class="btn btn-outline-info btn-sm rounded-pill px-3">
             <i class="bi bi-file-earmark-check-fill me-1"></i> Paper Intelligence
           </a>
+          <a href="{{ url_for('teacher_reports', subject=selected_subject, semester=selected_semester) }}" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+            <i class="bi bi-file-earmark-bar-graph-fill me-1"></i> Reports
+          </a>
           <div class="d-none d-md-flex align-items-center user-badge-pill px-3 py-1.5 rounded-pill small">
             <i class="bi bi-person-badge-fill text-primary me-2"></i>
             <span class="fw-semibold me-2">{{ teacher_name }}</span>

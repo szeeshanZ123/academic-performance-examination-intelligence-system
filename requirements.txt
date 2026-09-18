@@ -6,3 +6,4 @@ scikit-learn
 joblib
 pymupdf
 python-docx
+reportlab

@@ -213,13 +213,13 @@
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-custom sticky-top py-2.5 no-print">
-      <div class="container-fluid px-4" style="max-width: 1400px;">
+      <div class="container-fluid px-3 px-md-4 d-flex flex-wrap align-items-center justify-content-between gap-2" style="max-width: 1400px;">
         <a class="navbar-brand d-flex align-items-center text-decoration-none" href="{{ url_for('student_dashboard') }}">
           <span class="brand-badge me-2"><i class="bi bi-mortarboard-fill me-1"></i> Academic Intelligence</span>
-          <span class="opacity-75 fs-6 d-none d-sm-inline">Personal Academic Coach</span>
+          <span class="opacity-75 fs-6 d-none d-md-inline">Personal Academic Coach</span>
         </a>
 
-        <div class="d-flex align-items-center gap-2">
+        <div class="d-flex flex-wrap align-items-center gap-2">
           <a href="{{ url_for('student_dashboard') }}" class="btn btn-outline-secondary btn-sm rounded-pill px-3">
             <i class="bi bi-speedometer2 me-1"></i> Student Dashboard
           </a>
@@ -237,7 +237,7 @@
     </nav>
 
     <!-- Main Container -->
-    <main class="container-fluid px-4 py-4" style="max-width: 1400px;">
+    <main class="container-fluid px-3 px-md-4 py-4" style="max-width: 1400px;">
 
       <!-- Flash Notification Messages -->
       {% with messages = get_flashed_messages(with_categories=true) %}
@@ -290,7 +290,7 @@
             </div>
           </div>
           <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
-            <a href="#action-checklist" class="btn btn-primary rounded-pill px-4 py-2 shadow-sm">
+            <a href="#action-checklist" class="btn btn-primary rounded-pill px-4 py-2 shadow-sm w-100 w-lg-auto d-inline-flex align-items-center justify-content-center gap-1.5">
               <i class="bi bi-check2-square me-1"></i> Jump to Action Checklist
             </a>
           </div>
@@ -824,7 +824,7 @@
 
         <div class="row g-3">
           {% for r in plan.roadmap %}
-            <div class="col-12 col-sm-6 col-lg">
+            <div class="col-12 col-sm-6 col-md-4 col-xl">
               <div class="day-card d-flex flex-column justify-content-between">
                 <div>
                   <div class="d-flex justify-content-between align-items-center mb-2">
@@ -842,7 +842,7 @@
 
       <!-- Section 17: Interactive Action Checklist -->
       <div class="section-card p-4 mb-4" id="action-checklist">
-        <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
           <div>
             <h5 class="fw-bold mb-1 text-primary">
               <i class="bi bi-check2-all text-success me-2"></i>YOUR ACTION CHECKLIST
@@ -857,11 +857,11 @@
         <div class="d-flex flex-column gap-2.5">
           {% for item in plan.action_checklist %}
             <div class="checklist-item d-flex align-items-center gap-3" id="item_{{ item.id }}">
-              <input type="checkbox" class="custom-checkbox" id="{{ item.id }}" onchange="toggleChecklistItem('{{ item.id }}')">
+              <input type="checkbox" class="custom-checkbox flex-shrink-0" id="{{ item.id }}" onchange="toggleChecklistItem('{{ item.id }}')">
               <label for="{{ item.id }}" class="mb-0 small fw-medium flex-grow-1 cursor-pointer">
                 {{ item.text }}
               </label>
-              <span class="badge bg-light text-muted border small">{{ item.category }}</span>
+              <span class="badge bg-light text-muted border small flex-shrink-0">{{ item.category }}</span>
             </div>
           {% endfor %}
         </div>

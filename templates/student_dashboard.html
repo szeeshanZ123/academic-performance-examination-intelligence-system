@@ -102,13 +102,13 @@
   </head>
   <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-custom sticky-top py-3 no-print">
-      <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top py-2.5 no-print">
+      <div class="container d-flex flex-wrap align-items-center justify-content-between gap-2">
         <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="/student-dashboard">
           <span class="brand-badge me-1"><i class="bi bi-mortarboard-fill me-1"></i> Academic Intelligence</span>
           <span class="opacity-75 fs-6 d-none d-sm-inline">Student Portal</span>
         </a>
-        <div class="ms-auto d-flex align-items-center gap-2">
+        <div class="d-flex flex-wrap align-items-center gap-2">
           <a href="{{ url_for('student_improvement_plan') }}" class="btn btn-primary btn-sm rounded-pill px-3 fw-semibold shadow-sm">
             <i class="bi bi-compass-fill me-1"></i> My Improvement Plan
           </a>
@@ -147,7 +147,7 @@
             </div>
           </div>
           <div class="col-md">
-            <div class="d-flex align-items-center gap-2 mb-1">
+            <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
               <span class="badge bg-primary px-3 py-1 rounded-pill fs-7">
                 STATUS: ACTIVE
               </span>
@@ -249,9 +249,9 @@
             <thead class="table-dark">
               <tr>
                 <th class="py-3 px-4">Subject Name</th>
-                <th class="py-3 text-center">Internal (/30)</th>
-                <th class="py-3 text-center">External (/70)</th>
-                <th class="py-3 text-center">Total Score (/100)</th>
+                <th class="py-3 text-center">Internal<br><span class="fs-8 fw-normal opacity-75">(/30)</span></th>
+                <th class="py-3 text-center">External<br><span class="fs-8 fw-normal opacity-75">(/70)</span></th>
+                <th class="py-3 text-center">Total Score<br><span class="fs-8 fw-normal opacity-75">(/100)</span></th>
                 <th class="py-3 text-center">Grade Awarded</th>
                 <th class="py-3 text-center">Subject Attendance</th>
               </tr>
@@ -299,15 +299,15 @@
         {% if prediction_available and predictions %}
         <div class="table-responsive border rounded-3 overflow-hidden">
           <table class="table table-hover align-middle mb-0">
-            <thead>
+            <thead class="table-dark">
               <tr>
                 <th class="py-3 px-4">Subject</th>
-                <th class="py-3 text-center">Internal Marks</th>
+                <th class="py-3 text-center">Internal<br><span class="fs-8 fw-normal opacity-75">Marks (/30)</span></th>
                 <th class="py-3 text-center">Attendance</th>
-                <th class="py-3 text-center">Actual External</th>
-                <th class="py-3 text-center">AI Predicted External Marks</th>
-                <th class="py-3 text-center">Predicted Total</th>
-                <th class="py-3 text-center">Performance Status</th>
+                <th class="py-3 text-center">Actual<br><span class="fs-8 fw-normal opacity-75">External (/70)</span></th>
+                <th class="py-3 text-center">AI Predicted<br><span class="fs-8 fw-normal opacity-75">External (/70)</span></th>
+                <th class="py-3 text-center">Predicted<br><span class="fs-8 fw-normal opacity-75">Total (/100)</span></th>
+                <th class="py-3 text-center">Performance<br><span class="fs-8 fw-normal opacity-75">Status</span></th>
               </tr>
             </thead>
             <tbody>
@@ -386,7 +386,7 @@
 
       <!-- Semester Performance Trend Section -->
       <div class="card-custom p-4 mb-4">
-        <div class="d-flex align-items-center justify-content-between mb-3">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
           <h5 class="fw-bold mb-0 text-dark">
             <i class="bi bi-graph-up-arrow text-primary me-2"></i> Semester Performance Trend
           </h5>
@@ -397,34 +397,34 @@
 
         <!-- Performance Summary Metric Boxes -->
         <div class="row g-3 mb-4">
-          <div class="col-6 col-md">
-            <div class="metric-box text-center p-3">
-              <span class="text-muted text-uppercase fw-semibold fs-8 d-block mb-1">Current Sem SGPI</span>
-              <h3 class="fw-extrabold text-primary mb-0">{{ trend_summary.current_sgpi if trend_summary else 0.0 }}</h3>
+          <div class="col-6 col-sm-4 col-md">
+            <div class="metric-box text-center p-2.5 p-md-3">
+              <span class="text-muted text-uppercase fw-semibold fs-8 d-block mb-1">Current SGPI</span>
+              <h3 class="fw-extrabold text-primary mb-0 fs-4">{{ trend_summary.current_sgpi if trend_summary else 0.0 }}</h3>
             </div>
           </div>
-          <div class="col-6 col-md">
-            <div class="metric-box text-center p-3">
+          <div class="col-6 col-sm-4 col-md">
+            <div class="metric-box text-center p-2.5 p-md-3">
               <span class="text-muted text-uppercase fw-semibold fs-8 d-block mb-1">Highest SGPI</span>
-              <h3 class="fw-extrabold text-success mb-0">{{ trend_summary.highest_sgpi if trend_summary else 0.0 }}</h3>
+              <h3 class="fw-extrabold text-success mb-0 fs-4">{{ trend_summary.highest_sgpi if trend_summary else 0.0 }}</h3>
             </div>
           </div>
-          <div class="col-6 col-md">
-            <div class="metric-box text-center p-3">
+          <div class="col-6 col-sm-4 col-md">
+            <div class="metric-box text-center p-2.5 p-md-3">
               <span class="text-muted text-uppercase fw-semibold fs-8 d-block mb-1">Average SGPI</span>
-              <h3 class="fw-extrabold text-dark mb-0">{{ trend_summary.average_sgpi if trend_summary else 0.0 }}</h3>
+              <h3 class="fw-extrabold text-dark mb-0 fs-4">{{ trend_summary.average_sgpi if trend_summary else 0.0 }}</h3>
             </div>
           </div>
-          <div class="col-6 col-md">
-            <div class="metric-box text-center p-3">
-              <span class="text-muted text-uppercase fw-semibold fs-8 d-block mb-1">Current Attendance</span>
-              <h3 class="fw-extrabold {% if trend_summary and trend_summary.current_attendance >= 75 %}text-success{% else %}text-danger{% endif %} mb-0">{{ trend_summary.current_attendance if trend_summary else 0.0 }}%</h3>
+          <div class="col-6 col-sm-6 col-md">
+            <div class="metric-box text-center p-2.5 p-md-3">
+              <span class="text-muted text-uppercase fw-semibold fs-8 d-block mb-1">Current Att.</span>
+              <h3 class="fw-extrabold {% if trend_summary and trend_summary.current_attendance >= 75 %}text-success{% else %}text-danger{% endif %} mb-0 fs-4">{{ trend_summary.current_attendance if trend_summary else 0.0 }}%</h3>
             </div>
           </div>
-          <div class="col-6 col-md">
-            <div class="metric-box text-center p-3">
-              <span class="text-muted text-uppercase fw-semibold fs-8 d-block mb-1">Overall Avg Attendance</span>
-              <h3 class="fw-extrabold text-info mb-0">{{ trend_summary.overall_average_attendance if trend_summary else 0.0 }}%</h3>
+          <div class="col-12 col-sm-6 col-md">
+            <div class="metric-box text-center p-2.5 p-md-3">
+              <span class="text-muted text-uppercase fw-semibold fs-8 d-block mb-1">Avg Attendance</span>
+              <h3 class="fw-extrabold text-info mb-0 fs-4">{{ trend_summary.overall_average_attendance if trend_summary else 0.0 }}%</h3>
             </div>
           </div>
         </div>
@@ -438,7 +438,7 @@
                 <span class="fw-bold text-dark fs-7"><i class="bi bi-award text-primary me-1"></i> SGPI Progression</span>
                 <span class="text-muted fs-8">Scale 0 - 10.0</span>
               </div>
-              <div style="position: relative; height: 240px; width: 100%;">
+              <div class="chart-container" style="position: relative; height: 240px; width: 100%;">
                 <canvas id="sgpiTrendChart"></canvas>
               </div>
             </div>
@@ -451,7 +451,7 @@
                 <span class="fw-bold text-dark fs-7"><i class="bi bi-calendar-check text-success me-1"></i> Attendance Trend</span>
                 <span class="text-muted fs-8">Benchmark 75%</span>
               </div>
-              <div style="position: relative; height: 240px; width: 100%;">
+              <div class="chart-container" style="position: relative; height: 240px; width: 100%;">
                 <canvas id="attendanceTrendChart"></canvas>
               </div>
             </div>
@@ -472,7 +472,7 @@
         <div class="col-lg-6">
           <div class="card-custom p-4 h-100">
             <h5 class="fw-bold mb-3 text-dark"><i class="bi bi-bar-chart-fill text-primary me-2"></i> Internal vs External Marks</h5>
-            <div style="position: relative; height: 280px; width: 100%;">
+            <div class="chart-container" style="position: relative; height: 280px; width: 100%;">
               <canvas id="studentMarksChart"></canvas>
             </div>
           </div>
@@ -532,6 +532,8 @@
       const internalMarks = subjectsData.map(s => s.internal);
       const externalMarks = subjectsData.map(s => s.external);
 
+      const isMobile = window.innerWidth < 768;
+
       const barCanvas = document.getElementById('studentMarksChart');
       if (barCanvas && labels.length > 0) {
         new Chart(barCanvas.getContext('2d'), {
@@ -544,14 +546,14 @@
                 data: internalMarks,
                 backgroundColor: '#3B82F6',
                 borderRadius: 6,
-                barThickness: 20
+                barThickness: isMobile ? 12 : 20
               },
               {
                 label: 'External Marks (/70)',
                 data: externalMarks,
                 backgroundColor: '#2563EB',
                 borderRadius: 6,
-                barThickness: 20
+                barThickness: isMobile ? 12 : 20
               }
             ]
           },
@@ -559,11 +561,23 @@
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-              legend: { position: 'top' }
+              legend: { 
+                position: 'top',
+                labels: {
+                  boxWidth: isMobile ? 12 : 20,
+                  font: { size: isMobile ? 11 : 12 }
+                }
+              }
             },
             scales: {
               y: { beginAtZero: true, max: 70, grid: { color: 'rgba(226, 232, 240, 0.8)' } },
-              x: { grid: { display: false } }
+              x: { 
+                grid: { display: false },
+                ticks: {
+                  font: { size: isMobile ? 10 : 12 },
+                  maxRotation: isMobile ? 45 : 0
+                }
+              }
             }
           }
         });
@@ -574,7 +588,8 @@
       const sgpiTrendEl = document.getElementById('sgpiTrendData');
       const attendanceTrendEl = document.getElementById('attendanceTrendData');
 
-      const trendLabels = trendLabelsEl ? JSON.parse(trendLabelsEl.textContent) : [];
+      const rawTrendLabels = trendLabelsEl ? JSON.parse(trendLabelsEl.textContent) : [];
+      const trendLabels = rawTrendLabels.map(l => (isMobile && typeof l === 'string' && l.startsWith('Semester ') ? l.replace('Semester ', 'Sem ') : l));
       const sgpiData = sgpiTrendEl ? JSON.parse(sgpiTrendEl.textContent) : [];
       const attendanceData = attendanceTrendEl ? JSON.parse(attendanceTrendEl.textContent) : [];
 
@@ -612,7 +627,10 @@
             },
             scales: {
               y: { beginAtZero: true, max: 10.0, grid: { color: '#e2e8f0' } },
-              x: { grid: { display: false } }
+              x: { 
+                grid: { display: false },
+                ticks: { font: { size: isMobile ? 10 : 12 } }
+              }
             }
           }
         });
@@ -653,7 +671,10 @@
             },
             scales: {
               y: { beginAtZero: true, max: 100, grid: { color: '#e2e8f0' } },
-              x: { grid: { display: false } }
+              x: { 
+                grid: { display: false },
+                ticks: { font: { size: isMobile ? 10 : 12 } }
+              }
             }
           }
         });

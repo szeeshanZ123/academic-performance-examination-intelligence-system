@@ -175,16 +175,16 @@
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-custom sticky-top py-2">
-      <div class="container-fluid px-4">
+      <div class="container-fluid px-3 px-md-4">
         <a class="navbar-brand d-flex align-items-center text-decoration-none" href="{{ url_for('teacher_dashboard') }}">
           <span class="brand-badge me-2"><i class="bi bi-mortarboard-fill me-1"></i> Academic Intelligence</span>
         </a>
 
-        <div class="d-flex align-items-center gap-3">
-          <a href="{{ url_for('question_paper.index') }}" class="btn btn-outline-info btn-sm rounded-pill px-3">
-            <i class="bi bi-file-earmark-check-fill me-1"></i> Paper Intelligence
+        <div class="d-flex flex-wrap align-items-center gap-2 gap-md-3">
+          <a href="{{ url_for('question_paper.index') }}" class="btn btn-outline-info btn-sm rounded-pill px-2.5 px-md-3">
+            <i class="bi bi-file-earmark-check-fill me-1"></i> <span class="d-none d-sm-inline">Paper </span>Intelligence
           </a>
-          <a href="{{ url_for('teacher_reports', subject=selected_subject, semester=selected_semester) }}" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+          <a href="{{ url_for('teacher_reports', subject=selected_subject, semester=selected_semester) }}" class="btn btn-outline-primary btn-sm rounded-pill px-2.5 px-md-3">
             <i class="bi bi-file-earmark-bar-graph-fill me-1"></i> Reports
           </a>
           <div class="d-none d-md-flex align-items-center user-badge-pill px-3 py-1.5 rounded-pill small">
@@ -197,14 +197,14 @@
             <span>☀️ Light</span><span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
           </button>
 
-          <a href="{{ url_for('teacher_logout') }}" class="btn btn-outline-danger btn-sm rounded-pill px-3">
+          <a href="{{ url_for('teacher_logout') }}" class="btn btn-outline-danger btn-sm rounded-pill px-2.5 px-md-3">
             <i class="bi bi-box-arrow-right me-1"></i> Logout
           </a>
         </div>
       </div>
     </nav>
 
-    <div class="container-fluid px-4 py-4">
+    <div class="container-fluid px-3 px-md-4 py-4">
       <!-- Flash Messages -->
       {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
@@ -221,7 +221,7 @@
       <div class="hero-card p-4 p-md-5 mb-4 shadow-sm">
         <div class="row align-items-center position-relative" style="z-index: 2;">
           <div class="col-lg-8">
-            <div class="d-flex align-items-center gap-2 mb-2">
+            <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
               <span class="badge bg-primary bg-opacity-50 text-white border border-primary border-opacity-50 px-3 py-1 rounded-pill">
                 <i class="bi bi-person-video3 me-1"></i> Teacher Dashboard
               </span>
@@ -234,12 +234,12 @@
               Managing <strong>{{ assignments|length }}</strong> assigned subject{% if assignments|length != 1 %}s{% endif %}. Currently inspecting performance and attendance for <strong>{{ selected_subject }}</strong> (Semester {{ selected_semester }}).
             </p>
           </div>
-          <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+          <div class="col-lg-4 text-start text-lg-end mt-3 mt-lg-0">
             <div class="hero-stat-box p-3 rounded-4 d-inline-block text-start">
               <div class="small opacity-75">Faculty ID</div>
               <div class="fw-bold fs-5">{{ teacher_id }}</div>
               {% if teacher_email %}
-                <div class="small opacity-75 mt-1"><i class="bi bi-envelope me-1"></i>{{ teacher_email }}</div>
+                <div class="small opacity-75 mt-1 text-truncate" style="max-width: 250px;"><i class="bi bi-envelope me-1"></i>{{ teacher_email }}</div>
               {% endif %}
             </div>
           </div>
@@ -248,7 +248,7 @@
 
       <!-- Teaching Assignments Selector -->
       <div class="mb-4">
-        <div class="d-flex align-items-center justify-content-between mb-3">
+        <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-1 mb-3">
           <h5 class="fw-bold mb-0 text-dark">
             <i class="bi bi-journals text-primary me-2"></i>My Teaching Assignments
           </h5>
@@ -258,7 +258,7 @@
         <div class="row g-3">
           {% for item in assignments %}
             {% set is_active_card = (item.Subject == selected_subject and item.Semester == selected_semester) %}
-            <div class="col-md-6 col-lg-4">
+            <div class="col-12 col-md-6 col-lg-4">
               <a href="{{ url_for('teacher_dashboard', subject=item.Subject, semester=item.Semester) }}"
                  class="assignment-card {% if is_active_card %}active{% endif %}">
                 <div class="d-flex align-items-center justify-content-between">
@@ -292,7 +292,7 @@
       <!-- KPI Metrics Overview -->
       <div class="row g-3 mb-4">
         <!-- Total Students -->
-        <div class="col-sm-6 col-xl-2">
+        <div class="col-6 col-md-4 col-xl-2">
           <div class="kpi-card kpi-primary p-3 h-100 shadow-sm">
             <div class="d-flex justify-content-between align-items-center mb-2">
               <span class="text-muted small fw-semibold">Students</span>
@@ -306,7 +306,7 @@
         </div>
 
         <!-- Average Marks -->
-        <div class="col-sm-6 col-xl-2">
+        <div class="col-6 col-md-4 col-xl-2">
           <div class="kpi-card kpi-success p-3 h-100 shadow-sm">
             <div class="d-flex justify-content-between align-items-center mb-2">
               <span class="text-muted small fw-semibold">Avg Marks</span>
@@ -320,7 +320,7 @@
         </div>
 
         <!-- Highest Marks -->
-        <div class="col-sm-6 col-xl-2">
+        <div class="col-6 col-md-4 col-xl-2">
           <div class="kpi-card kpi-info p-3 h-100 shadow-sm">
             <div class="d-flex justify-content-between align-items-center mb-2">
               <span class="text-muted small fw-semibold">Highest Score</span>
@@ -329,12 +329,12 @@
               </div>
             </div>
             <h3 class="fw-bold mb-0 text-primary">{{ kpis.highest_marks }}</h3>
-            <span class="text-muted small">Top Scorer (Min: {{ kpis.lowest_marks }})</span>
+            <span class="text-muted small">Top (Min: {{ kpis.lowest_marks }})</span>
           </div>
         </div>
 
         <!-- Average Attendance -->
-        <div class="col-sm-6 col-xl-2">
+        <div class="col-6 col-md-4 col-xl-2">
           <div class="kpi-card kpi-info p-3 h-100 shadow-sm">
             <div class="d-flex justify-content-between align-items-center mb-2">
               <span class="text-muted small fw-semibold">Avg Attendance</span>
@@ -348,7 +348,7 @@
         </div>
 
         <!-- Pass Rate -->
-        <div class="col-sm-6 col-xl-2">
+        <div class="col-6 col-md-4 col-xl-2">
           <div class="kpi-card kpi-warning p-3 h-100 shadow-sm">
             <div class="d-flex justify-content-between align-items-center mb-2">
               <span class="text-muted small fw-semibold">Pass Rate</span>
@@ -357,12 +357,12 @@
               </div>
             </div>
             <h3 class="fw-bold mb-0 text-warning">{{ kpis.pass_percentage }}%</h3>
-            <span class="text-muted small">Passing Threshold (&gt;=40)</span>
+            <span class="text-muted small">Passing (&gt;=40)</span>
           </div>
         </div>
 
         <!-- At-Risk Count -->
-        <div class="col-sm-6 col-xl-2">
+        <div class="col-6 col-md-4 col-xl-2">
           <div class="kpi-card kpi-danger p-3 h-100 shadow-sm">
             <div class="d-flex justify-content-between align-items-center mb-2">
               <span class="text-muted small fw-semibold">At-Risk</span>
@@ -379,13 +379,13 @@
       <!-- Visual Charts Section -->
       <div class="row g-3 mb-4">
         <!-- Chart 1: Grade Distribution -->
-        <div class="col-lg-4">
+        <div class="col-12 col-md-6 col-lg-4">
           <div class="chart-card p-4 shadow-sm h-100">
             <div class="d-flex justify-content-between align-items-center mb-3">
               <h6 class="fw-bold mb-0 text-dark">
                 <i class="bi bi-bar-chart-fill text-primary me-2"></i>Grade Distribution
               </h6>
-              <span class="badge bg-light text-muted border">Subject Grades</span>
+              <span class="badge bg-light text-muted border">Grades</span>
             </div>
             <div style="position: relative; height: 260px;">
               <canvas id="gradeDistributionChart"></canvas>
@@ -394,7 +394,7 @@
         </div>
 
         <!-- Chart 2: Marks Score Range -->
-        <div class="col-lg-4">
+        <div class="col-12 col-md-6 col-lg-4">
           <div class="chart-card p-4 shadow-sm h-100">
             <div class="d-flex justify-content-between align-items-center mb-3">
               <h6 class="fw-bold mb-0 text-dark">
@@ -409,7 +409,7 @@
         </div>
 
         <!-- Chart 3: Attendance Breakdown -->
-        <div class="col-lg-4">
+        <div class="col-12 col-md-6 col-lg-4">
           <div class="chart-card p-4 shadow-sm h-100">
             <div class="d-flex justify-content-between align-items-center mb-3">
               <h6 class="fw-bold mb-0 text-dark">
@@ -427,23 +427,23 @@
       <!-- At-Risk Students Action Panel (if any) -->
       {% if at_risk_students %}
         <div class="card border-danger border-opacity-25 rounded-4 shadow-sm mb-4">
-          <div class="card-header bg-danger bg-opacity-10 py-3 px-4 rounded-top-4 border-0 d-flex align-items-center justify-content-between">
+          <div class="card-header bg-danger bg-opacity-10 py-3 px-4 rounded-top-4 border-0 d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-2">
             <div class="d-flex align-items-center gap-2">
               <i class="bi bi-shield-exclamation text-danger fs-5"></i>
               <h6 class="fw-bold mb-0 text-danger">At-Risk Students Requiring Attention ({{ at_risk_students|length }})</h6>
             </div>
             <span class="badge bg-danger text-white rounded-pill px-3 py-1.5 small">
-              Criteria: Attendance &lt; 75% OR Score &lt; 40
+              Attendance &lt; 75% OR Score &lt; 40
             </span>
           </div>
           <div class="card-body p-0">
             <div class="table-responsive">
-              <table class="table table-custom table-hover mb-0">
+              <table class="table table-custom table-hover mb-0" style="min-width: 650px;">
                 <thead>
                   <tr>
-                    <th>Roll No</th>
+                    <th class="text-nowrap">Roll No</th>
                     <th>Student Name</th>
-                    <th>Subject Score</th>
+                    <th class="text-nowrap">Subject Score</th>
                     <th>Grade</th>
                     <th>Attendance</th>
                     <th>Reason / Risk Flag</th>
@@ -497,7 +497,7 @@
 
       <!-- Enrolled Students Table Roster -->
       <div class="card border-0 rounded-4 shadow-sm">
-        <div class="card-header bg-white py-3 px-4 rounded-top-4 border-bottom d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+        <div class="card-header bg-white py-3 px-3 px-md-4 rounded-top-4 border-bottom d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
           <div>
             <div class="d-flex align-items-center gap-2 mb-1">
               <h5 class="fw-bold mb-0 text-dark">
@@ -510,16 +510,16 @@
             <p class="text-muted small mb-0">Enrolled students in <strong>{{ selected_subject }}</strong> (Semester {{ selected_semester }})</p>
           </div>
 
-          <div class="d-flex flex-wrap align-items-center gap-3">
+          <div class="d-flex flex-wrap align-items-center gap-2 gap-md-3">
             <div class="d-flex align-items-center gap-2">
-              <label for="displayLimitSelect" class="small text-muted fw-semibold text-nowrap mb-0">Students to Display:</label>
+              <label for="displayLimitSelect" class="small text-muted fw-semibold text-nowrap mb-0">Display:</label>
               <select id="displayLimitSelect" class="form-select form-select-sm bg-light border" style="width: auto;">
                 <option value="10" selected>Top 10</option>
                 <option value="all">All Students</option>
               </select>
             </div>
 
-            <div class="input-group input-group-sm" style="max-width: 240px;">
+            <div class="input-group input-group-sm" style="min-width: 180px; max-width: 240px;">
               <span class="input-group-text bg-light border-end-0"><i class="bi bi-search text-muted"></i></span>
               <input type="text" id="rosterSearch" class="form-control bg-light border-start-0" placeholder="Search Roll or Name..." />
             </div>
@@ -528,14 +528,14 @@
 
         <div class="card-body p-0">
           <div class="table-responsive">
-            <table class="table table-custom table-hover mb-0" id="rosterTable">
+            <table class="table table-custom table-hover mb-0" id="rosterTable" style="min-width: 700px;">
               <thead>
                 <tr>
-                  <th>Roll No</th>
+                  <th class="text-nowrap">Roll No</th>
                   <th>Student Name</th>
-                  <th>Internal (30)</th>
-                  <th>External (70)</th>
-                  <th>Total (100)</th>
+                  <th>Internal<br class="d-none d-sm-inline"><span class="small opacity-75">(/30)</span></th>
+                  <th>External<br class="d-none d-sm-inline"><span class="small opacity-75">(/70)</span></th>
+                  <th>Total<br class="d-none d-sm-inline"><span class="small opacity-75">(/100)</span></th>
                   <th>Grade</th>
                   <th>Attendance</th>
                   <th>Status</th>

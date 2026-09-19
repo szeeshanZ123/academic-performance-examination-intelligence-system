@@ -298,16 +298,16 @@
 
         {% if prediction_available and predictions %}
         <div class="table-responsive border rounded-3 overflow-hidden">
-          <table class="table table-hover align-middle mb-0">
+          <table class="table table-hover align-middle mb-0" style="min-width: 680px;">
             <thead class="table-dark">
               <tr>
                 <th class="py-3 px-4">Subject</th>
-                <th class="py-3 text-center">Internal<br><span class="fs-8 fw-normal opacity-75">Marks (/30)</span></th>
+                <th class="py-3 text-center">Internal Marks (/30)</th>
                 <th class="py-3 text-center">Attendance</th>
-                <th class="py-3 text-center">Actual<br><span class="fs-8 fw-normal opacity-75">External (/70)</span></th>
-                <th class="py-3 text-center">AI Predicted<br><span class="fs-8 fw-normal opacity-75">External (/70)</span></th>
-                <th class="py-3 text-center">Predicted<br><span class="fs-8 fw-normal opacity-75">Total (/100)</span></th>
-                <th class="py-3 text-center">Performance<br><span class="fs-8 fw-normal opacity-75">Status</span></th>
+                <th class="py-3 text-center">Actual External (/70)</th>
+                <th class="py-3 text-center">AI Predicted External Marks (/70)</th>
+                <th class="py-3 text-center">Predicted Total (/100)</th>
+                <th class="py-3 text-center">Performance Status</th>
               </tr>
             </thead>
             <tbody>

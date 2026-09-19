@@ -287,9 +287,9 @@
   <body>
     <!-- Navbar -->
     <nav
-      class="navbar navbar-expand-lg navbar-custom sticky-top py-3"
+      class="navbar navbar-expand-lg navbar-custom sticky-top py-2.5"
     >
-      <div class="container">
+      <div class="container-fluid px-3 px-md-4">
         <a
           class="navbar-brand d-flex align-items-center gap-2 font-weight-bold"
           href="#"
@@ -300,7 +300,7 @@
         </a>
 
         <button
-          class="navbar-toggler"
+          class="navbar-toggler border-0 shadow-none"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
@@ -310,7 +310,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto align-items-center gap-3 mt-3 mt-lg-0">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-2 gap-lg-3 mt-3 mt-lg-0">
             <li class="nav-item">
               <a class="nav-link active fw-medium" href="#dashboard"
                 ><i class="bi bi-grid-fill me-1"></i> Dashboard</a
@@ -342,7 +342,7 @@
               >
                 <i class="bi bi-person-circle text-primary fs-6"></i>
                 <div class="text-start">
-                  <div class="fw-bold fs-7 lh-1">
+                  <div class="fw-bold fs-7 lh-1 text-truncate" style="max-width: 150px;">
                     {{ admin.Teacher_Name if admin else "Mr.Zeeshan Shaikh" }}
                   </div>
                   <small class="opacity-75 fs-8">System Administrator</small>
@@ -368,7 +368,7 @@
     </nav>
 
     <!-- Main Container -->
-    <div class="container py-4" id="dashboard">
+    <div class="container-fluid px-3 px-md-4 py-4" id="dashboard">
       <!-- Hero Banner -->
       <div class="hero-card p-4 p-md-5 mb-4 position-relative">
         <div
@@ -389,7 +389,7 @@
               benchmarks, risk factors, and institutional metrics.
             </p>
           </div>
-          <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+          <div class="col-lg-4 text-start text-lg-end mt-4 mt-lg-0">
             <a
               href="/export?semester={{ selected_semester }}&division={{ selected_division }}&risk={{ selected_risk }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}"
               class="btn btn-light btn-lg rounded-pill px-4 fw-bold shadow-sm d-inline-flex align-items-center gap-2"
@@ -403,7 +403,7 @@
       <!-- KPI Metrics Grid -->
       <div class="row g-3 mb-4">
         <div class="col-6 col-md-4 col-xl-2">
-          <div class="kpi-card kpi-primary p-3 p-md-4">
+          <div class="kpi-card kpi-primary p-3">
             <div class="d-flex align-items-center justify-content-between mb-2">
               <span class="text-muted fw-semibold fs-7 text-uppercase"
                 >Total Students</span
@@ -418,7 +418,7 @@
         </div>
 
         <div class="col-6 col-md-4 col-xl-2">
-          <div class="kpi-card kpi-secondary p-3 p-md-4">
+          <div class="kpi-card kpi-secondary p-3">
             <div class="d-flex align-items-center justify-content-between mb-2">
               <span class="text-muted fw-semibold fs-7 text-uppercase"
                 >Average SGPI</span
@@ -436,7 +436,7 @@
         </div>
 
         <div class="col-6 col-md-4 col-xl-2">
-          <div class="kpi-card kpi-info p-3 p-md-4">
+          <div class="kpi-card kpi-info p-3">
             <div class="d-flex align-items-center justify-content-between mb-2">
               <span class="text-muted fw-semibold fs-7 text-uppercase"
                 >Average Att.</span
@@ -451,7 +451,7 @@
         </div>
 
         <div class="col-6 col-md-4 col-xl-2">
-          <div class="kpi-card kpi-danger p-3 p-md-4">
+          <div class="kpi-card kpi-danger p-3">
             <div class="d-flex align-items-center justify-content-between mb-2">
               <span class="text-muted fw-semibold fs-7 text-uppercase"
                 >At Risk</span
@@ -466,7 +466,7 @@
         </div>
 
         <div class="col-6 col-md-4 col-xl-2">
-          <div class="kpi-card kpi-success p-3 p-md-4">
+          <div class="kpi-card kpi-success p-3">
             <div class="d-flex align-items-center justify-content-between mb-2">
               <span class="text-muted fw-semibold fs-7 text-uppercase"
                 >Honors Roll</span
@@ -481,7 +481,7 @@
         </div>
 
         <div class="col-6 col-md-4 col-xl-2">
-          <div class="kpi-card kpi-primary p-3 p-md-4">
+          <div class="kpi-card kpi-primary p-3">
             <div class="d-flex align-items-center justify-content-between mb-2">
               <span class="text-muted fw-semibold fs-7 text-uppercase"
                 >Pass Rate</span
@@ -497,14 +497,14 @@
       </div>
 
       <!-- Filter Controls & Live Search Bar -->
-      <div class="filter-card p-4 mb-4">
+      <div class="filter-card p-3 p-md-4 mb-4">
         <form
           action="/"
           method="get"
           class="row g-3 align-items-end"
           id="filterForm"
         >
-          <div class="col-md-3 col-lg-3">
+          <div class="col-12 col-md-6 col-lg-3">
             <label
               for="semester"
               class="form-label fw-semibold text-secondary fs-7"
@@ -556,7 +556,7 @@
             </select>
           </div>
 
-          <div class="col-md-2 col-lg-2">
+          <div class="col-6 col-md-3 col-lg-2">
             <label
               for="division"
               class="form-label fw-semibold text-secondary fs-7"
@@ -584,9 +584,9 @@
             </select>
           </div>
 
-          <div class="col-md-2 col-lg-2">
+          <div class="col-6 col-md-3 col-lg-2">
             <label for="risk" class="form-label fw-semibold text-secondary fs-7"
-              >Academic Risk Level</label
+              >Academic Risk</label
             >
             <select
               id="risk"
@@ -594,7 +594,7 @@
               class="form-select form-select-custom"
               onchange="this.form.submit()"
             >
-              <option value="">All Performance Levels</option>
+              <option value="">All Levels</option>
               <option
                 value="at_risk"
                 {% if selected_risk == "at_risk" %}selected{% endif %}
@@ -610,7 +610,7 @@
             </select>
           </div>
 
-          <div class="col-md-3 col-lg-3">
+          <div class="col-12 col-md-8 col-lg-3">
             <label
               for="liveSearch"
               class="form-label fw-semibold text-secondary fs-7"
@@ -631,7 +631,7 @@
             </div>
           </div>
 
-          <div class="col-md-2 col-lg-2 d-flex gap-2">
+          <div class="col-12 col-md-4 col-lg-2 d-flex gap-2">
             <a
               href="/"
               class="btn btn-outline-custom w-100 py-2 text-center text-decoration-none"
@@ -650,13 +650,13 @@
 
       <!-- Analytics Charts Section -->
       <div class="mb-5" id="analytics">
-        <div class="d-flex align-items-center justify-content-between mb-4">
+        <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-2 mb-4">
           <h3 class="fw-bold mb-0">
             <i class="bi bi-pie-chart-fill text-primary me-2"></i> Performance
             Analytics
           </h3>
           <span
-            class="badge bg-light text-dark border px-3 py-2 rounded-pill fs-7"
+            class="badge bg-light text-dark border px-3 py-2 rounded-pill fs-7 align-self-start align-self-sm-auto"
           >
             Showing {{ "Semester " + selected_semester if selected_semester else
             "All Semesters Aggregate" }}
@@ -665,12 +665,12 @@
 
         <div class="row g-4 mb-4">
           <!-- Chart 1: Subject Performance Averages -->
-          <div class="col-lg-6">
-            <div class="chart-card p-4 shadow-sm">
+          <div class="col-12 col-lg-6">
+            <div class="chart-card p-3 p-md-4 shadow-sm">
               <h5 class="fw-bold text-dark mb-1">
                 Subject Performance Averages
               </h5>
-              <p class="text-muted small mb-4">
+              <p class="text-muted small mb-3 mb-md-4">
                 Mean score (/100) per subject across selected students
               </p>
               <div style="position: relative; height: 260px; width: 100%">
@@ -680,10 +680,10 @@
           </div>
 
           <!-- Chart 2: Grade Distribution -->
-          <div class="col-lg-6">
-            <div class="chart-card p-4 shadow-sm">
+          <div class="col-12 col-lg-6">
+            <div class="chart-card p-3 p-md-4 shadow-sm">
               <h5 class="fw-bold text-dark mb-1">Grade Distribution</h5>
-              <p class="text-muted small mb-4">
+              <p class="text-muted small mb-3 mb-md-4">
                 Frequency of letter grades awarded (O, A+, A, B+, B, C, F)
               </p>
               <div style="position: relative; height: 260px; width: 100%">
@@ -695,10 +695,10 @@
 
         <div class="row g-4">
           <!-- Chart 3: Attendance Distribution -->
-          <div class="col-lg-4">
-            <div class="chart-card p-4 shadow-sm">
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="chart-card p-3 p-md-4 shadow-sm">
               <h5 class="fw-bold text-dark mb-1">Attendance Distribution</h5>
-              <p class="text-muted small mb-4">
+              <p class="text-muted small mb-3 mb-md-4">
                 Categorized by attendance thresholds
               </p>
               <div style="position: relative; height: 240px; width: 100%">
@@ -708,10 +708,10 @@
           </div>
 
           <!-- Chart 4: SGPI Distribution Bins -->
-          <div class="col-lg-4">
-            <div class="chart-card p-4 shadow-sm">
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="chart-card p-3 p-md-4 shadow-sm">
               <h5 class="fw-bold text-dark mb-1">SGPI Spread</h5>
-              <p class="text-muted small mb-4">
+              <p class="text-muted small mb-3 mb-md-4">
                 Student count per SGPI grade band
               </p>
               <div style="position: relative; height: 240px; width: 100%">
@@ -721,10 +721,10 @@
           </div>
 
           <!-- Chart 5: Top 10 Performing Students -->
-          <div class="col-lg-4">
-            <div class="chart-card p-4 shadow-sm">
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="chart-card p-3 p-md-4 shadow-sm">
               <h5 class="fw-bold text-dark mb-1">Top Performers</h5>
-              <p class="text-muted small mb-4">Highest SGPI rankers</p>
+              <p class="text-muted small mb-3 mb-md-4">Highest SGPI rankers</p>
               <div style="position: relative; height: 240px; width: 100%">
                 <canvas id="topStudentsChart"></canvas>
               </div>
@@ -756,10 +756,10 @@
             class="table-responsive"
             style="max-height: 520px; overflow-y: auto"
           >
-            <table class="table table-custom align-middle" id="studentsTable">
+            <table class="table table-custom align-middle mb-0" id="studentsTable" style="min-width: 750px;">
               <thead>
                 <tr>
-                  <th>
+                  <th class="text-nowrap">
                     <a
                       href="?semester={{ selected_semester }}&division={{ selected_division }}&risk={{ selected_risk }}&sort_by=Roll&sort_order={{ 'desc' if sort_by == 'Roll' and sort_order == 'asc' else 'asc' }}"
                       class="text-white text-decoration-none"
@@ -807,7 +807,7 @@
                       'asc' else '▼' }}{% endif %}
                     </a>
                   </th>
-                  <th class="text-end px-4">Action</th>
+                  <th class="text-end px-3 px-md-4">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -818,7 +818,7 @@
                     <div class="d-flex align-items-center">
                       <div class="avatar-initials">{{ student.Name[0] }}</div>
                       <div>
-                        <div class="fw-semibold text-dark">
+                        <div class="fw-semibold text-dark text-nowrap">
                           {{ student.Name }}
                         </div>
                         <small class="text-muted fs-8"
@@ -866,20 +866,22 @@
                       {{ student.SGPI }}
                     </span>
                   </td>
-                  <td class="text-end px-4">
-                    <button
-                      class="btn btn-sm btn-outline-custom rounded-pill me-1"
-                      onclick="openQuickView('{{ student.Roll }}')"
-                      title="Quick Preview"
-                    >
-                      <i class="bi bi-eye"></i>
-                    </button>
-                    <a
-                      href="/student/{{ student.Roll }}"
-                      class="btn btn-sm btn-primary-custom rounded-pill px-3"
-                    >
-                      Full Profile
-                    </a>
+                  <td class="text-end px-3 px-md-4">
+                    <div class="d-flex align-items-center justify-content-end gap-1">
+                      <button
+                        class="btn btn-sm btn-outline-custom rounded-pill"
+                        onclick="openQuickView('{{ student.Roll }}')"
+                        title="Quick Preview"
+                      >
+                        <i class="bi bi-eye"></i>
+                      </button>
+                      <a
+                        href="/student/{{ student.Roll }}"
+                        class="btn btn-sm btn-primary-custom rounded-pill px-2.5 px-md-3 text-nowrap"
+                      >
+                        Profile
+                      </a>
+                    </div>
                   </td>
                 </tr>
                 {% endfor %}
@@ -1102,6 +1104,8 @@
 
       // Chart.js Initializations
       if (students.length > 0) {
+        const isMobileScreen = window.innerWidth < 768;
+
         // 1. Subject Average Chart
         const subjLabels = Object.keys(subjectAveragesData);
         const subjValues = Object.values(subjectAveragesData);
@@ -1115,7 +1119,7 @@
               data: subjValues.length > 0 ? subjValues : [0],
               backgroundColor: '#2563EB',
               borderRadius: 8,
-              barThickness: 32
+              barThickness: isMobileScreen ? 16 : 32
             }]
           },
           options: {
@@ -1124,7 +1128,7 @@
             plugins: { legend: { display: false } },
             scales: {
               y: { beginAtZero: true, max: 100, grid: { color: '#f1f5f9' } },
-              x: { grid: { display: false } }
+              x: { grid: { display: false }, ticks: { font: { size: isMobileScreen ? 10 : 12 } } }
             }
           }
         });
@@ -1147,7 +1151,12 @@
           options: {
             responsive: true,
             maintainAspectRatio: false,
-            plugins: { legend: { position: 'right' } }
+            plugins: {
+              legend: {
+                position: isMobileScreen ? 'bottom' : 'right',
+                labels: { boxWidth: 12, font: { size: isMobileScreen ? 11 : 12 } }
+              }
+            }
           }
         });
 
@@ -1164,7 +1173,7 @@
               data: [lowAtt, medAtt, highAtt],
               backgroundColor: ['#DC2626', '#F59E0B', '#16A34A'],
               borderRadius: 8,
-              barThickness: 28
+              barThickness: isMobileScreen ? 16 : 28
             }]
           },
           options: {
@@ -1196,7 +1205,7 @@
               data: sgpiBins,
               backgroundColor: '#2563EB',
               borderRadius: 8,
-              barThickness: 28
+              barThickness: isMobileScreen ? 16 : 28
             }]
           },
           options: {
@@ -1223,7 +1232,7 @@
               data: topSgpis,
               backgroundColor: '#3B82F6',
               borderRadius: 8,
-              barThickness: 20
+              barThickness: isMobileScreen ? 12 : 20
             }]
           },
           options: {
@@ -1232,7 +1241,7 @@
             plugins: { legend: { display: false } },
             scales: {
               y: { beginAtZero: true, max: 10, grid: { color: 'rgba(226, 232, 240, 0.8)' } },
-              x: { grid: { display: false } }
+              x: { grid: { display: false }, ticks: { font: { size: isMobileScreen ? 10 : 12 } } }
             }
           }
         });

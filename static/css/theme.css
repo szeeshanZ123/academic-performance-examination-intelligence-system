@@ -431,8 +431,8 @@ a:hover {
 .table-wrapper {
   width: 100%;
   max-width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: auto;
   border-radius: 14px;
@@ -446,15 +446,15 @@ a:hover {
 .table-container-responsive > table,
 .table-wrapper > table {
   margin-bottom: 0;
-  min-width: 650px;
+  min-width: 620px;
   width: max-content;
 }
 
 /* Dedicated Column Layout Engine */
 .student-name-col,
 .student-name-column {
-  min-width: 180px;
-  max-width: 260px;
+  min-width: 160px;
+  max-width: 240px;
   white-space: normal;
   overflow-wrap: anywhere;
   word-break: break-word;
@@ -462,7 +462,8 @@ a:hover {
 
 .subject-col,
 .subject-column {
-  min-width: 160px;
+  min-width: 135px;
+  max-width: 200px;
   white-space: normal;
   word-break: normal;
   overflow-wrap: break-word;
@@ -470,7 +471,7 @@ a:hover {
 
 .numeric-col,
 .numeric-column {
-  min-width: 105px;
+  min-width: 95px;
   white-space: nowrap;
   text-align: center;
 }

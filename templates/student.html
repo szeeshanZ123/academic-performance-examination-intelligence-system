@@ -271,15 +271,15 @@
       </div>
 
       <!-- Detailed Subject Marks Breakdown Table -->
-      <div class="card-custom p-4 mb-4">
+      <div class="card-custom p-3 p-md-4 mb-4">
         <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
           <h5 class="fw-bold mb-0 text-dark"><i class="bi bi-journal-check text-primary me-2"></i> Examination Subject Outcomes</h5>
           <div class="table-scroll-hint">
             <i class="bi bi-arrows-expand"></i> Swipe horizontally for all columns
           </div>
         </div>
-        <div class="table-responsive border rounded-3 overflow-hidden">
-          <table class="table table-hover align-middle mb-0" style="min-width: 650px;">
+        <div class="table-responsive border rounded-3">
+          <table class="table table-hover align-middle mb-0" style="min-width: 620px;">
             <thead class="table-dark">
               <tr>
                 <th class="py-3 px-4 subject-col">Subject Name</th>
@@ -315,7 +315,7 @@
       </div>
 
       <!-- AI-Based External Marks Prediction Section -->
-      <div class="card-custom p-4 mb-4" id="ai-prediction-section">
+      <div class="card-custom p-3 p-md-4 mb-4" id="ai-prediction-section">
         <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
           <div>
             <h5 class="fw-bold mb-1" style="color: var(--text-primary);">
@@ -342,8 +342,8 @@
         </div>
 
         {% if prediction_available and predictions %}
-        <div class="table-responsive border rounded-3 overflow-hidden mb-3">
-          <table class="table table-hover align-middle mb-0" style="min-width: 680px;">
+        <div class="table-responsive border rounded-3 mb-3">
+          <table class="table table-hover align-middle mb-0" style="min-width: 650px;">
             <thead class="table-dark">
               <tr>
                 <th class="py-3 px-4 subject-col">Subject</th>

@@ -92,34 +92,34 @@
   </head>
   <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-custom sticky-top py-3">
-      <div class="container-fluid px-4">
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top py-2.5">
+      <div class="container-fluid px-3 px-md-4">
         <a class="navbar-brand d-flex align-items-center gap-2" href="{{ url_for('home') }}">
           <span class="brand-badge"><i class="bi bi-mortarboard-fill me-1"></i> Academic Intelligence</span>
           <span class="text-muted fs-6 d-none d-sm-inline">| Institutional Reports</span>
         </a>
-        <div class="ms-auto d-flex align-items-center gap-3">
-          <a href="{{ url_for('home') }}" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+        <div class="ms-auto d-flex flex-wrap align-items-center gap-2 gap-md-3">
+          <a href="{{ url_for('home') }}" class="btn btn-outline-primary btn-sm rounded-pill px-2.5 px-md-3">
             <i class="bi bi-arrow-left me-1"></i> Dashboard
           </a>
           <button id="themeToggleBtn" onclick="toggleTheme()" class="theme-toggle-pill" type="button" aria-label="Toggle Theme">
             <span>☀️ Light</span><span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
           </button>
-          <a href="{{ url_for('logout') }}" class="btn btn-outline-danger btn-sm rounded-pill px-3">
+          <a href="{{ url_for('logout') }}" class="btn btn-outline-danger btn-sm rounded-pill px-2.5 px-md-3">
             <i class="bi bi-box-arrow-right me-1"></i> Logout
           </a>
         </div>
       </div>
     </nav>
 
-    <div class="container-fluid px-4 py-4">
+    <div class="container-fluid px-3 px-md-4 py-4">
       <!-- Header / Title -->
       <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-4">
         <div>
           <h2 class="fw-bold mb-1">Institutional Report Center</h2>
           <p class="text-muted mb-0">Generate, analyze, and export institutional performance, attendance, and at-risk student records.</p>
         </div>
-        <div class="export-btn-group d-flex align-items-center gap-2">
+        <div class="export-btn-group d-flex flex-wrap align-items-center gap-2">
           <a id="btnExportCsv" href="{{ url_for('admin_reports_export_csv', **active_filters) }}" class="btn btn-outline-success" onclick="handleExportClick(this, 'CSV')">
             <i class="bi bi-filetype-csv me-1"></i> Export CSV
           </a>
@@ -136,12 +136,12 @@
       </div>
 
       <!-- Filter Controls Card -->
-      <div class="card-custom p-4 mb-4">
+      <div class="card-custom p-3 p-md-4 mb-4">
         <form method="GET" action="{{ url_for('admin_reports') }}" id="filterForm">
           <input type="hidden" name="report_type" id="reportTypeInput" value="{{ active_filters.report_type or 'overall' }}" />
           
           <div class="row g-3 align-items-end">
-            <div class="col-md-2">
+            <div class="col-6 col-md-2">
               <label class="form-label small fw-bold text-muted">Semester</label>
               <select name="semester" class="form-select form-select-sm" onchange="document.getElementById('filterForm').submit()">
                 <option value="" {% if not active_filters.semester %}selected{% endif %}>All Semesters</option>
@@ -151,7 +151,7 @@
               </select>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-6 col-md-3">
               <label class="form-label small fw-bold text-muted">Subject</label>
               <select name="subject" class="form-select form-select-sm" onchange="document.getElementById('filterForm').submit()">
                 <option value="" {% if not active_filters.subject %}selected{% endif %}>All Subjects</option>
@@ -161,7 +161,7 @@
               </select>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-12 col-md-3">
               <label class="form-label small fw-bold text-muted">Student Search</label>
               <div class="input-group input-group-sm">
                 <input type="text" name="student" class="form-control" placeholder="Search Roll or Name..." value="{{ active_filters.student }}" />
@@ -169,7 +169,7 @@
               </div>
             </div>
 
-            <div class="col-md-2">
+            <div class="col-6 col-md-2">
               <label class="form-label small fw-bold text-muted">Attendance</label>
               <select name="attendance_range" class="form-select form-select-sm" onchange="document.getElementById('filterForm').submit()">
                 <option value="all" {% if active_filters.attendance_range == 'all' or not active_filters.attendance_range %}selected{% endif %}>All Attendance</option>
@@ -178,7 +178,7 @@
               </select>
             </div>
 
-            <div class="col-md-2">
+            <div class="col-6 col-md-2">
               <label class="form-label small fw-bold text-muted">Performance Range</label>
               <select name="performance_range" class="form-select form-select-sm" onchange="document.getElementById('filterForm').submit()">
                 <option value="all" {% if active_filters.performance_range == 'all' or not active_filters.performance_range %}selected{% endif %}>All Ranges</option>
@@ -193,73 +193,75 @@
       </div>
 
       <!-- Report Type Navigation Tabs -->
-      <ul class="nav nav-pills nav-pills-custom gap-2 mb-4">
-        <li class="nav-item">
-          <a class="nav-link {% if active_filters.report_type == 'overall' %}active{% endif %}" href="javascript:setReportType('overall')">
-            <i class="bi bi-pie-chart-fill me-1"></i> Overall Academic
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {% if active_filters.report_type == 'performance' %}active{% endif %}" href="javascript:setReportType('performance')">
-            <i class="bi bi-person-lines-fill me-1"></i> Student Performance
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {% if active_filters.report_type == 'attendance' %}active{% endif %}" href="javascript:setReportType('attendance')">
-            <i class="bi bi-calendar-check me-1"></i> Attendance Report
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {% if active_filters.report_type == 'at_risk' %}active{% endif %}" href="javascript:setReportType('at_risk')">
-            <i class="bi bi-exclamation-triangle-fill me-1"></i> At-Risk Students
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {% if active_filters.report_type == 'semester' %}active{% endif %}" href="javascript:setReportType('semester')">
-            <i class="bi bi-mortarboard me-1"></i> Semester Summary
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {% if active_filters.report_type == 'subject' %}active{% endif %}" href="javascript:setReportType('subject')">
-            <i class="bi bi-book-half me-1"></i> Subject Performance
-          </a>
-        </li>
-      </ul>
+      <div class="d-flex flex-wrap gap-2 mb-4">
+        <ul class="nav nav-pills nav-pills-custom flex-wrap gap-2 w-100">
+          <li class="nav-item">
+            <a class="nav-link {% if active_filters.report_type == 'overall' %}active{% endif %}" href="javascript:setReportType('overall')">
+              <i class="bi bi-pie-chart-fill me-1"></i> Overall Academic
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if active_filters.report_type == 'performance' %}active{% endif %}" href="javascript:setReportType('performance')">
+              <i class="bi bi-person-lines-fill me-1"></i> Student Performance
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if active_filters.report_type == 'attendance' %}active{% endif %}" href="javascript:setReportType('attendance')">
+              <i class="bi bi-calendar-check me-1"></i> Attendance Report
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if active_filters.report_type == 'at_risk' %}active{% endif %}" href="javascript:setReportType('at_risk')">
+              <i class="bi bi-exclamation-triangle-fill me-1"></i> At-Risk Students
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if active_filters.report_type == 'semester' %}active{% endif %}" href="javascript:setReportType('semester')">
+              <i class="bi bi-mortarboard me-1"></i> Semester Summary
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if active_filters.report_type == 'subject' %}active{% endif %}" href="javascript:setReportType('subject')">
+              <i class="bi bi-book-half me-1"></i> Subject Performance
+            </a>
+          </li>
+        </ul>
+      </div>
 
       <!-- Institutional Executive KPI Summary (Displayed on all reports) -->
       <div class="row g-3 mb-4">
-        <div class="col-6 col-md-2">
-          <div class="kpi-card text-center">
+        <div class="col-6 col-md-4 col-xl-2">
+          <div class="kpi-card text-center p-3 h-100">
             <div class="text-muted small fw-bold">TOTAL STUDENTS</div>
             <div class="fs-4 fw-extrabold text-primary mt-1">{{ kpis.total_students }}</div>
           </div>
         </div>
-        <div class="col-6 col-md-2">
-          <div class="kpi-card text-center">
+        <div class="col-6 col-md-4 col-xl-2">
+          <div class="kpi-card text-center p-3 h-100">
             <div class="text-muted small fw-bold">AVG PERFORMANCE</div>
             <div class="fs-4 fw-extrabold text-primary mt-1">{{ kpis.average_performance }}%</div>
           </div>
         </div>
-        <div class="col-6 col-md-2">
-          <div class="kpi-card text-center">
+        <div class="col-6 col-md-4 col-xl-2">
+          <div class="kpi-card text-center p-3 h-100">
             <div class="text-muted small fw-bold">AVG ATTENDANCE</div>
             <div class="fs-4 fw-extrabold text-primary mt-1">{{ kpis.average_attendance }}%</div>
           </div>
         </div>
-        <div class="col-6 col-md-2">
-          <div class="kpi-card text-center">
+        <div class="col-6 col-md-4 col-xl-2">
+          <div class="kpi-card text-center p-3 h-100">
             <div class="text-muted small fw-bold">AVERAGE SGPI</div>
             <div class="fs-4 fw-extrabold text-primary mt-1">{{ kpis.average_sgpi }}</div>
           </div>
         </div>
-        <div class="col-6 col-md-2">
-          <div class="kpi-card text-center">
+        <div class="col-6 col-md-4 col-xl-2">
+          <div class="kpi-card text-center p-3 h-100">
             <div class="text-muted small fw-bold">TOP PERFORMERS</div>
             <div class="fs-4 fw-extrabold text-success mt-1">{{ kpis.top_performers }}</div>
           </div>
         </div>
-        <div class="col-6 col-md-2">
-          <div class="kpi-card text-center">
+        <div class="col-6 col-md-4 col-xl-2">
+          <div class="kpi-card text-center p-3 h-100">
             <div class="text-muted small fw-bold">AT-RISK STUDENTS</div>
             <div class="fs-4 fw-extrabold text-danger mt-1">{{ kpis.at_risk_count }}</div>
           </div>
@@ -271,13 +273,13 @@
         
         <!-- 1. OVERALL ACADEMIC REPORT -->
         {% if active_filters.report_type == 'overall' %}
-          <div class="p-4">
+          <div class="p-3 p-md-4">
             <div class="border-bottom pb-3 mb-4">
               <h5 class="fw-bold mb-1">Institutional Academic Overview</h5>
               <p class="text-muted small mb-0">Dynamic executive summary of current academic standing across departments.</p>
             </div>
             <div class="row g-4">
-              <div class="col-md-6">
+              <div class="col-12 col-md-6">
                 <div class="card-custom p-3">
                   <h6 class="fw-bold mb-3"><i class="bi bi-info-circle text-primary me-2"></i>Executive Metrics Summary</h6>
                   <ul class="list-group list-group-flush bg-transparent">
@@ -300,7 +302,7 @@
                   </ul>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-12 col-md-6">
                 <div class="card-custom p-3">
                   <h6 class="fw-bold mb-3"><i class="bi bi-shield-check text-primary me-2"></i>Institutional Standards Compliance</h6>
                   <p class="small text-muted mb-2">
@@ -323,10 +325,10 @@
         <!-- 2. STUDENT PERFORMANCE REPORT -->
         {% elif active_filters.report_type == 'performance' %}
           <div class="table-responsive">
-            <table class="table table-custom mb-0">
+            <table class="table table-custom mb-0" style="min-width: 750px;">
               <thead>
                 <tr>
-                  <th>Roll No</th>
+                  <th class="text-nowrap">Roll No</th>
                   <th>Student Name</th>
                   <th>Sem</th>
                   <th>Subject</th>
@@ -341,8 +343,8 @@
               <tbody>
                 {% for r in performance_records %}
                   <tr>
-                    <td class="fw-bold">{{ r.roll }}</td>
-                    <td><a href="{{ url_for('student_profile', roll=r.roll) }}" class="text-decoration-none fw-semibold">{{ r.name }}</a></td>
+                    <td class="fw-bold text-nowrap">{{ r.roll }}</td>
+                    <td class="text-nowrap"><a href="{{ url_for('student_profile', roll=r.roll) }}" class="text-decoration-none fw-semibold">{{ r.name }}</a></td>
                     <td>Sem {{ r.semester }}</td>
                     <td>{{ r.subject }}</td>
                     <td class="text-center">{{ r.internal }}</td>
@@ -371,10 +373,10 @@
         <!-- 3. ATTENDANCE REPORT -->
         {% elif active_filters.report_type == 'attendance' %}
           <div class="table-responsive">
-            <table class="table table-custom mb-0">
+            <table class="table table-custom mb-0" style="min-width: 650px;">
               <thead>
                 <tr>
-                  <th>Roll No</th>
+                  <th class="text-nowrap">Roll No</th>
                   <th>Student Name</th>
                   <th>Semester</th>
                   <th>Subject</th>
@@ -385,8 +387,8 @@
               <tbody>
                 {% for r in attendance_records %}
                   <tr>
-                    <td class="fw-bold">{{ r.roll }}</td>
-                    <td><a href="{{ url_for('student_profile', roll=r.roll) }}" class="text-decoration-none fw-semibold">{{ r.name }}</a></td>
+                    <td class="fw-bold text-nowrap">{{ r.roll }}</td>
+                    <td class="text-nowrap"><a href="{{ url_for('student_profile', roll=r.roll) }}" class="text-decoration-none fw-semibold">{{ r.name }}</a></td>
                     <td>Semester {{ r.semester }}</td>
                     <td>{{ r.subject }}</td>
                     <td class="text-center fw-bold">{{ r.attendance }}%</td>
@@ -413,10 +415,10 @@
         <!-- 4. AT-RISK REPORT -->
         {% elif active_filters.report_type == 'at_risk' %}
           <div class="table-responsive">
-            <table class="table table-custom mb-0">
+            <table class="table table-custom mb-0" style="min-width: 700px;">
               <thead>
                 <tr>
-                  <th>Roll No</th>
+                  <th class="text-nowrap">Roll No</th>
                   <th>Student Name</th>
                   <th>Semester</th>
                   <th class="text-center">Attendance</th>
@@ -428,8 +430,8 @@
               <tbody>
                 {% for r in at_risk_records %}
                   <tr>
-                    <td class="fw-bold">{{ r.roll }}</td>
-                    <td><a href="{{ url_for('student_profile', roll=r.roll) }}" class="text-decoration-none fw-semibold">{{ r.name }}</a></td>
+                    <td class="fw-bold text-nowrap">{{ r.roll }}</td>
+                    <td class="text-nowrap"><a href="{{ url_for('student_profile', roll=r.roll) }}" class="text-decoration-none fw-semibold">{{ r.name }}</a></td>
                     <td>Semester {{ r.semester }}</td>
                     <td class="text-center fw-bold {% if r.attendance < 75 %}text-danger{% endif %}">{{ r.attendance }}%</td>
                     <td class="text-center fw-bold {% if r.sgpi < 6.0 %}text-danger{% endif %}">{{ r.sgpi }}</td>
@@ -457,10 +459,10 @@
         <!-- 5. SEMESTER PERFORMANCE REPORT -->
         {% elif active_filters.report_type == 'semester' %}
           <div class="table-responsive">
-            <table class="table table-custom mb-0">
+            <table class="table table-custom mb-0" style="min-width: 750px;">
               <thead>
                 <tr>
-                  <th>Semester</th>
+                  <th class="text-nowrap">Semester</th>
                   <th class="text-center">Students</th>
                   <th class="text-center">Avg Marks</th>
                   <th class="text-center">Avg Attendance</th>
@@ -474,7 +476,7 @@
               <tbody>
                 {% for r in semester_summary %}
                   <tr>
-                    <td class="fw-bold">Semester {{ r.semester }}</td>
+                    <td class="fw-bold text-nowrap">Semester {{ r.semester }}</td>
                     <td class="text-center">{{ r.total_students }}</td>
                     <td class="text-center">{{ r.average_marks }}%</td>
                     <td class="text-center">{{ r.average_attendance }}%</td>
@@ -496,10 +498,10 @@
         <!-- 6. SUBJECT PERFORMANCE REPORT -->
         {% elif active_filters.report_type == 'subject' %}
           <div class="table-responsive">
-            <table class="table table-custom mb-0">
+            <table class="table table-custom mb-0" style="min-width: 750px;">
               <thead>
                 <tr>
-                  <th>Semester</th>
+                  <th class="text-nowrap">Semester</th>
                   <th>Subject</th>
                   <th class="text-center">Students</th>
                   <th class="text-center">Avg Internal</th>
@@ -513,8 +515,8 @@
               <tbody>
                 {% for r in subject_summary %}
                   <tr>
-                    <td>Sem {{ r.semester }}</td>
-                    <td class="fw-semibold">{{ r.subject }}</td>
+                    <td class="text-nowrap">Sem {{ r.semester }}</td>
+                    <td class="fw-semibold text-nowrap">{{ r.subject }}</td>
                     <td class="text-center">{{ r.students_count }}</td>
                     <td class="text-center">{{ r.average_internal }}</td>
                     <td class="text-center">{{ r.average_external }}</td>

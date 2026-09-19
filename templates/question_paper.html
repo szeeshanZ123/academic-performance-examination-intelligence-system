@@ -199,14 +199,14 @@
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-custom sticky-top py-2">
-      <div class="container-fluid px-4">
+      <div class="container-fluid px-3 px-md-4">
         <a class="navbar-brand d-flex align-items-center text-decoration-none" href="{% if user_role == 'admin' %}{{ url_for('home') }}{% else %}{{ url_for('teacher_dashboard') }}{% endif %}">
           <span class="brand-badge me-2"><i class="bi bi-mortarboard-fill me-1"></i> Academic Intelligence</span>
         </a>
 
-        <div class="d-flex align-items-center gap-3">
-          <a href="{% if user_role == 'admin' %}{{ url_for('home') }}{% else %}{{ url_for('teacher_dashboard') }}{% endif %}" class="btn btn-outline-secondary btn-sm rounded-pill px-3">
-            <i class="bi bi-arrow-left me-1"></i> Back to Dashboard
+        <div class="d-flex flex-wrap align-items-center gap-2 gap-md-3">
+          <a href="{% if user_role == 'admin' %}{{ url_for('home') }}{% else %}{{ url_for('teacher_dashboard') }}{% endif %}" class="btn btn-outline-secondary btn-sm rounded-pill px-2.5 px-md-3">
+            <i class="bi bi-arrow-left me-1"></i> <span class="d-none d-sm-inline">Back to </span>Dashboard
           </a>
           <div class="d-none d-md-flex align-items-center user-badge-pill px-3 py-1.5 rounded-pill small">
             <i class="bi bi-person-badge text-primary me-2"></i>
@@ -221,7 +221,7 @@
     </nav>
 
     <!-- Main Container -->
-    <main class="container-fluid px-4 py-4" style="max-width: 1400px;">
+    <main class="container-fluid px-3 px-md-4 py-4" style="max-width: 1400px;">
 
       <!-- Flash Notification Messages -->
       {% with messages = get_flashed_messages(with_categories=true) %}
@@ -263,7 +263,7 @@
       <div class="hero-card p-4 p-md-5 mb-4">
         <div class="row align-items-center position-relative" style="z-index: 1;">
           <div class="col-lg-8">
-            <div class="d-flex align-items-center gap-2 mb-2">
+            <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
               <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-25 px-3 py-1 rounded-pill small">
                 <i class="bi bi-cpu-fill me-1"></i> Phase 8.3 — Question Paper Intelligence
               </span>
@@ -278,7 +278,7 @@
               Extract, parse, classify, and analyze examination question papers with syllabus-mapped topics, Bloom's cognitive taxonomy, total marks validation, and academic insights.
             </p>
           </div>
-          <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+          <div class="col-lg-4 text-start text-lg-end mt-4 mt-lg-0">
             {% if has_analysis %}
               <a href="#upload-section" class="btn btn-primary rounded-pill px-4 py-2 shadow-sm" onclick="document.getElementById('upload-card').scrollIntoView({behavior: 'smooth'})">
                 <i class="bi bi-cloud-arrow-up me-1"></i> Analyze Another Paper
@@ -289,7 +289,7 @@
       </div>
 
       <!-- Processing State Overlay Card (Displayed dynamically on form submit) -->
-      <div id="processingCard" class="card border-0 shadow-sm rounded-4 p-5 mb-4 text-center d-none" style="background: var(--bg-card);">
+      <div id="processingCard" class="card border-0 shadow-sm rounded-4 p-4 p-md-5 mb-4 text-center d-none" style="background: var(--bg-card);">
         <div class="spinner-border text-primary mb-3" role="status" style="width: 3.5rem; height: 3.5rem;">
           <span class="visually-hidden">Loading...</span>
         </div>
@@ -317,7 +317,7 @@
       <!-- Upload / Paper Selection Section -->
       <div class="row mb-4" id="upload-section">
         <div class="col-12">
-          <div class="card border-0 shadow-sm rounded-4 p-4" id="upload-card" style="background: var(--bg-card);">
+          <div class="card border-0 shadow-sm rounded-4 p-3 p-md-4" id="upload-card" style="background: var(--bg-card);">
             <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
               <h5 class="fw-bold mb-0">
                 <i class="bi bi-file-earmark-arrow-up text-primary me-2"></i>Upload & Analyze Question Paper
@@ -329,7 +329,7 @@
               <div class="row g-3">
                 <!-- Semester & Subject Selectors -->
                 {% if user_role == 'teacher' %}
-                  <div class="col-md-6">
+                  <div class="col-12 col-md-6">
                     <label class="form-label fw-semibold small text-muted">Assigned Subject & Semester</label>
                     <select class="form-select rounded-3" name="course_assignment" id="teacherCourseSelect" required onchange="handleTeacherAssignmentChange(this)">
                       <option value="">-- Select Your Assigned Course --</option>
@@ -345,7 +345,7 @@
                   </div>
                 {% else %}
                   <!-- Admin Selectors -->
-                  <div class="col-md-3">
+                  <div class="col-12 col-sm-6 col-md-3">
                     <label class="form-label fw-semibold small text-muted">Semester</label>
                     <select class="form-select rounded-3" name="semester" id="adminSemesterSelect" required onchange="updateAdminSubjects(this.value)">
                       <option value="">-- Select Semester --</option>
@@ -354,7 +354,7 @@
                       {% endfor %}
                     </select>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-12 col-sm-6 col-md-3">
                     <label class="form-label fw-semibold small text-muted">Subject</label>
                     <select class="form-select rounded-3" name="subject" id="adminSubjectSelect" required>
                       <option value="">-- Select Subject --</option>
@@ -368,7 +368,7 @@
                 {% endif %}
 
                 <!-- File Input / Dropzone -->
-                <div class="col-md-6">
+                <div class="col-12 col-md-6">
                   <label class="form-label fw-semibold small text-muted">Choose Question Paper File</label>
                   <input class="form-control rounded-3" type="file" name="paper_file" id="paperFile" accept=".pdf,.docx,.txt">
                 </div>
@@ -421,7 +421,7 @@
             <span class="badge bg-secondary px-3 py-2 rounded-pill fs-7">
               <i class="bi bi-calendar3 me-1"></i> Semester {{ result.document_meta.semester }}
             </span>
-            <span class="badge bg-light text-dark border px-3 py-2 rounded-pill fs-7">
+            <span class="badge bg-light text-dark border px-3 py-2 rounded-pill fs-7 text-truncate" style="max-width: 250px;">
               <i class="bi bi-file-earmark me-1"></i> {{ result.document_meta.filename }} ({{ result.document_meta.file_type }})
             </span>
             {% if result.paper_status == 'Valid' %}
@@ -442,7 +442,7 @@
         <!-- Section 13 & 19: Question Paper Summary and Quality Check Cards -->
         <div class="row g-4 mb-4">
           <!-- Summary Card (Section 13) -->
-          <div class="col-lg-6">
+          <div class="col-12 col-lg-6">
             <div class="section-card p-4 h-100">
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <h6 class="fw-bold mb-0 text-primary">
@@ -469,7 +469,7 @@
                     <h4 class="fw-bold mb-0 text-success">{{ result.kpis.total_detected_marks }}</h4>
                   </div>
                 </div>
-                <div class="col-6 col-sm-4">
+                <div class="col-12 col-sm-4">
                   <div class="p-3 rounded-3 border" style="background: var(--bg-elevated);">
                     <small class="text-muted d-block mb-1">Declared Total</small>
                     <h4 class="fw-bold mb-0 text-primary">{{ result.kpis.declared_total_marks or 'N/A' }}</h4>
@@ -496,7 +496,7 @@
               </div>
 
               <!-- Marks Consistency Indicator (Section 7) -->
-              <div class="p-3 rounded-3 border d-flex align-items-center justify-content-between" style="background: var(--bg-elevated);">
+              <div class="p-3 rounded-3 border d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-2" style="background: var(--bg-elevated);">
                 <div>
                   <small class="text-muted d-block">Declared Total vs Detected Total Marks:</small>
                   <span class="fw-bold">
@@ -515,7 +515,7 @@
           </div>
 
           <!-- Quality Check Card (Section 19) -->
-          <div class="col-lg-6">
+          <div class="col-12 col-lg-6">
             <div class="section-card p-4 h-100">
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <h6 class="fw-bold mb-0 text-primary">
@@ -551,7 +551,7 @@
         <!-- 4 Visual Analytics Charts -->
         <div class="row g-4 mb-4">
           <!-- Chart 1: Difficulty Distribution -->
-          <div class="col-lg-6 col-xl-3">
+          <div class="col-12 col-sm-6 col-xl-3">
             <div class="chart-card h-100">
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <h6 class="fw-bold mb-0">
@@ -566,7 +566,7 @@
           </div>
 
           <!-- Chart 2: Question Type Distribution -->
-          <div class="col-lg-6 col-xl-3">
+          <div class="col-12 col-sm-6 col-xl-3">
             <div class="chart-card h-100">
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <h6 class="fw-bold mb-0">
@@ -581,7 +581,7 @@
           </div>
 
           <!-- Chart 3: Bloom's Taxonomy Cognitive Levels -->
-          <div class="col-lg-6 col-xl-3">
+          <div class="col-12 col-sm-6 col-xl-3">
             <div class="chart-card h-100">
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <h6 class="fw-bold mb-0">
@@ -596,7 +596,7 @@
           </div>
 
           <!-- Chart 4: Topic Distribution (Section 15) -->
-          <div class="col-lg-6 col-xl-3">
+          <div class="col-12 col-sm-6 col-xl-3">
             <div class="chart-card h-100">
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <h6 class="fw-bold mb-0">
@@ -614,7 +614,7 @@
         <!-- Topic Marks Distribution and Academic Insights Row (Sections 16 & 18) -->
         <div class="row g-4 mb-4">
           <!-- Marks Distribution by Topic Card (Section 16) -->
-          <div class="col-lg-6">
+          <div class="col-12 col-lg-6">
             <div class="section-card p-4 h-100">
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <h6 class="fw-bold mb-0 text-primary">
@@ -643,7 +643,7 @@
           </div>
 
           <!-- Academic Insights Card (Section 18) -->
-          <div class="col-lg-6">
+          <div class="col-12 col-lg-6">
             <div class="section-card p-4 h-100">
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <h6 class="fw-bold mb-0 text-primary">
@@ -673,7 +673,7 @@
         </div>
 
         <!-- Section 14: Question-by-Question Results Table -->
-        <div class="section-card p-4 mb-4">
+        <div class="section-card p-3 p-md-4 mb-4">
           <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
             <div>
               <h5 class="fw-bold mb-1">
@@ -684,17 +684,17 @@
 
             <!-- Client-side Search and Filters -->
             <div class="d-flex flex-wrap align-items-center gap-2">
-              <div class="input-group input-group-sm" style="width: 240px;">
+              <div class="input-group input-group-sm" style="min-width: 180px; max-width: 240px;">
                 <span class="input-group-text bg-light border-end-0"><i class="bi bi-search text-muted"></i></span>
                 <input type="text" id="tableSearch" class="form-control bg-light border-start-0" placeholder="Search questions / topics..." onkeyup="filterQuestionsTable()">
               </div>
-              <select id="topicFilter" class="form-select form-select-sm" style="width: 160px;" onchange="filterQuestionsTable()">
+              <select id="topicFilter" class="form-select form-select-sm" style="width: auto; min-width: 130px;" onchange="filterQuestionsTable()">
                 <option value="">All Topics</option>
                 {% for item in result.topic_distribution %}
                   <option value="{{ item.topic }}">{{ item.topic }}</option>
                 {% endfor %}
               </select>
-              <select id="typeFilter" class="form-select form-select-sm" style="width: 140px;" onchange="filterQuestionsTable()">
+              <select id="typeFilter" class="form-select form-select-sm" style="width: auto; min-width: 120px;" onchange="filterQuestionsTable()">
                 <option value="">All Types</option>
                 <option value="Definition">Definition</option>
                 <option value="Explanation">Explanation</option>
@@ -705,8 +705,8 @@
                 <option value="Problem Solving">Problem Solving</option>
                 <option value="Theory">Theory</option>
               </select>
-              <select id="bloomFilter" class="form-select form-select-sm" style="width: 140px;" onchange="filterQuestionsTable()">
-                <option value="">All Bloom Levels</option>
+              <select id="bloomFilter" class="form-select form-select-sm" style="width: auto; min-width: 120px;" onchange="filterQuestionsTable()">
+                <option value="">All Bloom</option>
                 <option value="Remember">Remember</option>
                 <option value="Understand">Understand</option>
                 <option value="Apply">Apply</option>
@@ -714,7 +714,7 @@
                 <option value="Evaluate">Evaluate</option>
                 <option value="Create">Create</option>
               </select>
-              <select id="diffFilter" class="form-select form-select-sm" style="width: 130px;" onchange="filterQuestionsTable()">
+              <select id="diffFilter" class="form-select form-select-sm" style="width: auto; min-width: 110px;" onchange="filterQuestionsTable()">
                 <option value="">All Difficulty</option>
                 <option value="Easy">Easy</option>
                 <option value="Medium">Medium</option>
@@ -725,7 +725,7 @@
 
           <!-- Responsive Table Container -->
           <div class="table-container-responsive">
-            <table class="table table-custom align-middle" id="questionsTable">
+            <table class="table table-custom align-middle mb-0" id="questionsTable" style="min-width: 700px;">
               <thead>
                 <tr>
                   <th style="width: 36%;">Question</th>

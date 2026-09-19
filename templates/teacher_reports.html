@@ -102,34 +102,34 @@
   </head>
   <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-custom sticky-top py-3">
-      <div class="container-fluid px-4">
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top py-2.5">
+      <div class="container-fluid px-3 px-md-4">
         <a class="navbar-brand d-flex align-items-center gap-2" href="{{ url_for('teacher_dashboard') }}">
           <span class="brand-badge"><i class="bi bi-mortarboard-fill me-1"></i> Academic Intelligence</span>
           <span class="text-muted fs-6 d-none d-sm-inline">| Faculty Reports</span>
         </a>
-        <div class="ms-auto d-flex align-items-center gap-3">
-          <a href="{{ url_for('teacher_dashboard') }}" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+        <div class="ms-auto d-flex flex-wrap align-items-center gap-2 gap-md-3">
+          <a href="{{ url_for('teacher_dashboard') }}" class="btn btn-outline-primary btn-sm rounded-pill px-2.5 px-md-3">
             <i class="bi bi-arrow-left me-1"></i> Dashboard
           </a>
           <button id="themeToggleBtn" onclick="toggleTheme()" class="theme-toggle-pill" type="button" aria-label="Toggle Theme">
             <span>☀️ Light</span><span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
           </button>
-          <a href="{{ url_for('teacher_logout') }}" class="btn btn-outline-danger btn-sm rounded-pill px-3">
+          <a href="{{ url_for('teacher_logout') }}" class="btn btn-outline-danger btn-sm rounded-pill px-2.5 px-md-3">
             <i class="bi bi-box-arrow-right me-1"></i> Logout
           </a>
         </div>
       </div>
     </nav>
 
-    <div class="container-fluid px-4 py-4">
+    <div class="container-fluid px-3 px-md-4 py-4">
       <!-- Title & Actions -->
       <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-4">
         <div>
           <h2 class="fw-bold mb-1">Subject & Student Reports</h2>
           <p class="text-muted mb-0">Authorized performance records for <strong>{{ selected_subject }}</strong> (Semester {{ selected_semester }}).</p>
         </div>
-        <div class="d-flex align-items-center gap-2">
+        <div class="d-flex flex-wrap align-items-center gap-2">
           <a href="{{ url_for('teacher_reports_export_csv', subject=selected_subject, semester=selected_semester, report_type=active_report_type, student=selected_student_roll) }}" class="btn btn-outline-success" onclick="handleExportClick(this, 'CSV')">
             <i class="bi bi-filetype-csv me-1"></i> Export CSV
           </a>
@@ -165,32 +165,32 @@
 
       <!-- Class KPI Metrics -->
       <div class="row g-3 mb-4">
-        <div class="col-6 col-md-3">
-          <div class="kpi-card text-center">
+        <div class="col-6 col-md-4 col-xl">
+          <div class="kpi-card text-center p-3 h-100">
             <div class="text-muted small fw-bold">ENROLLED STUDENTS</div>
             <div class="fs-4 fw-extrabold text-primary mt-1">{{ kpis.total_students }}</div>
           </div>
         </div>
-        <div class="col-6 col-md-3">
-          <div class="kpi-card text-center">
-            <div class="text-muted small fw-bold">CLASS AVERAGE MARKS</div>
+        <div class="col-6 col-md-4 col-xl">
+          <div class="kpi-card text-center p-3 h-100">
+            <div class="text-muted small fw-bold">CLASS AVG MARKS</div>
             <div class="fs-4 fw-extrabold text-primary mt-1">{{ kpis.average_marks }} / 100</div>
           </div>
         </div>
-        <div class="col-6 col-md-2">
-          <div class="kpi-card text-center">
+        <div class="col-6 col-md-4 col-xl">
+          <div class="kpi-card text-center p-3 h-100">
             <div class="text-muted small fw-bold">HIGHEST SCORE</div>
             <div class="fs-4 fw-extrabold text-success mt-1">{{ kpis.highest_marks }}</div>
           </div>
         </div>
-        <div class="col-6 col-md-2">
-          <div class="kpi-card text-center">
+        <div class="col-6 col-md-6 col-xl">
+          <div class="kpi-card text-center p-3 h-100">
             <div class="text-muted small fw-bold">LOWEST SCORE</div>
             <div class="fs-4 fw-extrabold text-danger mt-1">{{ kpis.lowest_marks }}</div>
           </div>
         </div>
-        <div class="col-6 col-md-2">
-          <div class="kpi-card text-center">
+        <div class="col-12 col-md-6 col-xl">
+          <div class="kpi-card text-center p-3 h-100">
             <div class="text-muted small fw-bold">AVG ATTENDANCE</div>
             <div class="fs-4 fw-extrabold text-primary mt-1">{{ kpis.average_attendance }}%</div>
           </div>
@@ -198,28 +198,30 @@
       </div>
 
       <!-- Sub-Report Navigation Pills -->
-      <ul class="nav nav-pills nav-pills-custom gap-2 mb-4">
-        <li class="nav-item">
-          <a class="nav-link {% if active_report_type == 'subject' %}active{% endif %}" href="{{ url_for('teacher_reports', subject=selected_subject, semester=selected_semester, report_type='subject') }}">
-            <i class="bi bi-people-fill me-1"></i> Class Performance
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {% if active_report_type == 'attendance' %}active{% endif %}" href="{{ url_for('teacher_reports', subject=selected_subject, semester=selected_semester, report_type='attendance') }}">
-            <i class="bi bi-calendar-check me-1"></i> Attendance Roster
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {% if active_report_type == 'at_risk' %}active{% endif %}" href="{{ url_for('teacher_reports', subject=selected_subject, semester=selected_semester, report_type='at_risk') }}">
-            <i class="bi bi-exclamation-triangle-fill me-1"></i> At-Risk ({{ at_risk_students|length }})
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {% if active_report_type == 'student' %}active{% endif %}" href="{{ url_for('teacher_reports', subject=selected_subject, semester=selected_semester, report_type='student') }}">
-            <i class="bi bi-person-badge me-1"></i> Student Drill-Down
-          </a>
-        </li>
-      </ul>
+      <div class="d-flex flex-wrap gap-2 mb-4">
+        <ul class="nav nav-pills nav-pills-custom flex-wrap gap-2 w-100">
+          <li class="nav-item">
+            <a class="nav-link {% if active_report_type == 'subject' %}active{% endif %}" href="{{ url_for('teacher_reports', subject=selected_subject, semester=selected_semester, report_type='subject') }}">
+              <i class="bi bi-people-fill me-1"></i> Class Performance
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if active_report_type == 'attendance' %}active{% endif %}" href="{{ url_for('teacher_reports', subject=selected_subject, semester=selected_semester, report_type='attendance') }}">
+              <i class="bi bi-calendar-check me-1"></i> Attendance Roster
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if active_report_type == 'at_risk' %}active{% endif %}" href="{{ url_for('teacher_reports', subject=selected_subject, semester=selected_semester, report_type='at_risk') }}">
+              <i class="bi bi-exclamation-triangle-fill me-1"></i> At-Risk ({{ at_risk_students|length }})
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if active_report_type == 'student' %}active{% endif %}" href="{{ url_for('teacher_reports', subject=selected_subject, semester=selected_semester, report_type='student') }}">
+              <i class="bi bi-person-badge me-1"></i> Student Drill-Down
+            </a>
+          </li>
+        </ul>
+      </div>
 
       <!-- Report Card Body -->
       <div class="card-custom p-0 overflow-hidden">
@@ -227,10 +229,10 @@
         <!-- 1. SUBJECT PERFORMANCE TABLE -->
         {% if active_report_type == 'subject' %}
           <div class="table-responsive">
-            <table class="table table-custom mb-0">
+            <table class="table table-custom mb-0" style="min-width: 750px;">
               <thead>
                 <tr>
-                  <th>Roll No</th>
+                  <th class="text-nowrap">Roll No</th>
                   <th>Student Name</th>
                   <th class="text-center">Internal (30)</th>
                   <th class="text-center">External (70)</th>
@@ -244,8 +246,8 @@
               <tbody>
                 {% for s in students %}
                   <tr>
-                    <td class="fw-bold">{{ s.Roll }}</td>
-                    <td class="fw-semibold">{{ s.Name }}</td>
+                    <td class="fw-bold text-nowrap">{{ s.Roll }}</td>
+                    <td class="fw-semibold text-nowrap">{{ s.Name }}</td>
                     <td class="text-center">{{ s.Internal }}</td>
                     <td class="text-center">{{ s.External }}</td>
                     <td class="text-center fw-bold">{{ s.Total }}</td>
@@ -265,7 +267,7 @@
                       {% endif %}
                     </td>
                     <td class="text-center">
-                      <a href="{{ url_for('teacher_reports', subject=selected_subject, semester=selected_semester, report_type='student', student=s.Roll) }}" class="btn btn-outline-primary btn-sm rounded-pill px-2.5 py-0.5">
+                      <a href="{{ url_for('teacher_reports', subject=selected_subject, semester=selected_semester, report_type='student', student=s.Roll) }}" class="btn btn-outline-primary btn-sm rounded-pill px-2.5 py-0.5 text-nowrap">
                         Inspect
                       </a>
                     </td>
@@ -282,10 +284,10 @@
         <!-- 2. ATTENDANCE ROSTER -->
         {% elif active_report_type == 'attendance' %}
           <div class="table-responsive">
-            <table class="table table-custom mb-0">
+            <table class="table table-custom mb-0" style="min-width: 650px;">
               <thead>
                 <tr>
-                  <th>Roll No</th>
+                  <th class="text-nowrap">Roll No</th>
                   <th>Student Name</th>
                   <th>Subject</th>
                   <th>Semester</th>
@@ -296,8 +298,8 @@
               <tbody>
                 {% for a in attendance_records %}
                   <tr>
-                    <td class="fw-bold">{{ a.roll }}</td>
-                    <td class="fw-semibold">{{ a.name }}</td>
+                    <td class="fw-bold text-nowrap">{{ a.roll }}</td>
+                    <td class="fw-semibold text-nowrap">{{ a.name }}</td>
                     <td>{{ a.subject }}</td>
                     <td>Semester {{ a.semester }}</td>
                     <td class="text-center fw-bold">{{ a.attendance }}%</td>
@@ -317,10 +319,10 @@
         <!-- 3. AT-RISK STUDENTS -->
         {% elif active_report_type == 'at_risk' %}
           <div class="table-responsive">
-            <table class="table table-custom mb-0">
+            <table class="table table-custom mb-0" style="min-width: 700px;">
               <thead>
                 <tr>
-                  <th>Roll No</th>
+                  <th class="text-nowrap">Roll No</th>
                   <th>Student Name</th>
                   <th class="text-center">Internal</th>
                   <th class="text-center">External</th>
@@ -333,15 +335,15 @@
               <tbody>
                 {% for ar in at_risk_students %}
                   <tr>
-                    <td class="fw-bold">{{ ar.Roll }}</td>
-                    <td class="fw-semibold">{{ ar.Name }}</td>
+                    <td class="fw-bold text-nowrap">{{ ar.Roll }}</td>
+                    <td class="fw-semibold text-nowrap">{{ ar.Name }}</td>
                     <td class="text-center">{{ ar.Internal }}</td>
                     <td class="text-center">{{ ar.External }}</td>
                     <td class="text-center fw-bold text-danger">{{ ar.Total }}</td>
                     <td class="text-center fw-bold {% if ar.Attendance < 75 %}text-danger{% endif %}">{{ ar.Attendance }}%</td>
                     <td><span class="badge bg-danger bg-opacity-15 text-danger rounded-pill px-3">{{ ar.risk_reason }}</span></td>
                     <td class="text-center">
-                      <a href="{{ url_for('teacher_reports', subject=selected_subject, semester=selected_semester, report_type='student', student=ar.Roll) }}" class="btn btn-outline-danger btn-sm rounded-pill px-2.5 py-0.5">
+                      <a href="{{ url_for('teacher_reports', subject=selected_subject, semester=selected_semester, report_type='student', student=ar.Roll) }}" class="btn btn-outline-danger btn-sm rounded-pill px-2.5 py-0.5 text-nowrap">
                         Inspect
                       </a>
                     </td>
@@ -360,7 +362,7 @@
 
         <!-- 4. STUDENT DRILL-DOWN -->
         {% elif active_report_type == 'student' %}
-          <div class="p-4">
+          <div class="p-3 p-md-4">
             <!-- Student Selector Dropdown -->
             <form method="GET" action="{{ url_for('teacher_reports') }}" class="mb-4">
               <input type="hidden" name="subject" value="{{ selected_subject }}" />
@@ -368,7 +370,7 @@
               <input type="hidden" name="report_type" value="student" />
               
               <div class="row g-2 align-items-center">
-                <div class="col-md-6">
+                <div class="col-12 col-md-6">
                   <label class="form-label small fw-bold text-muted">Select Assigned Student</label>
                   <select name="student" class="form-select" onchange="this.form.submit()">
                     <option value="">-- Choose a student from this class --</option>
@@ -385,43 +387,43 @@
             {% if selected_student_detail %}
               {% set st = selected_student_detail.student %}
               <!-- Student Profile Card -->
-              <div class="card-custom p-4 mb-4">
+              <div class="card-custom p-3 p-md-4 mb-4">
                 <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 border-bottom pb-3 mb-3">
                   <div>
                     <h4 class="fw-bold mb-1">{{ st.Name }}</h4>
                     <span class="text-muted">Roll No: <strong>{{ st.Roll }}</strong> | Semester: <strong>{{ st.Semester }}</strong> | Division: <strong>{{ st.Division }}</strong></span>
                   </div>
-                  <div class="d-flex align-items-center gap-2">
+                  <div class="d-flex flex-wrap align-items-center gap-2">
                     <a href="{{ url_for('teacher_reports_export_csv', subject=selected_subject, semester=selected_semester, report_type='student', student=st.Roll) }}" class="btn btn-outline-success btn-sm rounded-pill px-3">
-                      <i class="bi bi-filetype-csv me-1"></i> Export Student CSV
+                      <i class="bi bi-filetype-csv me-1"></i> Export CSV
                     </a>
                     <a href="{{ url_for('teacher_reports_export_pdf', subject=selected_subject, semester=selected_semester, report_type='student', student=st.Roll) }}" class="btn btn-primary btn-sm rounded-pill px-3">
-                      <i class="bi bi-file-earmark-pdf me-1"></i> Download Student PDF
+                      <i class="bi bi-file-earmark-pdf me-1"></i> Download PDF
                     </a>
                   </div>
                 </div>
 
                 <div class="row g-3 mb-4">
-                  <div class="col-md-3">
-                    <div class="kpi-card text-center">
+                  <div class="col-6 col-md-3">
+                    <div class="kpi-card text-center p-3 h-100">
                       <div class="text-muted small fw-bold">OVERALL SGPI</div>
                       <div class="fs-4 fw-extrabold text-primary mt-1">{{ st.SGPI }}</div>
                     </div>
                   </div>
-                  <div class="col-md-3">
-                    <div class="kpi-card text-center">
+                  <div class="col-6 col-md-3">
+                    <div class="kpi-card text-center p-3 h-100">
                       <div class="text-muted small fw-bold">OVERALL ATTENDANCE</div>
                       <div class="fs-4 fw-extrabold text-primary mt-1">{{ st.Attendance }}%</div>
                     </div>
                   </div>
-                  <div class="col-md-3">
-                    <div class="kpi-card text-center">
+                  <div class="col-6 col-md-3">
+                    <div class="kpi-card text-center p-3 h-100">
                       <div class="text-muted small fw-bold">PERFORMANCE LEVEL</div>
                       <div class="fs-5 fw-extrabold text-success mt-1">{{ selected_student_detail.overall_performance }}</div>
                     </div>
                   </div>
-                  <div class="col-md-3">
-                    <div class="kpi-card text-center">
+                  <div class="col-6 col-md-3">
+                    <div class="kpi-card text-center p-3 h-100">
                       <div class="text-muted small fw-bold">ACADEMIC RISK</div>
                       <div class="fs-5 fw-extrabold {% if selected_student_detail.academic_risk == 'Low' %}text-success{% else %}text-danger{% endif %} mt-1">
                         {{ selected_student_detail.academic_risk }}
@@ -432,7 +434,7 @@
 
                 <h6 class="fw-bold mb-2">Semester Course Breakdown</h6>
                 <div class="table-responsive">
-                  <table class="table table-custom mb-0">
+                  <table class="table table-custom mb-0" style="min-width: 650px;">
                     <thead>
                       <tr>
                         <th>Subject</th>

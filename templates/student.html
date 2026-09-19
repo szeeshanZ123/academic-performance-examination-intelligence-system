@@ -272,17 +272,22 @@
 
       <!-- Detailed Subject Marks Breakdown Table -->
       <div class="card-custom p-4 mb-4">
-        <h5 class="fw-bold mb-3 text-dark"><i class="bi bi-journal-check text-primary me-2"></i> Examination Subject Outcomes</h5>
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+          <h5 class="fw-bold mb-0 text-dark"><i class="bi bi-journal-check text-primary me-2"></i> Examination Subject Outcomes</h5>
+          <div class="table-scroll-hint">
+            <i class="bi bi-arrows-expand"></i> Swipe horizontally for all columns
+          </div>
+        </div>
         <div class="table-responsive border rounded-3 overflow-hidden">
-          <table class="table table-hover align-middle mb-0">
+          <table class="table table-hover align-middle mb-0" style="min-width: 650px;">
             <thead class="table-dark">
               <tr>
-                <th class="py-3 px-4">Subject Name</th>
-                <th class="py-3 text-center">Internal<br><span class="fs-8 fw-normal opacity-75">(/30)</span></th>
-                <th class="py-3 text-center">External<br><span class="fs-8 fw-normal opacity-75">(/70)</span></th>
-                <th class="py-3 text-center">Total Score<br><span class="fs-8 fw-normal opacity-75">(/100)</span></th>
-                <th class="py-3 text-center">Grade Awarded</th>
-                <th class="py-3 text-center">Subject Attendance</th>
+                <th class="py-3 px-4 subject-col">Subject Name</th>
+                <th class="py-3 text-center numeric-col">Internal<br><span class="fs-8 fw-normal opacity-75">(/30)</span></th>
+                <th class="py-3 text-center numeric-col">External<br><span class="fs-8 fw-normal opacity-75">(/70)</span></th>
+                <th class="py-3 text-center numeric-col">Total Score<br><span class="fs-8 fw-normal opacity-75">(/100)</span></th>
+                <th class="py-3 text-center status-col">Grade Awarded</th>
+                <th class="py-3 text-center attendance-col">Subject Attendance</th>
               </tr>
             </thead>
             <tbody>
@@ -320,15 +325,20 @@
               Performance forecasting for Semester {{ student.Semester }} based on internal marks and attendance.
             </p>
           </div>
-          {% if session.get('admin_logged_in') %}
-          <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-1.5 rounded-pill fw-semibold fs-8">
-            <i class="bi bi-stars me-1"></i> Random Forest Regressor
-          </span>
-          {% else %}
-          <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-1.5 rounded-pill fw-semibold fs-8">
-            <i class="bi bi-stars me-1"></i> Performance Forecast
-          </span>
-          {% endif %}
+          <div class="d-flex align-items-center gap-2">
+            <div class="table-scroll-hint mb-0">
+              <i class="bi bi-arrows-expand"></i> Swipe for prediction details
+            </div>
+            {% if session.get('admin_logged_in') %}
+            <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-1.5 rounded-pill fw-semibold fs-8">
+              <i class="bi bi-stars me-1"></i> Random Forest Regressor
+            </span>
+            {% else %}
+            <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-1.5 rounded-pill fw-semibold fs-8">
+              <i class="bi bi-stars me-1"></i> Performance Forecast
+            </span>
+            {% endif %}
+          </div>
         </div>
 
         {% if prediction_available and predictions %}
@@ -336,13 +346,13 @@
           <table class="table table-hover align-middle mb-0" style="min-width: 680px;">
             <thead class="table-dark">
               <tr>
-                <th class="py-3 px-4">Subject</th>
-                <th class="py-3 text-center">Internal Marks (/30)</th>
-                <th class="py-3 text-center">Attendance</th>
-                <th class="py-3 text-center">Actual External (/70)</th>
-                <th class="py-3 text-center">AI Predicted External Marks (/70)</th>
-                <th class="py-3 text-center">Predicted Total (/100)</th>
-                <th class="py-3 text-center">Performance Status</th>
+                <th class="py-3 px-4 subject-col">Subject</th>
+                <th class="py-3 text-center numeric-col">Internal Marks (/30)</th>
+                <th class="py-3 text-center attendance-col">Attendance</th>
+                <th class="py-3 text-center numeric-col">Actual External (/70)</th>
+                <th class="py-3 text-center prediction-col">AI Predicted External Marks (/70)</th>
+                <th class="py-3 text-center numeric-col">Predicted Total (/100)</th>
+                <th class="py-3 text-center status-col">Performance Status</th>
               </tr>
             </thead>
             <tbody>

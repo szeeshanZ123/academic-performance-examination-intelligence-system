@@ -432,25 +432,92 @@ a:hover {
   width: 100%;
   max-width: 100%;
   overflow-x: auto;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: auto;
   border-radius: 14px;
   border: 1px solid var(--border-color);
   margin-bottom: 0;
   position: relative;
+  box-sizing: border-box;
 }
 
 .table-responsive > table,
 .table-container-responsive > table,
 .table-wrapper > table {
   margin-bottom: 0;
-  min-width: 600px;
+  min-width: 650px;
+  width: max-content;
 }
 
-.student-name-col {
+/* Dedicated Column Layout Engine */
+.student-name-col,
+.student-name-column {
   min-width: 180px;
   max-width: 260px;
+  white-space: normal;
   overflow-wrap: anywhere;
   word-break: break-word;
+}
+
+.subject-col,
+.subject-column {
+  min-width: 160px;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.numeric-col,
+.numeric-column {
+  min-width: 105px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.attendance-col,
+.attendance-column {
+  min-width: 115px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.prediction-col,
+.prediction-column {
+  min-width: 130px;
+  white-space: normal;
+}
+
+.status-col,
+.status-column {
+  min-width: 110px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* KPI Numbers Preservation */
+.kpi-number,
+.kpi-value,
+.kpi-val,
+.metric-value {
+  white-space: nowrap !important;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Mobile swipe hint */
+.table-scroll-hint {
+  display: none;
+}
+
+@media (max-width: 767.98px) {
+  .table-scroll-hint {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -1125,7 +1192,20 @@ img {
   width: 100%;
   max-width: 100%;
   position: relative;
+  height: 350px;
   min-height: 240px;
+}
+
+@media (max-width: 991.98px) {
+  .chart-container {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chart-container {
+    height: 280px;
+  }
 }
 
 /* Base Mobile-First Grid Adjustments */

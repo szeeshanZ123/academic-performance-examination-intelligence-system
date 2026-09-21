@@ -285,7 +285,7 @@
     </style>
   </head>
   <body>
-    <div class="dashboard-layout">
+    <div class="dashboard-layout" id="dashboardLayout">
       <!-- Fixed Dashboard Sidebar -->
       <aside class="dashboard-sidebar" id="dashboardSidebar">
         <div>
@@ -293,8 +293,9 @@
             <a class="sidebar-brand d-flex align-items-center" href="{{ url_for('home') }}">
               <span class="brand-badge"><i class="bi bi-mortarboard-fill me-1.5"></i> Academic Intelligence</span>
             </a>
-            <button class="btn btn-sm btn-link text-muted d-lg-none p-0 text-decoration-none" onclick="toggleSidebar()" aria-label="Close Sidebar">
-              <i class="bi bi-x-lg fs-5"></i>
+            <button class="sidebar-toggle-btn" style="width: 32px; height: 32px; border-radius: 8px;" onclick="toggleSidebar()" aria-label="Toggle Sidebar" title="Hide Sidebar">
+              <i class="bi bi-x-lg fs-6 d-lg-none"></i>
+              <i class="bi bi-layout-sidebar-inset fs-6 d-none d-lg-inline"></i>
             </button>
           </div>
 
@@ -356,9 +357,9 @@
       <div class="main-content">
         <!-- Top Utility Header -->
         <header class="d-flex align-items-center justify-content-between px-3 px-md-4 py-2.5 border-bottom bg-card sticky-top" style="z-index: 1010;">
-          <div class="d-flex align-items-center gap-3">
-            <button class="btn btn-sm btn-outline-secondary d-lg-none" type="button" onclick="toggleSidebar()" aria-label="Toggle Navigation">
-              <i class="bi bi-list fs-5"></i>
+          <div class="d-flex align-items-center gap-2 gap-md-3">
+            <button id="sidebarToggleBtn" class="sidebar-toggle-btn" type="button" onclick="toggleSidebar()" aria-label="Toggle Navigation" title="Toggle Sidebar (Hide / Show)">
+              <i class="bi bi-list fs-5 lh-1"></i>
             </button>
             <span class="fw-bold fs-6 d-none d-sm-inline text-primary">Academic Analytics & Performance Intelligence</span>
           </div>
@@ -1038,16 +1039,44 @@
       const subjectAveragesData = {{ subject_averages|tojson }};
       const gradeDistributionData = {{ grade_distribution|tojson }};
 
-      // Responsive Sidebar Toggle for mobile / tablet
+      // Responsive & Desktop Collapsible Sidebar Toggle
       function toggleSidebar() {
+        const isMobile = window.innerWidth < 992;
+        const layout = document.getElementById('dashboardLayout') || document.body;
         const sidebar = document.getElementById('dashboardSidebar');
         const overlay = document.getElementById('sidebarOverlay');
-        if (sidebar) sidebar.classList.toggle('show');
-        if (overlay) overlay.classList.toggle('show');
+
+        if (isMobile) {
+          if (sidebar) sidebar.classList.toggle('show');
+          if (overlay) overlay.classList.toggle('show');
+        } else {
+          // Desktop toggle: smoothly hide or reveal sidebar
+          const isCollapsed = layout.classList.toggle('sidebar-collapsed');
+          if (sidebar) sidebar.classList.toggle('collapsed', isCollapsed);
+          try {
+            localStorage.setItem('admin_sidebar_collapsed', isCollapsed ? 'true' : 'false');
+          } catch(e) {}
+        }
+
+        // Trigger resize event after CSS transition finishes so Chart.js charts smoothly resize
+        setTimeout(() => {
+          window.dispatchEvent(new Event('resize'));
+        }, 320);
       }
 
       // Enhanced Smooth Scroll Interaction & ScrollSpy for Sidebar
       document.addEventListener('DOMContentLoaded', function() {
+        // Restore desktop sidebar collapsed preference if previously saved
+        if (window.innerWidth >= 992) {
+          try {
+            if (localStorage.getItem('admin_sidebar_collapsed') === 'true') {
+              const layout = document.getElementById('dashboardLayout') || document.body;
+              const sidebar = document.getElementById('dashboardSidebar');
+              if (layout) layout.classList.add('sidebar-collapsed');
+              if (sidebar) sidebar.classList.add('collapsed');
+            }
+          } catch(e) {}
+        }
         document.querySelectorAll('.sidebar-nav-item[href^="#"]').forEach(link => {
           link.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href').substring(1);

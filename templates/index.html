@@ -766,16 +766,29 @@
               <span class="legend-item"><span class="legend-dot dot-safe"></span> &ge; 75% Safe / Eligible</span>
               <span class="legend-item"><span class="legend-dot dot-risk"></span> &lt; 75% Low / At Risk</span>
             </div>
+
+            <!-- Display Limit Selector -->
+            <div class="d-flex align-items-center gap-1.5 ms-md-2">
+              <label for="adminDisplayLimit" class="small text-muted fw-semibold text-nowrap mb-0 d-none d-sm-inline">Show:</label>
+              <select id="adminDisplayLimit" class="form-select form-select-sm bg-card border rounded-pill py-1 px-2.5" style="width: auto;" onchange="changeAdminDisplayLimit(this.value)">
+                <option value="all" selected>All (Scroll View)</option>
+                <option value="10">Top 10</option>
+                <option value="25">Top 25</option>
+                <option value="50">Top 50</option>
+              </select>
+            </div>
+
             <div class="table-scroll-hint">
-              <i class="bi bi-arrows-expand"></i> Swipe horizontally for full records
+              <i class="bi bi-arrows-expand"></i> Swipe horizontally
             </div>
           </div>
         </div>
 
         <div class="table-card student-table-card shadow-sm">
           <div
-            class="table-responsive table-wrapper"
-            style="max-height: 540px; overflow-y: auto"
+            id="tableScrollArea"
+            class="table-responsive table-wrapper student-table-scroll"
+            style="max-height: 560px; overflow-y: auto !important; overflow-x: auto !important;"
           >
             <table class="table table-custom align-middle mb-0" id="studentsTable">
               <thead>
@@ -909,6 +922,20 @@
                 {% endfor %}
               </tbody>
             </table>
+          </div>
+
+          <!-- Interactive Table Footer with Live Counter and Scroll-to-Top -->
+          <div class="card-footer bg-card border-top px-3 px-md-4 py-2.5 d-flex align-items-center justify-content-between flex-wrap gap-2 small">
+            <div class="text-muted">
+              <i class="bi bi-person-lines-fill text-primary me-1.5"></i>
+              Showing <span id="tableVisibleCount" class="fw-bold text-primary">{{ students|length }}</span> of <span class="fw-bold">{{ students|length }}</span> total student records
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <span class="text-muted d-none d-sm-inline"><i class="bi bi-mouse me-1"></i>Scroll table to inspect all</span>
+              <button type="button" class="btn btn-sm btn-outline-custom rounded-pill py-1 px-2.5" onclick="document.getElementById('tableScrollArea').scrollTo({top: 0, behavior: 'smooth'})">
+                <i class="bi bi-arrow-up-short me-1"></i>Top
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -1051,7 +1078,48 @@
             }
           });
         }, { passive: true });
+
+        // Mousewheel scroll containment for student table
+        const scrollArea = document.getElementById('tableScrollArea');
+        if (scrollArea) {
+          scrollArea.addEventListener('wheel', function(e) {
+            if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+              const maxScroll = scrollArea.scrollHeight - scrollArea.clientHeight;
+              if (maxScroll > 0) {
+                const atTop = scrollArea.scrollTop <= 0 && e.deltaY < 0;
+                const atBottom = scrollArea.scrollTop >= maxScroll - 1 && e.deltaY > 0;
+                if (!atTop && !atBottom) {
+                  scrollArea.scrollTop += e.deltaY;
+                  e.preventDefault();
+                }
+              }
+            }
+          }, { passive: false });
+        }
       });
+
+      // Display Limit Handler for Admin Table
+      function changeAdminDisplayLimit(limit) {
+        const rows = document.querySelectorAll('.student-row');
+        const countSpan = document.getElementById('tableVisibleCount');
+        const recordCountSpan = document.getElementById('recordCount');
+        const numLimit = limit === 'all' ? rows.length : parseInt(limit, 10);
+        let shown = 0;
+
+        rows.forEach((row, idx) => {
+          if (idx < numLimit) {
+            row.style.display = '';
+            shown++;
+          } else {
+            row.style.display = 'none';
+          }
+        });
+
+        if (countSpan) countSpan.innerText = shown;
+        if (recordCountSpan) recordCountSpan.innerText = shown;
+        const scrollArea = document.getElementById('tableScrollArea');
+        if (scrollArea) scrollArea.scrollTo({top: 0, behavior: 'smooth'});
+      }
 
       // Client side instant table search
       function filterTable() {

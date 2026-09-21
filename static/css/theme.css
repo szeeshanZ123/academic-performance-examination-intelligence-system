@@ -536,23 +536,30 @@ a:hover {
 }
 
 .table-wrapper,
-.table-scroll-container {
+.table-scroll-container,
+.student-table-scroll {
   width: 100%;
   max-width: 100%;
   overflow-x: auto !important;
+  overflow-y: auto !important;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: var(--primary) var(--bg-elevated);
   box-sizing: border-box;
+  overscroll-behavior: contain;
+}
+
+.student-table-scroll {
+  max-height: 560px;
 }
 
 /* Sticky Table Header for Clean Vertical Scrolling */
 .table-custom thead th {
   position: sticky !important;
   top: 0 !important;
-  z-index: 10 !important;
+  z-index: 20 !important;
   background-color: var(--table-header-bg) !important;
-  box-shadow: 0 1px 0 var(--border-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12) !important;
 }
 
 .table-wrapper > table,
@@ -561,28 +568,33 @@ a:hover {
   min-width: 960px !important;
 }
 
-/* Enhanced Scrollbar for Table */
+/* High-Contrast Interactive Table Scrollbar */
 .table-wrapper::-webkit-scrollbar,
-.table-scroll-container::-webkit-scrollbar {
-  height: 8px;
-  width: 8px;
+.table-scroll-container::-webkit-scrollbar,
+.student-table-scroll::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
 }
 
 .table-wrapper::-webkit-scrollbar-track,
-.table-scroll-container::-webkit-scrollbar-track {
+.table-scroll-container::-webkit-scrollbar-track,
+.student-table-scroll::-webkit-scrollbar-track {
   background: var(--bg-elevated);
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .table-wrapper::-webkit-scrollbar-thumb,
-.table-scroll-container::-webkit-scrollbar-thumb {
-  background: var(--border-color);
-  border-radius: 4px;
+.table-scroll-container::-webkit-scrollbar-thumb,
+.student-table-scroll::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 6px;
+  border: 2px solid var(--bg-elevated);
 }
 
 .table-wrapper::-webkit-scrollbar-thumb:hover,
-.table-scroll-container::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
+.table-scroll-container::-webkit-scrollbar-thumb:hover,
+.student-table-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
 }
 
 /* Smooth Scroll Anchors with Sticky Header Clearance */

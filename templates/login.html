@@ -93,6 +93,7 @@
         width: 100%;
         display: flex;
         flex-direction: row;
+        align-items: stretch;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
         z-index: 2;
@@ -104,13 +105,14 @@
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05);
       }
 
-      /* Left Column: Visual Illustration Stage */
+      /* Left Column: Visual Illustration Stage - Contained Layout */
       .auth-visual-side {
         width: 44%;
         min-width: 0;
+        align-self: stretch;
         background: linear-gradient(145deg, #f0f4ff 0%, #e8eeff 50%, #f5f7fb 100%);
         border-right: 1px solid var(--border-color);
-        padding: 2.75rem 2.25rem;
+        padding: 2rem 1.75rem;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -120,12 +122,6 @@
         text-align: center;
         transition: background 0.3s ease;
         box-sizing: border-box;
-      }
-
-      @media (min-width: 992px) {
-        .auth-visual-side {
-          min-width: 320px;
-        }
       }
 
       [data-theme="dark"] .auth-visual-side {
@@ -148,19 +144,21 @@
 
       .auth-illustration-box {
         width: 100%;
-        max-width: 320px;
-        min-height: 230px;
+        max-width: 300px;
+        max-height: 180px;
+        min-height: 110px;
+        flex: 1 1 auto;
         display: flex;
         align-items: center;
         justify-content: center;
         position: relative;
-        margin: 1.25rem 0;
+        margin: 0.75rem 0;
       }
 
       .auth-illustration-svg {
         width: 100%;
         height: auto;
-        max-height: 230px;
+        max-height: 170px;
         filter: drop-shadow(0 12px 20px rgba(37, 99, 235, 0.12));
         transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
       }
@@ -172,10 +170,13 @@
       .visual-quote-box {
         background: var(--bg-card);
         border: 1px solid var(--border-color);
-        border-radius: 16px;
-        padding: 0.9rem 1.15rem;
+        border-radius: 14px;
+        padding: 0.85rem 1rem;
         width: 100%;
-        max-width: 320px;
+        max-width: 100%;
+        box-sizing: border-box;
+        margin-top: auto;
+        overflow: hidden;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
         transition: all 0.3s ease;
       }

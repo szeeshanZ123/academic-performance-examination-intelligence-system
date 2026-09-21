@@ -451,8 +451,140 @@ a:hover {
 .table-scroll-container > table,
 .responsive-table > table {
   margin-bottom: 0;
-  min-width: 650px;
-  width: max-content;
+  width: 100%;
+  min-width: 720px;
+}
+
+/* Student Table Card & Wrapper Containment */
+.student-table-card,
+.table-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.table-wrapper,
+.table-scroll-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  box-sizing: border-box;
+}
+
+/* Core 8-Column Alignment Engine */
+.col-roll {
+  width: 105px;
+  min-width: 95px;
+  white-space: nowrap;
+}
+
+.col-student {
+  min-width: 210px;
+  max-width: 270px;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.col-sem {
+  width: 95px;
+  min-width: 85px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.col-div {
+  width: 90px;
+  min-width: 80px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.col-marks {
+  width: 110px;
+  min-width: 95px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.col-att {
+  width: 130px;
+  min-width: 115px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.col-cgpa {
+  width: 95px;
+  min-width: 85px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.col-actions {
+  width: 135px;
+  min-width: 125px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Attendance Status Legend */
+.attendance-status-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 6px 14px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.attendance-status-legend .legend-title {
+  color: var(--text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.5px;
+}
+
+.attendance-status-legend .legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-primary);
+}
+
+.attendance-status-legend .legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.attendance-status-legend .dot-safe {
+  background-color: var(--success);
+  box-shadow: 0 0 6px rgba(22, 163, 74, 0.4);
+}
+
+.attendance-status-legend .dot-risk {
+  background-color: var(--danger);
+  box-shadow: 0 0 6px rgba(220, 38, 38, 0.4);
+}
+
+.action-btn-group {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
 }
 
 /* Dedicated Column Layout Engine */
@@ -1027,6 +1159,7 @@ a:hover {
   width: 100%;
   display: flex;
   flex-direction: row;
+  align-items: stretch;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
 }
@@ -1037,12 +1170,13 @@ a:hover {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
 }
 
-/* Left Visual Stage */
+/* Left Visual Stage - Guaranteed Container Containment */
 .auth-visual-side {
   width: 44%;
+  align-self: stretch;
   background: linear-gradient(145deg, #F0F8FF 0%, #DBEAFE 100%);
   border-right: 1px solid var(--border-color);
-  padding: 2.75rem 2.25rem;
+  padding: 2rem 1.75rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1050,6 +1184,7 @@ a:hover {
   position: relative;
   overflow: hidden;
   text-align: center;
+  box-sizing: border-box;
   transition: background 0.3s ease;
 }
 
@@ -1060,25 +1195,40 @@ a:hover {
 
 .auth-illustration-box {
   width: 100%;
-  max-width: 320px;
-  min-height: 250px;
+  max-width: 300px;
+  max-height: 180px;
+  min-height: 110px;
+  flex: 1 1 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  margin: 1.5rem 0;
+  margin: 0.75rem 0;
 }
 
 .auth-illustration-svg {
   width: 100%;
   height: auto;
-  max-height: 240px;
+  max-height: 170px;
   filter: drop-shadow(0 12px 20px rgba(37, 99, 235, 0.15));
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
 }
 
 [data-theme="dark"] .auth-illustration-svg {
   filter: drop-shadow(0 14px 25px rgba(0, 0, 0, 0.5));
+}
+
+.visual-quote-box {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin-top: auto;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
 }
 
 /* Right Form Side */
@@ -1597,7 +1747,194 @@ a.button {
 }
 
 /* --------------------------------------------------------------------------
-   15. CUSTOM SCROLLBAR
+   15. DASHBOARD LAYOUT & FIXED SIDEBAR ENGINE
+   -------------------------------------------------------------------------- */
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Sidebar: Desktop fixed width & sticky */
+.dashboard-sidebar {
+  width: 260px;
+  min-width: 260px;
+  max-width: 260px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  background-color: var(--navbar-bg);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem 1.25rem;
+  box-sizing: border-box;
+  z-index: 1020;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-header {
+  margin-bottom: 1.5rem;
+}
+
+.sidebar-brand {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex-grow: 1;
+}
+
+.sidebar-section-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  margin: 0.75rem 0 0.35rem 0.65rem;
+}
+
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+}
+
+.sidebar-nav-item i {
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.sidebar-nav-item:hover {
+  color: var(--primary);
+  background-color: var(--bg-elevated);
+  border-color: var(--border-color);
+  transform: translateX(2px);
+}
+
+.sidebar-nav-item.active {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover)) !important;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.sidebar-nav-item.active i {
+  color: #ffffff !important;
+}
+
+/* Administration Section in Sidebar (Strictly Bounded) */
+.sidebar-admin-box {
+  background: rgba(239, 68, 68, 0.06);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  box-sizing: border-box;
+  margin-top: 1rem;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .sidebar-admin-box {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.35);
+}
+
+.sidebar-footer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Main Content Area */
+.main-content {
+  flex: 1 1 0%;
+  min-width: 0;
+  width: calc(100% - 260px);
+  max-width: calc(100% - 260px);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-primary);
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.dashboard-container {
+  padding: 1.75rem 2rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1199.98px) {
+  .dashboard-container {
+    padding: 1.25rem 1.25rem;
+  }
+}
+
+/* Responsive Mobile Sidebar Off-Canvas */
+@media (max-width: 991.98px) {
+  .dashboard-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    transform: translateX(-100%);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .dashboard-sidebar.show {
+    transform: translateX(0);
+  }
+
+  .sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    z-index: 1015;
+    display: none;
+  }
+
+  .sidebar-overlay.show {
+    display: block;
+  }
+
+  .main-content {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   16. CUSTOM SCROLLBAR
    -------------------------------------------------------------------------- */
 ::-webkit-scrollbar {
   width: 8px;
@@ -1616,4 +1953,5 @@ a.button {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted);
 }
+
 

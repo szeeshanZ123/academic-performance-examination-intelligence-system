@@ -496,7 +496,7 @@
       {% endif %}
 
       <!-- Enrolled Students Table Roster -->
-      <div class="card border-0 rounded-4 shadow-sm">
+      <div class="card table-card border-0 rounded-4 shadow-sm">
         <div class="card-header bg-white py-3 px-3 px-md-4 rounded-top-4 border-bottom d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
           <div>
             <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
@@ -511,6 +511,13 @@
           </div>
 
           <div class="d-flex flex-wrap align-items-center gap-2 gap-md-3">
+            <!-- Attendance Status Legend -->
+            <div class="attendance-status-legend">
+              <span class="legend-title">Attendance:</span>
+              <span class="legend-item"><span class="legend-dot dot-safe"></span> &ge; 75% Safe</span>
+              <span class="legend-item"><span class="legend-dot dot-risk"></span> &lt; 75% Low</span>
+            </div>
+
             <div class="table-scroll-hint d-md-none me-auto">
               <i class="bi bi-arrows-expand"></i> Swipe horizontally
             </div>
@@ -531,30 +538,30 @@
         </div>
 
         <div class="card-body p-0">
-          <div class="table-responsive table-scroll-container">
+          <div class="table-responsive table-wrapper table-scroll-container">
             <table class="table table-custom table-hover mb-0" id="rosterTable" style="min-width: 720px;">
               <thead>
                 <tr>
-                  <th class="text-nowrap">Roll No</th>
-                  <th class="student-name-col">Student Name</th>
+                  <th class="col-roll text-nowrap">Roll No</th>
+                  <th class="col-student student-name-col">Student Name</th>
                   <th class="text-center numeric-col">Internal<br class="d-none d-sm-inline"><span class="small opacity-75">(/30)</span></th>
                   <th class="text-center numeric-col">External<br class="d-none d-sm-inline"><span class="small opacity-75">(/70)</span></th>
                   <th class="text-center numeric-col">Total<br class="d-none d-sm-inline"><span class="small opacity-75">(/100)</span></th>
                   <th class="text-center numeric-col">Grade</th>
                   <th class="text-center attendance-col">Attendance</th>
                   <th class="text-center status-col">Status</th>
-                  <th class="text-end">Action</th>
+                  <th class="text-end col-actions">Action</th>
                 </tr>
               </thead>
               <tbody>
                 {% for s in students %}
                   <tr>
-                    <td class="fw-bold text-primary">{{ s.Roll }}</td>
-                    <td class="fw-semibold text-break student-name-col">{{ s.Name }}</td>
-                    <td class="text-center">{{ s.Internal }}</td>
-                    <td class="text-center">{{ s.External }}</td>
-                    <td class="text-center fw-bold text-primary">{{ s.Total }}</td>
-                    <td class="text-center">
+                    <td class="col-roll fw-bold text-primary">{{ s.Roll }}</td>
+                    <td class="col-student fw-semibold text-break student-name-col">{{ s.Name }}</td>
+                    <td class="text-center numeric-col">{{ s.Internal }}</td>
+                    <td class="text-center numeric-col">{{ s.External }}</td>
+                    <td class="text-center numeric-col fw-bold text-primary">{{ s.Total }}</td>
+                    <td class="text-center numeric-col">
                       {% if s.Grade in ['O', 'A+', 'A'] %}
                         <span class="badge badge-soft-success">{{ s.Grade }}</span>
                       {% elif s.Grade in ['B+', 'B', 'C', 'P'] %}
@@ -563,7 +570,7 @@
                         <span class="badge badge-soft-danger">{{ s.Grade }}</span>
                       {% endif %}
                     </td>
-                    <td class="text-center">
+                    <td class="text-center attendance-col">
                       {% if s.Attendance >= 85 %}
                         <span class="badge badge-soft-success">{{ s.Attendance }}%</span>
                       {% elif s.Attendance >= 75 %}
@@ -572,7 +579,7 @@
                         <span class="badge badge-soft-danger">{{ s.Attendance }}%</span>
                       {% endif %}
                     </td>
-                    <td class="text-center">
+                    <td class="text-center status-col">
                       {% if s.is_risk %}
                         <span class="badge badge-soft-danger"><i class="bi bi-exclamation-triangle-fill me-1"></i>At Risk</span>
                       {% elif s.status == 'Honors' %}
@@ -581,7 +588,7 @@
                         <span class="badge badge-soft-success"><i class="bi bi-check-circle-fill me-1"></i>Good</span>
                       {% endif %}
                     </td>
-                    <td class="text-end">
+                    <td class="text-end col-actions">
                       <a href="{{ url_for('student_profile', roll=s.Roll) }}" class="btn btn-outline-secondary btn-sm rounded-pill px-2.5 py-1 text-nowrap">
                         <i class="bi bi-eye me-1"></i>View
                       </a>

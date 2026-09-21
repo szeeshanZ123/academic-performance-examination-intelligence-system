@@ -285,90 +285,100 @@
     </style>
   </head>
   <body>
-    <!-- Navbar -->
-    <nav
-      class="navbar navbar-expand-lg navbar-custom sticky-top py-2.5"
-    >
-      <div class="container-fluid px-3 px-md-4">
-        <a
-          class="navbar-brand d-flex align-items-center gap-2 font-weight-bold"
-          href="#"
-        >
-          <span class="brand-badge"
-            ><i class="bi bi-mortarboard-fill me-1"></i> Academic Intelligence</span
-          >
-        </a>
+    <div class="dashboard-layout">
+      <!-- Fixed Dashboard Sidebar -->
+      <aside class="dashboard-sidebar" id="dashboardSidebar">
+        <div>
+          <div class="sidebar-header d-flex align-items-center justify-content-between">
+            <a class="sidebar-brand d-flex align-items-center" href="{{ url_for('home') }}">
+              <span class="brand-badge"><i class="bi bi-mortarboard-fill me-1.5"></i> Academic Intelligence</span>
+            </a>
+            <button class="btn btn-sm btn-link text-muted d-lg-none p-0 text-decoration-none" onclick="toggleSidebar()" aria-label="Close Sidebar">
+              <i class="bi bi-x-lg fs-5"></i>
+            </button>
+          </div>
 
-        <button
-          class="navbar-toggler border-0 shadow-none"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+          <div class="sidebar-menu">
+            <div class="sidebar-section-label">Main Navigation</div>
+            <a href="#dashboard" class="sidebar-nav-item active">
+              <i class="bi bi-grid-fill"></i>
+              <span>Dashboard</span>
+            </a>
+            <a href="#analytics" class="sidebar-nav-item">
+              <i class="bi bi-bar-chart-line-fill"></i>
+              <span>Analytics</span>
+            </a>
+            <a href="#records" class="sidebar-nav-item">
+              <i class="bi bi-people-fill"></i>
+              <span>Student Records</span>
+            </a>
+            <a href="{{ url_for('question_paper.index') }}" class="sidebar-nav-item">
+              <i class="bi bi-file-earmark-check-fill text-info"></i>
+              <span>Paper Intelligence</span>
+            </a>
+            <a href="{{ url_for('admin_reports') }}" class="sidebar-nav-item">
+              <i class="bi bi-file-earmark-bar-graph-fill text-primary"></i>
+              <span>Reports Center</span>
+            </a>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto align-items-lg-center gap-2 gap-lg-3 mt-3 mt-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active fw-medium" href="#dashboard"
-                ><i class="bi bi-grid-fill me-1"></i> Dashboard</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link fw-medium" href="#analytics"
-                ><i class="bi bi-bar-chart-line-fill me-1"></i> Analytics</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link fw-medium" href="#records"
-                ><i class="bi bi-people-fill me-1"></i> Records</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link fw-medium text-nowrap" href="{{ url_for('question_paper.index') }}"
-                ><i class="bi bi-file-earmark-check-fill text-info me-1"></i> Paper Intelligence</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link fw-medium text-nowrap" href="{{ url_for('admin_reports') }}"
-                ><i class="bi bi-file-earmark-bar-graph-fill text-primary me-1"></i> Reports</a
-              >
-            </li>
-            <li class="nav-item">
-              <div
-                class="d-flex align-items-center gap-2 user-badge-pill px-3 py-1.5 rounded-pill"
-              >
-                <i class="bi bi-person-circle text-primary fs-6"></i>
-                <div class="text-start">
-                  <div class="fw-bold fs-7 lh-1 text-truncate" style="max-width: 150px;">
-                    {{ admin.Teacher_Name if admin else "Mr.Zeeshan Shaikh" }}
-                  </div>
-                  <small class="opacity-75 fs-8">System Administrator</small>
+            <!-- Administration Section in Sidebar (Properly Bounded & Contained) -->
+            <div class="sidebar-admin-box">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <i class="bi bi-shield-lock-fill text-danger fs-5"></i>
+                <div>
+                  <div class="fw-bold small lh-1 text-danger">Administration</div>
+                  <small class="text-muted fs-8">Institutional Governance</small>
                 </div>
               </div>
-            </li>
-            <li class="nav-item">
-              <button id="themeToggleBtn" onclick="toggleTheme()" class="theme-toggle-pill" type="button" aria-label="Toggle Theme">
-                <span>☀️ Light</span><span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
-              </button>
-            </li>
-            <li class="nav-item">
-              <a
-                href="{{ url_for('logout') }}"
-                class="btn btn-outline-danger btn-sm rounded-pill px-3"
-              >
-                <i class="bi bi-box-arrow-right me-1"></i> Logout
-              </a>
-            </li>
-          </ul>
+              <div class="p-2 rounded-2 border bg-card">
+                <div class="fw-bold fs-8 text-truncate" style="max-width: 180px;">{{ admin.Teacher_Name if admin else "Administrator" }}</div>
+                <small class="text-muted fs-9 d-block">Admin Portal • Verified</small>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </nav>
 
-    <!-- Main Container -->
-    <div class="container-fluid px-3 px-md-4 py-4" id="dashboard">
+        <!-- Sidebar Footer -->
+        <div class="sidebar-footer">
+          <button onclick="toggleTheme()" class="theme-toggle-pill w-100 justify-content-center mb-2" type="button" aria-label="Toggle Theme">
+            <span>☀️ Light</span><span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
+          </button>
+          <a href="{{ url_for('logout') }}" class="btn btn-outline-danger btn-sm rounded-pill w-100">
+            <i class="bi bi-box-arrow-right me-1"></i> Logout
+          </a>
+        </div>
+      </aside>
+
+      <!-- Mobile Sidebar Overlay Backdrop -->
+      <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+      <!-- Main Content Area (occupies remaining width) -->
+      <div class="main-content">
+        <!-- Top Utility Header -->
+        <header class="d-flex align-items-center justify-content-between px-3 px-md-4 py-2.5 border-bottom bg-card sticky-top" style="z-index: 1010;">
+          <div class="d-flex align-items-center gap-3">
+            <button class="btn btn-sm btn-outline-secondary d-lg-none" type="button" onclick="toggleSidebar()" aria-label="Toggle Navigation">
+              <i class="bi bi-list fs-5"></i>
+            </button>
+            <span class="fw-bold fs-6 d-none d-sm-inline text-primary">Academic Analytics & Performance Intelligence</span>
+          </div>
+
+          <div class="d-flex align-items-center gap-2 gap-md-3">
+            <div class="d-none d-md-flex align-items-center user-badge-pill px-3 py-1.5 rounded-pill small">
+              <i class="bi bi-person-circle text-primary me-2"></i>
+              <span class="fw-bold">{{ admin.Teacher_Name if admin else "Mr. Zeeshan Shaikh" }}</span>
+            </div>
+            <button id="themeToggleBtn" onclick="toggleTheme()" class="theme-toggle-pill d-none d-sm-inline-flex" type="button" aria-label="Toggle Theme">
+              <span>☀️ Light</span><span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
+            </button>
+            <a href="{{ url_for('logout') }}" class="btn btn-outline-danger btn-sm rounded-pill px-3">
+              <i class="bi bi-box-arrow-right me-1"></i> <span class="d-none d-sm-inline">Logout</span>
+            </a>
+          </div>
+        </header>
+
+        <!-- Dashboard Container -->
+        <div class="dashboard-container" id="dashboard">
       <!-- Hero Banner -->
       <div class="hero-card p-4 p-md-5 mb-4 position-relative">
         <div
@@ -749,20 +759,28 @@
               matching records found
             </p>
           </div>
-          <div class="table-scroll-hint">
-            <i class="bi bi-arrows-expand"></i> Swipe horizontally for full records
+          <div class="d-flex align-items-center gap-2 flex-wrap">
+            <!-- Attendance Status Legend -->
+            <div class="attendance-status-legend">
+              <span class="legend-title">Attendance:</span>
+              <span class="legend-item"><span class="legend-dot dot-safe"></span> &ge; 75% Safe / Eligible</span>
+              <span class="legend-item"><span class="legend-dot dot-risk"></span> &lt; 75% Low / At Risk</span>
+            </div>
+            <div class="table-scroll-hint">
+              <i class="bi bi-arrows-expand"></i> Swipe horizontally for full records
+            </div>
           </div>
         </div>
 
-        <div class="table-card shadow-sm">
+        <div class="table-card student-table-card shadow-sm">
           <div
-            class="table-responsive table-scroll-container"
+            class="table-responsive table-wrapper"
             style="max-height: 540px; overflow-y: auto"
           >
-            <table class="table table-custom align-middle mb-0" id="studentsTable" style="min-width: 750px;">
+            <table class="table table-custom align-middle mb-0" id="studentsTable">
               <thead>
                 <tr>
-                  <th class="text-nowrap">
+                  <th class="col-roll text-nowrap">
                     <a
                       href="?semester={{ selected_semester }}&division={{ selected_division }}&risk={{ selected_risk }}&sort_by=Roll&sort_order={{ 'desc' if sort_by == 'Roll' and sort_order == 'asc' else 'asc' }}"
                       class="text-white text-decoration-none"
@@ -771,7 +789,7 @@
                       'asc' else '▼' }}{% endif %}
                     </a>
                   </th>
-                  <th>
+                  <th class="col-student">
                     <a
                       href="?semester={{ selected_semester }}&division={{ selected_division }}&risk={{ selected_risk }}&sort_by=Name&sort_order={{ 'desc' if sort_by == 'Name' and sort_order == 'asc' else 'asc' }}"
                       class="text-white text-decoration-none"
@@ -781,18 +799,18 @@
                     </a>
                   </th>
                   {% if not selected_semester %}
-                  <th>Semester</th>
+                  <th class="col-sem">Semester</th>
                   {% endif %}
-                  <th>Division</th>
+                  <th class="col-div">Division</th>
 
                   {% if selected_semester and semester_subjects %} {% for subj
                   in semester_subjects %}
                   <th class="text-center">{{ subj }}</th>
                   {% endfor %} {% else %}
-                  <th class="text-center">Avg Mark</th>
+                  <th class="col-marks text-center">Avg Mark</th>
                   {% endif %}
 
-                  <th class="text-center">
+                  <th class="col-att text-center">
                     <a
                       href="?semester={{ selected_semester }}&division={{ selected_division }}&risk={{ selected_risk }}&sort_by=Attendance&sort_order={{ 'desc' if sort_by == 'Attendance' and sort_order == 'asc' else 'asc' }}"
                       class="text-white text-decoration-none"
@@ -801,7 +819,7 @@
                       sort_order == 'asc' else '▼' }}{% endif %}
                     </a>
                   </th>
-                  <th class="text-center">
+                  <th class="col-cgpa text-center">
                     <a
                       href="?semester={{ selected_semester }}&division={{ selected_division }}&risk={{ selected_risk }}&sort_by=SGPI&sort_order={{ 'desc' if sort_by == 'SGPI' and sort_order == 'asc' else 'asc' }}"
                       class="text-white text-decoration-none"
@@ -810,34 +828,34 @@
                       'asc' else '▼' }}{% endif %}
                     </a>
                   </th>
-                  <th class="text-end px-3 px-md-4">Action</th>
+                  <th class="col-actions text-end px-3 px-md-4">Action</th>
                 </tr>
               </thead>
               <tbody>
                 {% for student in students %}
                 <tr class="student-row">
-                  <td class="fw-bold text-primary">{{ student.Roll }}</td>
-                  <td>
+                  <td class="col-roll fw-bold text-primary">{{ student.Roll }}</td>
+                  <td class="col-student">
                     <div class="d-flex align-items-center">
-                      <div class="avatar-initials">{{ student.Name[0] }}</div>
-                      <div>
-                        <div class="fw-semibold text-dark text-nowrap">
+                      <div class="avatar-initials flex-shrink-0">{{ student.Name[0] }}</div>
+                      <div class="min-w-0">
+                        <div class="fw-semibold text-dark text-truncate" style="max-width: 190px;" title="{{ student.Name }}">
                           {{ student.Name }}
                         </div>
-                        <small class="text-muted fs-8"
+                        <small class="text-muted fs-8 text-truncate d-block" style="max-width: 190px;" title="{{ student.Email if student.Email else '' }}"
                           >{{ student.Email if student.Email else "" }}</small
                         >
                       </div>
                     </div>
                   </td>
                   {% if not selected_semester %}
-                  <td>
+                  <td class="col-sem">
                     <span class="badge bg-light text-dark border"
                       >Sem {{ student.Semester }}</span
                     >
                   </td>
                   {% endif %}
-                  <td>
+                  <td class="col-div">
                     <span class="badge bg-light text-dark border"
                       >Div {{ student.Division }}</span
                     >
@@ -850,31 +868,32 @@
                     student.subjects else "N/A" }}
                   </td>
                   {% endfor %} {% else %}
-                  <td class="text-center fw-semibold text-secondary">
+                  <td class="col-marks text-center fw-semibold text-secondary">
                     {{ student._average_mark }}%
                   </td>
                   {% endif %}
 
-                  <td class="text-center">
+                  <td class="col-att text-center">
                     <span
                       class="badge {% if student.Attendance >= 90 %}badge-soft-success{% elif student.Attendance >= 75 %}badge-soft-info{% else %}badge-soft-danger{% endif %} px-2.5 py-1.5 rounded-pill"
                     >
                       {{ student.Attendance }}%
                     </span>
                   </td>
-                  <td class="text-center">
+                  <td class="col-cgpa text-center">
                     <span
                       class="badge {% if student.SGPI >= 8.5 %}badge-soft-success{% elif student.SGPI >= 6.5 %}badge-soft-primary{% elif student.SGPI >= 6.0 %}badge-soft-warning{% else %}badge-soft-danger{% endif %} px-2.5 py-1.5 rounded-pill fs-7"
                     >
                       {{ student.SGPI }}
                     </span>
                   </td>
-                  <td class="text-end px-3 px-md-4">
-                    <div class="d-flex align-items-center justify-content-end gap-1">
+                  <td class="col-actions text-end px-3 px-md-4">
+                    <div class="action-btn-group">
                       <button
                         class="btn btn-sm btn-outline-custom rounded-pill"
                         onclick="openQuickView('{{ student.Roll }}')"
                         title="Quick Preview"
+                        aria-label="Quick Preview"
                       >
                         <i class="bi bi-eye"></i>
                       </button>
@@ -923,6 +942,8 @@
           </p>
         </div>
       </footer>
+        </div>
+      </div>
     </div>
 
     <!-- Quick View Student Modal -->
@@ -989,6 +1010,14 @@
       const students = {{ students|tojson }};
       const subjectAveragesData = {{ subject_averages|tojson }};
       const gradeDistributionData = {{ grade_distribution|tojson }};
+
+      // Responsive Sidebar Toggle for mobile / tablet
+      function toggleSidebar() {
+        const sidebar = document.getElementById('dashboardSidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        if (sidebar) sidebar.classList.toggle('show');
+        if (overlay) overlay.classList.toggle('show');
+      }
 
       // Client side instant table search
       function filterTable() {

@@ -425,20 +425,23 @@
               <span class="badge bg-light text-muted border">Weakest First</span>
             </div>
 
-            <div class="table-responsive">
-              <table class="table table-custom align-middle">
+            <div class="table-scroll-hint d-md-none">
+              <i class="bi bi-arrows-expand-vertical me-1"></i> Swipe table horizontally to view full performance details
+            </div>
+            <div class="table-scroll-container rounded-3 border">
+              <table class="table table-custom align-middle mb-0">
                 <thead>
                   <tr>
-                    <th>Subject</th>
-                    <th class="text-center">Score</th>
-                    <th class="text-center">Attendance</th>
-                    <th class="text-center">Status</th>
+                    <th style="min-width: 140px;">Subject</th>
+                    <th class="text-center" style="min-width: 80px;">Score</th>
+                    <th class="text-center" style="min-width: 90px;">Attendance</th>
+                    <th class="text-center" style="min-width: 100px;">Status</th>
                   </tr>
                 </thead>
                 <tbody>
                   {% for s in plan.ranked_subjects %}
                     <tr>
-                      <td class="fw-semibold">
+                      <td class="fw-semibold subject-col">
                         {{ s.subject }}
                         <div class="text-muted fs-8 fw-normal">Internal: {{ s.internal }}/30 | External: {{ s.external }}/70</div>
                       </td>

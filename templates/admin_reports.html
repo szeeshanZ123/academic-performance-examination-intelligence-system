@@ -324,34 +324,39 @@
 
         <!-- 2. STUDENT PERFORMANCE REPORT -->
         {% elif active_filters.report_type == 'performance' %}
-          <div class="table-responsive">
-            <table class="table table-custom mb-0" style="min-width: 750px;">
+          <div class="d-flex justify-content-end p-2 d-md-none">
+            <div class="table-scroll-hint mb-0">
+              <i class="bi bi-arrows-expand"></i> Swipe for full performance metrics
+            </div>
+          </div>
+          <div class="table-responsive table-scroll-container">
+            <table class="table table-custom mb-0" style="min-width: 780px;">
               <thead>
                 <tr>
                   <th class="text-nowrap">Roll No</th>
-                  <th>Student Name</th>
+                  <th class="student-name-col">Student Name</th>
                   <th>Sem</th>
                   <th>Subject</th>
-                  <th class="text-center">Internal</th>
-                  <th class="text-center">External</th>
-                  <th class="text-center">Total</th>
-                  <th class="text-center">Attendance</th>
-                  <th class="text-center">Grade</th>
-                  <th class="text-center">SGPI</th>
+                  <th class="text-center numeric-col">Internal</th>
+                  <th class="text-center numeric-col">External</th>
+                  <th class="text-center numeric-col">Total</th>
+                  <th class="text-center attendance-col">Attendance</th>
+                  <th class="text-center numeric-col">Grade</th>
+                  <th class="text-center numeric-col">SGPI</th>
                 </tr>
               </thead>
               <tbody>
                 {% for r in performance_records %}
                   <tr>
-                    <td class="fw-bold text-nowrap">{{ r.roll }}</td>
-                    <td class="text-nowrap"><a href="{{ url_for('student_profile', roll=r.roll) }}" class="text-decoration-none fw-semibold">{{ r.name }}</a></td>
+                    <td class="fw-bold text-nowrap text-primary">{{ r.roll }}</td>
+                    <td class="text-break student-name-col"><a href="{{ url_for('student_profile', roll=r.roll) }}" class="text-decoration-none fw-semibold">{{ r.name }}</a></td>
                     <td>Sem {{ r.semester }}</td>
-                    <td>{{ r.subject }}</td>
+                    <td class="subject-col">{{ r.subject }}</td>
                     <td class="text-center">{{ r.internal }}</td>
                     <td class="text-center">{{ r.external }}</td>
                     <td class="text-center fw-bold">{{ r.total }}</td>
                     <td class="text-center">
-                      <span class="badge {% if r.attendance >= 75 %}bg-success bg-opacity-15 text-success{% else %}bg-danger bg-opacity-15 text-danger{% endif %} rounded-pill">
+                      <span class="badge {% if r.attendance >= 75 %}badge-soft-success{% else %}badge-soft-danger{% endif %} rounded-pill px-2.5 py-1">
                         {{ r.attendance }}%
                       </span>
                     </td>
@@ -372,31 +377,36 @@
 
         <!-- 3. ATTENDANCE REPORT -->
         {% elif active_filters.report_type == 'attendance' %}
-          <div class="table-responsive">
-            <table class="table table-custom mb-0" style="min-width: 650px;">
+          <div class="d-flex justify-content-end p-2 d-md-none">
+            <div class="table-scroll-hint mb-0">
+              <i class="bi bi-arrows-expand"></i> Swipe for attendance roster
+            </div>
+          </div>
+          <div class="table-responsive table-scroll-container">
+            <table class="table table-custom mb-0" style="min-width: 680px;">
               <thead>
                 <tr>
                   <th class="text-nowrap">Roll No</th>
-                  <th>Student Name</th>
+                  <th class="student-name-col">Student Name</th>
                   <th>Semester</th>
                   <th>Subject</th>
-                  <th class="text-center">Attendance</th>
-                  <th class="text-center">Status</th>
+                  <th class="text-center attendance-col">Attendance</th>
+                  <th class="text-center status-col">Status</th>
                 </tr>
               </thead>
               <tbody>
                 {% for r in attendance_records %}
                   <tr>
-                    <td class="fw-bold text-nowrap">{{ r.roll }}</td>
-                    <td class="text-nowrap"><a href="{{ url_for('student_profile', roll=r.roll) }}" class="text-decoration-none fw-semibold">{{ r.name }}</a></td>
+                    <td class="fw-bold text-nowrap text-primary">{{ r.roll }}</td>
+                    <td class="text-break student-name-col"><a href="{{ url_for('student_profile', roll=r.roll) }}" class="text-decoration-none fw-semibold">{{ r.name }}</a></td>
                     <td>Semester {{ r.semester }}</td>
-                    <td>{{ r.subject }}</td>
+                    <td class="subject-col">{{ r.subject }}</td>
                     <td class="text-center fw-bold">{{ r.attendance }}%</td>
                     <td class="text-center">
                       {% if r.status == 'Good' %}
-                        <span class="badge bg-success bg-opacity-15 text-success rounded-pill px-3">Good (Eligible)</span>
+                        <span class="badge badge-soft-success rounded-pill px-3 py-1"><i class="bi bi-check-circle-fill me-1"></i>Good (Eligible)</span>
                       {% else %}
-                        <span class="badge bg-danger bg-opacity-15 text-danger rounded-pill px-3">Needs Attention</span>
+                        <span class="badge badge-soft-danger rounded-pill px-3 py-1"><i class="bi bi-exclamation-triangle-fill me-1"></i>Needs Attention</span>
                       {% endif %}
                     </td>
                   </tr>
@@ -414,33 +424,38 @@
 
         <!-- 4. AT-RISK REPORT -->
         {% elif active_filters.report_type == 'at_risk' %}
-          <div class="table-responsive">
-            <table class="table table-custom mb-0" style="min-width: 700px;">
+          <div class="d-flex justify-content-end p-2 d-md-none">
+            <div class="table-scroll-hint mb-0">
+              <i class="bi bi-arrows-expand"></i> Swipe for risk details
+            </div>
+          </div>
+          <div class="table-responsive table-scroll-container">
+            <table class="table table-custom mb-0" style="min-width: 720px;">
               <thead>
                 <tr>
                   <th class="text-nowrap">Roll No</th>
-                  <th>Student Name</th>
+                  <th class="student-name-col">Student Name</th>
                   <th>Semester</th>
-                  <th class="text-center">Attendance</th>
-                  <th class="text-center">SGPI</th>
+                  <th class="text-center attendance-col">Attendance</th>
+                  <th class="text-center numeric-col">SGPI</th>
                   <th>Identified Risk Reasons</th>
-                  <th class="text-center">Priority</th>
+                  <th class="text-center status-col">Priority</th>
                 </tr>
               </thead>
               <tbody>
                 {% for r in at_risk_records %}
                   <tr>
-                    <td class="fw-bold text-nowrap">{{ r.roll }}</td>
-                    <td class="text-nowrap"><a href="{{ url_for('student_profile', roll=r.roll) }}" class="text-decoration-none fw-semibold">{{ r.name }}</a></td>
+                    <td class="fw-bold text-nowrap text-primary">{{ r.roll }}</td>
+                    <td class="text-break student-name-col"><a href="{{ url_for('student_profile', roll=r.roll) }}" class="text-decoration-none fw-semibold">{{ r.name }}</a></td>
                     <td>Semester {{ r.semester }}</td>
                     <td class="text-center fw-bold {% if r.attendance < 75 %}text-danger{% endif %}">{{ r.attendance }}%</td>
                     <td class="text-center fw-bold {% if r.sgpi < 6.0 %}text-danger{% endif %}">{{ r.sgpi }}</td>
                     <td><span class="text-muted">{{ r.risk_reason }}</span></td>
                     <td class="text-center">
                       {% if r.priority == 'High' %}
-                        <span class="badge bg-danger bg-opacity-15 text-danger rounded-pill px-3">High</span>
+                        <span class="badge badge-soft-danger rounded-pill px-3 py-1"><i class="bi bi-exclamation-triangle-fill me-1"></i>High</span>
                       {% else %}
-                        <span class="badge bg-warning bg-opacity-15 text-warning rounded-pill px-3">Medium</span>
+                        <span class="badge badge-soft-warning rounded-pill px-3 py-1"><i class="bi bi-dash-circle-fill me-1"></i>Medium</span>
                       {% endif %}
                     </td>
                   </tr>

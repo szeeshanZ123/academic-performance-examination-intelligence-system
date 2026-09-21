@@ -225,50 +225,54 @@
 
       <!-- Report Card Body -->
       <div class="card-custom p-0 overflow-hidden">
-        
-        <!-- 1. SUBJECT PERFORMANCE TABLE -->
+             <!-- 1. SUBJECT SCORE SHEET -->
         {% if active_report_type == 'subject' %}
-          <div class="table-responsive">
+          <div class="d-flex justify-content-end p-2 d-md-none">
+            <div class="table-scroll-hint mb-0">
+              <i class="bi bi-arrows-expand"></i> Swipe for marks & status
+            </div>
+          </div>
+          <div class="table-responsive table-scroll-container">
             <table class="table table-custom mb-0" style="min-width: 750px;">
               <thead>
                 <tr>
                   <th class="text-nowrap">Roll No</th>
-                  <th>Student Name</th>
-                  <th class="text-center">Internal (30)</th>
-                  <th class="text-center">External (70)</th>
-                  <th class="text-center">Total (100)</th>
-                  <th class="text-center">Grade</th>
-                  <th class="text-center">Attendance</th>
-                  <th class="text-center">Status</th>
+                  <th class="student-name-col">Student Name</th>
+                  <th class="text-center numeric-col">Internal (30)</th>
+                  <th class="text-center numeric-col">External (70)</th>
+                  <th class="text-center numeric-col">Total (100)</th>
+                  <th class="text-center numeric-col">Grade</th>
+                  <th class="text-center attendance-col">Attendance</th>
+                  <th class="text-center status-col">Status</th>
                   <th class="text-center">Action</th>
                 </tr>
               </thead>
               <tbody>
                 {% for s in students %}
                   <tr>
-                    <td class="fw-bold text-nowrap">{{ s.Roll }}</td>
-                    <td class="fw-semibold text-nowrap">{{ s.Name }}</td>
+                    <td class="fw-bold text-nowrap text-primary">{{ s.Roll }}</td>
+                    <td class="fw-semibold text-break student-name-col">{{ s.Name }}</td>
                     <td class="text-center">{{ s.Internal }}</td>
                     <td class="text-center">{{ s.External }}</td>
                     <td class="text-center fw-bold">{{ s.Total }}</td>
                     <td class="text-center fw-bold">{{ s.Grade }}</td>
                     <td class="text-center">
-                      <span class="badge {% if s.Attendance >= 75 %}bg-success bg-opacity-15 text-success{% else %}bg-danger bg-opacity-15 text-danger{% endif %} rounded-pill">
+                      <span class="badge {% if s.Attendance >= 75 %}badge-soft-success{% else %}badge-soft-danger{% endif %} rounded-pill px-2.5 py-1">
                         {{ s.Attendance }}%
                       </span>
                     </td>
                     <td class="text-center">
                       {% if s.status == 'Honors' %}
-                        <span class="badge bg-primary bg-opacity-15 text-primary rounded-pill px-2.5">Honors</span>
+                        <span class="badge badge-soft-primary rounded-pill px-2.5 py-1"><i class="bi bi-star-fill me-1"></i>Honors</span>
                       {% elif s.status == 'At Risk' %}
-                        <span class="badge bg-danger bg-opacity-15 text-danger rounded-pill px-2.5">At Risk</span>
+                        <span class="badge badge-soft-danger rounded-pill px-2.5 py-1"><i class="bi bi-exclamation-triangle-fill me-1"></i>At Risk</span>
                       {% else %}
-                        <span class="badge bg-success bg-opacity-15 text-success rounded-pill px-2.5">Good</span>
+                        <span class="badge badge-soft-success rounded-pill px-2.5 py-1"><i class="bi bi-check-circle-fill me-1"></i>Good</span>
                       {% endif %}
                     </td>
                     <td class="text-center">
-                      <a href="{{ url_for('teacher_reports', subject=selected_subject, semester=selected_semester, report_type='student', student=s.Roll) }}" class="btn btn-outline-primary btn-sm rounded-pill px-2.5 py-0.5 text-nowrap">
-                        Inspect
+                      <a href="{{ url_for('teacher_reports', subject=selected_subject, semester=selected_semester, report_type='student', student=s.Roll) }}" class="btn btn-outline-primary btn-sm rounded-pill px-2.5 py-1 text-nowrap">
+                        <i class="bi bi-search me-1"></i>Inspect
                       </a>
                     </td>
                   </tr>
@@ -283,31 +287,36 @@
 
         <!-- 2. ATTENDANCE ROSTER -->
         {% elif active_report_type == 'attendance' %}
-          <div class="table-responsive">
+          <div class="d-flex justify-content-end p-2 d-md-none">
+            <div class="table-scroll-hint mb-0">
+              <i class="bi bi-arrows-expand"></i> Swipe for full attendance records
+            </div>
+          </div>
+          <div class="table-responsive table-scroll-container">
             <table class="table table-custom mb-0" style="min-width: 650px;">
               <thead>
                 <tr>
                   <th class="text-nowrap">Roll No</th>
-                  <th>Student Name</th>
+                  <th class="student-name-col">Student Name</th>
                   <th>Subject</th>
                   <th>Semester</th>
-                  <th class="text-center">Attendance</th>
-                  <th class="text-center">Eligibility Status</th>
+                  <th class="text-center attendance-col">Attendance</th>
+                  <th class="text-center status-col">Eligibility Status</th>
                 </tr>
               </thead>
               <tbody>
                 {% for a in attendance_records %}
                   <tr>
-                    <td class="fw-bold text-nowrap">{{ a.roll }}</td>
-                    <td class="fw-semibold text-nowrap">{{ a.name }}</td>
+                    <td class="fw-bold text-nowrap text-primary">{{ a.roll }}</td>
+                    <td class="fw-semibold text-break student-name-col">{{ a.name }}</td>
                     <td>{{ a.subject }}</td>
                     <td>Semester {{ a.semester }}</td>
                     <td class="text-center fw-bold">{{ a.attendance }}%</td>
                     <td class="text-center">
                       {% if a.status == 'Good' %}
-                        <span class="badge bg-success bg-opacity-15 text-success rounded-pill px-3">Good (Eligible)</span>
+                        <span class="badge badge-soft-success rounded-pill px-3 py-1"><i class="bi bi-check-circle-fill me-1"></i>Good (Eligible)</span>
                       {% else %}
-                        <span class="badge bg-danger bg-opacity-15 text-danger rounded-pill px-3">Needs Attention</span>
+                        <span class="badge badge-soft-danger rounded-pill px-3 py-1"><i class="bi bi-exclamation-triangle-fill me-1"></i>Needs Attention</span>
                       {% endif %}
                     </td>
                   </tr>
@@ -318,16 +327,21 @@
 
         <!-- 3. AT-RISK STUDENTS -->
         {% elif active_report_type == 'at_risk' %}
-          <div class="table-responsive">
+          <div class="d-flex justify-content-end p-2 d-md-none">
+            <div class="table-scroll-hint mb-0">
+              <i class="bi bi-arrows-expand"></i> Swipe for identified concerns
+            </div>
+          </div>
+          <div class="table-responsive table-scroll-container">
             <table class="table table-custom mb-0" style="min-width: 700px;">
               <thead>
                 <tr>
                   <th class="text-nowrap">Roll No</th>
-                  <th>Student Name</th>
-                  <th class="text-center">Internal</th>
-                  <th class="text-center">External</th>
-                  <th class="text-center">Total</th>
-                  <th class="text-center">Attendance</th>
+                  <th class="student-name-col">Student Name</th>
+                  <th class="text-center numeric-col">Internal</th>
+                  <th class="text-center numeric-col">External</th>
+                  <th class="text-center numeric-col">Total</th>
+                  <th class="text-center attendance-col">Attendance</th>
                   <th>Identified Concern</th>
                   <th class="text-center">Action</th>
                 </tr>
@@ -335,16 +349,16 @@
               <tbody>
                 {% for ar in at_risk_students %}
                   <tr>
-                    <td class="fw-bold text-nowrap">{{ ar.Roll }}</td>
-                    <td class="fw-semibold text-nowrap">{{ ar.Name }}</td>
+                    <td class="fw-bold text-nowrap text-primary">{{ ar.Roll }}</td>
+                    <td class="fw-semibold text-break student-name-col">{{ ar.Name }}</td>
                     <td class="text-center">{{ ar.Internal }}</td>
                     <td class="text-center">{{ ar.External }}</td>
                     <td class="text-center fw-bold text-danger">{{ ar.Total }}</td>
                     <td class="text-center fw-bold {% if ar.Attendance < 75 %}text-danger{% endif %}">{{ ar.Attendance }}%</td>
-                    <td><span class="badge bg-danger bg-opacity-15 text-danger rounded-pill px-3">{{ ar.risk_reason }}</span></td>
+                    <td><span class="badge badge-soft-danger rounded-pill px-3 py-1"><i class="bi bi-exclamation-circle-fill me-1"></i>{{ ar.risk_reason }}</span></td>
                     <td class="text-center">
-                      <a href="{{ url_for('teacher_reports', subject=selected_subject, semester=selected_semester, report_type='student', student=ar.Roll) }}" class="btn btn-outline-danger btn-sm rounded-pill px-2.5 py-0.5 text-nowrap">
-                        Inspect
+                      <a href="{{ url_for('teacher_reports', subject=selected_subject, semester=selected_semester, report_type='student', student=ar.Roll) }}" class="btn btn-outline-danger btn-sm rounded-pill px-2.5 py-1 text-nowrap">
+                        <i class="bi bi-search me-1"></i>Inspect
                       </a>
                     </td>
                   </tr>

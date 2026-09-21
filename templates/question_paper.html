@@ -723,17 +723,22 @@
             </div>
           </div>
 
+          <!-- Table Scroll Hint for Mobile -->
+          <div class="table-scroll-hint d-md-none">
+            <i class="bi bi-arrows-expand-vertical me-1"></i> Swipe table horizontally to view question details, Bloom's level & difficulty
+          </div>
+
           <!-- Responsive Table Container -->
-          <div class="table-container-responsive">
-            <table class="table table-custom align-middle mb-0" id="questionsTable" style="min-width: 700px;">
+          <div class="table-scroll-container rounded-3 border">
+            <table class="table table-custom align-middle mb-0" id="questionsTable" style="min-width: 720px;">
               <thead>
                 <tr>
-                  <th style="width: 36%;">Question</th>
-                  <th style="width: 10%;" class="text-center">Marks</th>
-                  <th style="width: 18%;">Topic</th>
-                  <th style="width: 14%;">Question Type</th>
-                  <th style="width: 12%;">Bloom Level</th>
-                  <th style="width: 10%;" class="text-center">Difficulty</th>
+                  <th style="min-width: 260px; width: 36%;">Question</th>
+                  <th style="min-width: 90px; width: 10%;" class="text-center">Marks</th>
+                  <th style="min-width: 140px; width: 18%;">Topic</th>
+                  <th style="min-width: 130px; width: 14%;">Question Type</th>
+                  <th style="min-width: 110px; width: 12%;">Bloom Level</th>
+                  <th style="min-width: 100px; width: 10%;" class="text-center">Difficulty</th>
                 </tr>
               </thead>
               <tbody>

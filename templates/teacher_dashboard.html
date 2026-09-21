@@ -499,7 +499,7 @@
       <div class="card border-0 rounded-4 shadow-sm">
         <div class="card-header bg-white py-3 px-3 px-md-4 rounded-top-4 border-bottom d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
           <div>
-            <div class="d-flex align-items-center gap-2 mb-1">
+            <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
               <h5 class="fw-bold mb-0 text-dark">
                 <i class="bi bi-table text-primary me-2"></i>Class Performance Roster
               </h5>
@@ -511,6 +511,10 @@
           </div>
 
           <div class="d-flex flex-wrap align-items-center gap-2 gap-md-3">
+            <div class="table-scroll-hint d-md-none me-auto">
+              <i class="bi bi-arrows-expand"></i> Swipe horizontally
+            </div>
+
             <div class="d-flex align-items-center gap-2">
               <label for="displayLimitSelect" class="small text-muted fw-semibold text-nowrap mb-0">Display:</label>
               <select id="displayLimitSelect" class="form-select form-select-sm bg-light border" style="width: auto;">
@@ -519,7 +523,7 @@
               </select>
             </div>
 
-            <div class="input-group input-group-sm" style="min-width: 180px; max-width: 240px;">
+            <div class="input-group input-group-sm" style="min-width: 170px; max-width: 220px;">
               <span class="input-group-text bg-light border-end-0"><i class="bi bi-search text-muted"></i></span>
               <input type="text" id="rosterSearch" class="form-control bg-light border-start-0" placeholder="Search Roll or Name..." />
             </div>
@@ -527,30 +531,30 @@
         </div>
 
         <div class="card-body p-0">
-          <div class="table-responsive">
-            <table class="table table-custom table-hover mb-0" id="rosterTable" style="min-width: 700px;">
+          <div class="table-responsive table-scroll-container">
+            <table class="table table-custom table-hover mb-0" id="rosterTable" style="min-width: 720px;">
               <thead>
                 <tr>
                   <th class="text-nowrap">Roll No</th>
-                  <th>Student Name</th>
-                  <th>Internal<br class="d-none d-sm-inline"><span class="small opacity-75">(/30)</span></th>
-                  <th>External<br class="d-none d-sm-inline"><span class="small opacity-75">(/70)</span></th>
-                  <th>Total<br class="d-none d-sm-inline"><span class="small opacity-75">(/100)</span></th>
-                  <th>Grade</th>
-                  <th>Attendance</th>
-                  <th>Status</th>
+                  <th class="student-name-col">Student Name</th>
+                  <th class="text-center numeric-col">Internal<br class="d-none d-sm-inline"><span class="small opacity-75">(/30)</span></th>
+                  <th class="text-center numeric-col">External<br class="d-none d-sm-inline"><span class="small opacity-75">(/70)</span></th>
+                  <th class="text-center numeric-col">Total<br class="d-none d-sm-inline"><span class="small opacity-75">(/100)</span></th>
+                  <th class="text-center numeric-col">Grade</th>
+                  <th class="text-center attendance-col">Attendance</th>
+                  <th class="text-center status-col">Status</th>
                   <th class="text-end">Action</th>
                 </tr>
               </thead>
               <tbody>
                 {% for s in students %}
                   <tr>
-                    <td class="fw-bold text-dark">{{ s.Roll }}</td>
-                    <td class="fw-semibold">{{ s.Name }}</td>
-                    <td>{{ s.Internal }}</td>
-                    <td>{{ s.External }}</td>
-                    <td class="fw-bold text-primary">{{ s.Total }}</td>
-                    <td>
+                    <td class="fw-bold text-primary">{{ s.Roll }}</td>
+                    <td class="fw-semibold text-break student-name-col">{{ s.Name }}</td>
+                    <td class="text-center">{{ s.Internal }}</td>
+                    <td class="text-center">{{ s.External }}</td>
+                    <td class="text-center fw-bold text-primary">{{ s.Total }}</td>
+                    <td class="text-center">
                       {% if s.Grade in ['O', 'A+', 'A'] %}
                         <span class="badge badge-soft-success">{{ s.Grade }}</span>
                       {% elif s.Grade in ['B+', 'B', 'C', 'P'] %}
@@ -559,7 +563,7 @@
                         <span class="badge badge-soft-danger">{{ s.Grade }}</span>
                       {% endif %}
                     </td>
-                    <td>
+                    <td class="text-center">
                       {% if s.Attendance >= 85 %}
                         <span class="badge badge-soft-success">{{ s.Attendance }}%</span>
                       {% elif s.Attendance >= 75 %}
@@ -568,18 +572,18 @@
                         <span class="badge badge-soft-danger">{{ s.Attendance }}%</span>
                       {% endif %}
                     </td>
-                    <td>
+                    <td class="text-center">
                       {% if s.is_risk %}
-                        <span class="badge badge-soft-danger"><i class="bi bi-exclamation-triangle me-1"></i> At Risk</span>
+                        <span class="badge badge-soft-danger"><i class="bi bi-exclamation-triangle-fill me-1"></i>At Risk</span>
                       {% elif s.status == 'Honors' %}
-                        <span class="badge badge-soft-success"><i class="bi bi-star-fill me-1"></i> Honors</span>
+                        <span class="badge badge-soft-primary"><i class="bi bi-star-fill me-1"></i>Honors</span>
                       {% else %}
-                        <span class="badge badge-soft-info">Good</span>
+                        <span class="badge badge-soft-success"><i class="bi bi-check-circle-fill me-1"></i>Good</span>
                       {% endif %}
                     </td>
                     <td class="text-end">
-                      <a href="{{ url_for('student_profile', roll=s.Roll) }}" class="btn btn-outline-secondary btn-sm rounded-pill px-3">
-                        <i class="bi bi-eye me-1"></i> View
+                      <a href="{{ url_for('student_profile', roll=s.Roll) }}" class="btn btn-outline-secondary btn-sm rounded-pill px-2.5 py-1 text-nowrap">
+                        <i class="bi bi-eye me-1"></i>View
                       </a>
                     </td>
                   </tr>

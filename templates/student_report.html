@@ -189,30 +189,33 @@
           <!-- 2. ACADEMIC PERFORMANCE (Subject Table) -->
           <div class="mb-5">
             <h5 class="fw-bold mb-3"><i class="bi bi-journal-text text-primary me-2"></i>Academic Performance</h5>
-            <div class="table-responsive rounded-3 border">
+            <div class="table-scroll-hint d-md-none">
+              <i class="bi bi-arrows-expand-vertical me-1"></i> Swipe table horizontally to view full marks breakdown
+            </div>
+            <div class="table-scroll-container rounded-3 border">
               <table class="table table-custom mb-0">
                 <thead>
                   <tr>
-                    <th>Subject</th>
-                    <th class="text-center">Internal (30)</th>
-                    <th class="text-center">External (70)</th>
-                    <th class="text-center">Total (100)</th>
-                    <th class="text-center">Percentage</th>
-                    <th class="text-center">Grade</th>
-                    <th class="text-center">Attendance</th>
+                    <th style="min-width: 140px;">Subject</th>
+                    <th class="text-center" style="min-width: 90px;">Internal (30)</th>
+                    <th class="text-center" style="min-width: 90px;">External (70)</th>
+                    <th class="text-center" style="min-width: 90px;">Total (100)</th>
+                    <th class="text-center" style="min-width: 90px;">Percentage</th>
+                    <th class="text-center" style="min-width: 70px;">Grade</th>
+                    <th class="text-center" style="min-width: 100px;">Attendance</th>
                   </tr>
                 </thead>
                 <tbody>
                   {% for s in academic_performance %}
                     <tr>
-                      <td class="fw-semibold">{{ s.subject }}</td>
+                      <td class="fw-semibold subject-col">{{ s.subject }}</td>
                       <td class="text-center">{{ s.internal }}</td>
                       <td class="text-center">{{ s.external }}</td>
                       <td class="text-center fw-bold">{{ s.total }}</td>
                       <td class="text-center">{{ s.percentage }}</td>
                       <td class="text-center fw-bold text-primary">{{ s.grade }}</td>
                       <td class="text-center">
-                        <span class="badge {% if s.attendance >= 75 %}bg-success bg-opacity-15 text-success{% else %}bg-danger bg-opacity-15 text-danger{% endif %} rounded-pill">
+                        <span class="badge {% if s.attendance >= 75 %}badge-status-good{% else %}badge-status-danger{% endif %} rounded-pill">
                           {{ s.attendance }}%
                         </span>
                       </td>
@@ -250,16 +253,19 @@
           <div class="mb-5">
             <h5 class="fw-bold mb-3"><i class="bi bi-graph-up-arrow text-primary me-2"></i>Academic Progression History</h5>
             {% if academic_history.trend_data %}
-              <div class="table-responsive rounded-3 border">
+              <div class="table-scroll-hint d-md-none">
+                <i class="bi bi-arrows-expand-vertical me-1"></i> Swipe table horizontally to view all semesters
+              </div>
+              <div class="table-scroll-container rounded-3 border">
                 <table class="table table-custom mb-0">
                   <thead>
                     <tr>
-                      <th>Semester</th>
-                      <th class="text-center">Average Total</th>
-                      <th class="text-center">Internal Avg</th>
-                      <th class="text-center">External Avg</th>
-                      <th class="text-center">Attendance</th>
-                      <th class="text-center">Semester SGPI</th>
+                      <th style="min-width: 110px;">Semester</th>
+                      <th class="text-center" style="min-width: 90px;">Average Total</th>
+                      <th class="text-center" style="min-width: 90px;">Internal Avg</th>
+                      <th class="text-center" style="min-width: 90px;">External Avg</th>
+                      <th class="text-center" style="min-width: 90px;">Attendance</th>
+                      <th class="text-center" style="min-width: 90px;">Semester SGPI</th>
                     </tr>
                   </thead>
                   <tbody>

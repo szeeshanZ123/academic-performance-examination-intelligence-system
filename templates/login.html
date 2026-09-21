@@ -112,10 +112,11 @@
         align-self: stretch;
         background: linear-gradient(145deg, #f0f4ff 0%, #e8eeff 50%, #f5f7fb 100%);
         border-right: 1px solid var(--border-color);
-        padding: 2rem 1.75rem;
+        padding: 2.25rem 1.75rem;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: center;
+        gap: 1.25rem;
         align-items: center;
         position: relative;
         overflow: hidden;
@@ -144,22 +145,22 @@
 
       .auth-illustration-box {
         width: 100%;
-        max-width: 300px;
-        max-height: 180px;
-        min-height: 110px;
-        flex: 1 1 auto;
+        max-width: 320px;
+        height: 205px;
+        max-height: 215px;
         display: flex;
         align-items: center;
         justify-content: center;
         position: relative;
-        margin: 0.75rem 0;
+        margin: 0.25rem 0;
+        flex: 0 0 auto;
       }
 
       .auth-illustration-svg {
         width: 100%;
         height: auto;
-        max-height: 170px;
-        filter: drop-shadow(0 12px 20px rgba(37, 99, 235, 0.12));
+        max-height: 200px;
+        filter: drop-shadow(0 12px 22px rgba(37, 99, 235, 0.16));
         transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
       }
 
@@ -175,31 +176,67 @@
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
-        margin-top: auto;
+        margin-top: 0.25rem;
         overflow: hidden;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
         transition: all 0.3s ease;
       }
 
-      .badge-soft-primary {
+      .visual-quote-badge {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 6px !important;
+        padding: 5px 16px !important;
+        border-radius: 9999px !important;
+        font-size: 0.78rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.3px !important;
+        line-height: 1.2 !important;
+        white-space: nowrap !important;
         background: rgba(37, 99, 235, 0.12) !important;
         color: var(--primary) !important;
         border: 1px solid rgba(37, 99, 235, 0.25) !important;
-        font-size: 0.78rem;
-        font-weight: 700;
-        border-radius: 9999px;
+        box-shadow: 0 2px 6px rgba(37, 99, 235, 0.08);
+        width: auto !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
       }
 
-      [data-theme="dark"] .badge-soft-primary {
+      [data-theme="dark"] .visual-quote-badge {
         background: rgba(59, 130, 246, 0.2) !important;
         color: #93C5FD !important;
-        border: 1px solid rgba(59, 130, 246, 0.35) !important;
+        border-color: rgba(59, 130, 246, 0.35) !important;
+      }
+
+      .badge-soft-success.visual-quote-badge {
+        background: rgba(16, 185, 129, 0.12) !important;
+        color: #059669 !important;
+        border-color: rgba(16, 185, 129, 0.3) !important;
+      }
+
+      [data-theme="dark"] .badge-soft-success.visual-quote-badge {
+        background: rgba(16, 185, 129, 0.2) !important;
+        color: #34D399 !important;
+        border-color: rgba(16, 185, 129, 0.35) !important;
+      }
+
+      .badge-soft-danger.visual-quote-badge {
+        background: rgba(239, 68, 68, 0.12) !important;
+        color: #DC2626 !important;
+        border-color: rgba(239, 68, 68, 0.3) !important;
+      }
+
+      [data-theme="dark"] .badge-soft-danger.visual-quote-badge {
+        background: rgba(239, 68, 68, 0.2) !important;
+        color: #F87171 !important;
+        border-color: rgba(239, 68, 68, 0.35) !important;
       }
 
       /* Right Column: Authentication Form Stage */
       .auth-form-side {
         width: 56%;
-        padding: 2.75rem 3rem;
+        padding: 2.25rem 2.5rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -641,11 +678,11 @@
           </div>
 
           <!-- Dynamic Quote / Feature Pill -->
-          <div class="visual-quote-box">
-            <div id="visualQuoteBadge" class="badge-soft-primary px-2.5 py-1 rounded-pill small fw-bold d-inline-block mb-1.5">
-              <i class="bi bi-mortarboard me-1"></i> Student Portal
-            </div>
-            <p id="visualQuoteText" class="small text-secondary mb-0 fw-medium lh-sm">
+          <div class="visual-quote-box text-center">
+            <span id="visualQuoteBadge" class="visual-quote-badge badge-soft-primary mb-2">
+              <i class="bi bi-mortarboard-fill me-1"></i> Student Portal
+            </span>
+            <p id="visualQuoteText" class="small text-secondary mb-0 fw-medium lh-base">
               Empowering learners with real-time academic benchmarking, semester trends & AI marks prediction.
             </p>
           </div>
@@ -880,7 +917,7 @@
             icon: "bi bi-person-badge",
             btnText: "Sign In as Student",
             btnIcon: "bi bi-arrow-right",
-            badge: '<i class="bi bi-mortarboard me-1"></i> Student Portal',
+            badge: '<i class="bi bi-mortarboard-fill me-1"></i> Student Portal',
             badgeClass: "badge-soft-primary",
             quote: "Empowering learners with real-time academic benchmarking, semester trends & AI marks prediction."
           },
@@ -904,7 +941,7 @@
             icon: "bi bi-shield-lock",
             btnText: "Sign In as Administrator",
             btnIcon: "bi bi-shield-lock-fill",
-            badge: '<i class="bi bi-shield-lock me-1"></i> Administration',
+            badge: '<i class="bi bi-shield-lock-fill me-1"></i> Administration',
             badgeClass: "badge-soft-danger",
             quote: "Institutional dashboard monitoring all student cohorts, attendance compliance & predictive analytics."
           }
@@ -971,7 +1008,7 @@
           // Update left visual stage
           if (visualQuoteBadge) {
             visualQuoteBadge.innerHTML = conf.badge;
-            visualQuoteBadge.className = conf.badgeClass + " px-2.5 py-1 rounded-pill small fw-bold d-inline-block mb-1.5";
+            visualQuoteBadge.className = "visual-quote-badge " + conf.badgeClass + " mb-2";
           }
           if (visualQuoteText) visualQuoteText.textContent = conf.quote;
 

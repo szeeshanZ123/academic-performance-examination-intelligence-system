@@ -215,13 +215,13 @@
     <nav class="navbar navbar-expand-lg navbar-custom sticky-top py-2.5 no-print">
       <div class="container-fluid px-3 px-md-4 d-flex flex-wrap align-items-center justify-content-between gap-2" style="max-width: 1400px;">
         <a class="navbar-brand d-flex align-items-center text-decoration-none" href="{{ url_for('student_dashboard') }}">
-          <span class="brand-badge me-2"><i class="bi bi-mortarboard-fill me-1"></i> Academic Intelligence</span>
+          <span class="brand-badge me-2"><i class="bi bi-mortarboard-fill me-1"></i> <span class="d-none d-sm-inline">Academic Intelligence</span><span class="d-sm-none">Intelligence</span></span>
           <span class="opacity-75 fs-6 d-none d-md-inline">Personal Academic Coach</span>
         </a>
 
-        <div class="d-flex flex-wrap align-items-center gap-2">
-          <a href="{{ url_for('student_dashboard') }}" class="btn btn-outline-secondary btn-sm rounded-pill px-3">
-            <i class="bi bi-speedometer2 me-1"></i> Student Dashboard
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          <a href="{{ url_for('student_dashboard') }}" class="btn btn-outline-secondary btn-sm rounded-pill px-2.5 px-sm-3">
+            <i class="bi bi-speedometer2 me-1"></i> <span class="d-none d-sm-inline">Student </span>Dashboard
           </a>
           <button onclick="window.print()" class="btn btn-outline-secondary btn-sm rounded-pill px-3 d-none d-md-inline-block">
             <i class="bi bi-printer me-1"></i> Print Plan
@@ -229,7 +229,7 @@
           <button id="themeToggleBtn" onclick="toggleTheme()" class="theme-toggle-pill" type="button" aria-label="Toggle Theme">
             <span>☀️ Light</span><span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
           </button>
-          <a href="{{ url_for('student_logout') }}" class="btn btn-danger btn-sm rounded-pill px-3">
+          <a href="{{ url_for('student_logout') }}" class="btn btn-danger btn-sm rounded-pill px-2.5 px-sm-3">
             <i class="bi bi-box-arrow-right me-1"></i> Logout
           </a>
         </div>
@@ -643,29 +643,29 @@
                 <p class="small text-muted mb-0">Based on verified pattern extraction and marks distribution analytics.</p>
               </div>
 
-              <div class="row g-3">
-                <div class="col-6">
-                  <div class="p-2.5 rounded-3 border" style="background: var(--bg-elevated);">
-                    <small class="text-muted d-block text-uppercase fs-8">Frequently Asked:</small>
-                    <span class="fw-bold text-primary">{{ plan.exam_intelligence.frequently_asked }}</span>
+              <div class="row g-2.5 g-md-3">
+                <div class="col-12 col-sm-6">
+                  <div class="p-3 rounded-3 border h-100 d-flex flex-column justify-content-between" style="background: var(--bg-elevated);">
+                    <small class="text-muted d-block text-uppercase fs-8 mb-1">Frequently Asked:</small>
+                    <span class="fw-bold text-primary fs-7">{{ plan.exam_intelligence.frequently_asked }}</span>
                   </div>
                 </div>
-                <div class="col-6">
-                  <div class="p-2.5 rounded-3 border" style="background: var(--bg-elevated);">
-                    <small class="text-muted d-block text-uppercase fs-8">High-Mark Topic:</small>
-                    <span class="fw-bold text-success">{{ plan.exam_intelligence.high_mark_topic }} ({{ plan.exam_intelligence.high_mark_val }})</span>
+                <div class="col-12 col-sm-6">
+                  <div class="p-3 rounded-3 border h-100 d-flex flex-column justify-content-between" style="background: var(--bg-elevated);">
+                    <small class="text-muted d-block text-uppercase fs-8 mb-1">High-Mark Topic:</small>
+                    <span class="fw-bold text-success fs-7">{{ plan.exam_intelligence.high_mark_topic }} ({{ plan.exam_intelligence.high_mark_val }})</span>
                   </div>
                 </div>
-                <div class="col-6">
-                  <div class="p-2.5 rounded-3 border" style="background: var(--bg-elevated);">
-                    <small class="text-muted d-block text-uppercase fs-8">Common Difficulty:</small>
-                    <span class="fw-bold text-warning">{{ plan.exam_intelligence.common_difficulty }}</span>
+                <div class="col-12 col-sm-6">
+                  <div class="p-3 rounded-3 border h-100 d-flex flex-column justify-content-between" style="background: var(--bg-elevated);">
+                    <small class="text-muted d-block text-uppercase fs-8 mb-1">Common Difficulty:</small>
+                    <span class="fw-bold text-warning fs-7" style="color: #d97706 !important;">{{ plan.exam_intelligence.common_difficulty }}</span>
                   </div>
                 </div>
-                <div class="col-6">
-                  <div class="p-2.5 rounded-3 border" style="background: var(--bg-elevated);">
-                    <small class="text-muted d-block text-uppercase fs-8">Recommended Focus:</small>
-                    <span class="fw-bold text-dark fs-8">{{ plan.exam_intelligence.recommended_focus }}</span>
+                <div class="col-12 col-sm-6">
+                  <div class="p-3 rounded-3 border h-100 d-flex flex-column justify-content-between" style="background: var(--bg-elevated);">
+                    <small class="text-muted d-block text-uppercase fs-8 mb-1">Recommended Focus:</small>
+                    <span class="fw-bold fs-7" style="color: var(--text-primary);">{{ plan.exam_intelligence.recommended_focus }}</span>
                   </div>
                 </div>
               </div>
@@ -692,15 +692,15 @@
             </div>
 
             {% if plan.avg_predicted_ext is not none %}
-              <div class="row g-3 mb-3">
-                <div class="col-6">
-                  <div class="p-3 rounded-3 border text-center" style="background: var(--bg-elevated);">
+              <div class="row g-2.5 g-md-3 mb-3">
+                <div class="col-12 col-sm-6">
+                  <div class="p-3 rounded-3 border text-center h-100 d-flex flex-column justify-content-center" style="background: var(--bg-elevated);">
                     <small class="text-muted d-block mb-1 text-uppercase fs-8">Predicted External</small>
                     <h3 class="fw-bold text-primary mb-0">{{ plan.avg_predicted_ext }} <span class="fs-6 text-muted fw-normal">/ 70</span></h3>
                   </div>
                 </div>
-                <div class="col-6">
-                  <div class="p-3 rounded-3 border text-center" style="background: var(--bg-elevated);">
+                <div class="col-12 col-sm-6">
+                  <div class="p-3 rounded-3 border text-center h-100 d-flex flex-column justify-content-center" style="background: var(--bg-elevated);">
                     <small class="text-muted d-block mb-1 text-uppercase fs-8">Predicted Total</small>
                     <h3 class="fw-bold text-success mb-0">{{ plan.avg_predicted_total }} <span class="fs-6 text-muted fw-normal">/ 100</span></h3>
                   </div>
@@ -709,7 +709,7 @@
 
               <div class="p-3 rounded-3 border mb-3" style="background: var(--bg-elevated);">
                 <small class="text-muted fw-bold d-block mb-1 fs-8 text-uppercase">Recommendation:</small>
-                <p class="small text-dark mb-0">{{ plan.outlook_advice }}</p>
+                <p class="small mb-0" style="color: var(--text-primary);">{{ plan.outlook_advice }}</p>
               </div>
 
               <!-- Subject-wise mini prediction badges -->

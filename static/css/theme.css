@@ -283,7 +283,7 @@ a:hover {
   transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
-.hero-card h1, .hero-card h2, .hero-card h3,
+.hero-card h1, .hero-card h2, .hero-card h3, .hero-card h4, .hero-card h5, .hero-card h6,
 .profile-hero h1, .profile-hero h2, .profile-hero h3,
 .coach-hero h1, .coach-hero h2, .coach-hero h3 {
   color: var(--hero-text) !important;
@@ -293,6 +293,73 @@ a:hover {
 .profile-hero p,
 .coach-hero p {
   color: var(--hero-subtext) !important;
+}
+
+/* Contrast Protection: Prevent invisible white text in Light Theme */
+[data-theme="light"] .hero-card .text-white,
+[data-theme="light"] footer.hero-card .text-white,
+[data-theme="light"] .hero-card [class*="text-white-"] {
+  color: var(--hero-text) !important;
+}
+
+[data-theme="light"] .hero-card .text-white-50,
+[data-theme="light"] footer.hero-card .text-white-50 {
+  color: var(--hero-subtext) !important;
+}
+
+[data-theme="light"] .hero-card hr.border-secondary {
+  border-color: var(--border-color) !important;
+}
+
+.hero-footer-title {
+  color: var(--hero-text) !important;
+}
+
+.hero-footer-subtitle {
+  color: var(--hero-subtext) !important;
+}
+
+.hero-footer-muted {
+  color: var(--hero-subtext) !important;
+}
+
+.hero-footer-author {
+  color: var(--hero-text) !important;
+}
+
+/* Dark Mode Universal Contrast Overrides */
+[data-theme="dark"] .text-dark {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .text-secondary {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] .bg-white {
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .bg-light {
+  background-color: var(--bg-elevated) !important;
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .border-light {
+  border-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] .card-header.bg-white {
+  background-color: var(--bg-card) !important;
+  border-bottom-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] .input-group-text.bg-white,
+[data-theme="dark"] .input-group-text.bg-light {
+  background-color: var(--bg-elevated) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-secondary) !important;
 }
 
 .hero-card .badge-portal,
@@ -475,7 +542,55 @@ a:hover {
   overflow-x: auto !important;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
+  scrollbar-color: var(--primary) var(--bg-elevated);
   box-sizing: border-box;
+}
+
+/* Sticky Table Header for Clean Vertical Scrolling */
+.table-custom thead th {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10 !important;
+  background-color: var(--table-header-bg) !important;
+  box-shadow: 0 1px 0 var(--border-color);
+}
+
+.table-wrapper > table,
+.student-table-card table,
+#studentsTable {
+  min-width: 960px !important;
+}
+
+/* Enhanced Scrollbar for Table */
+.table-wrapper::-webkit-scrollbar,
+.table-scroll-container::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar-track,
+.table-scroll-container::-webkit-scrollbar-track {
+  background: var(--bg-elevated);
+  border-radius: 4px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb,
+.table-scroll-container::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover,
+.table-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Smooth Scroll Anchors with Sticky Header Clearance */
+#dashboard,
+#analytics,
+#records,
+.dashboard-container > div[id] {
+  scroll-margin-top: 80px;
 }
 
 /* Core 8-Column Alignment Engine */
@@ -1176,10 +1291,11 @@ a:hover {
   align-self: stretch;
   background: linear-gradient(145deg, #F0F8FF 0%, #DBEAFE 100%);
   border-right: 1px solid var(--border-color);
-  padding: 2rem 1.75rem;
+  padding: 2.25rem 1.75rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 1.25rem;
   align-items: center;
   position: relative;
   overflow: hidden;
@@ -1195,22 +1311,22 @@ a:hover {
 
 .auth-illustration-box {
   width: 100%;
-  max-width: 300px;
-  max-height: 180px;
-  min-height: 110px;
-  flex: 1 1 auto;
+  max-width: 320px;
+  height: 205px;
+  max-height: 215px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  margin: 0.75rem 0;
+  margin: 0.25rem 0;
+  flex: 0 0 auto;
 }
 
 .auth-illustration-svg {
   width: 100%;
   height: auto;
-  max-height: 170px;
-  filter: drop-shadow(0 12px 20px rgba(37, 99, 235, 0.15));
+  max-height: 200px;
+  filter: drop-shadow(0 12px 22px rgba(37, 99, 235, 0.16));
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
 }
 
@@ -1222,13 +1338,64 @@ a:hover {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  margin-top: auto;
+  margin-top: 0.25rem;
   padding: 0.85rem 1rem;
   border-radius: 14px;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
   overflow: hidden;
+}
+
+.visual-quote-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  padding: 5px 16px !important;
+  border-radius: 9999px !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.3px !important;
+  line-height: 1.2 !important;
+  white-space: nowrap !important;
+  background: rgba(37, 99, 235, 0.12) !important;
+  color: var(--primary) !important;
+  border: 1px solid rgba(37, 99, 235, 0.25) !important;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.08);
+  width: auto !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+[data-theme="dark"] .visual-quote-badge {
+  background: rgba(59, 130, 246, 0.2) !important;
+  color: #93C5FD !important;
+  border-color: rgba(59, 130, 246, 0.35) !important;
+}
+
+.badge-soft-success.visual-quote-badge {
+  background: rgba(16, 185, 129, 0.12) !important;
+  color: #059669 !important;
+  border-color: rgba(16, 185, 129, 0.3) !important;
+}
+
+[data-theme="dark"] .badge-soft-success.visual-quote-badge {
+  background: rgba(16, 185, 129, 0.2) !important;
+  color: #34D399 !important;
+  border-color: rgba(16, 185, 129, 0.35) !important;
+}
+
+.badge-soft-danger.visual-quote-badge {
+  background: rgba(239, 68, 68, 0.12) !important;
+  color: #DC2626 !important;
+  border-color: rgba(239, 68, 68, 0.3) !important;
+}
+
+[data-theme="dark"] .badge-soft-danger.visual-quote-badge {
+  background: rgba(239, 68, 68, 0.2) !important;
+  color: #F87171 !important;
+  border-color: rgba(239, 68, 68, 0.35) !important;
 }
 
 /* Right Form Side */

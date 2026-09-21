@@ -919,10 +919,10 @@
         class="hero-card p-4 p-md-5 mt-5 text-center position-relative"
       >
         <div class="position-relative" style="z-index: 2">
-          <h4 class="fw-bold text-white mb-2">
+          <h4 class="fw-bold hero-footer-title mb-2">
             Academic Performance & Examination Intelligence System
           </h4>
-          <p class="text-white-50 mx-auto mb-4" style="max-width: 650px">
+          <p class="hero-footer-subtitle mx-auto mb-4" style="max-width: 650px">
             An advanced analytical decision-support platform engineered for
             academic faculty to evaluate examination results, track subject
             outcomes, and support student success.
@@ -932,12 +932,12 @@
             style="width: 50%"
           />
           <p
-            class="text-uppercase text-white-50 fw-semibold fs-8 tracking-widest mb-1"
+            class="text-uppercase hero-footer-muted fw-semibold fs-8 tracking-widest mb-1"
           >
             Architect & Developer
           </p>
-          <h5 class="fw-extrabold text-white mb-1">Zeeshan Shaikh</h5>
-          <p class="text-info small mb-0 fw-medium">
+          <h5 class="fw-extrabold hero-footer-author mb-1">Zeeshan Shaikh</h5>
+          <p class="text-primary small mb-0 fw-medium">
             Department of Information Technology
           </p>
         </div>
@@ -1018,6 +1018,40 @@
         if (sidebar) sidebar.classList.toggle('show');
         if (overlay) overlay.classList.toggle('show');
       }
+
+      // Enhanced Smooth Scroll Interaction & ScrollSpy for Sidebar
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.sidebar-nav-item[href^="#"]').forEach(link => {
+          link.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href').substring(1);
+            const targetEl = document.getElementById(targetId);
+            if (targetEl) {
+              e.preventDefault();
+              targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              document.querySelectorAll('.sidebar-nav-item').forEach(l => l.classList.remove('active'));
+              this.classList.add('active');
+              if (window.innerWidth < 992) toggleSidebar();
+            }
+          });
+        });
+
+        window.addEventListener('scroll', function() {
+          const sections = ['dashboard', 'analytics', 'records'];
+          const scrollPos = window.scrollY + 140;
+          sections.forEach(id => {
+            const el = document.getElementById(id);
+            const link = document.querySelector(`.sidebar-nav-item[href="#${id}"]`);
+            if (el && link) {
+              const top = el.offsetTop;
+              const height = el.offsetHeight;
+              if (scrollPos >= top && scrollPos < top + height) {
+                document.querySelectorAll('.sidebar-nav-item').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+              }
+            }
+          });
+        }, { passive: true });
+      });
 
       // Client side instant table search
       function filterTable() {

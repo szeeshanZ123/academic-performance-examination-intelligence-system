@@ -38,6 +38,7 @@ from ml.predictor import (
 from utils.student_recommendations import generate_improvement_plan
 
 from question_paper.routes import question_paper_bp
+from ai_assistant.routes import ai_helper_bp
 
 from reports.report_service import (
     get_admin_reports_data,
@@ -64,6 +65,9 @@ app.secret_key = "academic-performance-project-secret-key"
 
 # Register Question Paper Intelligence Blueprint
 app.register_blueprint(question_paper_bp)
+
+# Register AI Student & Study Helper Blueprint
+app.register_blueprint(ai_helper_bp)
 
 
 # =========================================================

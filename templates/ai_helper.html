@@ -1,0 +1,1047 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Academic Intelligence | AI Student & Study Helper</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}" />
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+    <style>
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        min-height: 100vh;
+      }
+
+      .navbar-custom {
+        background-color: var(--navbar-bg) !important;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .brand-badge {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+
+      .ai-hero {
+        background: var(--hero-bg) !important;
+        border-radius: 20px;
+        color: var(--hero-text) !important;
+        border: 1px solid var(--hero-border) !important;
+        box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05);
+      }
+
+      .avatar-ai-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, var(--primary), #8b5cf6);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        box-shadow: 0 8px 16px -4px rgba(37, 99, 235, 0.3);
+      }
+
+      .card-custom {
+        background: var(--bg-card);
+        border-radius: 16px;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      }
+
+      /* Mode Navigation Tabs */
+      .mode-switcher {
+        background: var(--bg-elevated);
+        padding: 6px;
+        border-radius: 14px;
+        border: 1px solid var(--border-color);
+        display: inline-flex;
+        gap: 6px;
+        width: 100%;
+        max-width: 500px;
+      }
+
+      .mode-btn {
+        flex: 1;
+        padding: 10px 18px;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        border: none;
+        background: transparent;
+        color: var(--text-secondary);
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .mode-btn.active {
+        background: var(--primary);
+        color: #ffffff;
+        box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+      }
+
+      /* Chat Container */
+      .chat-window {
+        height: 520px;
+        overflow-y: auto;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        background: var(--bg-card);
+        border-radius: 16px;
+        border: 1px solid var(--border-color);
+      }
+
+      .chat-bubble {
+        max-width: 85%;
+        padding: 1rem 1.25rem;
+        border-radius: 16px;
+        line-height: 1.6;
+        font-size: 0.95rem;
+        position: relative;
+        animation: fadeIn 0.25s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .bubble-user {
+        align-self: flex-end;
+        background: var(--primary);
+        color: #ffffff;
+        border-bottom-right-radius: 4px;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+      }
+
+      .bubble-user strong, .bubble-user a {
+        color: #ffffff;
+      }
+
+      .bubble-ai {
+        align-self: flex-start;
+        background: var(--bg-elevated);
+        color: var(--text-primary);
+        border-bottom-left-radius: 4px;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      }
+
+      .bubble-ai h3, .bubble-ai h4, .bubble-ai h5 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        color: var(--primary);
+      }
+
+      .bubble-ai ul, .bubble-ai ol {
+        margin-bottom: 0.5rem;
+        padding-left: 1.25rem;
+      }
+
+      .bubble-ai p {
+        margin-bottom: 0.5rem;
+      }
+
+      .bubble-ai code {
+        background: rgba(0, 0, 0, 0.08);
+        color: var(--primary);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.88em;
+      }
+
+      /* Quick Action Chips */
+      .quick-chips-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .chip-btn {
+        background: var(--bg-elevated);
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
+        border-radius: 20px;
+        padding: 6px 14px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        transition: all 0.15s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+      }
+
+      .chip-btn:hover {
+        background: var(--primary);
+        color: #ffffff;
+        border-color: var(--primary);
+        transform: translateY(-1px);
+      }
+
+      /* Study Assistant Cards */
+      .upload-dropzone {
+        border: 2px dashed var(--border-color);
+        border-radius: 16px;
+        padding: 2.5rem 1.5rem;
+        text-align: center;
+        background: var(--bg-elevated);
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .upload-dropzone:hover, .upload-dropzone.dragover {
+        border-color: var(--primary);
+        background: rgba(37, 99, 235, 0.04);
+      }
+
+      .study-action-btn {
+        background: var(--bg-elevated);
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
+        padding: 0.75rem 1rem;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        transition: all 0.2s ease;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+      }
+
+      .study-action-btn:hover, .study-action-btn.active-action {
+        background: var(--primary);
+        color: #ffffff;
+        border-color: var(--primary);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+      }
+
+      .study-action-btn i {
+        font-size: 1.25rem;
+      }
+
+      .study-action-btn:hover i, .study-action-btn.active-action i {
+        color: #ffffff;
+      }
+
+      .quiz-option-card {
+        background: var(--bg-elevated);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 12px 16px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 500;
+      }
+
+      .quiz-option-card:hover {
+        border-color: var(--primary);
+        background: rgba(37, 99, 235, 0.06);
+      }
+
+      .quiz-option-card.selected {
+        border-color: var(--primary);
+        background: rgba(37, 99, 235, 0.12);
+        font-weight: 700;
+      }
+
+      .quiz-option-card.correct {
+        border-color: #10b981 !important;
+        background: rgba(16, 185, 129, 0.15) !important;
+        color: #065f46 !important;
+      }
+
+      .quiz-option-card.incorrect {
+        border-color: #ef4444 !important;
+        background: rgba(239, 68, 68, 0.15) !important;
+        color: #991b1b !important;
+      }
+
+      /* Typing dots */
+      .typing-indicator {
+        display: flex;
+        gap: 5px;
+        padding: 8px 12px;
+      }
+      .typing-indicator span {
+        width: 8px;
+        height: 8px;
+        background: var(--primary);
+        border-radius: 50%;
+        animation: typingBounce 1.2s infinite ease-in-out;
+      }
+      .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+      .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+      @keyframes typingBounce {
+        0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
+        40% { transform: scale(1); opacity: 1; }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top py-2.5">
+      <div class="container d-flex flex-wrap align-items-center justify-content-between gap-2">
+        <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="/student-dashboard">
+          <span class="brand-badge me-1"><i class="bi bi-mortarboard-fill me-1"></i> Academic Intelligence</span>
+          <span class="opacity-75 fs-6 d-none d-sm-inline">Student Portal</span>
+        </a>
+        <div class="d-flex flex-wrap align-items-center gap-2">
+          <a href="{{ url_for('student_dashboard') }}" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+            <i class="bi bi-speedometer2 me-1"></i> My Dashboard
+          </a>
+          <a href="{{ url_for('student_improvement_plan') }}" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+            <i class="bi bi-compass-fill me-1"></i> Improvement Plan
+          </a>
+          <button id="themeToggleBtn" onclick="toggleTheme()" class="theme-toggle-pill" type="button" aria-label="Toggle Theme">
+            <span>☀️ Light</span><span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
+          </button>
+          <a href="{{ url_for('student_logout') }}" class="btn btn-danger btn-sm rounded-pill px-3">
+            <i class="bi bi-box-arrow-right me-1"></i> Logout
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container py-4">
+      <!-- Flash Messages -->
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category if category != 'error' else 'danger' }} alert-dismissible fade show rounded-3 mb-4" role="alert">
+              <i class="bi bi-info-circle-fill me-1"></i> {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <!-- AI Hero Header -->
+      <div class="ai-hero p-4 p-md-4 mb-4">
+        <div class="row align-items-center g-3">
+          <div class="col-auto">
+            <div class="avatar-ai-icon">
+              <i class="bi bi-stars"></i>
+            </div>
+          </div>
+          <div class="col">
+            <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
+              <span class="badge bg-primary px-3 py-1 rounded-pill fs-7">
+                AI PERSONAL ASSISTANT
+              </span>
+              <span class="badge bg-secondary bg-opacity-25 px-3 py-1 rounded-pill fs-7">
+                GROUNDED IN {{ student.Name.upper() }} ({{ student.Roll }})
+              </span>
+            </div>
+            <h2 class="fw-extrabold mb-1">AI Student & Study Helper</h2>
+            <p class="fs-7 text-muted mb-0">
+              Ask questions about your academic standing, or upload notes, question papers, and study materials for instant summaries, simple explanations, MCQs, and interactive quizzes.
+            </p>
+          </div>
+          <div class="col-12 col-md-auto text-md-end">
+            <!-- Mode Switcher -->
+            <div class="mode-switcher">
+              <button id="tabAdvisorBtn" class="mode-btn active" onclick="switchMode('advisor')">
+                <i class="bi bi-person-lines-fill"></i> Academic Advisor
+              </button>
+              <button id="tabStudyBtn" class="mode-btn" onclick="switchMode('study')">
+                <i class="bi bi-book-half"></i> Study Assistant
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================= -->
+      <!-- SECTION 1: STUDENT ACADEMIC PERFORMANCE ADVISOR -->
+      <!-- ========================================================= -->
+      <div id="advisorSection">
+        <div class="row g-4">
+          <!-- Chat Card -->
+          <div class="col-lg-8">
+            <div class="card-custom p-3 p-md-4 h-100 d-flex flex-column">
+              <div class="d-flex align-items-center justify-content-between pb-3 mb-3 border-bottom">
+                <div class="d-flex align-items-center gap-2">
+                  <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-2.5 py-1">
+                    <i class="bi bi-circle-fill fs-8 me-1 text-success"></i> Connected to Student Database
+                  </span>
+                </div>
+                <button class="btn btn-sm btn-outline-secondary rounded-pill px-3" onclick="clearAdvisorChat()">
+                  <i class="bi bi-trash3 me-1"></i> Clear Chat
+                </button>
+              </div>
+
+              <!-- Chat Stream -->
+              <div id="chatWindow" class="chat-window mb-3">
+                <!-- AI Greeting -->
+                <div class="chat-bubble bubble-ai">
+                  <div class="fw-bold mb-1"><i class="bi bi-robot text-primary me-1"></i> Academic AI Assistant</div>
+                  Hello <strong>{{ student.Name }}</strong>! I am your personal academic assistant with direct access to your <strong>Semester {{ student.Semester }}</strong> marks, attendance records, and risk analytics.
+                  <br><br>
+                  You can click any of the quick question chips below, or ask me directly about your grades, attendance deficits, weak subjects, or advice on how to improve!
+                </div>
+              </div>
+
+              <!-- Quick Action Chips -->
+              <div class="mb-3">
+                <small class="text-muted fw-bold fs-8 text-uppercase d-block mb-2">Quick Questions:</small>
+                <div class="quick-chips-wrapper">
+                  <button class="chip-btn" onclick="sendQuickQuery('What is my overall academic performance?')">
+                    📊 Overall Performance
+                  </button>
+                  <button class="chip-btn" onclick="sendQuickQuery('What is my SGPI and semester grade?')">
+                    🎯 My SGPI
+                  </button>
+                  <button class="chip-btn" onclick="sendQuickQuery('What is my attendance status and do I have shortages?')">
+                    ⏱️ Attendance Status
+                  </button>
+                  <button class="chip-btn" onclick="sendQuickQuery('Which subjects are weak and need focus?')">
+                    📚 Weak Subjects
+                  </button>
+                  <button class="chip-btn" onclick="sendQuickQuery('Am I at academic risk and why?')">
+                    ⚠️ Risk Status
+                  </button>
+                  <button class="chip-btn" onclick="sendQuickQuery('What are my internal assessment marks?')">
+                    📋 Internal Marks
+                  </button>
+                  <button class="chip-btn" onclick="sendQuickQuery('How can I improve my performance and marks?')">
+                    📈 How to Improve
+                  </button>
+                  <button class="chip-btn text-primary fw-bold" onclick="switchMode('study')">
+                    📝 Study Mode
+                  </button>
+                </div>
+              </div>
+
+              <!-- Input Bar -->
+              <form id="advisorForm" onsubmit="handleAdvisorSubmit(event)" class="d-flex gap-2">
+                <input
+                  type="text"
+                  id="advisorInput"
+                  class="form-control rounded-pill px-3 py-2.5"
+                  placeholder="Ask a question about your marks, attendance, or performance..."
+                  autocomplete="off"
+                  required
+                />
+                <button type="submit" id="advisorSendBtn" class="btn btn-primary rounded-pill px-4 fw-bold shadow-sm d-flex align-items-center gap-1.5">
+                  <span>Send</span> <i class="bi bi-send-fill"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Student Quick Context Sidebar -->
+          <div class="col-lg-4">
+            <div class="card-custom p-4 mb-4">
+              <h5 class="fw-bold mb-3 text-dark"><i class="bi bi-person-badge text-primary me-2"></i> Verified Record Context</h5>
+              <div class="list-group list-group-flush small">
+                <div class="list-group-item d-flex justify-content-between px-0 py-2 bg-transparent">
+                  <span class="text-muted">Roll Number:</span>
+                  <span class="fw-bold text-dark">{{ student.Roll }}</span>
+                </div>
+                <div class="list-group-item d-flex justify-content-between px-0 py-2 bg-transparent">
+                  <span class="text-muted">Semester / Division:</span>
+                  <span class="fw-bold text-dark">Sem {{ student.Semester }} (Div {{ student.Division }})</span>
+                </div>
+                <div class="list-group-item d-flex justify-content-between px-0 py-2 bg-transparent">
+                  <span class="text-muted">SGPI (GPA):</span>
+                  <span class="fw-bold text-primary">{{ student.SGPI }} / 10.0</span>
+                </div>
+                <div class="list-group-item d-flex justify-content-between px-0 py-2 bg-transparent">
+                  <span class="text-muted">Overall Attendance:</span>
+                  <span class="fw-bold {% if student.Attendance >= 75 %}text-success{% else %}text-danger{% endif %}">{{ student.Attendance }}%</span>
+                </div>
+                <div class="list-group-item d-flex justify-content-between px-0 py-2 bg-transparent">
+                  <span class="text-muted">Academic Risk:</span>
+                  <span class="badge {% if student_ctx.academic_risk == 'High' %}bg-danger{% elif student_ctx.academic_risk == 'Medium' %}bg-warning text-dark{% else %}bg-success{% endif %} rounded-pill">
+                    {{ student_ctx.academic_risk }} Risk
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Subject Snapshot Card -->
+            <div class="card-custom p-4">
+              <h5 class="fw-bold mb-3 text-dark"><i class="bi bi-journals text-primary me-2"></i> Enrolled Subjects</h5>
+              <div class="d-flex flex-column gap-2">
+                {% for subj in student_ctx.subjects %}
+                <div class="p-2.5 rounded-3 bg-elevated border d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="fw-bold text-dark fs-7">{{ subj.subject }}</div>
+                    <small class="text-muted">Att: {{ subj.attendance }}% | Grade: {{ subj.grade }}</small>
+                  </div>
+                  <span class="badge bg-primary rounded-pill">{{ subj.total }}/100</span>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================= -->
+      <!-- SECTION 2: AI STUDY ASSISTANT -->
+      <!-- ========================================================= -->
+      <div id="studySection" style="display: none;">
+        <div class="row g-4">
+          <!-- Left Column: Upload & Actions -->
+          <div class="col-lg-4">
+            <!-- Upload Box -->
+            <div class="card-custom p-4 mb-4">
+              <h5 class="fw-bold mb-3 text-dark"><i class="bi bi-cloud-arrow-up-fill text-primary me-2"></i> Upload Study Material</h5>
+              
+              <div id="dropzone" class="upload-dropzone mb-3" onclick="document.getElementById('fileInput').click()">
+                <i class="bi bi-file-earmark-arrow-up text-primary display-6 mb-2 d-block"></i>
+                <h6 class="fw-bold text-dark mb-1">Click to browse or drop file here</h6>
+                <p class="fs-8 text-muted mb-0">
+                  Supports <strong>PDF, DOCX, TXT, PNG, JPG, JPEG</strong><br>(Max size: 10 MB)
+                </p>
+                <input type="file" id="fileInput" class="d-none" accept=".pdf,.docx,.txt,.png,.jpg,.jpeg,.webp" onchange="handleFileSelect(event)">
+              </div>
+
+              <!-- Uploaded File Badge -->
+              <div id="fileInfoBox" class="p-3 rounded-3 bg-elevated border mb-3" style="display: none;">
+                <div class="d-flex align-items-start justify-content-between gap-2">
+                  <div class="overflow-hidden">
+                    <div id="uploadedFileName" class="fw-bold text-dark text-truncate fs-7">Document.pdf</div>
+                    <small id="uploadedFileMeta" class="text-muted d-block">PDF | 1.2 MB | 840 words</small>
+                  </div>
+                  <button class="btn btn-sm btn-outline-danger rounded-circle p-1" onclick="clearStudyDocument()" title="Remove file">
+                    <i class="bi bi-x-lg"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <h6 class="fw-bold text-muted text-uppercase fs-8 mb-2">Select Study Action:</h6>
+              <div class="d-flex flex-column gap-2">
+                <button class="study-action-btn" onclick="executeStudyAction('summarize')">
+                  <i class="bi bi-card-text text-primary"></i>
+                  <div>
+                    <div>Summarize</div>
+                    <small class="text-muted opacity-75 d-block fs-8">Clear student-friendly summary</small>
+                  </div>
+                </button>
+                <button class="study-action-btn" onclick="executeStudyAction('explain')">
+                  <i class="bi bi-lightbulb-fill text-warning"></i>
+                  <div>
+                    <div>Explain Simply</div>
+                    <small class="text-muted opacity-75 d-block fs-8">Intuitive real-world analogies</small>
+                  </div>
+                </button>
+                <button class="study-action-btn" onclick="executeStudyAction('mcqs')">
+                  <i class="bi bi-ui-checks text-success"></i>
+                  <div>
+                    <div>Generate MCQs</div>
+                    <small class="text-muted opacity-75 d-block fs-8">5 exam-oriented practice questions</small>
+                  </div>
+                </button>
+                <button class="study-action-btn" onclick="executeStudyAction('five_mark')">
+                  <i class="bi bi-pen-fill text-info"></i>
+                  <div>
+                    <div>Generate 5-Mark Answers</div>
+                    <small class="text-muted opacity-75 d-block fs-8">Definition, points, example, conclusion</small>
+                  </div>
+                </button>
+                <button class="study-action-btn" onclick="executeStudyAction('quiz')">
+                  <i class="bi bi-controller text-danger"></i>
+                  <div>
+                    <div>Quiz Me (Interactive)</div>
+                    <small class="text-muted opacity-75 d-block fs-8">1-by-1 quiz with instant scoring</small>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Results & Interactive Quiz -->
+          <div class="col-lg-8">
+            <div class="card-custom p-4 h-100 d-flex flex-column">
+              <!-- Result Header -->
+              <div class="d-flex align-items-center justify-content-between pb-3 mb-3 border-bottom">
+                <div class="d-flex align-items-center gap-2">
+                  <h5 id="studyResultTitle" class="fw-bold mb-0 text-dark">
+                    <i class="bi bi-stars text-primary me-2"></i> Study Assistant Workspace
+                  </h5>
+                </div>
+                <div class="d-flex gap-2" id="studyResultActions" style="display: none;">
+                  <button class="btn btn-sm btn-outline-secondary rounded-pill px-3" onclick="copyStudyResult()">
+                    <i class="bi bi-clipboard me-1"></i> Copy
+                  </button>
+                </div>
+              </div>
+
+              <!-- Output Container -->
+              <div id="studyOutputContainer" class="flex-grow-1" style="min-height: 400px;">
+                <!-- Default Placeholder -->
+                <div id="studyEmptyState" class="text-center py-5">
+                  <i class="bi bi-file-earmark-text display-3 text-muted opacity-50 mb-3 d-block"></i>
+                  <h5 class="fw-bold text-dark mb-1">No Study Material Loaded</h5>
+                  <p class="text-muted fs-7 max-w-sm mx-auto">
+                    Upload a syllabus PDF, lecture notes, textbook screenshot, or question paper on the left to unlock instant summaries, simple explanations, MCQs, and quizzes.
+                  </p>
+                </div>
+
+                <!-- Loading State -->
+                <div id="studyLoadingState" class="text-center py-5" style="display: none;">
+                  <div class="spinner-border text-primary mb-3" role="status"></div>
+                  <h6 class="fw-bold text-dark mb-1">AI Assistant is analyzing your study material...</h6>
+                  <p class="text-muted fs-8">Extracting concepts, formatting exam structures, and generating responses</p>
+                </div>
+
+                <!-- Markdown Content Display -->
+                <div id="studyContentDisplay" class="bubble-ai p-4 rounded-3" style="display: none;">
+                  <!-- Injected via JavaScript -->
+                </div>
+
+                <!-- Interactive Quiz View -->
+                <div id="studyQuizContainer" style="display: none;">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <span id="quizProgressText" class="badge bg-primary px-3 py-1.5 rounded-pill fs-7">Question 1 of 5</span>
+                    <span id="quizScoreText" class="fw-bold text-success fs-7">Score: 0 / 0</span>
+                  </div>
+
+                  <div class="progress mb-4" style="height: 6px;">
+                    <div id="quizProgressBar" class="progress-bar bg-primary" style="width: 20%;"></div>
+                  </div>
+
+                  <div class="p-3.5 rounded-3 bg-elevated border mb-4">
+                    <h5 id="quizQuestionText" class="fw-bold text-dark mb-3">Question text goes here</h5>
+                    <div id="quizOptionsList">
+                      <!-- Injected options -->
+                    </div>
+                  </div>
+
+                  <!-- Feedback Box -->
+                  <div id="quizFeedbackBox" class="alert mb-3" style="display: none;">
+                    <div id="quizFeedbackTitle" class="fw-bold mb-1"></div>
+                    <div id="quizFeedbackExp" class="fs-7"></div>
+                  </div>
+
+                  <!-- Quiz Controls -->
+                  <div class="d-flex justify-content-end gap-2">
+                    <button id="quizNextBtn" class="btn btn-primary rounded-pill px-4 fw-bold" onclick="nextQuizQuestion()" style="display: none;">
+                      Next Question <i class="bi bi-arrow-right ms-1"></i>
+                    </button>
+                    <button id="quizRestartBtn" class="btn btn-outline-primary rounded-pill px-4 fw-bold" onclick="restartQuiz()" style="display: none;">
+                      Restart Quiz <i class="bi bi-arrow-clockwise ms-1"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Contextual Question Input Bar -->
+              <div class="pt-3 mt-3 border-top">
+                <form id="studyAskForm" onsubmit="handleStudyAskSubmit(event)" class="d-flex gap-2">
+                  <input
+                    type="text"
+                    id="studyAskInput"
+                    class="form-control rounded-pill px-3 py-2.5"
+                    placeholder="Ask a custom question about this document (e.g. 'Explain normalization in simple words')..."
+                    autocomplete="off"
+                  />
+                  <button type="submit" id="studyAskBtn" class="btn btn-primary rounded-pill px-4 fw-bold shadow-sm d-flex align-items-center gap-1.5">
+                    <span>Ask</span> <i class="bi bi-question-circle-fill"></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+      let currentMode = 'advisor';
+      let loadedDocument = null;
+      let activeQuiz = null;
+      let currentQuizIndex = 0;
+      let currentQuizScore = 0;
+      let isSubmitting = false;
+
+      // 1. Switch Mode (Advisor vs Study)
+      function switchMode(mode) {
+        currentMode = mode;
+        const advisorSec = document.getElementById('advisorSection');
+        const studySec = document.getElementById('studySection');
+        const tabAdvisorBtn = document.getElementById('tabAdvisorBtn');
+        const tabStudyBtn = document.getElementById('tabStudyBtn');
+
+        if (mode === 'advisor') {
+          advisorSec.style.display = 'block';
+          studySec.style.display = 'none';
+          tabAdvisorBtn.classList.add('active');
+          tabStudyBtn.classList.remove('active');
+        } else {
+          advisorSec.style.display = 'none';
+          studySec.style.display = 'block';
+          tabStudyBtn.classList.add('active');
+          tabAdvisorBtn.classList.remove('active');
+        }
+      }
+
+      // Simple Markdown Formatter
+      function formatMarkdown(text) {
+        if (!text) return '';
+        let html = text
+          .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+          .replace(/^#### (.*$)/gim, '<h4>$1</h4>')
+          .replace(/^##### (.*$)/gim, '<h5>$1</h5>')
+          .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
+          .replace(/\*(.*?)\*/gim, '<em>$1</em>')
+          .replace(/`([^`]+)`/gim, '<code>$1</code>')
+          .replace(/^> (.*$)/gim, '<blockquote class="border-start border-primary border-3 ps-3 my-2 text-muted">$1</blockquote>')
+          .replace(/^• (.*$)/gim, '<li>$1</li>')
+          .replace(/^- (.*$)/gim, '<li>$1</li>')
+          .replace(/\n\n/gim, '<br><br>');
+        
+        // Wrap li tags in ul
+        html = html.replace(/(<li>[\s\S]*?<\/li>)/gm, '<ul class="ps-3 my-2">$1</ul>');
+        return html;
+      }
+
+      // 2. Academic Advisor Chat Flow
+      async function handleAdvisorSubmit(e) {
+        e.preventDefault();
+        const inputEl = document.getElementById('advisorInput');
+        const query = inputEl.value.trim();
+        if (!query || isSubmitting) return;
+
+        inputEl.value = '';
+        appendMessage('user', query);
+        const typingEl = appendTypingIndicator();
+
+        isSubmitting = true;
+        try {
+          const resp = await fetch('/api/ai/student-query', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ query: query })
+          });
+          const data = await resp.json();
+          removeTypingIndicator(typingEl);
+
+          if (data.success) {
+            appendMessage('ai', data.answer);
+          } else {
+            appendMessage('ai', `⚠️ ${data.error || 'Unable to process question.'}`);
+          }
+        } catch (err) {
+          removeTypingIndicator(typingEl);
+          appendMessage('ai', '⚠️ Network error communicating with the AI Helper. Please check your connection.');
+        } finally {
+          isSubmitting = false;
+        }
+      }
+
+      function sendQuickQuery(text) {
+        document.getElementById('advisorInput').value = text;
+        document.getElementById('advisorForm').dispatchEvent(new Event('submit'));
+      }
+
+      function appendMessage(sender, text) {
+        const chatWindow = document.getElementById('chatWindow');
+        const bubble = document.createElement('div');
+        bubble.className = `chat-bubble ${sender === 'user' ? 'bubble-user' : 'bubble-ai'}`;
+        
+        if (sender === 'ai') {
+          bubble.innerHTML = formatMarkdown(text);
+        } else {
+          bubble.textContent = text;
+        }
+
+        chatWindow.appendChild(bubble);
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+      }
+
+      function appendTypingIndicator() {
+        const chatWindow = document.getElementById('chatWindow');
+        const ind = document.createElement('div');
+        ind.className = 'chat-bubble bubble-ai typing-indicator-bubble';
+        ind.innerHTML = '<div class="typing-indicator"><span></span><span></span><span></span></div>';
+        chatWindow.appendChild(ind);
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+        return ind;
+      }
+
+      function removeTypingIndicator(el) {
+        if (el && el.parentNode) {
+          el.parentNode.removeChild(el);
+        }
+      }
+
+      function clearAdvisorChat() {
+        const chatWindow = document.getElementById('chatWindow');
+        chatWindow.innerHTML = `
+          <div class="chat-bubble bubble-ai">
+            <div class="fw-bold mb-1"><i class="bi bi-robot text-primary me-1"></i> Academic AI Assistant</div>
+            Chat cleared. Ask me anything about your marks, attendance, or performance!
+          </div>
+        `;
+      }
+
+      // 3. Study Assistant: File Upload Flow
+      async function handleFileSelect(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        showStudyLoading('Uploading & parsing document...');
+
+        try {
+          const resp = await fetch('/api/ai/study/upload', {
+            method: 'POST',
+            body: formData
+          });
+          const data = await resp.json();
+
+          if (data.success) {
+            loadedDocument = data;
+            document.getElementById('fileInfoBox').style.display = 'block';
+            document.getElementById('uploadedFileName').textContent = data.filename;
+            document.getElementById('uploadedFileMeta').textContent = `${data.file_type} | ${data.filesize_kb} KB | ~${data.word_count} words`;
+            
+            showStudyMarkdown(`### 📄 Document Loaded: \`${data.filename}\`\n\n**Format**: ${data.file_type} (${data.filesize_kb} KB, ~${data.word_count} words)\n\n**Sample Preview**:\n> ${data.preview}\n\n👉 **Next Step**: Click any of the action buttons on the left (**Summarize**, **Explain Simply**, **Generate MCQs**, **5-Mark Answers**, **Quiz Me**) or type a custom question below.`);
+          } else {
+            showStudyMarkdown(`### ❌ Upload Failed\n\n${data.error || 'Failed to process document.'}`);
+          }
+        } catch (err) {
+          showStudyMarkdown(`### ❌ Upload Error\n\nNetwork error while uploading file. Please try again.`);
+        }
+      }
+
+      function clearStudyDocument() {
+        loadedDocument = null;
+        document.getElementById('fileInput').value = '';
+        document.getElementById('fileInfoBox').style.display = 'none';
+        document.getElementById('studyEmptyState').style.display = 'block';
+        document.getElementById('studyContentDisplay').style.display = 'none';
+        document.getElementById('studyQuizContainer').style.display = 'none';
+        document.getElementById('studyLoadingState').style.display = 'none';
+        document.getElementById('studyResultActions').style.display = 'none';
+        fetch('/api/ai/study/clear', { method: 'POST' });
+      }
+
+      // 4. Study Assistant: Execute Action Flow
+      async function executeStudyAction(action) {
+        if (!loadedDocument) {
+          alert('Please upload a study document (PDF, notes, or image) first!');
+          return;
+        }
+
+        if (action === 'quiz') {
+          showStudyLoading('Generating interactive quiz from study material...');
+        } else {
+          showStudyLoading(`AI is generating: ${action.replace('_', ' ')}...`);
+        }
+
+        try {
+          const resp = await fetch('/api/ai/study/action', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: action })
+          });
+          const data = await resp.json();
+
+          if (data.success) {
+            if (action === 'quiz' && data.questions) {
+              startInteractiveQuiz(data);
+            } else {
+              showStudyMarkdown(data.result);
+            }
+          } else {
+            showStudyMarkdown(`### ⚠️ Action Notice\n\n${data.error || 'Could not complete requested action.'}`);
+          }
+        } catch (err) {
+          showStudyMarkdown(`### ❌ Error\n\nNetwork error while processing request.`);
+        }
+      }
+
+      async function handleStudyAskSubmit(e) {
+        e.preventDefault();
+        const inputEl = document.getElementById('studyAskInput');
+        const q = inputEl.value.trim();
+        if (!q) return;
+
+        if (!loadedDocument) {
+          alert('Please upload study notes or a document first to ask contextual questions.');
+          return;
+        }
+
+        inputEl.value = '';
+        showStudyLoading(`Searching document for: "${q}"...`);
+
+        try {
+          const resp = await fetch('/api/ai/study/action', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'ask', question: q })
+          });
+          const data = await resp.json();
+          if (data.success) {
+            showStudyMarkdown(data.result);
+          } else {
+            showStudyMarkdown(`### ⚠️ Question Notice\n\n${data.error || 'Unable to find answer in document.'}`);
+          }
+        } catch (err) {
+          showStudyMarkdown(`### ❌ Error\n\nNetwork error while answering question.`);
+        }
+      }
+
+      // 5. Interactive Quiz State Controller
+      function startInteractiveQuiz(quizData) {
+        activeQuiz = quizData;
+        currentQuizIndex = 0;
+        currentQuizScore = 0;
+
+        document.getElementById('studyEmptyState').style.display = 'none';
+        document.getElementById('studyLoadingState').style.display = 'none';
+        document.getElementById('studyContentDisplay').style.display = 'none';
+        document.getElementById('studyQuizContainer').style.display = 'block';
+        document.getElementById('studyResultActions').style.display = 'none';
+
+        renderQuizQuestion();
+      }
+
+      function renderQuizQuestion() {
+        const q = activeQuiz.questions[currentQuizIndex];
+        const total = activeQuiz.questions.length;
+
+        document.getElementById('quizProgressText').textContent = `Question ${currentQuizIndex + 1} of ${total}`;
+        document.getElementById('quizScoreText').textContent = `Score: ${currentQuizScore} / ${currentQuizIndex}`;
+        document.getElementById('quizProgressBar').style.width = `${((currentQuizIndex + 1) / total) * 100}%`;
+        document.getElementById('quizQuestionText').textContent = q.question;
+
+        const optionsContainer = document.getElementById('quizOptionsList');
+        optionsContainer.innerHTML = '';
+
+        q.options.forEach((opt, idx) => {
+          const optCard = document.createElement('div');
+          optCard.className = 'quiz-option-card';
+          optCard.id = `opt_${idx}`;
+          optCard.innerHTML = `<span class="badge bg-secondary rounded-pill px-2 py-1">${String.fromCharCode(65 + idx)}</span> <span>${opt}</span>`;
+          optCard.onclick = () => submitQuizAnswer(idx, q);
+          optionsContainer.appendChild(optCard);
+        });
+
+        document.getElementById('quizFeedbackBox').style.display = 'none';
+        document.getElementById('quizNextBtn').style.display = 'none';
+        document.getElementById('quizRestartBtn').style.display = 'none';
+      }
+
+      async function submitQuizAnswer(selectedIdx, q) {
+        // Disable further clicks on options
+        const allOpts = document.querySelectorAll('.quiz-option-card');
+        allOpts.forEach(o => o.onclick = null);
+
+        const isCorrect = selectedIdx === q.correct_index;
+        if (isCorrect) currentQuizScore++;
+
+        const selectedEl = document.getElementById(`opt_${selectedIdx}`);
+        const correctEl = document.getElementById(`opt_${q.correct_index}`);
+
+        if (isCorrect) {
+          if (selectedEl) selectedEl.classList.add('correct');
+        } else {
+          if (selectedEl) selectedEl.classList.add('incorrect');
+          if (correctEl) correctEl.classList.add('correct');
+        }
+
+        // Show feedback
+        const fbBox = document.getElementById('quizFeedbackBox');
+        const fbTitle = document.getElementById('quizFeedbackTitle');
+        const fbExp = document.getElementById('quizFeedbackExp');
+
+        fbBox.className = `alert ${isCorrect ? 'alert-success' : 'alert-danger'} mb-3`;
+        fbTitle.innerHTML = isCorrect ? '<i class="bi bi-check-circle-fill me-1"></i> Correct Answer!' : '<i class="bi bi-x-circle-fill me-1"></i> Incorrect';
+        fbExp.innerHTML = `<strong>Correct Option:</strong> ${q.options[q.correct_index]}<br><strong>Explanation:</strong> ${q.explanation}`;
+        fbBox.style.display = 'block';
+
+        document.getElementById('quizScoreText').textContent = `Score: ${currentQuizScore} / ${currentQuizIndex + 1}`;
+
+        if (currentQuizIndex + 1 < activeQuiz.questions.length) {
+          document.getElementById('quizNextBtn').style.display = 'inline-block';
+        } else {
+          // Final Quiz Completion
+          document.getElementById('quizRestartBtn').style.display = 'inline-block';
+        }
+      }
+
+      function nextQuizQuestion() {
+        currentQuizIndex++;
+        renderQuizQuestion();
+      }
+
+      function restartQuiz() {
+        startInteractiveQuiz(activeQuiz);
+      }
+
+      // UI View Helpers
+      function showStudyLoading(msg) {
+        document.getElementById('studyEmptyState').style.display = 'none';
+        document.getElementById('studyContentDisplay').style.display = 'none';
+        document.getElementById('studyQuizContainer').style.display = 'none';
+        document.getElementById('studyResultActions').style.display = 'none';
+        const loadingState = document.getElementById('studyLoadingState');
+        loadingState.style.display = 'block';
+        if (msg) loadingState.querySelector('h6').textContent = msg;
+      }
+
+      function showStudyMarkdown(mdText) {
+        document.getElementById('studyEmptyState').style.display = 'none';
+        document.getElementById('studyLoadingState').style.display = 'none';
+        document.getElementById('studyQuizContainer').style.display = 'none';
+        const contentDisplay = document.getElementById('studyContentDisplay');
+        contentDisplay.innerHTML = formatMarkdown(mdText);
+        contentDisplay.style.display = 'block';
+        document.getElementById('studyResultActions').style.display = 'flex';
+      }
+
+      function copyStudyResult() {
+        const content = document.getElementById('studyContentDisplay').innerText;
+        navigator.clipboard.writeText(content).then(() => {
+          alert('Copied study notes to clipboard!');
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -109,6 +109,9 @@
           <span class="opacity-75 fs-6 d-none d-sm-inline">Student Portal</span>
         </a>
         <div class="d-flex flex-wrap align-items-center gap-2">
+          <a href="{{ url_for('ai_helper.ai_helper_page') }}" class="btn btn-outline-primary btn-sm rounded-pill px-3 fw-semibold">
+            <i class="bi bi-stars me-1 text-primary"></i> AI Helper
+          </a>
           <a href="{{ url_for('student_improvement_plan') }}" class="btn btn-primary btn-sm rounded-pill px-3 fw-semibold shadow-sm">
             <i class="bi bi-compass-fill me-1"></i> My Improvement Plan
           </a>
@@ -175,9 +178,14 @@
               <i class="bi bi-check-circle-fill me-1"></i> Satisfactory Standing
             </span>
             {% endif %}
-            <a href="{{ url_for('student_improvement_plan') }}" class="btn btn-light btn-sm rounded-pill px-3 py-1.5 fw-bold shadow-sm d-inline-flex align-items-center gap-1.5 text-primary border text-decoration-none">
-              <i class="bi bi-compass-fill text-primary"></i> Open My Improvement Plan <i class="bi bi-arrow-right"></i>
-            </a>
+            <div class="d-flex flex-wrap gap-2 justify-content-md-end">
+              <a href="{{ url_for('ai_helper.ai_helper_page') }}" class="btn btn-primary btn-sm rounded-pill px-3 py-1.5 fw-bold shadow-sm d-inline-flex align-items-center gap-1.5 text-decoration-none">
+                <i class="bi bi-stars text-white"></i> AI Student Helper
+              </a>
+              <a href="{{ url_for('student_improvement_plan') }}" class="btn btn-light btn-sm rounded-pill px-3 py-1.5 fw-bold shadow-sm d-inline-flex align-items-center gap-1.5 text-primary border text-decoration-none">
+                <i class="bi bi-compass-fill text-primary"></i> Open Improvement Plan <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -690,5 +698,10 @@
         });
       }
     </script>
+    <!-- Floating AI Helper Launcher -->
+    <a href="{{ url_for('ai_helper.ai_helper_page') }}" class="btn btn-primary rounded-pill px-3.5 py-2.5 shadow-lg position-fixed bottom-0 end-0 m-3 m-md-4 d-flex align-items-center gap-2 text-decoration-none no-print" style="z-index: 1050; border: 2px solid rgba(255,255,255,0.25);" title="Open AI Student & Study Helper">
+      <i class="bi bi-stars fs-5"></i>
+      <span class="fw-bold d-none d-sm-inline">AI Student Helper</span>
+    </a>
   </body>
 </html>

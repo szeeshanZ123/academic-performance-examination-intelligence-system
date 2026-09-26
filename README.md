@@ -1,157 +1,166 @@
-Markdown<div align="center">
+Markdown
+<div align="center">
 
 # 🎓 Academic Performance & Examination Intelligence System
 
-<p align="center">
-  <strong>From Passive Academic Records to Actionable Educational Intelligence</strong>
-</p>
+### *Turn Everyday Marks into Smart Academic Insights*
 
-<p align="center">
-  <a href="https://academic-performance-examination-in.vercel.app/"><img src="https://img.shields.io/badge/Live_Demo-00C853?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo"></a>
-  <a href="https://github.com/szeeshanZ123/academic-performance-examination-intelligence-system"><img src="https://img.shields.io/badge/Repository-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repo"></a>
-  <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/Flask-Web_Framework-000000?style=for-the-badge&logo=flask&logoColor=white" alt="Flask">
-  <img src="https://img.shields.io/badge/scikit--learn-ML_Engine-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="Scikit-Learn">
-  <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="License">
-</p>
+A web platform that helps schools, teachers, and students understand academic performance, predict outcomes, and spot learning gaps early.
 
 <br>
 
-<p align="center">
-  <a href="#-overview">Overview</a> •
-  <a href="#-core-architecture">Architecture</a> •
-  <a href="#-key-features">Features</a> •
-  <a href="#-machine-learning-pipeline">ML Engine</a> •
-  <a href="#-question-paper-intelligence">Exam Intelligence</a> •
-  <a href="#-installation--setup">Setup</a>
-</p>
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Try_It_Now-00C853?style=for-the-badge)](https://academic-performance-examination-in.vercel.app/)
+[![GitHub](https://img.shields.io/badge/💻_Code-GitHub_Repo-181717?style=for-the-badge&logo=github)](https://github.com/szeeshanZ123/academic-performance-examination-intelligence-system)
+
+<br>
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white)
 
 ---
 
 </div>
 
-## 📌 Overview
+## 💡 What is this project?
 
-Traditional Academic Portals stop at **Data Logging**:
-$$\text{Student} \longrightarrow \text{Raw Marks} \longrightarrow \text{Static Grade}$$
+Most school portals only show numbers:
+> **Student → Scores → Report Card**
 
-This system functions as an **Active Decision Engine**:
-$$\text{Academic Data} \longrightarrow \text{Pattern Analysis} \longrightarrow \text{ML Risk Prediction} \longrightarrow \text{Intervention Plan}$$
+This system goes several steps further:
+> **Student Data → Analytics → Future Predictions → At-Risk Warnings → Action Plans**
 
-A full-stack platform built with **Flask**, **Pandas**, and **Scikit-Learn** that transforms fragmented attendance, test results, and exam papers into personalized learning roadmaps and class-level intervention KPIs.
+It helps answer four fundamental questions:
+1. **How is the student doing right now?** (Trends & Attendance)
+2. **Where are they struggling?** (Weak topics and subjects)
+3. **What could happen next?** (Machine Learning score prediction)
+4. **How can they improve?** (Personalized study suggestions)
 
 ---
 
-## 🖥️ Platform Showcase
+## 📸 Screenshots
 
 <div align="center">
 
-| Teacher Analytics Portal | Student Personal Workspace |
-| :---: | :---: |
-| <img src="screenshots/teacher-dashboard.png" width="100%" alt="Teacher Dashboard" onerror="this.src='https://via.placeholder.com/600x340?text=Teacher+Dashboard+Preview'"> | <img src="screenshots/student-dashboard.png" width="100%" alt="Student Dashboard" onerror="this.src='https://via.placeholder.com/600x340?text=Student+Dashboard+Preview'"> |
-| *Class KPIs, At-Risk Outlier Detection, Subject Breakdown* | *Predictive Trajectory, Subject Mastery, Attendance Alerts* |
+### 👨‍🏫 Teacher Dashboard
+*Track whole-class pass rates, spot students falling behind, and view averages at a glance.*
+
+<img src="screenshots/teacher-dashboard.png" width="85%" alt="Teacher Dashboard">
+
+<br><br>
+
+### 👨‍🎓 Student Dashboard
+*A clear, personal space for students to view their scores, track attendance, and follow study plans.*
+
+<img src="screenshots/student-dashboard.png" width="85%" alt="Student Dashboard">
+
+<br><br>
+
+### 📄 Question Paper Analyzer
+*Upload an exam PDF to extract questions, marks, and cognitive difficulty levels.*
+
+<img src="screenshots/question-paper-analyzer.png" width="85%" alt="Question Paper Analyzer">
 
 </div>
 
-<p align="center">
-  <img src="screenshots/question-paper-analyzer.png" width="90%" alt="Question Paper Analyzer" onerror="this.src='https://via.placeholder.com/900x300?text=Question+Paper+Analyzer+Preview'">
-  <br>
-  <em>Automated Bloom's Taxonomy & Topic Extraction Pipeline</em>
-</p>
+---
+
+## ✨ Main Features
+
+| 👨‍🎓 For Students | 👨‍🏫 For Teachers | 📄 Exam Intelligence |
+| :--- | :--- | :--- |
+| • **Clear Overview:** See overall GPA and subject marks in clean charts | • **Class KPIs:** Average marks, pass rate, and attendance summaries | • **PDF Upload:** Automatically read question papers from PDF files |
+| • **Score Forecast:** Machine Learning estimates upcoming exam scores | • **At-Risk Alerts:** Instant flags for students needing extra help | • **Mark Detection:** Automatically pulls question weights and marks |
+| • **Attendance Tracker:** Visual warnings if attendance drops too low | • **Student Profiles:** Deep dive into any individual student's records | • **Bloom's Taxonomy:** Tags questions by recall, understanding, or logic |
+| • **Improvement Tips:** Practical advice targeted at weak subjects | • **Quick Export:** Download summary reports as PDF or CSV files | • **Topic Balance:** Checks if all chapters are covered evenly |
 
 ---
 
-## 🚀 Key Modules
+## 🔄 How It Works
 
-<table>
-<tr>
-<td width="33%" valign="top">
+### 1. The Prediction Flow (Machine Learning)
+```text
+Historical Marks + Attendance
+           ↓
+   Data Preprocessing
+           ↓
+Random Forest ML Model
+           ↓
+Predicted Next Exam Score
+           ↓
+Custom Study Recommendations
+2. The Question Paper Flow (PDF Analyzer)
+Plaintext
+Upload Exam PDF
+      ↓
+Extract Text with PyMuPDF
+      ↓
+Detect Questions & Marks
+      ↓
+Categorize by Bloom's Taxonomy (Easy → Hard)
+      ↓
+Generate Exam Quality Report
+🛠️ Built With
+Backend: Python, Flask
 
-### 👨‍🎓 Student Portal
-* **Performance Overview:** Real-time GPA and subject score tracking.
-* **Trajectory Forecasting:** Scikit-Learn predictions for upcoming finals.
-* **Attendance Risk Flags:** Early warnings when falling below target thresholds.
-* **Prescriptive Roadmaps:** Targeted topic remediation suggestions.
+Machine Learning & Data: Scikit-Learn (Random Forest), Pandas, NumPy
 
-</td>
-<td width="33%" valign="top">
+Frontend: HTML5, CSS3, JavaScript, Bootstrap
 
-### 👨‍🏫 Teacher Portal
-* **Cohort Metrics:** Class pass rates, cohort means, and score distributions.
-* **Early-Warning Engine:** Real-time flagging of at-risk students for intervention.
-* **Student Drill-Down:** Individual multi-semester trajectory histories.
-* **Bulk Export:** Formatted PDF summaries and raw CSV metrics.
+Document Processing: PyMuPDF (PDF text extraction), ReportLab (PDF export)
 
-</td>
-<td width="33%" valign="top">
+Hosting: Vercel
 
-### 📄 Exam Intelligence
-* **Parser Engine:** Fast PDF structure extraction powered by `PyMuPDF`.
-* **Marks Extraction:** Automatic scoring and question-boundary parsing.
-* **Cognitive Profiling:** Categorization mapped across Bloom’s Taxonomy.
-* **Syllabus Coverage:** Automated topic distribution analysis.
+📁 Project Structure
+Plaintext
+academic-performance-system/
+│
+├── app.py               # Main Flask web application
+├── analysis/            # Scripts for data handling and statistics
+├── ml/                  # Machine learning models and prediction code
+├── templates/           # Web pages (Student, Teacher, and Admin dashboards)
+├── static/              # CSS styles, JavaScript, and images
+├── data/                # Sample datasets (marks, students, attendance)
+├── requirements.txt     # List of required Python packages
+└── README.md
+🚀 Quick Start Guide
+Run this project on your computer in four simple steps:
 
-</td>
-</tr>
-</table>
-
----
-
-## 🧠 Machine Learning & Data Pipeline
-
-The predictive analytics module utilizes an ensemble regression approach to model student final performance outcomes based on historical and operational metrics.
-
-```mermaid
-flowchart TD
-    A[Raw Student Records] --> B[Data Cleaning & Null Imputation]
-    B --> C[Feature Engineering: Attendance Ratio, Historical Mean, Test Deltas]
-    C --> D[Stratified Train-Test Split]
-    D --> E[Random Forest Regressor Pipeline]
-    E --> F[Performance Inference & MAE/RMSE Evaluation]
-    F --> G[Intervention & Risk Categorization: Low / Moderate / High]
-Engineered IndicatorsInternal Test Trajectory: Rate of score change across continuous assessments.Attendance Weighting: Normalized participation rates against subject difficulty.Historical Variability: Deviation analysis across previous semester finals.📄 Question Paper Intelligence PipelineCode snippetflowchart LR
-    PDF[PDF Upload] --> OCR[PyMuPDF Parsing]
-    OCR --> QExtract[Question Boundary Segmentation]
-    QExtract --> Marks[Marks & Weightage Detection]
-    Marks --> Bloom[Bloom's Taxonomy Classification]
-    Bloom --> Report[Curriculum Balance Visualizer]
-Cognitive Mapping EngineCognitive LevelFocus AreaExtraction Indicator🟢 RememberRecall & TermsDefine, List, State, Identify🔵 UnderstandConceptual GraspExplain, Summarize, Describe🟡 ApplyPractical ExecutionSolve, Compute, Implement🟠 AnalyzeStructural LogicDifferentiate, Compare, Deconstruct🔴 EvaluateCritical DefenseJustify, Assess, Validate🟣 CreateSynthesis & DesignDesign, Construct, Formulate🏗️ System ArchitectureCode snippetgraph TD
-    subgraph Client Layer
-        UI[Responsive UI: Bootstrap 5, Chart.js, HTML5]
-    end
-
-    subgraph Application Layer
-        App[Flask Core Application Controller]
-        Auth[Role-Based Authentication Engine]
-        Analytics[Pandas / NumPy Calculation Engine]
-        MLEngine[Scikit-Learn Inference Pipeline]
-        DocEngine[PyMuPDF Document Parser]
-    end
-
-    subgraph Data & Storage Layer
-        DataStore[(Academic Records CSV / Relational DB)]
-        Reports[ReportLab PDF Generation Engine]
-    end
-
-    UI <-->|REST Requests / Session Auth| App
-    App --> Auth
-    App --> Analytics
-    App --> MLEngine
-    App --> DocEngine
-    Analytics <--> DataStore
-    MLEngine <--> DataStore
-    App --> Reports
-🛠️ Tech StackDomainTechnologiesBackend & Routing Machine Learning & Math  Frontend & Visuals  Parsing & Reporting Deployment⚙️ Installation & SetupPrerequisitesPython 3.10+GitStep-by-StepClone the repository:Bashgit clone [https://github.com/szeeshanZ123/academic-performance-examination-intelligence-system.git](https://github.com/szeeshanZ123/academic-performance-examination-intelligence-system.git)
+1. Download the Project
+Bash
+git clone [https://github.com/szeeshanZ123/academic-performance-examination-intelligence-system.git](https://github.com/szeeshanZ123/academic-performance-examination-intelligence-system.git)
 cd academic-performance-examination-intelligence-system
-Initialize virtual environment:Bash# Windows
+2. Create a Virtual Environment
+Bash
+# On Windows:
 python -m venv .venv
 .venv\Scripts\activate
 
-# Linux / macOS
+# On Mac / Linux:
 python3 -m venv .venv
 source .venv/bin/activate
-Install dependencies:Bashpip install --upgrade pip
+3. Install Packages
+Bash
 pip install -r requirements.txt
-Launch development server:Bashpython app.py
-Navigate to http://127.0.0.1:5000 in your browser.🧪 Verification & Testing ScopeAccess Control: Verified RBAC route protection ensuring students cannot query class-wide records.Model Inference: Stress-tested prediction pipelines against edge values (e.g., zero attendance, missing historical semesters).Document Extraction: Validation against varied examination paper formatting (single-column, tabular, multi-section).Data Flow Integrity: Verification that dynamic student filter queries match underlying CSV/database aggregates.🔐 Production Readiness Checklist[ ] Transition from CSV data storage to a normalized relational database (PostgreSQL / SQLite).[ ] Implement password hashing using bcrypt or Argon2.[ ] Implement CSRF tokens for all state-changing endpoints.[ ] Move session storage from client cookies to secure server-side caching (Redis).[ ] Establish strict API rate-limiting to prevent brute-force attacks.👨‍💻 AuthorZeeshan ShaikhData Science • Machine Learning • Full-Stack Development
+4. Run the App
+Bash
+python app.py
+Open your browser and visit: http://127.0.0.1:5000
 
+🛡️ Production Roadmap
+To transition this prototype into a full institution-wide application:
+
+[ ] Connect a secure SQL database (PostgreSQL / MySQL) instead of static CSV files.
+
+[ ] Add secure password hashing (bcrypt) and session tokens.
+
+[ ] Add rate limiting to stop automated login attempts.
+
+[ ] Integrate directly with college LMS and ERP systems.
+
+👨‍💻 Author
+Zeeshan Shaikh
+
+Data Analytics • Machine Learning • Web Development

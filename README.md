@@ -1,177 +1,166 @@
-# 🎓 Academic Performance and Examination Intelligence System
+Markdown
+<div align="center">
 
-> A comprehensive, data-driven academic intelligence platform built with Python, Flask, Scikit-learn, and ReportLab. Provides role-based dashboards (Admin, Teacher, Student), ML-powered external mark predictions, syllabus-grounded Question Paper Intelligence, personalized improvement plans, and institutional PDF/CSV reporting with full Light & Dark mode support.
+# 🎓 Academic Performance & Examination Intelligence System
+
+### *Turn Everyday Marks into Smart Academic Insights*
+
+A web platform that helps schools, teachers, and students understand academic performance, predict outcomes, and spot learning gaps early.
+
+<br>
+
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Try_It_Now-00C853?style=for-the-badge)](https://academic-performance-examination-in.vercel.app/)
+[![GitHub](https://img.shields.io/badge/💻_Code-GitHub_Repo-181717?style=for-the-badge&logo=github)](https://github.com/szeeshanZ123/academic-performance-examination-intelligence-system)
+
+<br>
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white)
 
 ---
 
-## 📌 Project Overview
+</div>
 
-The **Academic Performance and Examination Intelligence System** transforms institutional academic records into actionable intelligence for educators, administrators, and students.
+## 💡 What is this project?
 
-### Key Capabilities:
-- 🏛️ **Role-Based Portals**: Unified authentication with dedicated interfaces for Administrator, Faculty/Teacher, and Student roles.
-- 🤖 **ML External Marks Prediction**: Multi-feature regression model predicting external semester marks, total score, and expected grade without data leakage.
-- 📄 **Question Paper Intelligence**: Automated PDF text extraction, question classification, marks weighting, and Bloom's taxonomy difficulty analytics.
-- 🎯 **Personalized Improvement Plan**: Acts as a personal academic coach with syllabus-grounded topics, weak-subject ranking, and interactive study roadmaps.
-- 📊 **Institutional Reporting**: Dynamic multi-semester KPI analytics, filterable audit tables, and instant PDF/CSV export.
-- 🌓 **Adaptive UI**: Responsive design with light and dark mode toggle built with vanilla CSS design tokens.
+Most school portals only show numbers:
+> **Student → Scores → Report Card**
+
+This system goes several steps further:
+> **Student Data → Analytics → Future Predictions → At-Risk Warnings → Action Plans**
+
+It helps answer four fundamental questions:
+1. **How is the student doing right now?** (Trends & Attendance)
+2. **Where are they struggling?** (Weak topics and subjects)
+3. **What could happen next?** (Machine Learning score prediction)
+4. **How can they improve?** (Personalized study suggestions)
 
 ---
 
-## 🏗️ System Architecture & Modules
+## 📸 Screenshots
 
+<div align="center">
+
+### 👨‍🏫 Teacher Dashboard
+*Track whole-class pass rates, spot students falling behind, and view averages at a glance.*
+
+<img src="screenshots/teacher-dashboard.png" width="85%" alt="Teacher Dashboard">
+
+<br><br>
+
+### 👨‍🎓 Student Dashboard
+*A clear, personal space for students to view their scores, track attendance, and follow study plans.*
+
+<img src="screenshots/student-dashboard.png" width="85%" alt="Student Dashboard">
+
+<br><br>
+
+### 📄 Question Paper Analyzer
+*Upload an exam PDF to extract questions, marks, and cognitive difficulty levels.*
+
+<img src="screenshots/question-paper-analyzer.png" width="85%" alt="Question Paper Analyzer">
+
+</div>
+
+---
+
+## ✨ Main Features
+
+| 👨‍🎓 For Students | 👨‍🏫 For Teachers | 📄 Exam Intelligence |
+| :--- | :--- | :--- |
+| • **Clear Overview:** See overall GPA and subject marks in clean charts | • **Class KPIs:** Average marks, pass rate, and attendance summaries | • **PDF Upload:** Automatically read question papers from PDF files |
+| • **Score Forecast:** Machine Learning estimates upcoming exam scores | • **At-Risk Alerts:** Instant flags for students needing extra help | • **Mark Detection:** Automatically pulls question weights and marks |
+| • **Attendance Tracker:** Visual warnings if attendance drops too low | • **Student Profiles:** Deep dive into any individual student's records | • **Bloom's Taxonomy:** Tags questions by recall, understanding, or logic |
+| • **Improvement Tips:** Practical advice targeted at weak subjects | • **Quick Export:** Download summary reports as PDF or CSV files | • **Topic Balance:** Checks if all chapters are covered evenly |
+
+---
+
+## 🔄 How It Works
+
+### 1. The Prediction Flow (Machine Learning)
 ```text
-Academic-Performance-System/
-│
-├── .github/                 # CI/CD Workflows
-│   └── workflows/
-│       └── python-app.yml
-│
-├── analysis/                # Analytical computation engine
-│   ├── __init__.py
-│   └── analytics.py         # KPIs, distributions, and trend calculations
-│
-├── data/                    # Production CSV Datasets
-│   ├── admin.csv            # Administrator credentials
-│   ├── attendance.csv       # Multi-semester subject attendance records
-│   ├── marks.csv            # Internal, External, Total marks, and Grades
-│   ├── students.csv         # Student profiles, credentials, and cohorts
-│   └── teacher.csv          # Faculty credentials and subject assignments
-│
-├── ml/                      # Machine Learning Subsystem
-│   ├── models/
-│   │   └── external_marks_model.joblib  # Trained RandomForest pipeline
-│   ├── __init__.py
-│   ├── model.py             # Feature pipeline & model architecture
-│   ├── predictor.py         # Safe runtime inference engine
-│   └── train_model.py       # Reproducible training & evaluation script
-│
-├── question_paper/          # Question Paper Intelligence Subsystem
-│   ├── samples/             # Sample examination papers
-│   ├── __init__.py
-│   ├── analyzer.py          # Bloom taxonomy & difficulty analytics
-│   ├── extractor.py         # PyMuPDF text extraction
-│   ├── parser.py            # Question detection & marks parsing
-│   └── routes.py            # Blueprint routes & UI handling
-│
-├── reports/                 # Reporting Engine
-│   ├── __init__.py
-│   ├── csv_export.py        # Streaming CSV exports
-│   ├── pdf_export.py        # ReportLab institutional PDF generator
-│   └── report_service.py    # Report data compilation
-│
-├── static/                  # Static Assets
-│   ├── css/theme.css        # Light/Dark design system tokens
-│   ├── js/theme.js          # Theme switching & persistence
-│   └── images/              # Chart output assets
-│
-├── templates/               # Jinja2 HTML Templates
-│   ├── admin_reports.html
-│   ├── error.html
-│   ├── improvement_plan.html
-│   ├── index.html           # Admin Dashboard
-│   ├── login.html           # Unified Authentication Portal
-│   ├── question_paper.html  # Exam Intelligence
-│   ├── search_not_found.html
-│   ├── student.html         # Public Profile View
-│   ├── student_dashboard.html
-│   ├── student_login.html
-│   ├── student_report.html
-│   ├── teacher_dashboard.html
-│   ├── teacher_login.html
-│   └── teacher_reports.html
-│
-├── tests/                   # Automated Regression Test Suite
-│   ├── __init__.py
-│   ├── test_global_blue_theme.py
-│   ├── test_improvement_plan.py
-│   ├── test_logout_and_branding.py
-│   ├── test_ml_finalization.py
-│   ├── test_question_paper.py
-│   ├── test_reports_system.py
-│   ├── test_student_dashboard_consistency.py
-│   ├── test_system_audit_regression.py
-│   └── test_unified_auth_flow.py
-│
-├── utils/                   # Shared Utilities
-│   ├── data_loader.py       # Data loader & cohort caching
-│   └── student_recommendations.py # Rule-based coaching engine
-│
-├── visualization/           # Visualization Utilities
-│   └── charts.py            # Matplotlib chart generators
-│
-├── .gitignore
-├── app.py                   # Main Flask application
-├── README.md                # System documentation
-└── requirements.txt         # Production dependencies
-```
+Historical Marks + Attendance
+           ↓
+   Data Preprocessing
+           ↓
+Random Forest ML Model
+           ↓
+Predicted Next Exam Score
+           ↓
+Custom Study Recommendations
+2. The Question Paper Flow (PDF Analyzer)
+Plaintext
+Upload Exam PDF
+      ↓
+Extract Text with PyMuPDF
+      ↓
+Detect Questions & Marks
+      ↓
+Categorize by Bloom's Taxonomy (Easy → Hard)
+      ↓
+Generate Exam Quality Report
+🛠️ Built With
+Backend: Python, Flask
 
----
+Machine Learning & Data: Scikit-Learn (Random Forest), Pandas, NumPy
 
-## 🛠️ Technology Stack
+Frontend: HTML5, CSS3, JavaScript, Bootstrap
 
-| Layer | Technology |
-|:---|:---|
-| **Backend Framework** | Python 3.10+, Flask |
-| **Data Processing** | Pandas, NumPy |
-| **Machine Learning** | Scikit-learn (RandomForestRegressor, ColumnTransformer, OneHotEncoder), Joblib |
-| **Document Processing** | PyMuPDF (fitz), python-docx, ReportLab |
-| **Frontend & UI** | HTML5, Vanilla CSS Design System, Bootstrap 5 Icons, Chart.js |
-| **Testing & CI** | Python `unittest`, GitHub Actions |
+Document Processing: PyMuPDF (PDF text extraction), ReportLab (PDF export)
 
----
+Hosting: Vercel
 
-## 🚀 Quick Start & Installation
+📁 Project Structure
+Plaintext
+academic-performance-system/
+│
+├── app.py               # Main Flask web application
+├── analysis/            # Scripts for data handling and statistics
+├── ml/                  # Machine learning models and prediction code
+├── templates/           # Web pages (Student, Teacher, and Admin dashboards)
+├── static/              # CSS styles, JavaScript, and images
+├── data/                # Sample datasets (marks, students, attendance)
+├── requirements.txt     # List of required Python packages
+└── README.md
+🚀 Quick Start Guide
+Run this project on your computer in four simple steps:
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/szeeshanZ123/academic-performance-examination-intelligence-system.git
+1. Download the Project
+Bash
+git clone [https://github.com/szeeshanZ123/academic-performance-examination-intelligence-system.git](https://github.com/szeeshanZ123/academic-performance-examination-intelligence-system.git)
 cd academic-performance-examination-intelligence-system
-```
-
-### 2. Set Up Virtual Environment
-```bash
+2. Create a Virtual Environment
+Bash
+# On Windows:
 python -m venv .venv
-
-# On Windows
 .venv\Scripts\activate
 
-# On Linux/macOS
+# On Mac / Linux:
+python3 -m venv .venv
 source .venv/bin/activate
-```
-
-### 3. Install Dependencies
-```bash
+3. Install Packages
+Bash
 pip install -r requirements.txt
-```
-
-### 4. Run the Application
-```bash
+4. Run the App
+Bash
 python app.py
-```
-Open [http://127.0.0.1:5000](http://127.0.0.1:5000) in your web browser.
+Open your browser and visit: http://127.0.0.1:5000
 
----
+🛡️ Production Roadmap
+To transition this prototype into a full institution-wide application:
 
-## 🧪 Running Automated Tests
+[ ] Connect a secure SQL database (PostgreSQL / MySQL) instead of static CSV files.
 
-The test suite covers authentication flows, role-based access, student dashboards, reports export, ML prediction pipelines, and question paper parsing.
+[ ] Add secure password hashing (bcrypt) and session tokens.
 
-```bash
-python -m unittest discover tests
-```
+[ ] Add rate limiting to stop automated login attempts.
 
----
+[ ] Integrate directly with college LMS and ERP systems.
 
-## 🔐 Default Demo Accounts
+👨‍💻 Author
+Zeeshan Shaikh
 
-| Role | Username | Password |
-|:---|:---|:---|
-| **Administrator** | `admin` | `admin123` |
-| **Faculty (Teacher)** | `teacher001` (Amit Patil) | `Teacher@123` |
-| **Student** | `254228` (or Roll Number) | `student` |
-
----
-
-## 📄 License
-This project is developed for academic evaluation and institutional intelligence research.
+Data Analytics • Machine Learning • Web Development
